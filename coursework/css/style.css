@@ -1,4 +1,11 @@
-*{ margin: 0; padding: 0; } /* Reset */
+*{ /* Reset */
+	margin: 0; 
+	padding: 0;
+
+	-webkit-box-sizing:border-box; /* Makes it so padding and ... */
+	   -moz-box-sizing:border-box; /* ... borders don't mess with the width */
+	   		box-sizing:border-box;
+}
 
 body{
 	color: rgba(0, 0, 0, 0.75);
@@ -6,25 +13,53 @@ body{
 	background: rgb(80, 100, 100);
 }
 
-article{			
-	background: #fff6d9 url('../img/linetile.png');
+section.bookmark{
+	top: 0;
+	position: fixed;
+	width: 100%;
+	opacity: 0.1;
+	padding: 1em;
+	background: rgb(60, 10, 10);
+
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.25);
+	   -moz-box-shadow: 0 0 5px rgba(0,0,0,0.25);
+	   		box-shadow: 0 0 5px rgba(0,0,0,0.25);
+
+	-webkit-transition: all 0.2s linear;
+}
+
+section.bookmark:hover{
+	opacity: 1;
+}
+
+section.bookmark p{
+	text-align: center;
+	color: #f5f5f5;
+	font-size: 0.9em;
+	font-family: "Georgia", "Times New Roman", serif;
+}
+
+section.bookmark a{
+	color: rgb(255, 125, 0);
+	font-family: "Courier", monospace;
+}
+
+article{
+	background: #fff6d9 url('../img/linetile.png'); 
 	width: 70%;
 	margin: 20px auto;
-	box-shadow: 0 0 5px rgba(0,0,0,0.25),
-				5px 5px 0 #fff6d9,
-				5px 5px 5px rgba(0,0,0,0.25),
-				10px 10px 0 #fff6d9,
-				10px 10px 5px  rgba(0,0,0,0.25),
-				inset 0 60px 0 #fff6d9;
+
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.25), 5px 5px 0 #fff6d9, 5px 5px 5px rgba(0,0,0,0.25),
+						10px 10px 0 #fff6d9, 10px 10px 5px  rgba(0,0,0,0.25), inset 0 60px 0 #fff6d9;
+	   -moz-box-shadow: 0 0 5px rgba(0,0,0,0.25), 5px 5px 0 #fff6d9, 5px 5px 5px rgba(0,0,0,0.25),
+					   	10px 10px 0 #fff6d9, 10px 10px 5px  rgba(0,0,0,0.25), inset 0 60px 0 #fff6d9;
+			box-shadow: 0 0 5px rgba(0,0,0,0.25), 5px 5px 0 #fff6d9, 5px 5px 5px rgba(0,0,0,0.25),
+				    	10px 10px 0 #fff6d9, 10px 10px 5px  rgba(0,0,0,0.25), inset 0 60px 0 #fff6d9;
 }
 
 section.text{
 	display: inline-block;
 	padding: 2em 4em 0 4em;
-
-	-webkit-box-sizing:border-box;
-	   -moz-box-sizing:border-box; 
-	   		box-sizing:border-box;
 }
 
 section.text time{
@@ -46,7 +81,7 @@ section.text h1{
 	font-weight: bolder;
 }
 
-section.text p{
+section.text p, section.text aside.references ul li{
 	font-size: 1.125em;
 	margin-bottom: 20px;
 	line-height: 20px;
@@ -57,27 +92,58 @@ section.text p:before{
 	margin-left: 2em;			
 }
 
+section.text aside.references{
+	padding-top: 20px;
+}
+
+section.text aside.references h2{
+	line-height: 20px;
+	font-size: 1.2em;
+	margin-bottom: 20px;
+}
+
+section.text aside.references ul li{
+	font-size: 1em;
+	list-style-position: inside;
+	list-style-type: square;
+}
+
+section.text mark, section.text a{
+	padding: 0 0.25em;
+
+	-webkit-border-radius: 25px 0px / 50px 0px;
+	   -moz-border-radius: 25px 0px / 50px 0px;
+			border-radius: 25px 0px / 50px 0px;
+}
+
 section.text mark{
-	padding: 0 0.5em;
-	border-radius: 25px 0px / 50px 0px;
+	background-color: rgba(255, 255, 0, 0.4);	
+}
+
+section.text a{	
+	color: rgba(0, 0, 0, 0.75);
+	text-decoration: none;
+	background-color: rgba(0, 255, 0, 0.4);	
+}
+
+section.text mark:hover, section.text a:hover{
+	opacity: 0.9;
+
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	   -moz-box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	   		box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
 section.text mark:hover{
 	cursor: pointer;
-	box-shadow:0 0 0 1px rgba(0, 0, 0, 0.35);
 }
 
-section.text mark.ref{	
-	background-color: rgba(255, 255, 0, 0.5);
-}
-
-section.text em{
+section.text strong{
 	font-weight: bolder;
 	font-style: normal;
 }
 
-section.text em:hover{
-	opacity: 0.9;
+section.text strong:hover{
 	cursor: pointer;	
 	text-decoration: underline;
 }
