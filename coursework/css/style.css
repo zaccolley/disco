@@ -8,40 +8,56 @@
 }
 
 body{
+	padding: 10% 0;
 	color: rgba(0, 0, 0, 0.75);
 	font-family: "Courier", monospace;
 	background: rgb(80, 100, 100);
 }
 
-section.bookmark{
+header{
 	top: 0;
-	position: fixed;
 	width: 100%;
-	opacity: 0.1;
-	padding: 1em;
-	background: rgb(60, 10, 10);
-
-	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.25);
-	   -moz-box-shadow: 0 0 5px rgba(0,0,0,0.25);
-	   		box-shadow: 0 0 5px rgba(0,0,0,0.25);
-
-	-webkit-transition: all 0.2s linear;
+	background-color: rgb(181, 10, 42);	
+	position: fixed;	
+	border-top: 10px solid rgb(211, 0, 42);
+	border-bottom: 10px solid rgb(211, 0, 42);
+	box-shadow: 0 5px 0 rgba(0,0,0,0.1);
 }
 
-section.bookmark:hover{
-	opacity: 1;
-}
-
-section.bookmark p{
+header h1, header .links{
+	display: inline-block;
+	margin: 10px;
+	width: 30%;
+	color: #FFFFFF;
 	text-align: center;
-	color: #f5f5f5;
-	font-size: 0.9em;
-	font-family: "Georgia", "Times New Roman", serif;
+	font-family: Helvetica, Arial, serif;
+	text-transform: uppercase;
+	-webkit-transition: all 0.05s linear;	
 }
 
-section.bookmark a{
-	color: rgb(255, 125, 0);
-	font-family: "Courier", monospace;
+header h1{
+	cursor: default;
+	font-size: 2.4em;
+	text-shadow: 1px 1px 0 rgb(211, 0, 42), 2px 2px 0 rgb(211, 0, 42),
+				 3px 3px 0 rgb(211, 0, 42), 4px 4px 0 rgb(211, 0, 42),
+				 5px 5px 0 rgb(211, 0, 42), 6px 6px 0 rgb(211, 0, 42),
+				 7px 7px 0 rgb(211, 0, 42), 8px 8px 0 rgb(211, 0, 42);
+}
+
+header .links a{
+	margin: 0 auto;
+	padding: 0.2em 0;
+	display: block;
+	width: 60%;
+	color: #FFFFFF;
+	background-color: rgba(0,0,0,0.1);
+	border-radius: 5px;
+	text-decoration: none;
+	font-size: 1.9em;
+}
+
+header .links a:hover{
+	background-color: rgba(0,0,0,0.05);
 }
 
 article{
@@ -54,12 +70,12 @@ article{
 	   -moz-box-shadow: 0 0 5px rgba(0,0,0,0.25), 5px 5px 0 #fff6d9, 5px 5px 5px rgba(0,0,0,0.25),
 					   	10px 10px 0 #fff6d9, 10px 10px 5px  rgba(0,0,0,0.25), inset 0 60px 0 #fff6d9;
 			box-shadow: 0 0 5px rgba(0,0,0,0.25), 5px 5px 0 #fff6d9, 5px 5px 5px rgba(0,0,0,0.25),
-				    	10px 10px 0 #fff6d9, 10px 10px 5px  rgba(0,0,0,0.25), inset 0 60px 0 #fff6d9;
+				    	10px 10px 0 #fff6d9, 10px 10px 5px  rgba(0,0,0,0.25), inset 0 60px 0 #fff6d9, inset 0 -30px 0 #fff6d9;
 }
 
 section.text{
 	display: inline-block;
-	padding: 2em 4em 0 4em;
+	padding: 2em 4em;
 }
 
 section.text time{
