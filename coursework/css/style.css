@@ -100,6 +100,23 @@ header .links a:hover{
 	white-space: pre;
 }
 
+.cv .info{}
+
+.cv .info h2{}
+
+.cv .content{
+	margin-bottom: 2em;
+}
+
+.cv .I ul li{
+	list-style: none;
+}
+
+.cv .I ul li:before{
+	content: '\2026';
+	font-weight: bolder;
+	margin: 0 0.25em;
+}
 
 .litreview{
 	font-family: "Courier", monospace;
