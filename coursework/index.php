@@ -1,38 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>WEBF1 C/W - Literature Review</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script src="js/jquery.js" type="text/javascript"></script>  <!-- jQuery! :D -->
-	<script src="js/scripts.js" type="text/javascript"></script> <!-- My scripts -->
-</head>
-<body>
+<?php include('header.php'); ?>
 	
-	<header>
-		<section class="links">
-			<a href="#">CV</a>
-		</section>
-		<h1>Zac Colley</h1>
-		<section class="links">
-			<a href="#">Lit Review</a>
-		</section>
-	</header>
-	
-	<article>
+	<article class="litreview">
 
 		<!-- use of mark is perfect!!! http://www.w3.org/TR/html-markup/mark.html#mark -->
 
 		<section class="text">
 
-			<time>1-1-2013</time>
+			<time><?php echo date("d-m-Y") ?></time>
 
 			<p class="name">Zac Colley</p>
 
 			<h1>The evolution of mobile application design</h1>
 
 			<p>This literature review will be discussing the evolution of mobile application design and how application design for mobile devices compares to desktop. It will include the areas of hardware, desktop design, some history of mobile devices and their applications, how iPhones made the web a key role in applications, <strong>3G and WiFi</strong> enabling this, the idea of <strong>ubiquitous computing</strong> and user experience and interfaces. I selected these topics as I felt they would be most influential in the evolution of mobile applications as well as the devices themselves.</p>
-
 
 			<p>In the 1980s, Microsoft Windows and Apple Macintosh started using <em>WIMP</em> (windows, icons, menus and pointers). These key elements are still used today on modern operating systems for desktop computing. As <mark>Myers, Hudson and Pausch (2000)</mark> state "the 70's saw a tremendous amount of experimentation with a variety of input devices and <strong>user interface</strong> styles, much of the diversity is now gone from user interfaces."</p>
 
@@ -122,5 +102,6 @@
 		</section>
 
 	</article>
+	
 </body>
 </html>

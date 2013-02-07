@@ -10,7 +10,6 @@
 body{
 	padding: 10% 0;
 	color: rgba(0, 0, 0, 0.75);
-	font-family: "Courier", monospace;
 	background: rgb(80, 100, 100);
 }
 
@@ -60,10 +59,51 @@ header .links a:hover{
 	background-color: rgba(0,0,0,0.05);
 }
 
-article{
-	background: #fff6d9 url('../img/linetile.png'); 
+.cv, .litreview{
 	width: 70%;
-	margin: 20px auto;
+	margin: 20px auto;	
+}
+
+.cv{
+	padding: 2em;
+	font-family: Arial, sans-serif;
+	background: #f5f5f5;
+	box-shadow: 0 0 5px rgba(0,0,0,0.25);
+}
+
+.cv section.details{
+	text-align: right;
+}
+
+.cv section.details h1{
+	font-size: 2.5em;
+	font-style: italic;
+	padding-bottom: 0.25em;
+	margin-bottom: 0.25em;
+	border-bottom: 1px solid #000000;
+}
+
+.cv section.details p{
+	padding: 0.25em;
+}
+
+.cv section.details p a{
+	color: #000000;
+	text-decoration: none;
+}
+
+.cv section.details p a:hover{
+	text-decoration: underline;
+}
+
+.cv section.details p.address{
+	white-space: pre;
+}
+
+
+.litreview{
+	font-family: "Courier", monospace;
+	background: #fff6d9 url('../img/linetile.png'); 
 
 	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.25), 5px 5px 0 #fff6d9, 5px 5px 5px rgba(0,0,0,0.25),
 						10px 10px 0 #fff6d9, 10px 10px 5px  rgba(0,0,0,0.25), inset 0 60px 0 #fff6d9;
@@ -73,23 +113,23 @@ article{
 				    	10px 10px 0 #fff6d9, 10px 10px 5px  rgba(0,0,0,0.25), inset 0 60px 0 #fff6d9, inset 0 -30px 0 #fff6d9;
 }
 
-section.text{
+.litreview section.text{
 	display: inline-block;
 	padding: 2em 4em;
 }
 
-section.text time{
+.litreview section.text time{
 	float: left;
 }
 
-section.text .name{
+.litreview section.text .name{
 	margin: 0;
 	float: right;
 	font-family: "Georgia", "Times New Roman", serif;
 	font-style: italic;
 }
 
-section.text h1{
+.litreview section.text h1{
 	text-align: center;
 	font-size: 1.2em;
 	line-height: 20px;
@@ -97,33 +137,33 @@ section.text h1{
 	font-weight: bolder;
 }
 
-section.text p, section.text aside.references ul li{
+.litreview section.text p, .litreview section.text aside.references ul li{
 	font-size: 1.125em;
 	margin-bottom: 20px;
 	line-height: 20px;
 }
 
-section.text p:before{
+.litreview section.text p:before{
 	content: '';
 	margin-left: 2em;			
 }
 
-section.text aside.references{
+.litreview section.text aside.references{
 	padding-top: 20px;
 }
 
-section.text aside.references h2{
+.litreview section.text aside.references h2{
 	line-height: 20px;
 	font-size: 1.2em;
 	margin-bottom: 20px;
 }
 
-section.text aside.references ul li{
+.litreview section.text aside.references ul li{
 	list-style-position: inside;
 	list-style-type: square;
 }
 
-section.text mark, section.text a{
+.litreview section.text mark, .litreview section.text a{
 	padding: 0 0.25em;
 
 	-webkit-border-radius: 25px 0px / 50px 0px;
@@ -131,17 +171,17 @@ section.text mark, section.text a{
 			border-radius: 25px 0px / 50px 0px;
 }
 
-section.text mark{
+.litreview section.text mark{
 	background-color: rgba(255, 255, 0, 0.4);	
 }
 
-section.text a{	
+.litreview section.text a{	
 	color: rgba(0, 0, 0, 0.75);
 	text-decoration: none;
 	background-color: rgba(0, 255, 0, 0.4);	
 }
 
-section.text mark:hover, section.text a:hover{
+.litreview section.text mark:hover, .litreview section.text a:hover{
 	opacity: 0.9;
 
 	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.2);
@@ -149,16 +189,16 @@ section.text mark:hover, section.text a:hover{
 	   		box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
-section.text mark:hover{
+.litreview section.text mark:hover{
 	cursor: pointer;
 }
 
-section.text strong{
+.litreview section.text strong{
 	font-weight: bolder;
 	font-style: normal;
 }
 
-section.text strong:hover{
+.litreview section.text strong:hover{
 	cursor: pointer;	
 	text-decoration: underline;
 }
