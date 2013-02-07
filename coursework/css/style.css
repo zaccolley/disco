@@ -119,7 +119,6 @@ section.text aside.references h2{
 }
 
 section.text aside.references ul li{
-	font-size: 1em;
 	list-style-position: inside;
 	list-style-type: square;
 }
