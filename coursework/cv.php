@@ -30,20 +30,25 @@
 			<h2>Education</h2>
 		</section>
 
-		<section class="content">
+		<section class="content qual">
 			<h2>Qualifications</h2>
+
+			<section class="block">
 			<h3>GSCE</h3>
 				<ul>
 					<li>9 including:</li>
 					<li>Maths (A)</li>
 					<li>English (A)</li>
 				</ul>
+			</section>
+			<section class="block">
 			<h3>GCE Advanced Level</h3>
 				<ul>
 					<li>Mathematics (B)</li>
 					<li>Physics (C)</li>
 					<li>Computing (C)</li>
 				</ul>
+			</section>
 		</section>
 
 		<section class="content">
@@ -99,5 +104,4 @@
 
 	</article>
 
-</body>
-</html>
+<?php include('footer.php'); ?>>
