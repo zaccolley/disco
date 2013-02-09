@@ -11,6 +11,8 @@
 		<section class="tile"></section>
 		<section class="tile"></section>
 		<section class="tile"></section>
+		<section class="tile"></section>
+		<section class="tile"></section>
 
 	</article>
 

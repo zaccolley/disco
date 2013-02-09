@@ -1,30 +1,31 @@
 <?php
 	$links =  array(
 		"0" => array(
-				"url" => "/webf1/coursework/index.php",
+				"file" => "index.php",
 				"name" => "Home",
 				),
 		"1" => array(
-				"url" => "/webf1/coursework/cv.php",
+				"file" => "cv.php",
 				"name" => "CV",
 				),
 		"2" => array(
-				"url" => "/webf1/coursework/litreview.php",
-				"name" => "Literature Review",
-				),
-		"3" => array(
-				"url" => "/webf1/coursework/test.php",
-				"name" => "Test",
+				"file" => "litreview.php",
+				"name" => "Lit Review",
 				),
 		);
-	$currentURL = $_SERVER['PHP_SELF'];
+
+	$fileURL = $_SERVER['SCRIPT_FILENAME']; // Full URL
+	$dir = __DIR__; // Directory up to the file
+	$dirLength = strlen($dir); // Length of dir string
+	$fileName = substr($fileURL, $dirLength + 1); // Get filename
+
 	foreach ($links as $link){
-		if ($currentURL == $link["url"]){
+		if ($fileName == $link["file"]){ // Creating titles
 			$title = "- " . $link["name"];
 		}
 	}
 
-?>
+	?>
 
 <!DOCTYPE html>
 <html>
@@ -38,17 +39,19 @@
 <body>
 	
 	<header>
+	<nav>	
 		<section class="links">
 			<?php
 				foreach ($links as $link){
-					if ($currentURL == $link["url"]){						
+					if ($fileName == $link["file"]){						
 						$currentPageClass = "class='current'";
 					}else{
 						$currentPageClass = "";
 					}
-					echo "<a " . $currentPageClass . " href='" . $link['url'] . "'>" . $link['name'] . "</a> \n";
+					echo "<a " . $currentPageClass . " href='" . $link['file'] . "'>" . $link['name'] . "</a> \n";
 				}	
 			?>
 		</section>
 		<h1>Zac Colley</h1>
+	</nav>
 	</header>
