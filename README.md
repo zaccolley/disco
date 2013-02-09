@@ -1,4 +1,7 @@
-WEBF1 Work
-==========
+uniwork
+=======
+A repo for my work done on my University course.
 
-A repo for my work done in WEBF1 a unit on my University course.
+webf1
+-----
+Web Foundations - Files for the coursework and worklog
