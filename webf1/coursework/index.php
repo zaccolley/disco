@@ -10,7 +10,7 @@
 					<li></li>
 					<li>X</li>
 				</ul>
-				<h1>Untitled - Zac Colley</h1>
+				<h1>Untitled - Notepad</h1>
 			</section>
 
 			<ul>
@@ -52,11 +52,11 @@
 		
 		<a class="tile"></a>
 
-		<a class="tile"></a>
+		<a class="tile"></a> 
 
-		<a class="tile videotile">
-			<video src="video/scrollydownycodeything.mp4" controls>
-		</a>
+		<section class="tile videotile">
+			<video src="video/scrollydownycodeything.mp4" controls></video>
+		</section>
 
 	</article>
 

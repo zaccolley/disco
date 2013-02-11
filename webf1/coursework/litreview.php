@@ -5,7 +5,7 @@
 
 		<section class="text">
 
-			<time><?php echo date("d-m-Y") ?></time>
+			<time datetime="<?php echo date('Y-m-d') . "T" . date('h:m:s') ."Z" ?>"><?php echo date("d-m-Y") ?></time>
 
 			<p class="name">Zac Colley</p>
 
