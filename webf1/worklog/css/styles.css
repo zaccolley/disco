@@ -294,7 +294,7 @@ footer ul li{
 }
 
 footer ul li:nth-child(-n+2):after{
-	content: '•';
+	content: '-';
 	margin-left: 5px;
 }
 
