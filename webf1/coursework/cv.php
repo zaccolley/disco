@@ -2,21 +2,41 @@
 	
 	<article class="cv">
 
-		<section class="details">
-			<h1>Zac Colley</h1>
-			<p>&#009993; <a href="emailto:z@colley.com">z@accolley.com</a></p>
-			<p>&#009742; 07534317671</p>
-			<p><a href="http://www.zaccolley.com/">zaccolley.com</a></p>
-			<p class="address">70 Stansted Road,
-			   Portsmouth,
-			   Hampshire,
-			   UK,
-			   PO5 1SA
-			</p>
+		<section class="head">
+			<ul>
+				<li></li>
+				<li></li>
+				<li>X</li>
+			</ul>
+			<h1>Untitled - Notepad</h1>
 		</section>
 
-		<section class="content I">
-			<h2>I&hellip;</h2>
+		<ul>
+			<li>File</li>
+			<li>Edit</li>
+			<li>Format</li>
+			<li>Help</li>
+		</ul>
+
+		<section class="textarea">
+			<p><strong>My name is Zac Colley</strong></p>
+
+			<hr>
+
+			<p>&#009993;: <a href="emailto:z@colley.com">z@accolley.com</a></p>
+			<p>&#009742;: 07534317671</p>
+
+			<hr>
+
+			<p>70 Stansted Road,</p>
+			<p>Portsmouth,</p>
+			<p>Hampshire,</p>
+			<p>UK,</p>
+			<p>PO5 1SA	</p>
+
+			<hr>
+
+			<h1>I&hellip;</h1>
 			<ul>
 				<li>strive to make my work something I am proud of.</li>
 				<li>am flexible to change and learn quickly.</li>
@@ -24,84 +44,104 @@
 				<li>have a good sense of design and importance for detail.</li>
 				<li>work well with others and can find someone’s expertise and work with that.</li>
 			</ul>
-		</section>
 
-		<section class="content">
-			<h2>Education</h2>
-		</section>
+			<hr>
 
-		<section class="content qual">
-			<h2>Qualifications</h2>
+			<h1>Education</h1>
 
-			<section class="block">
-			<h3>GSCE</h3>
-				<ul>
-					<li>9 including:</li>
-					<li>Maths (A)</li>
-					<li>English (A)</li>
-				</ul>
-			</section>
-			<section class="block">
-			<h3>GCE Advanced Level</h3>
-				<ul>
-					<li>Mathematics (B)</li>
-					<li>Physics (C)</li>
-					<li>Computing (C)</li>
-				</ul>
-			</section>
-		</section>
+			<p><strong>2012</strong> + University of Portsmouth ~ <em>BSc (Hons) Web Technologies</em></p>
+			<p><strong>2010</strong> + Worcester Sixth Form College ~ <em>GCE Advanced Level</em></p>
+			<p><strong>2007</strong> + Stourport High School ~ <em>GSCE</em></p>
 
-		<section class="content">
-			<h2>Skills</h2>
-			<h3>Competent with:</h3>
+			<hr>
 
-			<!--
-			HTML (HTML5)
-			CSS (CSS3)
-			Experience with:
+			<h1>Qualifications</h1>
 
-			Python
-			Javascript (including jQuery)
-			PHP
-			SQL (MySQL usage)
-			Git
-			Java
-			-->
-		</section>
+			<h2>GSCE</h2>
+			<ul>
+				<li>9 including:</li>
+				<li>Maths (A)</li>
+				<li>English (A)</li>
+			</ul>
 
-		<section class="content">
-			<h3>Experience</h3>
-			<!--
+			<h2>GCE Advanced Level</h2>
+			<ul>
+				<li>Mathematics (B)</li>
+				<li>Physics (C)</li>
+				<li>Computing (C)</li>
+			</ul>
 
-			What?	When?	Skills shown:
-			Web Section Head at UPRacing 	Present	
-			Leading projects
-			Organisation
-			An eye for design
-			Sales Assistant at Dunelm Mill	2011
+			<hr>
 
-			Working in a team
-			Time management
-			Customer handling	
-			Work Experience at AT&T 	2010	
-			Flexibility
-			-->
-		</section>
+			<h1>Skills</h1>
 
-		<section class="content">
-			<h3>Interests</h3>
-			<!--
-			I play guitar:
+			<h2>Competent with:</h2>
+			<ul>
+				<li>HTML (HTML5)</li>
+				<li>CSS (CSS3)</li>
+			</ul>
 
-			I have been for six years.
-			Playing with others is a joy.
-			    I love music:
+			<h2>Experience with:</h2>
+			
+			<ul>
+				<li>Python</li>
+				<li>Javascript (including jQuery)</li>
+				<li>PHP</li>
+				<li>SQL (MySQL usage)</li>
+				<li>Git</li>
+				<li>Java</li>
+			</ul>
 
-			 Sharing music is great.
-			I have passion for the web.
-			-->
+			<hr>
+
+			<h1>Experience</h1>
+			
+			<h2>Present</h2>
+			<ul>
+				<li><strong>What?:</strong></li>
+				<li>Web Section Head at UPRacing</li>
+				<li><strong>Skills:</strong></li>
+				<li>Revision control (Git)</li>
+				<li>Leading projects</li>
+				<li>Organisation</li>
+				<li>An eye for design</li>
+			</ul>
+			 		
+			<h2>2011</h2>
+			<ul>
+				<li><strong>What?:</strong></li>
+				<li>Sales Assistant at Dunelm Mill</li>
+				<li><strong>Skills:</strong></li>
+				<li>Time management</li>
+				<li>Working in a team</li>
+				<li>Customer handling</li>
+			</ul>
+
+			<h2>2010</h2>
+			<ul>
+				<li><strong>What?:</strong></li>
+				<li>Work Experience at AT&amp;T </li>
+				<li><strong>Skills:</strong></li>
+				<li>Flexibility</li>
+				<li>Analysing</li>
+			</ul>
+
+			<hr>
+		
+			<h1>Interests</h1>
+
+			<h2>I play guitar:</h2>
+
+			<p>I have been for six years.</p>
+			<p>Playing with others is a joy.</p>
+			    
+			<h2>I love music:</h2>
+
+			<p>Sharing music is great.</p> 
+			<p>I have passion for the web.</p>
+
 		</section>
 
 	</article>
 
-<?php include('footer.php'); ?>>
+<?php include('footer.php'); ?>
