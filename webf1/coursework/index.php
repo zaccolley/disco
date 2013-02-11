@@ -10,7 +10,7 @@
 					<li></li>
 					<li>X</li>
 				</ul>
-				<h1>Untitled - Notepad</h1>
+				<h1>curriculum vitae - Notepad</h1>
 			</section>
 
 			<ul>
@@ -35,8 +35,6 @@
 				<p>Hampshire,</p>
 				<p>UK,</p>
 				<p>PO5 1SA</p>
-
-				<hr>
 			</section>
 
 		</a>

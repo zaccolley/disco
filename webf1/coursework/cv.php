@@ -8,7 +8,7 @@
 				<li></li>
 				<li>X</li>
 			</ul>
-			<h1>Untitled - Notepad</h1>
+			<h1>curriculum vitae - Notepad</h1>
 		</section>
 
 		<ul>
@@ -18,7 +18,7 @@
 			<li>Help</li>
 		</ul>
 
-		<section class="textarea">
+		<section class="textarea" contenteditable="true">
 			<h1>My name is Zac Colley</h1>
 
 			<hr>
