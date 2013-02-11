@@ -25,7 +25,7 @@
 
 				<hr>
 
-				<p>&#009993;: <span class="link">z@accolley.com</span></p>
+				<p>&#009993;: <span class="link">z@ccolley.com</span></p>
 				<p>&#009742;: 07534317671</p>
 
 				<hr>
@@ -50,7 +50,9 @@
 			<h1>Zac's WEBF1 Worklog</h1>
 		</a>
 		
-		<a class="tile"></a>
+		<a class="tile validatetile" href="http://validator.w3.org/check?uri=referer" target="_blank">
+			<p>By golly gosh, I've only gone and got it to validate to the standards!</p>
+		</a>
 
 		<a class="tile"></a> 
 

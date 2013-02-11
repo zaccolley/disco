@@ -23,7 +23,7 @@
 
 			<hr>
 
-			<p>&#009993;: <a href="emailto:z@colley.com">z@accolley.com</a></p>
+			<p>&#009993;: <a href="emailto:z@colley.com">z@ccolley.com</a></p>
 			<p>&#009742;: 07534317671</p>
 
 			<hr>
@@ -105,6 +105,14 @@
 				<li>Leading projects</li>
 				<li>Organisation</li>
 				<li>An eye for design</li>
+			</ul>
+
+			<ul>
+				<li><strong>What?:</strong></li>
+				<li>Social Secretary for University of Portsmouth Computing Society</li>
+				<li><strong>Skills:</strong></li>
+				<li>Communication</li>
+				<li>Event co-ordination</li>
 			</ul>
 			 		
 			<h2>2011</h2>
