@@ -84,8 +84,7 @@ header h1:hover{
 nav{
 	padding: 10px 220px;
 	cursor: default;
-	border-bottom: 1px dotted rgba(255,255,255,0.25);
-					
+	border-bottom: 1px dotted rgba(255,255,255,0.25);					
 }
 
 nav ul li{				

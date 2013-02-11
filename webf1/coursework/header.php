@@ -11,7 +11,7 @@
 		"2" => array(
 				"file" => "litreview.php",
 				"name" => "Lit Review",
-				),
+				)
 		);
 
 	$fileURL = $_SERVER['SCRIPT_FILENAME']; // Full URL
