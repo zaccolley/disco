@@ -21,14 +21,22 @@
 			</ul>
 
 			<section class="textarea">
-				<p><strong>My name is Zac Colley</strong></p>
-				<p>&#009993; <span class="link">z@accolley.com</span> - &#009742; 07534317671 - <span class="link">zaccolley.com</span></p>
-				<p class="address">70 Stansted Road,
-				   Portsmouth,
-				   Hampshire,
-				   UK,
-				   PO5 1SA
-				</p>
+				<h1>My name is Zac Colley</h1>
+
+				<hr>
+
+				<p>&#009993;: <span class="link">z@accolley.com</span></p>
+				<p>&#009742;: 07534317671</p>
+
+				<hr>
+
+				<p>70 Stansted Road,</p>
+				<p>Portsmouth,</p>
+				<p>Hampshire,</p>
+				<p>UK,</p>
+				<p>PO5 1SA</p>
+
+				<hr>
 			</section>
 
 		</a>

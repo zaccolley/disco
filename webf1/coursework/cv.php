@@ -19,7 +19,7 @@
 		</ul>
 
 		<section class="textarea">
-			<p><strong>My name is Zac Colley</strong></p>
+			<h1>My name is Zac Colley</h1>
 
 			<hr>
 
@@ -32,7 +32,7 @@
 			<p>Portsmouth,</p>
 			<p>Hampshire,</p>
 			<p>UK,</p>
-			<p>PO5 1SA	</p>
+			<p>PO5 1SA</p>
 
 			<hr>
 
