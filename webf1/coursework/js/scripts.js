@@ -1,1 +1,0 @@
-// Date functionality replaced with PHP
