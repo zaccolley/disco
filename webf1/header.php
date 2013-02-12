@@ -1,7 +1,7 @@
 <?php
 	$links =  array(
 		"0" => array(
-				"file" => "index.php",
+				"file" => "../webf1",
 				"name" => "Home",
 				),
 		"1" => array(
