@@ -4,9 +4,9 @@
 
 		<section class="head">
 			<ul>
-				<li></li>
-				<li></li>
-				<li><a href="../webf1">X</a></li>
+				<li class="min"></li>
+				<li class="max"></li>
+				<li class="close">X</li>
 			</ul>
 			<h1>curriculum vitae - Notepad</h1>
 		</section>
@@ -79,6 +79,7 @@
 			<ul>
 				<li>HTML (HTML5)</li>
 				<li>CSS (CSS3)</li>
+				<li>GIMP</li>
 			</ul>
 
 			<h2>Experience with:</h2>
@@ -109,10 +110,10 @@
 
 			<ul>
 				<li><strong>What?:</strong></li>
-				<li>Social Secretary for University of Portsmouth Computing Society</li>
+				<li>Publicity Officer for University of Portsmouth Computing Society</li>
 				<li><strong>Skills:</strong></li>
+				<li>Branding</li>
 				<li>Communication</li>
-				<li>Event co-ordination</li>
 			</ul>
 			 		
 			<h2>2011</h2>

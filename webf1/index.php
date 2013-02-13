@@ -2,13 +2,12 @@
 
 	<article class="home">
 
-
 		<a href="cv.php" class="tile cv cvtile">
 			<section class="head">
 				<ul>
-					<li></li>
-					<li></li>
-					<li>X</li>
+					<li class="min"></li>
+					<li class="max"></li>
+					<li class="close">X</li>
 				</ul>
 				<h1>curriculum vitae - Notepad</h1>
 			</section>
