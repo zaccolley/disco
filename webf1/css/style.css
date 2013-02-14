@@ -662,8 +662,8 @@ header .links a:hover, header .links .current{
 	margin: 0 10px;
 }
 
-.post section.top h2{
-.worklog 	font-family: "Georgia", serif;
+.worklog .post section.top h2{
+	font-family: "Georgia", serif;
 	font-style: italic;
 	font-size: 18px;				
 	text-shadow: 0 3px 0 rgba(0,0,0,0.3);

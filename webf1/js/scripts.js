@@ -21,11 +21,6 @@ $(function(){
 			$('.cv').css("width", "90%"); // LARGER
 		});
 
-		$('.close').click(function(){ // If the close!
-			$('.cv').hide();
-			$('.cv').delay(250).fadeIn('50'); // Sneak back in... cheeky.
-		});
-
 	}	
 
 	// worklog scripts
