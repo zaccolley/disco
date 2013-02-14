@@ -47,13 +47,26 @@
 			<h1>My Worklog</h1>
 		</a>
 		
-		<a class="tile validatetile" href="http://validator.w3.org/check?uri=referer" target="_blank">
-			<p>By golly gosh, I've only gone and got it to validate to the standards!</p>
-		</a>
+		<section class="tile validatetile">
+			<p>I've got the site validating to the standards for <a href="http://validator.w3.org/check?uri=referer" target="_blank">HTML</a>
+			and for <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank">CSS!</a></p>
+		</section>
 
-		<a class="tile validatetile" href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank">
-			<p>and so does the CSS!</p>
-		</a>
+		<section class="tile imagetile">
+
+			<?php
+			
+			$myEmail = "zaccolley@gmail.com";
+			$imgDimensions = 100;
+			$gravatarURL = "http://www.gravatar.com/avatar/" . md5($myEmail)  . "&s=" . $imgDimensions;
+
+			 /* reference https://en.gravatar.com/site/implement/images/php/ */
+
+			?>
+
+			<img src="<?php echo $gravatarURL; ?>" alt="Gravatar image">
+
+		</section>
 
 		<section class="tile videotile">
 			<video src="video/scrollydownycodeything.mp4" controls></video>
