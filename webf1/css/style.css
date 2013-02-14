@@ -9,9 +9,9 @@
 	margin: 0; 
 	padding: 0;
 
-	-webkit-box-sizing:border-box; /* Makes it so padding and ... */
-	   -moz-box-sizing:border-box; /* ... borders don't mess with the width */
-	   		box-sizing:border-box;
+	-webkit-box-sizing: border-box; /* Makes it so padding and ... */
+	   -moz-box-sizing: border-box; /* ... borders don't mess with the width */
+	   		box-sizing: border-box;
 }
 
 html, body{
@@ -246,7 +246,7 @@ header .links a:hover, header .links .current{
 }
 
 	@-webkit-keyframes hueRotate {
-	  from {  -webkit-filter: hue-rotate(0deg);   } 
+	  from {  -webkit-filter: hue-rotate(0deg);  } 
 	  to {    -webkit-filter: hue-rotate(360deg); }
 	}
 

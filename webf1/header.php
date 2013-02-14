@@ -1,7 +1,8 @@
 <?php
+
 	$links =  array(
 		"0" => array(
-				"file" => "../webf1",
+				"file" => "index.php",
 				"name" => "Home",
 				),
 		"1" => array(
@@ -18,10 +19,7 @@
 				)
 		);
 
-	$fileURL = $_SERVER['SCRIPT_FILENAME']; // Full URL
-	$dir = __DIR__; // Directory up to the file
-	$dirLength = strlen($dir); // Length of dir string
-	$fileName = substr($fileURL, $dirLength + 1); // Get filename
+	$fileName = basename($_SERVER['PHP_SELF']);  // Get filename
 
 	foreach ($links as $link){
 		if ($fileName == $link["file"]){ // Creating titles
