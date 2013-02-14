@@ -35,6 +35,46 @@ header{
 			box-shadow: 0 5px 0 rgba(0,0,0,0.1);
 }
 
+header .validation{
+	cursor: default;
+	width: 12em;
+	z-index: 80085;
+	position: fixed;
+	padding: 10px;
+	padding-right: 20px;
+	top: 16px;
+	right: -2em;
+	color: rgba(255, 255, 255, 0.45);
+	font-size: 0.75em;
+	font-family: Helvetica, Arial, sans-serif;
+	background-color: rgba(178, 192, 17, 0.85);
+	text-transform: uppercase;
+
+	-webkit-box-shadow: 0 5px 0 rgba(0,0,0,0.1);
+	   -moz-box-shadow: 0 5px 0 rgba(0,0,0,0.1);
+			box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+
+	-webkit-transition: all 0.1s linear;
+	   -moz-transition: all 0.1s linear;
+	     -o-transition: all 0.1s linear;
+	     	transition: all 0.1s linear;
+}
+
+
+header .validation:hover{	
+	-webkit-transform: translateX(-15px);
+}
+
+header .validation a{
+	font-weight: 800;
+	color: rgba(0,0,0,0.4);
+	text-decoration: none;
+}
+
+header .validation a:hover{
+	opacity: 0.3;
+}
+
 header nav{
 	width: 900px;
 	margin: 0 auto;

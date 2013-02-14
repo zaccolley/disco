@@ -42,6 +42,11 @@
 <body>
 	
 	<header>
+		<section class="validation">
+			<p>Validates for <a href="http://validator.w3.org/check?uri=referer" target="_blank">HTML</a>
+			and <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank">CSS</a>!</p>
+		</section>
+
 	<nav>	
 		<section class="links">
 			<?php
