@@ -42,7 +42,7 @@
 				<li>am flexible to change and learn quickly.</li>
 				<li>will use my intuitive, experience and resources to try and solve problem.</li>
 				<li>have a good sense of design and importance for detail.</li>
-				<li>work well with others and can find someone’s expertise and work with that.</li>
+				<li>work well with others and can find someones expertise and work with that.</li>
 			</ul>
 
 			<hr>

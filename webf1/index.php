@@ -59,9 +59,7 @@
 			$myEmail = "zaccolley@gmail.com";
 			$imgDimensions = 100;
 			$gravatarURL = "http://www.gravatar.com/avatar/" . md5($myEmail)  . "&s=" . $imgDimensions;
-
-			 /* reference https://en.gravatar.com/site/implement/images/php/ */
-
+		
 			?>
 
 			<img src="<?php echo $gravatarURL; ?>" alt="Gravatar image">

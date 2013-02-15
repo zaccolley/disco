@@ -1,0 +1,8 @@
+References
+==========
+
+* David DeSandro - http://v2.desandro.com - Inspiration for use of text shadow on heading 
+* jQuery - http://jquery.com/ - Javascript implementation
+* Pablo Impallari - http://www.google.com/webfonts/specimen/Lobster - Worklog heading font
+* Ashton - http://http://subtlepatterns.com - Worklog background
+* https://en.gravatar.com/site/implement/images/php/ - Gravatar integration code

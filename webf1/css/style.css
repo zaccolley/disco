@@ -1,4 +1,4 @@
-@font-face { /* Custom font for the worklog tile by Pablo Impallari - http://www.google.com/webfonts/specimen/Lobster */
+@font-face { /* Custom font for the worklog tile by Pablo Impallari */
 	font-family: 'Lobster';
 	font-style: normal;
 	font-weight: 400;
@@ -49,10 +49,6 @@ header .validation{
 	font-family: Helvetica, Arial, sans-serif;
 	background-color: rgba(178, 192, 17, 0.85);
 	text-transform: uppercase;
-
-	-webkit-box-shadow: 0 5px 0 rgba(0,0,0,0.1);
-	   -moz-box-shadow: 0 5px 0 rgba(0,0,0,0.1);
-			box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
 
 	-webkit-transition: all 0.1s linear;
 	   -moz-transition: all 0.1s linear;
@@ -217,7 +213,7 @@ header .links a:hover, header .links .current{
 
 .home .worklogtile{
 	padding: 8% 0;
-	background-image: url('../img/darth_stripe.png'); /* Made by Ashton @ http://http://subtlepatterns.com */
+	background-image: url('../img/darth_stripe.png'); /* Made by Ashton */
 	background-color: #23241f;
 	border: 1px solid #99ff66;
 	border-right: 0;
