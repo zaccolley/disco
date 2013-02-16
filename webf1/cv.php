@@ -1,6 +1,6 @@
 <?php include('header.php'); ?>
 	
-	<article class="cv">
+	<main class="cv">
 
 		<section class="head">
 			<ul>
@@ -151,6 +151,6 @@
 
 		</section>
 
-	</article>
+	</main>
 
 <?php include('footer.php'); ?>

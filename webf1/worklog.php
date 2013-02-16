@@ -1,7 +1,7 @@
 <?php
 
 	include('header.php');
-	echo "<article class='worklog'>";
+	echo "<main class='worklog'>";
 	include "worklog/head.html";
 	include "worklog/post.php";
 	include "worklog/date.php";
@@ -19,6 +19,6 @@
 	
 	include "worklog/foot.html";
 
-	echo "</article>";
+	echo "</main>";
 	
 ?>

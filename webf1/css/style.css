@@ -144,7 +144,8 @@ header .links a:hover, header .links .current{
 	box-shadow: none;
 }
 
-.home, .cv, .litreview, .worklog{	
+.home, .cv, .litreview, .worklog{
+	display: block;
 	width: 900px;
 	margin: 115px auto 0;	
 }
@@ -535,23 +536,23 @@ header .links a:hover, header .links .current{
 				    	10px 10px 0 #fff6d9, 10px 10px 0 2px  rgba(0,0,0,0.15), inset 0 60px 0 #fff6d9, inset 0 -30px 0 #fff6d9;
 }
 
-.litreview section.text{
+.litreview article.text{
 	display: inline-block;
 	padding: 2em 4em;
 }
 
-.litreview section.text time{
+.litreview article.text time{
 	float: left;
 }
 
-.litreview section.text .name{
+.litreview article.text .name{
 	margin: 0;
 	float: right;
 	font-family: "Georgia", "Times New Roman", serif;
 	font-style: italic;
 }
 
-.litreview section.text h1{
+.litreview article.text h1{
 	text-align: center;
 	font-size: 1.2em;
 	line-height: 20px;
@@ -560,33 +561,33 @@ header .links a:hover, header .links .current{
 	color: rgba(0, 0, 90, 0.75);
 }
 
-.litreview section.text p, .litreview section.text aside.references ul li{
+.litreview article.text p, .litreview article.text aside.references ul li{
 	font-size: 1.125em;
 	margin-bottom: 20px;
 	line-height: 20px;
 }
 
-.litreview section.text p:before{
+.litreview article.text p:before{
 	content: '';
 	margin-left: 2em;			
 }
 
-.litreview section.text aside.references{
+.litreview article.text aside.references{
 	padding-top: 20px;
 }
 
-.litreview section.text aside.references h2{
+.litreview article.text aside.references h2{
 	line-height: 20px;
 	font-size: 1.2em;
 	margin-bottom: 20px;
 }
 
-.litreview section.text aside.references ul li{
+.litreview article.text aside.references ul li{
 	list-style-position: inside;
 	list-style-type: square;
 }
 
-.litreview section.text mark, .litreview section.text a{
+.litreview article.text mark, .litreview article.text a{
 	padding: 0 0.25em;
 
 	-webkit-border-radius: 25px 0px / 50px 0px;
@@ -594,17 +595,17 @@ header .links a:hover, header .links .current{
 			border-radius: 25px 0px / 50px 0px;
 }
 
-.litreview section.text mark a{
+.litreview article.text mark a{
 	background-color: rgba(255, 255, 0, 0.4);	
 }
 
-.litreview section.text a{	
+.litreview article.text a{	
 	color: rgba(0, 0, 0, 0.75);
 	text-decoration: none;
 	background-color: rgba(0, 255, 0, 0.4);	
 }
 
-.litreview section.text mark a:hover, .litreview section.text a:hover{
+.litreview article.text mark a:hover, .litreview article.text a:hover{
 	opacity: 0.9;
 
 	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.2);
@@ -612,12 +613,12 @@ header .links a:hover, header .links .current{
 	   		box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
-.litreview section.text strong{
+.litreview article.text strong{
 	font-weight: bolder;
 	font-style: normal;
 }
 
-.litreview section.text strong:hover{
+.litreview article.text strong:hover{
 	cursor: pointer;	
 	text-decoration: underline;
 }
