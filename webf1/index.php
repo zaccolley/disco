@@ -1,6 +1,6 @@
 <?php include('header.php'); ?>
 
-	<main class="home">
+	<article class="home">
 
 		<a href="cv.php" class="tile cv cvtile">
 			<section class="head">
@@ -54,7 +54,7 @@
 			$myEmail = "zaccolley@gmail.com";
 			$defaultImg = "img/defaultimg.png";
 			$imgDimensions = 100;
-			$gravatarURL = "http://www.gravatar.com/avatar/" . md5($myEmail)  . "?d=" . urlencode($defaultImg) . "&s=" . $imgDimensions;
+			$gravatarURL = "http://www.gravatar.com/avatar/" . md5($myEmail)  . "?d=" . urlencode($defaultImg) . "&amp;s=" . $imgDimensions;
 		
 			?>
 
@@ -71,6 +71,6 @@
 			<video src="video/scrollydownycodeything.mp4" controls></video>
 		</section>
 
-	</main>
+	</article>
 
 <?php include('footer.php'); ?>

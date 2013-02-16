@@ -1,9 +1,9 @@
 <?php include('header.php'); ?>
-	<main class="litreview">
+	<article class="litreview">
 
 		<!-- use of mark is perfect!!! http://www.w3.org/TR/html-markup/mark.html#mark -->
 
-		<article class="text">
+		<section class="text">
 
 			<time datetime="<?php echo date('Y-m-d') . "T" . date('h:m:s') ."Z" ?>"><?php echo date("d-m-Y") ?></time>
 
@@ -98,9 +98,8 @@
 				<li id="22">Karapanos, E., Zimmerman, J., Forlizzi, J. &amp; Martens, J. (2009). <em>User experience over time: an initial framework</em>. Proceedings of the SIGCHI Conference on Human Factors in Computing Systems. Retrieved from <a href="http://dl.acm.org/citation.cfm?doid=1518701.1518814">http://dl.acm.org/citation.cfm?doid=1518701.1518814</a></li>
 			</ul>
 			</aside>
+		</section>
 
-		</article>
-
-	</main>
+	</article>
 
 <?php include('footer.php'); ?>
