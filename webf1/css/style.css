@@ -581,7 +581,7 @@ header .links a:hover, header .links .current{
 			border-radius: 25px 0px / 50px 0px;
 }
 
-.litreview section.text mark{
+.litreview section.text mark a{
 	background-color: rgba(255, 255, 0, 0.4);	
 }
 
@@ -591,16 +591,12 @@ header .links a:hover, header .links .current{
 	background-color: rgba(0, 255, 0, 0.4);	
 }
 
-.litreview section.text mark:hover, .litreview section.text a:hover{
+.litreview section.text mark a:hover, .litreview section.text a:hover{
 	opacity: 0.9;
 
 	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.2);
 	   -moz-box-shadow: 0 0 5px rgba(0,0,0,0.2);
 	   		box-shadow: 0 0 5px rgba(0,0,0,0.2);
-}
-
-.litreview section.text mark:hover{
-	cursor: pointer;
 }
 
 .litreview section.text strong{
