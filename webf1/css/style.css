@@ -19,6 +19,19 @@ html, body{
 	background: rgb(80, 100, 100);
 }
 
+.toTheTop{
+	display: none;
+	position: fixed;
+	bottom: 25px;
+	right: 85px;
+	border: 30px solid transparent;
+	border-bottom: 50px solid rgba(181, 10, 42, 0.5);
+}
+
+.toTheTop:hover{
+	opacity: 0.9;
+}
+
 /* Header */
 
 header{
@@ -144,6 +157,7 @@ header .links a:hover, header .links .current{
 
 .home{
 	overflow: auto;
+	padding-left: 25px;
 }
 
 .home a{
@@ -195,8 +209,8 @@ header .links a:hover, header .links .current{
 }
 
 .home .litreviewtile{
-	margin: 2px 40px 40px 0;
-	height: 283px;
+	margin: 2px 37px 37px 2px;
+	height: 286px;
 	width: 185px;
 	line-height: 20px;
 	padding: 80px 15px 0;
@@ -204,6 +218,7 @@ header .links a:hover, header .links .current{
 
 .home .litreviewtile h1{
 	margin-bottom: 20px;
+	color: rgba(0, 0, 90, 0.75);
 }
 
 .home .litreviewtile p{
@@ -268,11 +283,16 @@ header .links a:hover, header .links .current{
 	text-shadow: none;
 }
 
+.home .imagetile{
+	background: none;
+}
+
 .home .imagetile img{
-	width: 200px;
-	height: 200px;
-	margin: 50px auto;
+	margin: 5px;
+	width: 190px;
+	height: 190px;
 	border: 10px solid #f5f5f5;
+	outline: 5px solid rgba(0,0,0,0.1);
 	background-color: rgba(0, 0, 0, 0.35);
 
 	-webkit-animation: hueRotate 5s infinite linear;
@@ -546,6 +566,7 @@ header .links a:hover, header .links .current{
 	line-height: 20px;
 	margin: 2.5em 0 20px;
 	font-weight: bolder;
+	color: rgba(0, 0, 90, 0.75);
 }
 
 .litreview section.text p, .litreview section.text aside.references ul li{
@@ -728,7 +749,7 @@ header .links a:hover, header .links .current{
 	width: 700px;
 	margin: 10px auto;
 
-	background-color: rgba(255,255,255,0.1);
+	background-color: rgb(29, 27, 27);
 	border: 1px solid rgba(255,255,255,0.15);
 	
 	-webkit-border-radius: 4px;
@@ -762,7 +783,7 @@ header .links a:hover, header .links .current{
 
 .worklog .post section.top span{
 	float: right;
-
+	padding: 0 10px;
 	font-family: "Courier New", Courier, monospace;
 	font-size: 12px;
 	color: #f5f5f5;

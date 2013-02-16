@@ -46,11 +46,6 @@
 		<a href="worklog.php" class="tile worklogtile">
 			<h1>My Worklog</h1>
 		</a>
-		
-		<section class="tile validatetile">
-			<p>I've got the site validating to the standards for <a href="http://validator.w3.org/check?uri=referer" target="_blank">HTML</a>
-			and for <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank">CSS!</a></p>
-		</section>
 
 		<section class="tile imagetile">
 
@@ -65,6 +60,11 @@
 
 			<img src="<?php echo $gravatarURL; ?>" alt="Gravatar image">
 
+		</section>
+		
+		<section class="tile validatetile">
+			<p>I've got the site validating to the standards for <a href="http://validator.w3.org/check?uri=referer" target="_blank">HTML</a>
+			and for <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank">CSS!</a></p>
 		</section>
 
 		<section class="tile videotile">

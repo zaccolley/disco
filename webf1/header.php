@@ -40,7 +40,9 @@
 	<script src="js/scripts.js" type="text/javascript"></script> <!-- My scripts -->
 </head>
 <body>
-	
+
+	<a href="#" class="toTheTop"></a>
+
 	<header>
 		<section class="validation">
 			<p>Validates for <a href="http://validator.w3.org/check?uri=referer" target="_blank">HTML</a>

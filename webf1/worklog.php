@@ -11,7 +11,7 @@
 	
 	$currentWeek = 12;
 	
-	for ($weekNo = 1; $weekNo <= $currentWeek; $weekNo++){
+	for ($weekNo = 12; $weekNo > 0; $weekNo--){
 		include "worklog/logs/" . $weekNo . ".php";
 	}	
 
