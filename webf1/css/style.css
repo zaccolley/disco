@@ -611,16 +611,6 @@ header .links a:hover, header .links .current{
 	   		box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
-.litreview section.text strong{
-	font-weight: bolder;
-	font-style: normal;
-}
-
-.litreview section.text strong:hover{
-	cursor: pointer;	
-	text-decoration: underline;
-}
-
 /* worklog */
 
 .worklog{
@@ -765,7 +755,7 @@ header .links a:hover, header .links .current{
 }
 
 .worklog .post:nth-child(even) section.top h2 { color: #afe543; }
-.worklog .post:nth-child(odd) section.top h2 { color: #a1dd47; }			
+.worklog .post:nth-child(odd) section.top h2 { color: #a1dd47; }	
 
 .worklog .post section.top h2:hover{
 	opacity: 0.85;
