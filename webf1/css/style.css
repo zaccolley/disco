@@ -322,14 +322,6 @@ header .links a:hover, header .links .current{
 	  to {    filter: hue-rotate(360deg); }
 	}
 
-.home .imagetile img:hover{
-	-webkit-filter: sepia(0) hue-rotate(180deg);
-	   -moz-filter: sepia(0) hue-rotate(180deg);
-	    -ms-filter: sepia(0) hue-rotate(180deg);
-	     -o-filter: sepia(0) hue-rotate(180deg);
-	     	filter: sepia(0) hue-rotate(180deg);
-}
-
 .home .videotile video{
 	width: 100%;
 	height: 100%;
@@ -368,7 +360,6 @@ header .links a:hover, header .links .current{
 	   -khtml-user-select: none;
 		 -moz-user-select: none;
 		  -ms-user-select: none;
-			  user-select: none;
 }
 
 .cv section.head h1{
@@ -463,7 +454,6 @@ header .links a:hover, header .links .current{
 	   -khtml-user-select: none;
 		 -moz-user-select: none;
 		  -ms-user-select: none;
-			  user-select: none;
 }
 
 .cv > ul li:hover{

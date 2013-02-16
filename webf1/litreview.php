@@ -64,7 +64,7 @@
 			<p>The idea of ubiquitous computing (simply ubicomp) which is “the primacy of the physical world and the construction of appropriate tools that enhance our daily activities.” <mark><a href="#20">(Wellner, Mackay, &amp; Gold, 1993)</a></mark> can be achieved through mobile devices in one form.</p>
 
 
-			<p>Some <mark><a href="#21">(Greenhalgh <em>et al.</em>, 2007)</a></a></mark> argue that the reason mobile devices (specifically mobile phones) and their applications can achieve ubicomp ideals is due to the ubiquitous nature of them around the world. A example given is an application that is used to augment a card-playing game using the interface for a “mixed-reality” gaming experience.</p>
+			<p>Some <mark><a href="#21">(Greenhalgh <em>et al.</em>, 2007)</a></mark> argue that the reason mobile devices (specifically mobile phones) and their applications can achieve ubicomp ideals is due to the ubiquitous nature of them around the world. A example given is an application that is used to augment a card-playing game using the interface for a “mixed-reality” gaming experience.</p>
 
 
 			<p>However <mark><a href="#22">Karapanos <em>et al.</em> (2009)</a></mark> found that with an iPhone aesthetics and novel interaction style had a small part in proving “positive pro-longed experiences” but also found that users grew an emotional attachment to the device over a period of time as they used it in their daily lives.</p>
