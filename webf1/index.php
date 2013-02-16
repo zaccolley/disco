@@ -54,11 +54,12 @@
 
 		<section class="tile imagetile">
 
-			<?php
+			<?php /* This grabs my gravatar or reverts to a default image if it can't get it. */
 			
 			$myEmail = "zaccolley@gmail.com";
+			$defaultImg = "img/defaultimg.png";
 			$imgDimensions = 100;
-			$gravatarURL = "http://www.gravatar.com/avatar/" . md5($myEmail)  . "&s=" . $imgDimensions;
+			$gravatarURL = "http://www.gravatar.com/avatar/" . md5($myEmail)  . "?d=" . urlencode($defaultImg) . "&s=" . $imgDimensions;
 		
 			?>
 
