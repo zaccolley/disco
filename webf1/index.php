@@ -54,7 +54,7 @@
 			$myEmail = "zaccolley@gmail.com";
 			$defaultImg = "img/defaultimg.png";
 			$imgDimensions = 100;
-			$gravatarURL = "http://www.gravatar.com/avatar/" . md5($myEmail)  . "?d=" . urlencode($defaultImg) . "&s=" . $imgDimensions;
+			$gravatarURL = "http://www.gravatar.com/avatar/" . md5($myEmail)  . "?d=" . urlencode($defaultImg) . "&amp;s=" . $imgDimensions;
 		
 			?>
 
