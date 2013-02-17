@@ -519,6 +519,41 @@ header .links a:hover, header .links .current{
 	font-size: 13px;
 }
 
+.cv section.textarea::-webkit-scrollbar{
+    width: 16px;
+}
+ 
+.cv section.textarea::-webkit-scrollbar-track{
+	background: #cfd0c8;
+}
+ 
+.cv section.textarea::-webkit-scrollbar-thumb, .cv section.textarea::-webkit-scrollbar-button{
+    border: 1px solid;
+	border-color: #cfd0c8;
+	border-bottom-color: #404040;
+	border-right-color: #404040;
+	background-color: #cfd0c8;
+
+	box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #808080;
+}
+
+.cv section.textarea::-webkit-scrollbar-button:start{
+	background: url('../img/startbuttonscroll.png') center no-repeat #cfd0c8;
+}
+
+.cv section.textarea::-webkit-scrollbar-button:end{
+	background: url('../img/endbuttonscroll.png') center no-repeat #cfd0c8;
+}
+
+.cv section.textarea::-webkit-scrollbar-button:active{
+	border: 1px solid;
+	border-color: #404040;
+	border-bottom-color: #cfd0c8;
+	border-right-color: #cfd0c8;
+	background-color: #cfd0c8;
+
+	box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #ffffff;
+}
 
 /* litreview */
 
@@ -530,8 +565,7 @@ header .links a:hover, header .links .current{
 				    	10px 10px 0 #fff6d9, 10px 10px 0 2px  rgba(0,0,0,0.15), inset 0 60px 0 #fff6d9, inset 0 -30px 0 #fff6d9;
        -moz-box-shadow: 0 0 0 2px rgba(0,0,0,0.15), 5px 5px 0 #fff6d9, 5px 5px 0 2px rgba(0,0,0,0.15),
 				    	10px 10px 0 #fff6d9, 10px 10px 0 2px  rgba(0,0,0,0.15), inset 0 60px 0 #fff6d9, inset 0 -30px 0 #fff6d9;
-			box-shadow: 0 0 0 2px rgba(0,0,0,0.15), 5px 5px 0 #fff6d9, 5px 5px 0 2px rgba(0,0,0,0.15),
-				    	10px 10px 0 #fff6d9, 10px 10px 0 2px  rgba(0,0,0,0.15), inset 0 60px 0 #fff6d9, inset 0 -30px 0 #fff6d9;
+			box-shadow: 0 0 0 2px rgba(0,0,0,0.15), 5px 5px 0 #fff6d9, 5px 5px 0 2px rgba(0,0,0,0.15), 10px 10px 0 2px  rgba(0,0,0,0.15), inset 0 60px 0 #fff6d9, inset 0 -30px 0 #fff6d9;
 }
 
 .litreview section.text{
