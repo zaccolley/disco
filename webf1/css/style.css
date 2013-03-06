@@ -476,6 +476,10 @@ header .links a:hover, header .links .current{
 
 .cv section.textarea p{}
 
+.cv section.textarea ul{
+	margin-bottom: 1em;
+}
+
 .cv section.textarea ul li{
 	list-style: none;
 }
