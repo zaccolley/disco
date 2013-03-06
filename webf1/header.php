@@ -36,6 +36,7 @@
 	<title>Zac Colley <?php echo($title); ?></title>
 	<link rel="shortcut icon" href="img/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/experi.css">
 	<script src="js/jquery.js" type="text/javascript"></script>  <!-- jQuery! :D -->
 	<script src="js/scripts.js" type="text/javascript"></script> <!-- My scripts -->
 </head>

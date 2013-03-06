@@ -70,8 +70,12 @@ header .validation{
 }
 
 
-header .validation:hover{	
+header .validation:hover{
 	-webkit-transform: translateX(-15px);
+	   -moz-transform: translateX(-15px);
+		-ms-transform: translateX(-15px);
+		 -o-transform: translateX(-15px);
+			transform: translateX(-15px);
 }
 
 header .validation a{
@@ -294,33 +298,7 @@ header .links a:hover, header .links .current{
 	border: 10px solid #f5f5f5;
 	outline: 5px solid rgba(0,0,0,0.1);
 	background-color: rgba(0, 0, 0, 0.35);
-
-	-webkit-animation: hueRotate 5s infinite linear;
-	   -moz-animation: hueRotate 5s infinite linear;
-	     -o-animation: hueRotate 5s infinite linear;
-	     	animation: hueRotate 5s infinite linear;
-
 }
-
-	@-webkit-keyframes hueRotate {
-	  from {  -webkit-filter: hue-rotate(0deg);  } 
-	  to {    -webkit-filter: hue-rotate(360deg); }
-	}
-
-	@-moz-keyframes hueRotate {
-	  from {  -moz-filter: hue-rotate(0deg);   } 
-	  to {    -moz-filter: hue-rotate(360deg); }
-	}
-
-	@-o-keyframes hueRotate {
-	  from {  -o-filter: hue-rotate(0deg);   } 
-	  to {    -o-filter: hue-rotate(360deg); }
-	}
-
-	@keyframes hueRotate {
-	  from {  filter: hue-rotate(0deg);   } 
-	  to {    filter: hue-rotate(360deg); }
-	}
 
 .home .videotile video{
 	width: 100%;
@@ -527,25 +505,6 @@ header .links a:hover, header .links .current{
 	box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #808080;
 }
 
-.cv section.textarea::-webkit-scrollbar-button:start{
-	background: url('../img/startbuttonscroll.png') center no-repeat #cfd0c8;
-}
-
-.cv section.textarea::-webkit-scrollbar-button:end{
-	background: url('../img/endbuttonscroll.png') center no-repeat #cfd0c8;
-}
-
-.cv section.textarea::-webkit-scrollbar-button:active{
-	border: 1px solid;
-	border-color: #404040;
-	border-bottom-color: #cfd0c8;
-	border-right-color: #cfd0c8;
-	background-color: #cfd0c8;
-
-	box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #ffffff;
-}
-
-
 /* litreview */
 
 .litreview, .home .litreviewtile{
@@ -574,7 +533,7 @@ header .links a:hover, header .links .current{
 	float: right;
 	font-family: "Georgia", "Times New Roman", serif;
 	font-style: italic;
-}
+} 
 
 .litreview section.text h1{
 	text-align: center;
@@ -650,23 +609,6 @@ header .links a:hover, header .links .current{
 		 -o-transition: all 0.2s;				
 			transition: all 0.2s;
 }	
-
-.worklog #itvalidates{
-	width:10%;
-	margin-right: 36px;
-	float: right;
-}		
-
-.worklog #itvalidates a{	/* The 'The HTML validates and so does the CSS!' text */	
-	color: #000000;
-	font-size: 12px;
-	font-family: "Courier", monospace;
-	text-transform: lowercase;
-	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
-	opacity: 0.3;
-}
-
-.worklog #itvalidates a:hover{ opacity: 1; }
 	
 .worklog #wrapper{
 	width: 850px;
