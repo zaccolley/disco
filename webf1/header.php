@@ -2,18 +2,14 @@
 
 	$links =  array(
 		"0" => array(
-				"file" => "index.php",
-				"name" => "Home",
-				),
-		"1" => array(
 				"file" => "cv.php",
 				"name" => "CV",
 				),
-		"2" => array(
+		"1" => array(
 				"file" => "litreview.php",
 				"name" => "Lit Review",
 				),
-		"3" => array(
+		"2" => array(
 				"file" => "worklog.php",
 				"name" => "Worklog",
 				)
@@ -53,14 +49,15 @@
 	<nav>	
 		<section class="links">
 			<?php
+				echo "<a href='index.php'>Home</a> \n";
+
+				$fileName = basename($_SERVER['PHP_SELF']);  // Get filename
 				foreach ($links as $link){
-					if ($fileName == $link["file"]){						
-						$currentPageClass = "class='current'";
-					}else{
-						$currentPageClass = "";
+					if ($fileName == $link["file"]){ // Creating titles
+						echo "<a class='current' href='" . $link['file'] . "'>" . $link['name'] . "</a> \n";
 					}
-					echo "<a " . $currentPageClass . " href='" . $link['file'] . "'>" . $link['name'] . "</a> \n";
-				}	
+				}
+					
 			?>
 		</section>
 		<h1>Zac Colley</h1>
