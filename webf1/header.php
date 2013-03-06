@@ -16,7 +16,7 @@
 		);
 
 	$fileName = basename($_SERVER['PHP_SELF']);  // Get filename
-
+	$title = "";
 	foreach ($links as $link){
 		if ($fileName == $link["file"]){ // Creating titles
 			$title = "- " . $link["name"];
@@ -29,7 +29,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Zac Colley <?php echo($title); ?></title>
+	<title>Zac Colley <?php echo $title; ?></title>
 	<link rel="shortcut icon" href="img/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/experi.css">
