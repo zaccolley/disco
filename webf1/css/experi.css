@@ -1,0 +1,46 @@
+/* experimental css */
+
+.home .imagetile img{
+	-webkit-animation: hueRotate 5s infinite linear;
+	   -moz-animation: hueRotate 5s infinite linear;
+	     -o-animation: hueRotate 5s infinite linear;
+	     	animation: hueRotate 5s infinite linear;
+}
+
+	@-webkit-keyframes hueRotate {
+	  from {  -webkit-filter: hue-rotate(0deg);  } 
+	  to {    -webkit-filter: hue-rotate(360deg); }
+	}
+
+	@-moz-keyframes hueRotate {
+	  from {  -moz-filter: hue-rotate(0deg);   } 
+	  to {    -moz-filter: hue-rotate(360deg); }
+	}
+
+	@-o-keyframes hueRotate {
+	  from {  -o-filter: hue-rotate(0deg);   } 
+	  to {    -o-filter: hue-rotate(360deg); }
+	}
+
+	@keyframes hueRotate {
+	  from {  filter: hue-rotate(0deg);   } 
+	  to {    filter: hue-rotate(360deg); }
+	}
+
+.cv section.textarea::-webkit-scrollbar-button:start{
+	background: url('../img/startbuttonscroll.png') center no-repeat #cfd0c8;
+}
+
+.cv section.textarea::-webkit-scrollbar-button:end{
+	background: url('../img/endbuttonscroll.png') center no-repeat #cfd0c8;
+}
+
+.cv section.textarea::-webkit-scrollbar-button:active{
+	border: 1px solid;
+	border-color: #404040;
+	border-bottom-color: #cfd0c8;
+	border-right-color: #cfd0c8;
+	background-color: #cfd0c8;
+
+	box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #ffffff;
+}
