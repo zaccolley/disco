@@ -21,12 +21,12 @@
 		<section class="textarea" contenteditable="true">
 			<h1>My name is Zac Colley</h1>
 
-			<hr>
+			<p>----------</p>
 
 			<p>&#009993;: <a href="emailto:z@colley.com">z@ccolley.com</a></p>
 			<p>&#009742;: 07534317671</p>
 
-			<hr>
+			<p>----------</p>
 
 			<p>70 Stansted Road,</p>
 			<p>Portsmouth,</p>
@@ -34,7 +34,7 @@
 			<p>UK,</p>
 			<p>PO5 1SA</p>
 
-			<hr>
+			<p>----------</p>
 
 			<h1>I&hellip;</h1>
 			<ul>
@@ -45,7 +45,7 @@
 				<li>work well with others and can find someones expertise and work with that.</li>
 			</ul>
 
-			<hr>
+			<p>----------</p>
 
 			<h1>Education</h1>
 
@@ -53,7 +53,7 @@
 			<p><strong>2010</strong> + Worcester Sixth Form College ~ <em>GCE Advanced Level</em></p>
 			<p><strong>2007</strong> + Stourport High School ~ <em>GSCE</em></p>
 
-			<hr>
+			<p>----------</p>
 
 			<h1>Qualifications</h1>
 
@@ -71,7 +71,7 @@
 				<li>Computing (C)</li>
 			</ul>
 
-			<hr>
+			<p>----------</p>
 
 			<h1>Skills</h1>
 
@@ -93,7 +93,7 @@
 				<li>Java</li>
 			</ul>
 
-			<hr>
+			<p>----------</p>
 
 			<h1>Experience</h1>
 			
@@ -135,7 +135,7 @@
 				<li>Analysing</li>
 			</ul>
 
-			<hr>
+			<p>----------</p>
 		
 			<h1>Interests</h1>
 

@@ -22,12 +22,12 @@
 			<section class="textarea">
 				<h1>My name is Zac Colley</h1>
 
-				<hr>
+				<p>----------</p>
 
 				<p>&#009993;: <span class="link">z@ccolley.com</span></p>
 				<p>&#009742;: 07534317671</p>
 
-				<hr>
+				<p>----------</p>
 
 				<p>70 Stansted Road,</p>
 				<p>Portsmouth,</p>
