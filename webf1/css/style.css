@@ -19,6 +19,8 @@ html, body{
 	background: rgb(80, 100, 100);
 }
 
+a{ outline: none; }
+
 .toTheTop{
 	display: none;
 	position: fixed;
@@ -209,7 +211,7 @@ header .links a:hover, header .links .current{
 }
 
 .home .cvtile .textarea{
-	height: 246px;
+	height: 84%;
 }
 
 .home .litreviewtile{
@@ -221,6 +223,7 @@ header .links a:hover, header .links .current{
 }
 
 .home .litreviewtile h1{
+	font-size: 1.5em;
 	margin-bottom: 20px;
 	color: rgba(0, 0, 90, 0.75);
 }
@@ -260,7 +263,7 @@ header .links a:hover, header .links .current{
 	padding: 12px;
 }
 
-.home .validatetile p{	
+.home .validatetile p, .home .videotile video p{	
 	display: inline-block;	
 	padding: 0 6px 6px 0;
 	color: #f5f5f5;
@@ -271,8 +274,6 @@ header .links a:hover, header .links .current{
 	font-family: Helvetica, Arial, sans-serif;
 	text-shadow: 1px 1px 0 rgba(211, 0, 42, 0.25), 2px 2px 0 rgba(211, 0, 42, 0.25), 3px 3px 0 rgba(211, 0, 42, 0.25),
 			     4px 4px 0 rgba(211, 0, 42, 0.25), 5px 5px 0 rgba(211, 0, 42, 0.25), 6px 6px 0 rgba(211, 0, 42, 0.25);
-
-
 }
 
 .home .validatetile a{
@@ -305,6 +306,11 @@ header .links a:hover, header .links .current{
 	height: 100%;
 }
 
+.home .videotile video p{	
+	padding: 1em;
+	font-size: 3em;
+}
+
 /* cv */
 
 .cv, .cv section.head ul li{
@@ -327,6 +333,7 @@ header .links a:hover, header .links .current{
 	cursor: default;
 	overflow: auto;
 	padding: 1px;
+	background: #122a70;
 	background: -webkit-gradient(linear, left top, right top, from(#122a70), to(#9fc6ed));
 	background: -webkit-linear-gradient(left, #122a70, #9fc6ed);
 	background:    -moz-linear-gradient(left, #122a70, #9fc6ed);
@@ -341,6 +348,7 @@ header .links a:hover, header .links .current{
 }
 
 .cv section.head h1{
+	font-size: 1em;
 	padding-left: 20px;
 	background: url('../img/notepad.png') no-repeat 1px center;
 }
@@ -479,6 +487,7 @@ header .links a:hover, header .links .current{
 }
 
 .cv section.textarea h1, .cv section.textarea h2{
+	font-size: 1em;
 	margin-bottom: 13px;
 }
 

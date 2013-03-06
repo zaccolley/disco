@@ -68,7 +68,12 @@
 		</section>
 
 		<section class="tile videotile">
-			<video src="video/scrollydownycodeything.mp4" controls></video>
+			<video controls>
+		        <source src="video/scrollydownycodeything.webm" type='video/webm; codecs="vp8.0, vorbis"'/>
+		        <source src="video/scrollydownycodeything.ogg" type='video/ogg; codecs="theora, vorbis"'/>
+		        <source src="video/scrollydownycodeything.mp4" type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"'/>
+		        <p>Oops, no video sorry!</p>
+			</video>
 		</section>
 
 	</article>
