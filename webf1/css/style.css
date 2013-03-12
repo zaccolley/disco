@@ -656,9 +656,14 @@ header .links a:hover, header .links .current{
 }
 
 .worklog nav{
-	padding: 10px 220px;
+	padding: 15px 0;
 	cursor: default;
 	border-bottom: 1px dotted rgba(255,255,255,0.25);					
+}
+
+.worklog nav ul{
+	width: 26em;
+	margin: 0 auto;
 }
 
 .worklog nav ul li{				
@@ -836,7 +841,7 @@ header .links a:hover, header .links .current{
 .worklog .post section.content #left{ float:left; }
 
 .worklog .post section.content .image img{
-	max-width: 350px;
+	width: 100%;
 	display: block;
 }
 
