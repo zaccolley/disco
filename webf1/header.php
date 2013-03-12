@@ -26,7 +26,7 @@
 	?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Zac Colley <?php echo($title); ?></title>
@@ -38,7 +38,7 @@
 </head>
 <body>
 
-	<a href="#" class="toTheTop"></a>
+	<a href="#" class="toTheTop">Top</a>
 
 	<header>
 		<section class="validation">

@@ -58,7 +58,7 @@
 		
 			?>
 
-			<img src="<?php echo $gravatarURL; ?>" alt="Gravatar image">
+			<img src="<?php echo $gravatarURL; ?>" alt="My gravatar image">
 
 		</section>
 		
