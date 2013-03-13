@@ -52,6 +52,7 @@ $(function(){
 
 	// To the top triangle
 
+	$('.toTheTop').hide();
 	$(window).scroll(function(){ // When the page scrolls
 		$fadeSpeed = 750;
 		if( $(window).scrollTop() > 100 ) {     // If the page is scrolled down by 100px

@@ -23,7 +23,6 @@ a{ outline: none; }
 
 .toTheTop{
 	text-indent: -80085px;
-	display: none;
 	position: fixed;
 	bottom: 25px;
 	right: 85px;
