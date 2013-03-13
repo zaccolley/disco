@@ -7,6 +7,6 @@
 		  . "<p>Here are some of my commits from the repo:</p>"
 		  . createImage('http://www.github.com/zaccolley', 'img/githubcommitsscreen.png', 'Github Issues screenshot', 'center');
 
-	echo createPost("Project Management Issues", "13", strtotime("January 08 20133 15:00:00 GMT"), $text);
+	echo createPost("Project Management Issues", "13", strtotime("January 08 2013 15:00:00 GMT"), $text);
 
 ?>

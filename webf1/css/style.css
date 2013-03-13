@@ -677,7 +677,7 @@ header .links a:hover, header .links .current{
 	border-right: 1px solid #444444;
 }
 
-.worklog nav ul li:nth-child(12), .worklog nav ul li:nth-child(24){
+.worklog nav ul li:nth-child(12n){
 	border: 1px solid transparent;
 }			
 
