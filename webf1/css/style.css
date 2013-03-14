@@ -593,14 +593,17 @@ header .links a:hover, header .links .current{
 			border-radius: 25px 0px / 50px 0px;
 }
 
-.litreview section.text mark a{
+.litreview section.text mark{
 	background-color: rgba(255, 255, 0, 0.4);	
 }
 
 .litreview section.text a{	
 	color: rgba(0, 0, 0, 0.75);
 	text-decoration: none;
-	background-color: rgba(0, 255, 0, 0.4);	
+}
+
+.litreview section.text aside.references a{
+	background-color: rgba(0, 255, 0, 0.4);
 }
 
 .litreview section.text mark a:hover, .litreview section.text a:hover{
