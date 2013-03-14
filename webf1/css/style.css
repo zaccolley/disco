@@ -836,8 +836,8 @@ header .links a:hover, header .links .current{
 	        box-shadow: inset 0 0 25px rgba(0,0,0,0.25), 0 0 10px rgba(255,255,255,0.5);
 }
 
-.worklog .post section.content #right{ float:right; }
-.worklog .post section.content #left{ float:left; }
+.worklog .post section.content .right{ float:right; }
+.worklog .post section.content .left{ float:left; }
 
 .worklog .post section.content .image img{
 	width: 100%;
@@ -858,7 +858,7 @@ header .links a:hover, header .links .current{
 	border-bottom: 1px dotted rgba(255,255,255,0.25);
 }
 
-.worklog section.foot  ul li{
+.worklog section.foot ul li{
 	display: inline;
 	list-style-type: none;
 	padding: 2px 0;

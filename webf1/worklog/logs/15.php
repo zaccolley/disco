@@ -5,7 +5,7 @@
 		  . "<p>Also I am using PHP to sepArate out my header from my main content for maintainability. I used include statements to bring the different files together: "
 		  . createCode("include('header.php');") . "</p>"
 		  . "<p>I also wrote some (now in hindsight messy) code to handle the dates too:</p>"
-		  . createImage("img/datecode.png", "Snipped of code showing the date function");
+		  . createImage("img/datecode.png", "Snipped of code showing the date function", "");
 
 	echo createPost("Basic PHP and Website Creation", "15", strtotime("January 22 2013 15:00:00 GMT"), $text);
 
