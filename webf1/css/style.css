@@ -8,6 +8,8 @@
 *{ /* Reset */
 	margin: 0; 
 	padding: 0;
+	border: none;
+	outline: none;
 
 	-webkit-box-sizing: border-box; /* Makes it so padding and ... */
 	   -moz-box-sizing: border-box; /* ... borders don't mess with the width */
@@ -415,6 +417,7 @@ header .links a:hover, header .links .current{
 }
 
 .cv section.head ul li.close a {
+	display: block;
 	cursor: default;
 	color: #000000;
 	text-decoration: none;
