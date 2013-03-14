@@ -14,7 +14,7 @@
 		<ul>
 			<li>File</li>
 			<li>Edit</li>
-			<li>Format</li>
+			<li>Format</li> 
 			<li>Help</li>
 		</ul>
 
