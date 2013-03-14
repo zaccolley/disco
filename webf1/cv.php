@@ -6,7 +6,7 @@
 			<ul>
 				<li class="min"></li>
 				<li class="max"></li>
-				<li class="close"><a href="../webf1">X</a></li>
+				<li class="close"><a href="index.php">X</a></li>
 			</ul>
 			<h1>curriculum vitae - Notepad</h1>
 		</section>
