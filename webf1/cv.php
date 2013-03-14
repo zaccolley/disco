@@ -2,7 +2,7 @@
 	
 	<article class="cv">
 
-		<section class="head">
+		<section class="head"> <!-- the fake menu items at the top -->
 			<ul>
 				<li class="min"></li>
 				<li class="max"></li>
@@ -18,7 +18,7 @@
 			<li>Help</li>
 		</ul>
 
-		<section class="textarea" contenteditable="true">
+		<section class="textarea" contenteditable="true"> <!-- actual content -->
 			<h1>My name is Zac Colley</h1>
 
 			<p>----------</p>

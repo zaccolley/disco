@@ -23,7 +23,7 @@ html, body{
 
 a{ outline: none; }
 
-.toTheTop{
+.toTheTop{ /* to the top triangle */
 	text-indent: -80085px;
 	position: fixed;
 	bottom: 25px;
