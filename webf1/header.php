@@ -19,17 +19,17 @@
 	$title = "";
 	foreach ($links as $link){
 		if ($fileName == $link["file"]){ // Creating titles
-			$title = "- " . $link["name"];
+			$title =  $link["name"] . " - ";
 		}
 	}
 
 	?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Zac Colley <?php echo $title; ?></title>
+	<title><?php echo($title); ?>Zac Colley</title>
 	<link rel="shortcut icon" href="img/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/experi.css">
@@ -38,7 +38,7 @@
 </head>
 <body>
 
-	<a href="#" class="toTheTop"></a>
+	<a href="#" class="toTheTop">Top</a>
 
 	<header>
 		<section class="validation">

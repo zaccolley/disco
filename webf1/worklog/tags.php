@@ -4,7 +4,7 @@ function createAbbr($abbr, $full){ return "<abbr title='" . $full . "\'>" . $abb
 
 function createLink($url, $text, $title){ return "<a href='" . $url . "' title='" . $title . "'>" . $text . "</a>"; }
 
-function createImage($linkUrl, $url, $alt, $align){	return "<div class='image' id='" . $align . "'><a href='" . $linkUrl . "'><img src='" . $url . "' alt='" . $alt . "'></a></div>"; }
+function createImage($url, $alt, $align){	return "<div class='image " . $align . "'><a href='" . $url . "'><img src='" . $url . "' alt='" . $alt . "'></a></div>"; }
 
 function createCode($text){	return "<code>" . $text . "</code>"; }
 

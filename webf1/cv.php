@@ -2,11 +2,11 @@
 	
 	<article class="cv">
 
-		<section class="head">
+		<section class="head"> <!-- the fake menu items at the top -->
 			<ul>
 				<li class="min"></li>
 				<li class="max"></li>
-				<li class="close"><a href="../webf1">X</a></li>
+				<li class="close"><a href="index.php">X</a></li>
 			</ul>
 			<h1>curriculum vitae - Notepad</h1>
 		</section>
@@ -14,11 +14,11 @@
 		<ul>
 			<li>File</li>
 			<li>Edit</li>
-			<li>Format</li>
+			<li>Format</li> 
 			<li>Help</li>
 		</ul>
 
-		<section class="textarea" contenteditable="true">
+		<section class="textarea" contenteditable="true"> <!-- actual content -->
 			<h1>My name is Zac Colley</h1>
 
 			<p>----------</p>
