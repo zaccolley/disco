@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Fib100()
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Fib100\r\n
+comment1.params=
+comment1.target=int\ fibtotal()
+comment2.params=
+comment2.target=int\ fibaverage()
+numComments=3

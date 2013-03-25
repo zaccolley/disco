@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=
+comment0.target=TicketMachineList()
+comment1.params=ticketMachine
+comment1.target=void\ addTicketMachine(TicketMachine)
+comment2.params=
+comment2.target=int\ getNumberOfTicketMachines()
+comment3.params=index
+comment3.target=void\ listTicketMachine(int)
+comment4.params=index
+comment4.target=void\ removeTicketMachine(int)
+numComments=5

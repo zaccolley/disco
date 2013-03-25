@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Forest()
+comment0.text=\r\n\ Perform\ any\ initialization\ that\ is\ required\ for\ the\r\n\ tree\ list\r\n
+comment1.params=a_tree
+comment1.target=void\ storeTree(Tree)
+comment1.text=\r\n\ Store\ a\ new\ tree\ into\ the\ tree\ list.\r\n\ @param\ a_tree\ The\ tree\ to\ be\ stored.\r\n
+comment2.params=
+comment2.target=int\ numberOfTrees()
+comment2.text=\r\n\ @return\ The\ number\ of\ trees\ currently\ in\ the\ list.\r\n
+comment3.params=pos
+comment3.target=void\ killTree(int)
+comment3.text=\r\n\ Remove\ a\ tree\ from\ the\ tree\ list.\r\n\ @param\ pos\ the\ index\ of\ the\ tree\ to\ remove\r\n
+comment4.params=
+comment4.target=void\ listTreeHeights()
+comment4.text=\r\n\ Output\ the\ heights\ of\ all\ trees\ in\ the\ list.\r\n
+comment5.params=
+comment5.target=boolean\ allEvergreen()
+comment5.text=\r\n\ \ \ \ /**\r\n\ Return\ true\ if\ all\ trees\ in\ the\ forest\ are\ evergreen\r\n\ false\ otherwise\r\n\ \r\n
+numComments=6

@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=reg
+comment0.target=Registration(java.lang.String)
+comment1.params=
+comment1.target=java.lang.String\ getReg()
+comment2.params=reg
+comment2.target=void\ setReg(java.lang.String)
+numComments=3
