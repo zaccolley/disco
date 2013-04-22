@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=s\ a\ h\ e
+comment0.target=Tree(java.lang.String,\ int,\ double,\ boolean)
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Tree\r\n
+comment1.params=
+comment1.target=int\ getAge()
+comment1.text=\r\n\ Return\ the\ age\ of\ this\ tree.\r\n
+comment2.params=
+comment2.target=double\ getHeight()
+comment2.text=\r\n\ Return\ the\ height\ of\ this\ tree.\r\n
+comment3.params=
+comment3.target=java.lang.String\ getSpecies()
+comment3.text=\r\n\ Return\ the\ species\ of\ this\ tree.\r\n
+comment4.params=
+comment4.target=boolean\ getEvergreen()
+comment4.text=\r\n\ Return\ whether\ or\ not\ this\ tree\ is\ an\ evergreen.\r\n
+comment5.params=
+comment5.target=void\ incAge()
+comment5.text=\r\n\ Update\ the\ age\ of\ the\ tree.\r\n
+comment6.params=x
+comment6.target=void\ updateHeight(double)
+comment6.text=\r\n\ Update\ the\ height\ of\ the\ tree\r\n
+numComments=7

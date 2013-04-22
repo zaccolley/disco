@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.params=make\ model\ engineSize\ reg
+comment0.target=Car(java.lang.String,\ java.lang.String,\ int,\ Registration)
+comment1.params=
+comment1.target=java.lang.String\ getMake()
+comment10.params=fourWheelDrive
+comment10.target=void\ setFourWheelDrive(boolean)
+comment2.params=make
+comment2.target=void\ setMake(java.lang.String)
+comment3.params=
+comment3.target=java.lang.String\ getModel()
+comment4.params=model
+comment4.target=void\ setModel(java.lang.String)
+comment5.params=
+comment5.target=int\ getEngineSize()
+comment6.params=engineSize
+comment6.target=void\ setEngineSize(int)
+comment7.params=
+comment7.target=java.lang.String\ getReg()
+comment8.params=reg
+comment8.target=void\ setReg(java.lang.String)
+comment9.params=
+comment9.target=boolean\ getFourWheelDrive()
+numComments=11

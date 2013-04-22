@@ -16,7 +16,7 @@
 		);
 
 	$fileName = basename($_SERVER['PHP_SELF']);  // Get filename
-
+	$title = "";
 	foreach ($links as $link){
 		if ($fileName == $link["file"]){ // Creating titles
 			$title =  $link["name"] . " - ";

@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=accno
+comment0.target=BankAccount(java.lang.String)
+comment0.text=\r\n\ Constructor\ with\ single\ parameter\r\n
+comment1.params=accno\ balance
+comment1.target=BankAccount(java.lang.String,\ int)
+comment1.text=\r\n\ Constructor\ with\ two\ parameters\r\n
+comment2.params=
+comment2.target=java.lang.String\ getNumber()
+comment2.text=\r\n\ \ Accessor\ method\ for\ account\ number\r\n
+comment3.params=
+comment3.target=int\ getBalance()
+comment3.text=\r\n\ Accessor\ method\ for\ year\ balance\r\n
+comment4.params=b
+comment4.target=boolean\ isRicherThan(BankAccount)
+comment4.text=\r\n\ Compare\ the\ balance\ in\ this\ account\ with\ another.\r\n\ Return\ true\ if\ this\ account\ has\ more\ money\ in\ than\ that\r\n\ supplied\ by\ parameter\r\n
+numComments=5
