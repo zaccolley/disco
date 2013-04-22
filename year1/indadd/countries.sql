@@ -39,4 +39,15 @@ INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('37
 INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('38', 'Portugal', '0');
 INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('39', 'Republic of Ireland', '0');
 INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('40', 'Romania', '0');
-INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('41', 'Russi', '0');
+INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('41', 'Russia', '0');
+INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('42', 'San Marino', '0');
+INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('43', 'Scotland', '0');
+INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('44', 'Serbia', '0');
+INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('45', 'Slovakia', '0');
+INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('46', 'Slovenia', '0');
+INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('47', 'Spain', '0');
+INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('48', 'Sweden	', '0');
+INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('49', 'Switzerland', '0');
+INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('50', 'Turkey', '0');
+INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('51', 'Ukraine', '0');
+INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('52', 'Wales', '0');
