@@ -5,7 +5,7 @@ var countries = ['Albania', 'Andorra', 'Armenia', 'Austria', 'Azerbaijan', 'Bela
 var output = [];
 
 for(var i = 0; i < countries.length; i++){
-  var sql = "INSERT INTO WorldCupSystem.Team (Team_ID, Team_Name, Team_Qualified) VALUES ('"+i+"', '"+ countries[i] +"', '0');";
+  var sql = "INSERT INTO WorldCupSystem.Team VALUES ('"+i+"', '"+ countries[i] +"', '0');";
   output.push(sql);
 }
 
