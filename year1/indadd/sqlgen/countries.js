@@ -10,3 +10,5 @@ for(var i = 0; i < countries.length; i++){
 }
 
 fs.writeFileSync('../countries.sql', output.join('\n'), 'utf8');
+
+

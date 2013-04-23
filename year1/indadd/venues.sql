@@ -1,0 +1,16 @@
+INSERT INTO WorldCupSystem.Venue VALUES ('0', 'Stadium', 'Mario Filho', 'Rio de Janeiro');
+INSERT INTO WorldCupSystem.Venue VALUES ('1', 'Stadium', 'Nacional de Brasilia', 'Brasilia');
+INSERT INTO WorldCupSystem.Venue VALUES ('2', 'Stadium', 'Arena Corinthians', 'Sao Paulo');
+INSERT INTO WorldCupSystem.Venue VALUES ('3', 'Stadium', 'Placido Aderaldo Castelo', 'Fortaleza');
+INSERT INTO WorldCupSystem.Venue VALUES ('4', 'Stadium', 'Governador Magalhaes Pinto', 'Belo Horizonte');
+INSERT INTO WorldCupSystem.Venue VALUES ('5', 'Stadium', 'Jose Pinheiro Borda', 'Porto Alegre');
+INSERT INTO WorldCupSystem.Venue VALUES ('6', 'Stadium', 'Arena Professor Octávio Mangabeira', 'Salvador');
+INSERT INTO WorldCupSystem.Venue VALUES ('7', 'Stadium', 'Arena Pernambuco', 'Recife');
+INSERT INTO WorldCupSystem.Venue VALUES ('8', 'Stadium', 'Joaquim Americo Guimaraes', 'Curitiba');
+INSERT INTO WorldCupSystem.Venue VALUES ('9', 'Stadium', 'Joao Claudio de Vasconcelos Machado', 'Natal');
+INSERT INTO WorldCupSystem.Venue VALUES ('10', 'Stadium', 'Vivaldo Lima', 'Manaus');
+INSERT INTO WorldCupSystem.Venue VALUES ('11', 'Stadium', 'Arena Pantanal', 'Cuiaba');
+INSERT INTO WorldCupSystem.Venue VALUES ('12', 'Accomodation', 'Chazario Hotel', 'Natal');
+INSERT INTO WorldCupSystem.Venue VALUES ('13', 'Accomodation', 'Brazotel', 'Salvador');
+INSERT INTO WorldCupSystem.Venue VALUES ('14', 'Accomodation', 'Funky Motel', 'Porto Alegre');
+INSERT INTO WorldCupSystem.Venue VALUES ('15', 'Accomodation', 'Hot Hot Hotel', 'Recife');
