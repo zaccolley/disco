@@ -14,3 +14,7 @@ INSERT INTO WorldCupSystem.Venue VALUES ('12', 'Accomodation', 'Chazario Hotel',
 INSERT INTO WorldCupSystem.Venue VALUES ('13', 'Accomodation', 'Brazotel', 'Salvador');
 INSERT INTO WorldCupSystem.Venue VALUES ('14', 'Accomodation', 'Funky Motel', 'Porto Alegre');
 INSERT INTO WorldCupSystem.Venue VALUES ('15', 'Accomodation', 'Hot Hot Hotel', 'Recife');
+INSERT INTO WorldCupSystem.Venue VALUES ('16', 'Training', 'Training Venue 1', 'Curitiba');
+INSERT INTO WorldCupSystem.Venue VALUES ('17', 'Training', 'Training Venue 2', 'Rio de Janeiro');
+INSERT INTO WorldCupSystem.Venue VALUES ('18', 'Training', 'Training Venue 3', 'Sao Paulo');
+INSERT INTO WorldCupSystem.Venue VALUES ('19', 'Training', 'Training Venue 4', 'Fortaleza');
