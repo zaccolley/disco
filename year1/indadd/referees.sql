@@ -1,0 +1,11 @@
+INSERT INTO WorldCupSystem.Referee VALUES ('0', 'Khalil Ibrahim', ' Al Ghamdi', '1');
+INSERT INTO WorldCupSystem.Referee VALUES ('1', 'Joel', 'Aguilar', '1');
+INSERT INTO WorldCupSystem.Referee VALUES ('2', 'Mark', 'Geiger', '1');
+INSERT INTO WorldCupSystem.Referee VALUES ('3', 'Wilson', 'Seneme', '1');
+INSERT INTO WorldCupSystem.Referee VALUES ('4', 'Norbert', 'Hauta', '1');
+INSERT INTO WorldCupSystem.Referee VALUES ('5', 'Stephane', 'Lannoy', '1');
+INSERT INTO WorldCupSystem.Referee VALUES ('6', 'Howard', 'Webb', '1');
+INSERT INTO WorldCupSystem.Referee VALUES ('7', 'Wolfgang', 'Stark', '1');
+INSERT INTO WorldCupSystem.Referee VALUES ('8', 'Juan', 'Soto', '1');
+INSERT INTO WorldCupSystem.Referee VALUES ('9', 'Wilson', 'Seneme', '1');
+INSERT INTO WorldCupSystem.Referee VALUES ('10', 'Nicola', 'Rizzoli', '1');
