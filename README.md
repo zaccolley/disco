@@ -1,8 +1,6 @@
 # disco
 
-*it's latin yo*
-
-A repo for my work done on my University course.
+A repo for my work done on my University course. - *it's latin yo*
 
 ### year1
 
