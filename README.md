@@ -12,3 +12,7 @@ A repo for my work done on my University course. - *it's latin yo*
 
 #### intprog - Introduction to Programming
 *Practical work and assessments*
+
+### year2
+
+#### dbprin - Database Principles
