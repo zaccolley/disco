@@ -16,3 +16,9 @@ A repo for my work done on my University course. - *it's latin yo*
 ### year2
 
 #### dbprin - Database Principles
+
+#### webf2 - Web Foundations 2
+
+#### webscrp - Web Script Programming
+
+*the worksheet code is scary, I blame Kit*
