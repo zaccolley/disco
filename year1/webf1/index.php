@@ -28,11 +28,9 @@
 
 				<p>----------</p>
 
-				<p>70 Stansted Road,</p>
-				<p>Portsmouth,</p>
-				<p>Hampshire,</p>
-				<p>UK,</p>
-				<p>PO5 1SA</p>
+				<p>This did have an old copy of my CV for my coursework but...</p>
+
+				<p>You can <span class="link">email me</span> for it or check out my <span class="link">LinkedIn</span> profile.</p>
 			</section>
 
 		</a>
