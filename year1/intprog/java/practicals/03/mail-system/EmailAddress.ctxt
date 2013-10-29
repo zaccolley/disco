@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.params=user\ address
-comment0.target=EmailAddress(java.lang.String,\ java.lang.String)
-comment1.params=user\ address
-comment1.target=void\ setEmailAddress(java.lang.String,\ java.lang.String)
-comment2.params=
-comment2.target=java.lang.String\ getEmailAddress()
-numComments=3
