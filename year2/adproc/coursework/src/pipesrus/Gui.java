@@ -46,12 +46,11 @@ public class Gui extends javax.swing.JFrame {
         itemAmountLabel = new javax.swing.JLabel();
         discardButton = new javax.swing.JButton();
         separator1 = new javax.swing.JSeparator();
-        jColorChooser1 = new javax.swing.JColorChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(-723724,true));
 
-        titleLabel.setFont(new java.awt.Font("Serif", 2, 14)); // NOI18N
+        titleLabel.setFont(new java.awt.Font("Serif", 2, 14));
         titleLabel.setText("Pipes 'R' Us");
         titleLabel.setToolTipText("For all your pipe needs!");
 
@@ -65,7 +64,7 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
-        pipeGradeLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        pipeGradeLabel.setFont(new java.awt.Font("Dialog", 0, 12));
         pipeGradeLabel.setText("Grade:");
 
         pipeGradeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
@@ -77,13 +76,13 @@ public class Gui extends javax.swing.JFrame {
 
         pipeColoursComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2" }));
 
-        pipeColoursLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        pipeColoursLabel.setFont(new java.awt.Font("Dialog", 0, 12));
         pipeColoursLabel.setText("Colours:");
 
-        pipeSizeLengthLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        pipeSizeLengthLabel.setFont(new java.awt.Font("Dialog", 0, 12));
         pipeSizeLengthLabel.setText("Length:");
 
-        pipeSizeDiameterLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        pipeSizeDiameterLabel.setFont(new java.awt.Font("Dialog", 0, 12));
         pipeSizeDiameterLabel.setText("Diameter:");
 
         pipeSizeDiameterTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -122,7 +121,7 @@ public class Gui extends javax.swing.JFrame {
         resetButton.setText("Reset");
 
         orderList.setBackground(new java.awt.Color(-723724,true));
-        orderList.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        orderList.setFont(new java.awt.Font("SansSerif", 0, 12));
         orderList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html><html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>" };
             public int getSize() { return strings.length; }
@@ -144,8 +143,6 @@ public class Gui extends javax.swing.JFrame {
         discardButton.setText("Discard");
 
         separator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        jColorChooser1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,12 +182,9 @@ public class Gui extends javax.swing.JFrame {
                                 .addGap(26, 26, 26)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(discardButton)
-                                    .addComponent(pipeQuantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(21, 21, 21))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(titleLabel)
-                        .addGap(280, 280, 280)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(pipeQuantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(titleLabel))
+                .addGap(21, 21, 21)
                 .addComponent(separator1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -212,10 +206,6 @@ public class Gui extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(625, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,29 +246,24 @@ public class Gui extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(pipeQuantityLabel)
                             .addComponent(pipeQuantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(separator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(separator1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(editButton)
+                            .addComponent(deleteButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(itemAmountLabel)
+                                .addComponent(totalCostLabel))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(66, 66, 66)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(editButton)
-                                    .addComponent(deleteButton))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(itemAmountLabel)
-                                        .addComponent(totalCostLabel))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(66, 66, 66)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(submitButton)
-                                            .addComponent(resetButton))))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGap(22, 22, 22)
-                .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
+                                    .addComponent(submitButton)
+                                    .addComponent(resetButton))))))
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -349,7 +334,6 @@ private void pipeGradeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {/
     private javax.swing.JButton discardButton;
     private javax.swing.JButton editButton;
     private javax.swing.JLabel itemAmountLabel;
-    private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList orderList;
     private javax.swing.JCheckBox pipeChemResCheckBox;
