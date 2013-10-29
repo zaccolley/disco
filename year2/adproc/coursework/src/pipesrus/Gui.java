@@ -5,6 +5,8 @@ package pipesrus;
  * @author Zac Colley
  */
 public class Gui extends javax.swing.JFrame {
+    
+    private popUp popUp = new popUp();
 
     /** Creates new form Gui */
     public Gui() {
@@ -21,31 +23,15 @@ public class Gui extends javax.swing.JFrame {
     private void initComponents() {
 
         titleLabel = new javax.swing.JLabel();
-        pipeSizeLabel = new javax.swing.JLabel();
-        pipeSizeLengthTextField = new javax.swing.JTextField();
-        pipeGradeLabel = new javax.swing.JLabel();
-        pipeGradeComboBox = new javax.swing.JComboBox();
-        pipeColoursComboBox = new javax.swing.JComboBox();
-        pipeColoursLabel = new javax.swing.JLabel();
-        pipeSizeLengthLabel = new javax.swing.JLabel();
-        pipeSizeDiameterLabel = new javax.swing.JLabel();
-        pipeSizeDiameterTextField = new javax.swing.JTextField();
-        pipeInsulationCheckBox = new javax.swing.JCheckBox();
-        pipeReinforcementCheckBox = new javax.swing.JCheckBox();
-        pipeChemResCheckBox = new javax.swing.JCheckBox();
-        pipeQuantityLabel = new javax.swing.JLabel();
-        pipeQuantitySpinner = new javax.swing.JSpinner();
         submitButton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        orderScrollPane = new javax.swing.JScrollPane();
         orderList = new javax.swing.JList();
         addButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         totalCostLabel = new javax.swing.JLabel();
         itemAmountLabel = new javax.swing.JLabel();
-        discardButton = new javax.swing.JButton();
-        separator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(-723724,true));
@@ -53,68 +39,6 @@ public class Gui extends javax.swing.JFrame {
         titleLabel.setFont(new java.awt.Font("Serif", 2, 14));
         titleLabel.setText("Pipes 'R' Us");
         titleLabel.setToolTipText("For all your pipe needs!");
-
-        pipeSizeLabel.setText("Size:");
-
-        pipeSizeLengthTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pipeSizeLengthTextField.setText("1m");
-        pipeSizeLengthTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pipeSizeLengthTextFieldActionPerformed(evt);
-            }
-        });
-
-        pipeGradeLabel.setFont(new java.awt.Font("Dialog", 0, 12));
-        pipeGradeLabel.setText("Grade:");
-
-        pipeGradeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
-        pipeGradeComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pipeGradeComboBoxActionPerformed(evt);
-            }
-        });
-
-        pipeColoursComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2" }));
-
-        pipeColoursLabel.setFont(new java.awt.Font("Dialog", 0, 12));
-        pipeColoursLabel.setText("Colours:");
-
-        pipeSizeLengthLabel.setFont(new java.awt.Font("Dialog", 0, 12));
-        pipeSizeLengthLabel.setText("Length:");
-
-        pipeSizeDiameterLabel.setFont(new java.awt.Font("Dialog", 0, 12));
-        pipeSizeDiameterLabel.setText("Diameter:");
-
-        pipeSizeDiameterTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pipeSizeDiameterTextField.setText("1inches");
-        pipeSizeDiameterTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pipeSizeDiameterTextFieldActionPerformed(evt);
-            }
-        });
-
-        pipeInsulationCheckBox.setText("Insulation");
-        pipeInsulationCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pipeInsulationCheckBoxActionPerformed(evt);
-            }
-        });
-
-        pipeReinforcementCheckBox.setText("Reinforcement");
-        pipeReinforcementCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pipeReinforcementCheckBoxActionPerformed(evt);
-            }
-        });
-
-        pipeChemResCheckBox.setText("Chemical Resistance");
-        pipeChemResCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pipeChemResCheckBoxActionPerformed(evt);
-            }
-        });
-
-        pipeQuantityLabel.setText("Quantity:");
 
         submitButton.setText("Submit");
 
@@ -128,9 +52,14 @@ public class Gui extends javax.swing.JFrame {
             public Object getElementAt(int i) { return strings[i]; }
         });
         orderList.setOpaque(false);
-        jScrollPane2.setViewportView(orderList);
+        orderScrollPane.setViewportView(orderList);
 
         addButton.setText("Add");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         editButton.setText("Edit");
 
@@ -140,158 +69,65 @@ public class Gui extends javax.swing.JFrame {
 
         itemAmountLabel.setText("Amount of items: 30");
 
-        discardButton.setText("Discard");
-
-        separator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(titleLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 308, Short.MAX_VALUE)
+                        .addComponent(addButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(editButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(deleteButton))
+                    .addComponent(orderScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pipeSizeLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pipeSizeLengthLabel)
-                                    .addComponent(pipeSizeDiameterLabel))
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(pipeSizeLengthTextField)
-                                    .addComponent(pipeSizeDiameterTextField)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pipeColoursLabel)
-                                    .addComponent(pipeGradeLabel))
-                                .addGap(41, 41, 41)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(pipeGradeComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(pipeColoursComboBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pipeReinforcementCheckBox)
-                            .addComponent(pipeChemResCheckBox)
-                            .addComponent(pipeInsulationCheckBox)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(addButton)
-                                    .addComponent(pipeQuantityLabel))
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(discardButton)
-                                    .addComponent(pipeQuantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addComponent(titleLabel))
-                .addGap(21, 21, 21)
-                .addComponent(separator1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(472, 472, 472)
+                            .addComponent(totalCostLabel)
+                            .addComponent(itemAmountLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 302, Short.MAX_VALUE)
                         .addComponent(submitButton)
                         .addGap(18, 18, 18)
-                        .addComponent(resetButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(totalCostLabel)
-                        .addGap(104, 104, 104)
-                        .addComponent(itemAmountLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(549, 549, 549)
-                        .addComponent(editButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deleteButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26))
+                        .addComponent(resetButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(titleLabel)
-                        .addGap(38, 38, 38)
-                        .addComponent(pipeSizeLabel)
-                        .addGap(12, 12, 12)
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pipeSizeLengthLabel)
-                            .addComponent(pipeSizeLengthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pipeSizeDiameterLabel)
-                            .addComponent(pipeSizeDiameterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pipeGradeLabel)
-                            .addComponent(pipeGradeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pipeColoursLabel)
-                            .addComponent(pipeColoursComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addButton)
-                            .addComponent(discardButton))
-                        .addGap(9, 9, 9))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(pipeInsulationCheckBox)
-                        .addGap(4, 4, 4)
-                        .addComponent(pipeReinforcementCheckBox)
-                        .addGap(31, 31, 31)
-                        .addComponent(pipeChemResCheckBox)
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pipeQuantityLabel)
-                            .addComponent(pipeQuantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(separator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(editButton)
-                            .addComponent(deleteButton))
+                            .addComponent(deleteButton)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(titleLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(orderScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(totalCostLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(itemAmountLabel)
-                                .addComponent(totalCostLabel))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(66, 66, 66)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(submitButton)
-                                    .addComponent(resetButton))))))
-                .addGap(22, 22, 22))
+                        .addComponent(itemAmountLabel))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(submitButton)
+                        .addComponent(resetButton)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-private void pipeSizeLengthTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeSizeLengthTextFieldActionPerformed
-// TODO add your handling code here:
-}//GEN-LAST:event_pipeSizeLengthTextFieldActionPerformed
-
-private void pipeSizeDiameterTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeSizeDiameterTextFieldActionPerformed
-// TODO add your handling code here:
-}//GEN-LAST:event_pipeSizeDiameterTextFieldActionPerformed
-
-private void pipeInsulationCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeInsulationCheckBoxActionPerformed
-// TODO add your handling code here:
-}//GEN-LAST:event_pipeInsulationCheckBoxActionPerformed
-
-private void pipeReinforcementCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeReinforcementCheckBoxActionPerformed
-// TODO add your handling code here:
-}//GEN-LAST:event_pipeReinforcementCheckBoxActionPerformed
-
-private void pipeChemResCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeChemResCheckBoxActionPerformed
-// TODO add your handling code here:
-}//GEN-LAST:event_pipeChemResCheckBoxActionPerformed
-
-private void pipeGradeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeGradeComboBoxActionPerformed
-// TODO add your handling code here:
-}//GEN-LAST:event_pipeGradeComboBoxActionPerformed
+private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+    this.popUp.setVisible(true);
+}//GEN-LAST:event_addButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,27 +167,11 @@ private void pipeGradeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {/
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JButton deleteButton;
-    private javax.swing.JButton discardButton;
     private javax.swing.JButton editButton;
     private javax.swing.JLabel itemAmountLabel;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList orderList;
-    private javax.swing.JCheckBox pipeChemResCheckBox;
-    private javax.swing.JComboBox pipeColoursComboBox;
-    private javax.swing.JLabel pipeColoursLabel;
-    private javax.swing.JComboBox pipeGradeComboBox;
-    private javax.swing.JLabel pipeGradeLabel;
-    private javax.swing.JCheckBox pipeInsulationCheckBox;
-    private javax.swing.JLabel pipeQuantityLabel;
-    private javax.swing.JSpinner pipeQuantitySpinner;
-    private javax.swing.JCheckBox pipeReinforcementCheckBox;
-    private javax.swing.JLabel pipeSizeDiameterLabel;
-    private javax.swing.JTextField pipeSizeDiameterTextField;
-    private javax.swing.JLabel pipeSizeLabel;
-    private javax.swing.JLabel pipeSizeLengthLabel;
-    private javax.swing.JTextField pipeSizeLengthTextField;
+    private javax.swing.JScrollPane orderScrollPane;
     private javax.swing.JButton resetButton;
-    private javax.swing.JSeparator separator1;
     private javax.swing.JButton submitButton;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JLabel totalCostLabel;
