@@ -3,6 +3,8 @@ core
 nbproject/*
 !nbproject/project.properties
 !nbproject/project.xml
+build.xml
+manifest.mf
  
 #java specific
 *.class
