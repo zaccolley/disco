@@ -1,5 +1,8 @@
 package pipesrus;
 
+import java.util.*;
+import javax.swing.ListModel;
+
 /**
  *
  * @author Zac Colley
@@ -7,12 +10,30 @@ package pipesrus;
 public class Gui extends javax.swing.JFrame {
     
     private popUp popUp = new popUp();
+    private Pipe pipe1 = new Pipe();
+    private ArrayList<Pipe> pipes = new ArrayList();
 
     /** Creates new form Gui */
     public Gui() {
+        
+        pipe1.setGrade(2);
+        pipe1.setOutDia(1.1);
+        pipe1.setColours(2);
+        pipe1.setLength(2.2);
+        
+        pipes.add(pipe1);
+        
         initComponents();
     }
-
+    
+    public ArrayList<Pipe> getPipes(){
+        return pipes;
+    }
+    
+    public void updateItemList(String input){
+        // add something to orderList...
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
