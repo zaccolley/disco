@@ -14,17 +14,21 @@ public class Pipe {
     private double inDia = 0.0;
     
     private boolean chemRes = false;
+    private boolean insul = false;
+    private boolean reinforce = false;
     
     private int colours = 0;
     
     public Pipe(){}
     
-    public Pipe(int g, double l, double oD, double iD, boolean cR, int c){
+    public Pipe(int g, double l, double oD, double iD, boolean cR, boolean i, boolean r, int c){
         grade = g;
         length = l;
         outDia = oD;
         inDia = iD;
         chemRes = cR;
+        insul = i;
+        reinforce = r;
         colours = c;
     }
     
@@ -50,6 +54,14 @@ public class Pipe {
         return chemRes;
     }
     
+    public boolean getInsul(){
+        return insul;
+    }
+    
+    public boolean getReinforce(){
+        return reinforce;
+    }
+    
     public int getColours(){
         return colours;
     }
@@ -61,19 +73,27 @@ public class Pipe {
     }
     
     public String getPrettyLength(){
-        return "Length: "+ getLength() + " meters";
+        return getLength() + "m";
     }
     
     public String getPrettyDia(){
-        return "Diameter: " + getOutDia() + " inches";
+        return getOutDia() + "\"";
     }
     
     public String getPrettyChemRes(){
-        return "Chemical Resistance: " + (getChemRes() ? "Yes":"No");
+        return (getChemRes() ? "Chemical resistance - ":"");
+    }    
+    
+    public String getPrettyInsul(){
+        return (getInsul() ? "Insulation - ":"");
+    }
+    
+    public String getPrettyReinforce(){
+        return (getInsul() ? "Reinforcement - ":"");
     }
     
     public String getPrettyColours(){
-        return "Colours: " + getColours();
+        return getColours() + " colours";
     }
     
     // setters
@@ -98,6 +118,14 @@ public class Pipe {
         chemRes = cR;
     }
     
+    public void setInsul(boolean i){
+        insul = i;
+    }
+    
+    public void setReinforce(boolean r){
+        reinforce = r;
+    }
+    
     public void setColours(int c){
         colours = c;
     }
@@ -107,9 +135,20 @@ public class Pipe {
     @Override
     public String toString(){
         
-        String output = getPrettyGrade() + "\n" + getPrettyLength() + "\n"
-                      + getPrettyDia() + "\n" + getPrettyChemRes()
-                      + "\n" + getPrettyColours();
+        String open = "";
+        String close = "";
+        
+        if(getChemRes() || getInsul() || getReinforce()){
+            open = " ( - ";
+            close = ") ";
+        }
+        
+        String a = "";
+        
+        String output = getPrettyGrade() + " | " + getPrettyLength() + " by "
+                      + getPrettyDia() + " | " + open + getPrettyChemRes()
+                      + getPrettyInsul() + getPrettyReinforce()
+                      + close + " | " + getPrettyColours();
         return output;
     }
     

@@ -1,7 +1,7 @@
 package pipesrus;
 
 import java.util.*;
-import javax.swing.ListModel;
+import javax.swing.*;
 
 /**
  *
@@ -9,29 +9,68 @@ import javax.swing.ListModel;
  */
 public class Gui extends javax.swing.JFrame {
     
-    private popUp popUp = new popUp();
-    private Pipe pipe1 = new Pipe();
+    private popUp popUp = new popUp();    
     private ArrayList<Pipe> pipes = new ArrayList();
+    private DefaultListModel orderListItems = new DefaultListModel();
 
     /** Creates new form Gui */
     public Gui() {
         
+        initComponents();
+        
+        Pipe pipe1 = new Pipe();
+        
         pipe1.setGrade(2);
+        pipe1.setChemRes(true);
         pipe1.setOutDia(1.1);
         pipe1.setColours(2);
         pipe1.setLength(2.2);
         
-        pipes.add(pipe1);
+        Pipe pipe2 = new Pipe();
         
-        initComponents();
+        pipe2.setGrade(3);
+        pipe2.setInsul(true);
+        pipe2.setReinforce(true);
+        pipe2.setOutDia(5.0);
+        pipe2.setColours(4);
+        pipe2.setLength(5.0);
+        
+        pipes.add(pipe1);        
+        pipes.add(pipe2);
+        
+        updateItemList();
+        this.orderList.setModel(orderListItems);
     }
     
     public ArrayList<Pipe> getPipes(){
         return pipes;
     }
     
-    public void updateItemList(String input){
-        // add something to orderList...
+    public void addPipe(Pipe pipe){
+        pipes.add(pipe);
+    }
+    
+    public void updateItemList(){
+        for(Pipe pipe : getPipes()){
+            orderListItems.addElement(style("colour",style("i", pipe.toString())));
+        }        
+    }
+    
+    public String style(String type, String input){
+        String output = "<html>";
+        if("colour".equals(type)){            
+            output += "<html><font color='red'>" + input + "</font>";
+        }
+        else if("b".equals(type)){            
+            output += "<b>" + input + "</b>";
+        }
+        else if("i".equals(type)){            
+            output += "<i>" + input + "</i>";
+        }
+        else if("u".equals(type)){            
+            output += "<u>" + input + "</u>";
+        }
+        return output;
     }
     
     /** This method is called from within the constructor to
@@ -67,11 +106,6 @@ public class Gui extends javax.swing.JFrame {
 
         orderList.setBackground(new java.awt.Color(-723724,true));
         orderList.setFont(new java.awt.Font("SansSerif", 0, 12));
-        orderList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html><html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>", "<html><b><font color=\"bold\">£3.00</font> | <b><font color=\"blue\">2x :</font></b> <font color=\"red\"><i>1m</i> by <i>3in</i></font> Grade 3 Pipes <i>(Insulated, Reinforced, Chemical Resistant)</i></html>" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         orderList.setOpaque(false);
         orderScrollPane.setViewportView(orderList);
 
@@ -99,7 +133,7 @@ public class Gui extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(titleLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 308, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(addButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(editButton)
@@ -110,7 +144,7 @@ public class Gui extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(totalCostLabel)
                             .addComponent(itemAmountLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 302, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(submitButton)
                         .addGap(18, 18, 18)
                         .addComponent(resetButton)))

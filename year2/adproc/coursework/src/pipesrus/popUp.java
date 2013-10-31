@@ -232,7 +232,7 @@ private void pipeInsulationCheckBoxActionPerformed(java.awt.event.ActionEvent ev
 }//GEN-LAST:event_pipeInsulationCheckBoxActionPerformed
 
 private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-  // 
+   this.setVisible(false);
 }//GEN-LAST:event_addButtonActionPerformed
 
 private void pipeGradeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeGradeComboBoxActionPerformed
