@@ -1,5 +1,7 @@
 package pipesrus;
 
+import java.util.Date;
+
 
 /**
  *
@@ -52,6 +54,12 @@ public class popUp extends javax.swing.JFrame {
 
         pipeQuantityLabel.setText("Quantity:");
 
+        pipeQuantitySpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                pipeQuantitySpinnerStateChanged(evt);
+            }
+        });
+
         pipeReinforceCheckBox.setText("Reinforcement");
         pipeReinforceCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,10 +75,15 @@ public class popUp extends javax.swing.JFrame {
         });
 
         pipeSizeDiaTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pipeSizeDiaTextField.setText("1inches");
+        pipeSizeDiaTextField.setText("0.0");
         pipeSizeDiaTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pipeSizeDiaTextFieldActionPerformed(evt);
+            }
+        });
+        pipeSizeDiaTextField.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                pipeSizeDiaTextFieldPropertyChange(evt);
             }
         });
 
@@ -122,10 +135,15 @@ public class popUp extends javax.swing.JFrame {
         pipeGradeLabel.setText("Grade:");
 
         pipeSizeLengthTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pipeSizeLengthTextField.setText("1m");
+        pipeSizeLengthTextField.setText("0.0");
         pipeSizeLengthTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pipeSizeLengthTextFieldActionPerformed(evt);
+            }
+        });
+        pipeSizeLengthTextField.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                pipeSizeLengthTextFieldPropertyChange(evt);
             }
         });
 
@@ -173,11 +191,13 @@ public class popUp extends javax.swing.JFrame {
                                         .addComponent(addButton)
                                         .addComponent(pipeQuantityLabel))
                                     .addGap(26, 26, 26)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(discardButton)
-                                        .addComponent(pipeQuantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(pipeQuantitySpinner)
+                                            .addGap(9, 9, 9))))))
                         .addComponent(titleLabel))
-                    .addContainerGap(29, Short.MAX_VALUE)))
+                    .addContainerGap(44, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,7 +238,7 @@ public class popUp extends javax.swing.JFrame {
                             .addGap(37, 37, 37)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(pipeQuantityLabel)
-                                .addComponent(pipeQuantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(pipeQuantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGap(25, 25, 25)))
         );
 
@@ -226,7 +246,7 @@ public class popUp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 public void printDebug(){
-    System.out.println(pipe);
+    System.out.println(order);
 }
     
 private void pipeReinforceCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeReinforceCheckBoxActionPerformed
@@ -246,6 +266,11 @@ private void pipeInsulCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {/
 }//GEN-LAST:event_pipeInsulCheckBoxActionPerformed
 
 private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+    order.setPipe(pipe);
+    
+    Date dateTime = new Date();
+    order.setDateTime(dateTime);
+    
     this.setVisible(false);
 }//GEN-LAST:event_addButtonActionPerformed
 
@@ -264,6 +289,18 @@ private void pipeSizeLengthTextFieldActionPerformed(java.awt.event.ActionEvent e
     private void pipeColoursComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeColoursComboBoxActionPerformed
         pipe.setColours(Integer.parseInt((String) pipeColoursComboBox.getSelectedItem()));
     }//GEN-LAST:event_pipeColoursComboBoxActionPerformed
+
+    private void pipeSizeDiaTextFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_pipeSizeDiaTextFieldPropertyChange
+        pipe.setOutDia(Double.parseDouble((String) pipeSizeDiaTextField.getText()));
+    }//GEN-LAST:event_pipeSizeDiaTextFieldPropertyChange
+
+    private void pipeSizeLengthTextFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_pipeSizeLengthTextFieldPropertyChange
+        pipe.setLength(Double.parseDouble(pipeSizeLengthTextField.getText()));
+    }//GEN-LAST:event_pipeSizeLengthTextFieldPropertyChange
+
+    private void pipeQuantitySpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_pipeQuantitySpinnerStateChanged
+        order.setQuantity((Integer) pipeQuantitySpinner.getValue());
+    }//GEN-LAST:event_pipeQuantitySpinnerStateChanged
 
     /**
      * @param args the command line arguments

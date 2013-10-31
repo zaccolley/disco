@@ -65,16 +65,19 @@
                                       <Component id="pipeQuantityLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="discardButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="pipeQuantitySpinner" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="discardButton" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="pipeQuantitySpinner" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
                       <Component id="titleLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="29" max="32767" attributes="0"/>
+                  <EmptySpace pref="44" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -123,7 +126,7 @@
                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="pipeQuantityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="pipeQuantitySpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="pipeQuantitySpinner" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -140,6 +143,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="pipeQuantitySpinner">
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="pipeQuantitySpinnerStateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="pipeReinforceCheckBox">
       <Properties>
@@ -160,10 +166,11 @@
     <Component class="javax.swing.JTextField" name="pipeSizeDiaTextField">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="1inches"/>
+        <Property name="text" type="java.lang.String" value="0.0"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pipeSizeDiaTextFieldActionPerformed"/>
+        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="pipeSizeDiaTextFieldPropertyChange"/>
       </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="pipeInsulCheckBox">
@@ -253,10 +260,11 @@
     <Component class="javax.swing.JTextField" name="pipeSizeLengthTextField">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="1m"/>
+        <Property name="text" type="java.lang.String" value="0.0"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pipeSizeLengthTextFieldActionPerformed"/>
+        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="pipeSizeLengthTextFieldPropertyChange"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="pipeSizeLengthLabel">

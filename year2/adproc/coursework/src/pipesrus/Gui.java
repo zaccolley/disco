@@ -58,7 +58,7 @@ public class Gui extends javax.swing.JFrame {
     }
     
     public void updateItemList(){
-        orderListItems.removeAllElements();
+//        orderListItems.removeAllElements();
         for(Order order : getOrders()){
             orderListItems.addElement(style("colour",style("b", order.toString())));
         }        

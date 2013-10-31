@@ -75,8 +75,6 @@ public class Order{
             close = ") ";
         }
         
-        String a = "";
-        
         String output = "(" + getPrettyDateTime() + ") "+ getPrettyQuantity() + ": "
                       + pipe.getPrettyLength() + " by " + pipe.getPrettyDia()
                       + open + pipe.getPrettyChemRes()  + pipe.getPrettyInsul()
