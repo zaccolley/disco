@@ -1,23 +1,23 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * popUp.java
- *
- * Created on 29-Oct-2013, 22:25:00
- */
 package pipesrus;
+
 
 /**
  *
- * @author root
+ * @author Zac Colley
  */
 public class popUp extends javax.swing.JFrame {
+    
+    private Order order = new Order();
+    private Pipe pipe = new Pipe();
 
     /** Creates new form popUp */
     public popUp() {
+        initComponents();
+    }    
+    
+    
+    public popUp(Order o) {
+        order = o;
         initComponents();
     }
 
@@ -32,15 +32,15 @@ public class popUp extends javax.swing.JFrame {
 
         pipeQuantityLabel = new javax.swing.JLabel();
         pipeQuantitySpinner = new javax.swing.JSpinner();
-        pipeReinforcementCheckBox = new javax.swing.JCheckBox();
+        pipeReinforceCheckBox = new javax.swing.JCheckBox();
         pipeChemResCheckBox = new javax.swing.JCheckBox();
-        pipeSizeDiameterTextField = new javax.swing.JTextField();
-        pipeInsulationCheckBox = new javax.swing.JCheckBox();
+        pipeSizeDiaTextField = new javax.swing.JTextField();
+        pipeInsulCheckBox = new javax.swing.JCheckBox();
         addButton = new javax.swing.JButton();
         discardButton = new javax.swing.JButton();
         pipeSizeLabel = new javax.swing.JLabel();
         titleLabel = new javax.swing.JLabel();
-        pipeSizeDiameterLabel = new javax.swing.JLabel();
+        pipeSizeDiaLabel = new javax.swing.JLabel();
         pipeColoursComboBox = new javax.swing.JComboBox();
         pipeGradeComboBox = new javax.swing.JComboBox();
         pipeGradeLabel = new javax.swing.JLabel();
@@ -52,10 +52,10 @@ public class popUp extends javax.swing.JFrame {
 
         pipeQuantityLabel.setText("Quantity:");
 
-        pipeReinforcementCheckBox.setText("Reinforcement");
-        pipeReinforcementCheckBox.addActionListener(new java.awt.event.ActionListener() {
+        pipeReinforceCheckBox.setText("Reinforcement");
+        pipeReinforceCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pipeReinforcementCheckBoxActionPerformed(evt);
+                pipeReinforceCheckBoxActionPerformed(evt);
             }
         });
 
@@ -66,18 +66,18 @@ public class popUp extends javax.swing.JFrame {
             }
         });
 
-        pipeSizeDiameterTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pipeSizeDiameterTextField.setText("1inches");
-        pipeSizeDiameterTextField.addActionListener(new java.awt.event.ActionListener() {
+        pipeSizeDiaTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        pipeSizeDiaTextField.setText("1inches");
+        pipeSizeDiaTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pipeSizeDiameterTextFieldActionPerformed(evt);
+                pipeSizeDiaTextFieldActionPerformed(evt);
             }
         });
 
-        pipeInsulationCheckBox.setText("Insulation");
-        pipeInsulationCheckBox.addActionListener(new java.awt.event.ActionListener() {
+        pipeInsulCheckBox.setText("Insulation");
+        pipeInsulCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pipeInsulationCheckBoxActionPerformed(evt);
+                pipeInsulCheckBoxActionPerformed(evt);
             }
         });
 
@@ -89,6 +89,11 @@ public class popUp extends javax.swing.JFrame {
         });
 
         discardButton.setText("Discard");
+        discardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                discardButtonActionPerformed(evt);
+            }
+        });
 
         pipeSizeLabel.setText("Size:");
 
@@ -96,10 +101,15 @@ public class popUp extends javax.swing.JFrame {
         titleLabel.setText("Pipes 'R' Us");
         titleLabel.setToolTipText("For all your pipe needs!");
 
-        pipeSizeDiameterLabel.setFont(new java.awt.Font("Dialog", 0, 12));
-        pipeSizeDiameterLabel.setText("Diameter:");
+        pipeSizeDiaLabel.setFont(new java.awt.Font("Dialog", 0, 12));
+        pipeSizeDiaLabel.setText("Diameter:");
 
         pipeColoursComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2" }));
+        pipeColoursComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pipeColoursComboBoxActionPerformed(evt);
+            }
+        });
 
         pipeGradeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
         pipeGradeComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -140,11 +150,11 @@ public class popUp extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(pipeSizeLengthLabel)
-                                        .addComponent(pipeSizeDiameterLabel))
+                                        .addComponent(pipeSizeDiaLabel))
                                     .addGap(29, 29, 29)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(pipeSizeLengthTextField)
-                                        .addComponent(pipeSizeDiameterTextField)))
+                                        .addComponent(pipeSizeDiaTextField)))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(pipeColoursLabel)
@@ -155,9 +165,9 @@ public class popUp extends javax.swing.JFrame {
                                         .addComponent(pipeColoursComboBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGap(20, 20, 20)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(pipeReinforcementCheckBox)
+                                .addComponent(pipeReinforceCheckBox)
                                 .addComponent(pipeChemResCheckBox)
-                                .addComponent(pipeInsulationCheckBox)
+                                .addComponent(pipeInsulCheckBox)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(addButton)
@@ -186,8 +196,8 @@ public class popUp extends javax.swing.JFrame {
                                 .addComponent(pipeSizeLengthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(pipeSizeDiameterLabel)
-                                .addComponent(pipeSizeDiameterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(pipeSizeDiaLabel)
+                                .addComponent(pipeSizeDiaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(pipeGradeLabel)
@@ -200,9 +210,9 @@ public class popUp extends javax.swing.JFrame {
                                 .addComponent(discardButton)))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(7, 7, 7)
-                            .addComponent(pipeInsulationCheckBox)
+                            .addComponent(pipeInsulCheckBox)
                             .addGap(4, 4, 4)
-                            .addComponent(pipeReinforcementCheckBox)
+                            .addComponent(pipeReinforceCheckBox)
                             .addGap(31, 31, 31)
                             .addComponent(pipeChemResCheckBox)
                             .addGap(37, 37, 37)
@@ -215,33 +225,45 @@ public class popUp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-private void pipeReinforcementCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeReinforcementCheckBoxActionPerformed
-// TODO add your handling code here:
-}//GEN-LAST:event_pipeReinforcementCheckBoxActionPerformed
+public void printDebug(){
+    System.out.println(pipe);
+}
+    
+private void pipeReinforceCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeReinforceCheckBoxActionPerformed
+    pipe.setReinforce(pipeReinforceCheckBox.isSelected());
+}//GEN-LAST:event_pipeReinforceCheckBoxActionPerformed
 
 private void pipeChemResCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeChemResCheckBoxActionPerformed
-// TODO add your handling code here:
+    pipe.setChemRes(pipeChemResCheckBox.isSelected());
 }//GEN-LAST:event_pipeChemResCheckBoxActionPerformed
 
-private void pipeSizeDiameterTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeSizeDiameterTextFieldActionPerformed
-// TODO add your handling code here:
-}//GEN-LAST:event_pipeSizeDiameterTextFieldActionPerformed
+private void pipeSizeDiaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeSizeDiaTextFieldActionPerformed
+    pipe.setOutDia(Double.parseDouble((String) pipeSizeDiaTextField.getText()));
+}//GEN-LAST:event_pipeSizeDiaTextFieldActionPerformed
 
-private void pipeInsulationCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeInsulationCheckBoxActionPerformed
-// TODO add your handling code here:
-}//GEN-LAST:event_pipeInsulationCheckBoxActionPerformed
+private void pipeInsulCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeInsulCheckBoxActionPerformed
+    pipe.setInsul(pipeInsulCheckBox.isSelected());
+}//GEN-LAST:event_pipeInsulCheckBoxActionPerformed
 
 private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-   this.setVisible(false);
+    this.setVisible(false);
 }//GEN-LAST:event_addButtonActionPerformed
 
 private void pipeGradeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeGradeComboBoxActionPerformed
-// TODO add your handling code here:
+    pipe.setGrade(Integer.parseInt((String) pipeGradeComboBox.getSelectedItem()));
 }//GEN-LAST:event_pipeGradeComboBoxActionPerformed
 
 private void pipeSizeLengthTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeSizeLengthTextFieldActionPerformed
-// TODO add your handling code here:
+    pipe.setLength(Double.parseDouble(pipeSizeLengthTextField.getText()));
 }//GEN-LAST:event_pipeSizeLengthTextFieldActionPerformed
+
+    private void discardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardButtonActionPerformed
+        printDebug();
+    }//GEN-LAST:event_discardButtonActionPerformed
+
+    private void pipeColoursComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeColoursComboBoxActionPerformed
+        pipe.setColours(Integer.parseInt((String) pipeColoursComboBox.getSelectedItem()));
+    }//GEN-LAST:event_pipeColoursComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,12 +308,12 @@ private void pipeSizeLengthTextFieldActionPerformed(java.awt.event.ActionEvent e
     private javax.swing.JLabel pipeColoursLabel;
     private javax.swing.JComboBox pipeGradeComboBox;
     private javax.swing.JLabel pipeGradeLabel;
-    private javax.swing.JCheckBox pipeInsulationCheckBox;
+    private javax.swing.JCheckBox pipeInsulCheckBox;
     private javax.swing.JLabel pipeQuantityLabel;
     private javax.swing.JSpinner pipeQuantitySpinner;
-    private javax.swing.JCheckBox pipeReinforcementCheckBox;
-    private javax.swing.JLabel pipeSizeDiameterLabel;
-    private javax.swing.JTextField pipeSizeDiameterTextField;
+    private javax.swing.JCheckBox pipeReinforceCheckBox;
+    private javax.swing.JLabel pipeSizeDiaLabel;
+    private javax.swing.JTextField pipeSizeDiaTextField;
     private javax.swing.JLabel pipeSizeLabel;
     private javax.swing.JLabel pipeSizeLengthLabel;
     private javax.swing.JTextField pipeSizeLengthTextField;

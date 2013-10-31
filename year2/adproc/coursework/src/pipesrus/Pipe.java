@@ -6,7 +6,7 @@ package pipesrus;
  */
 public class Pipe {
     
-    private int grade = 0;
+    private int grade = 1;
     
     private double length = 0.0;
     
@@ -89,7 +89,7 @@ public class Pipe {
     }
     
     public String getPrettyReinforce(){
-        return (getInsul() ? "Reinforcement - ":"");
+        return (getReinforce() ? "Reinforcement - ":"");
     }
     
     public String getPrettyColours(){

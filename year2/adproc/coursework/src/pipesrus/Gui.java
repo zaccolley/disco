@@ -8,9 +8,8 @@ import javax.swing.*;
  * @author Zac Colley
  */
 public class Gui extends javax.swing.JFrame {
-    
-    private popUp popUp = new popUp();    
-    private ArrayList<Pipe> pipes = new ArrayList();
+
+    private ArrayList<Order> orders = new ArrayList();
     private DefaultListModel orderListItems = new DefaultListModel();
 
     /** Creates new form Gui */
@@ -18,6 +17,7 @@ public class Gui extends javax.swing.JFrame {
         
         initComponents();
         
+        Order pipeOrder1 = new Order();
         Pipe pipe1 = new Pipe();
         
         pipe1.setGrade(2);
@@ -26,33 +26,41 @@ public class Gui extends javax.swing.JFrame {
         pipe1.setColours(2);
         pipe1.setLength(2.2);
         
+        pipeOrder1.setPipe(pipe1);
+        pipeOrder1.setQuantity(2);
+        
+        orders.add(pipeOrder1);
+        
+        Order pipeOrder2 = new Order();
         Pipe pipe2 = new Pipe();
         
         pipe2.setGrade(3);
         pipe2.setInsul(true);
-        pipe2.setReinforce(true);
         pipe2.setOutDia(5.0);
         pipe2.setColours(4);
         pipe2.setLength(5.0);
         
-        pipes.add(pipe1);        
-        pipes.add(pipe2);
+        pipeOrder2.setPipe(pipe2);
+        pipeOrder2.setQuantity(5);
+        
+        orders.add(pipeOrder2);
         
         updateItemList();
         this.orderList.setModel(orderListItems);
     }
     
-    public ArrayList<Pipe> getPipes(){
-        return pipes;
+    public ArrayList<Order> getOrders(){
+        return orders;
     }
     
-    public void addPipe(Pipe pipe){
-        pipes.add(pipe);
+    public void addOrder(Order o){
+        orders.add(o);
     }
     
     public void updateItemList(){
-        for(Pipe pipe : getPipes()){
-            orderListItems.addElement(style("colour",style("i", pipe.toString())));
+        orderListItems.removeAllElements();
+        for(Order order : getOrders()){
+            orderListItems.addElement(style("colour",style("b", order.toString())));
         }        
     }
     
@@ -103,6 +111,11 @@ public class Gui extends javax.swing.JFrame {
         submitButton.setText("Submit");
 
         resetButton.setText("Reset");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
 
         orderList.setBackground(new java.awt.Color(-723724,true));
         orderList.setFont(new java.awt.Font("SansSerif", 0, 12));
@@ -181,8 +194,14 @@ public class Gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-    this.popUp.setVisible(true);
+    Order order = new Order();
+    popUp popUp = new popUp(order);
+    popUp.setVisible(true);
 }//GEN-LAST:event_addButtonActionPerformed
+
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        updateItemList();
+    }//GEN-LAST:event_resetButtonActionPerformed
 
     /**
      * @param args the command line arguments
