@@ -10,7 +10,10 @@ import java.text.*;
 public class Order{
     
     private Pipe pipe = new Pipe();
+    
     private int quantity = 0;
+    private double cost = 0.0;
+    
     private Date dateTime = new Date();
     private String time = getPrettyDateTime();
     
@@ -33,11 +36,19 @@ public class Order{
         return quantity;
     }
     
+    public double getCost(){
+        return cost;
+    }
+    
     public Date getDateTime(){
         return dateTime;
     }
     
     // pretty getters
+    
+    public String getPrettyCost(){
+        return "£" + getCost();
+    }
     
     public String getPrettyQuantity(){
         return getQuantity() + "x";
@@ -54,6 +65,10 @@ public class Order{
     
     public void setPipe(Pipe p){
         pipe = p;
+    }
+    
+    public void setCost(Double c){
+        cost = c;
     }
     
     public void setQuantity(int q){
@@ -75,7 +90,8 @@ public class Order{
             close = ") ";
         }
         
-        String output = "(" + getPrettyDateTime() + ") "+ getPrettyQuantity() + ": "
+        String output = "(" + getPrettyDateTime() + ") "+ getPrettyCost() + " - "
+                      + getPrettyQuantity() + ": "
                       + pipe.getPrettyLength() + " by " + pipe.getPrettyDia()
                       + open + pipe.getPrettyChemRes()  + pipe.getPrettyInsul()
                       + pipe.getPrettyReinforce() + close + " | "

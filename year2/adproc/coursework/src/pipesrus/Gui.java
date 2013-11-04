@@ -58,10 +58,11 @@ public class Gui extends javax.swing.JFrame {
     }
     
     public void updateItemList(){
-//        orderListItems.removeAllElements();
+        orderListItems.removeAllElements();
         for(Order order : getOrders()){
             orderListItems.addElement(style("colour",style("b", order.toString())));
-        }        
+        }
+        itemAmountLabel.setText("Amount of items: " + orderListItems.size());
     }
     
     public String style(String type, String input){
@@ -194,13 +195,13 @@ public class Gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-    Order order = new Order();
-    popUp popUp = new popUp(order);
+    System.out.println(orders);
+    popUp popUp = new popUp(orders, orderListItems);
     popUp.setVisible(true);
 }//GEN-LAST:event_addButtonActionPerformed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
-        updateItemList();
+       updateItemList();
     }//GEN-LAST:event_resetButtonActionPerformed
 
     /**

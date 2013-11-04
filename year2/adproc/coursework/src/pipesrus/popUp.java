@@ -1,13 +1,16 @@
 package pipesrus;
 
-import java.util.Date;
-
+import java.util.*;
+import javax.swing.*;
 
 /**
  *
  * @author Zac Colley
  */
 public class popUp extends javax.swing.JFrame {
+    
+    private ArrayList<Order> orders;
+    private DefaultListModel orderListItems;
     
     private Order order = new Order();
     private Pipe pipe = new Pipe();
@@ -18,10 +21,23 @@ public class popUp extends javax.swing.JFrame {
     }    
     
     
-    public popUp(Order o) {
-        order = o;
+    public popUp(ArrayList<Order> o, DefaultListModel oLI) {
+        orders = o;
+        orderListItems = oLI;
         initComponents();
     }
+    
+    public ArrayList<Order> getOrders(){
+        return orders;
+    }
+    
+    public void updateItemList(){
+        orderListItems.removeAllElements();
+        for(Order order : getOrders()){
+            orderListItems.addElement(order.toString());
+        }
+    }
+    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -192,10 +208,8 @@ public class popUp extends javax.swing.JFrame {
                                         .addComponent(pipeQuantityLabel))
                                     .addGap(26, 26, 26)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(discardButton)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(pipeQuantitySpinner)
-                                            .addGap(9, 9, 9))))))
+                                        .addComponent(discardButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(pipeQuantitySpinner)))))
                         .addComponent(titleLabel))
                     .addContainerGap(44, Short.MAX_VALUE)))
         );
@@ -270,6 +284,10 @@ private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     
     Date dateTime = new Date();
     order.setDateTime(dateTime);
+    
+    orders.add(order);
+    
+    updateItemList();
     
     this.setVisible(false);
 }//GEN-LAST:event_addButtonActionPerformed
