@@ -176,7 +176,7 @@ public class Gui extends javax.swing.JFrame {
 
 private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
     System.out.println(orders);
-    popUp popUp = new popUp(orders, orderListItems);
+    PopUp popUp = new PopUp(orders, orderListItems);
     popUp.setVisible(true);
 }//GEN-LAST:event_addButtonActionPerformed
 

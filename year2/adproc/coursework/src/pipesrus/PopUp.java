@@ -7,7 +7,7 @@ import javax.swing.*;
  *
  * @author Zac Colley
  */
-public class popUp extends javax.swing.JFrame {
+public class PopUp extends javax.swing.JFrame {
     
     private ArrayList<Order> orders;
     private DefaultListModel orderListItems;
@@ -16,12 +16,12 @@ public class popUp extends javax.swing.JFrame {
     private Pipe pipe = new Pipe();
 
     /** Creates new form popUp */
-    public popUp() {
+    public PopUp() {
         initComponents();
     }    
     
     
-    public popUp(ArrayList<Order> o, DefaultListModel oLI) {
+    public PopUp(ArrayList<Order> o, DefaultListModel oLI) {
         orders = o;
         orderListItems = oLI;
         initComponents();
