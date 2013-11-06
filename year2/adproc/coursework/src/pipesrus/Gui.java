@@ -13,40 +13,20 @@ public class Gui extends javax.swing.JFrame {
     private DefaultListModel orderListItems = new DefaultListModel();
 
     /** Creates new form Gui */
-    public Gui() {
+    public Gui(ArrayList<Order> o) {
         
         initComponents();
         
-        Order pipeOrder1 = new Order();
-        Pipe pipe1 = new Pipe();
-        
-        pipe1.setGrade(2);
-        pipe1.setChemRes(true);
-        pipe1.setOutDia(1.1);
-        pipe1.setColours(2);
-        pipe1.setLength(2.2);
-        
-        pipeOrder1.setPipe(pipe1);
-        pipeOrder1.setQuantity(2);
-        
-        orders.add(pipeOrder1);
-        
-        Order pipeOrder2 = new Order();
-        Pipe pipe2 = new Pipe();
-        
-        pipe2.setGrade(3);
-        pipe2.setInsul(true);
-        pipe2.setOutDia(5.0);
-        pipe2.setColours(4);
-        pipe2.setLength(5.0);
-        
-        pipeOrder2.setPipe(pipe2);
-        pipeOrder2.setQuantity(5);
-        
-        orders.add(pipeOrder2);
+        orders = o;
         
         updateItemList();
         this.orderList.setModel(orderListItems);
+        
+        orderListItems.addElement("No orders");
+    }
+    
+    public void setTitle(String title){
+        titleLabel.setText(title);
     }
     
     public ArrayList<Order> getOrders(){
@@ -204,41 +184,6 @@ private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
        updateItemList();
     }//GEN-LAST:event_resetButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new Gui().setVisible(true);
-            }
-        });
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JButton deleteButton;
