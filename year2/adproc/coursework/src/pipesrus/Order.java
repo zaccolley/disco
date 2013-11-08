@@ -21,9 +21,52 @@ public class Order{
     }
     
     public Order(Pipe p, int q, String t){
-        pipe = p;
-        quantity = q;
+        pipe = p;        
+        
+        if(1 >= 1){            
+            quantity = q; 
+        }else{ System.out.println("Need more than 0 pipes"); }
+        
+        calcCost();
+       
         time = t;
+    }
+    
+    public double gradeCost(int grade){
+        double gradeCost = 0.0;
+        
+        switch(grade){        
+            case 1: gradeCost = 0.25; break;
+            case 2: gradeCost = 0.29; break;
+            case 3: gradeCost = 0.32; break;
+            case 4: gradeCost = 0.37; break;
+            case 5: gradeCost = 0.41; break;
+        }
+        
+        return gradeCost;
+    }
+    
+    public double extraCost(Pipe pipe, double cost){
+        double percent = 1.0;
+        
+        if(pipe.getColours() > 0){            
+            if(pipe.getColours() == 1){ percent += 0.13; }
+            if(pipe.getColours() == 2){ percent += 0.16; }        
+        }        
+        if(pipe.getChemRes()){ percent += 0.10; }
+        if(pipe.getInsul()){ percent += 0.12; }
+        if(pipe.getReinforce()){ percent += 0.13; } 
+        
+        return cost * percent;
+    }
+
+    
+    public void calcCost(){
+        double volume = pipe.getLength() * pipe.getXAreaM();
+        double calcCost = volume * gradeCost(pipe.getGrade());
+        calcCost = extraCost(pipe, calcCost);
+        
+        setCost((double) Math.round(calcCost * 100) / 100);
     }
     
     // getters
@@ -90,12 +133,7 @@ public class Order{
             close = ") ";
         }
         
-        String output = "(" + getPrettyDateTime() + ") "+ getPrettyCost() + " - "
-                      + getPrettyQuantity() + ": "
-                      + pipe.getPrettyLength() + " by " + pipe.getPrettyDia()
-                      + open + pipe.getPrettyChemRes()  + pipe.getPrettyInsul()
-                      + pipe.getPrettyReinforce() + close + " | "
-                      + pipe.getPrettyColours() + " | "  + pipe.getPrettyGrade();
+        String output = "(" + getPrettyCost() + " each) | " + getPrettyQuantity() + " " + pipe;
         return output;
     }
     

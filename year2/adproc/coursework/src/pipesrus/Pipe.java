@@ -24,14 +24,27 @@ public class Pipe {
     public Pipe(){}
     
     public Pipe(int g, double l, double d, boolean cR, boolean i, boolean r, int c){
-        grade = g;
-        length = l;
-        outDia = d;
-        inDia = d * 0.9;
+        
+        if(g >= 1 && g <= 5){            
+            grade = g;
+        }else{ System.out.println("Grade broken. Pick a grade from 1-5"); }
+        
+        if(l >= 0.0 && l <= 6.0){
+            length = l;
+        }else{ System.out.println("Length broken"); }
+        
+        if(d >= 0.0){
+            outDia = d;
+            inDia = d * 0.9;
+        }else{ System.out.println("Diameter broken"); }
+                
         chemRes = cR;
         insul = i;
         reinforce = r;
-        colours = c;
+        
+        if(c >= 0 && c <= 2){
+            colours = c;
+        }else{ System.out.println("Colours broken"); }
     }
     
     // getters
@@ -103,15 +116,15 @@ public class Pipe {
     }
     
     public String getPrettyChemRes(){
-        return (getChemRes() ? "Chemical resistance - ":"");
+        return (getChemRes() ? "CR - ":"");
     }    
     
     public String getPrettyInsul(){
-        return (getInsul() ? "Insulation - ":"");
+        return (getInsul() ? "I - ":"");
     }
     
     public String getPrettyReinforce(){
-        return (getReinforce() ? "Reinforcement - ":"");
+        return (getReinforce() ? "R - ":"");
     }
     
     public String getPrettyColours(){
@@ -170,12 +183,16 @@ public class Pipe {
             close = ") ";
         }
         
-        String a = "";
+        String colourString = "";
         
-        String output = getPrettyGrade() + " | " + getPrettyLength() + " by "
-                      + getPrettyDia() + " | " + open + getPrettyChemRes()
+        if(getColours() > 0){
+            colourString = " | " + getPrettyColours();
+        }
+        
+        String output = getPrettyLength() + " by "
+                      + getPrettyDia() + open + getPrettyChemRes()
                       + getPrettyInsul() + getPrettyReinforce()
-                      + close + " | " + getPrettyColours();
+                      + close + " | " + getPrettyGrade() + colourString;
         return output;
     }
     
