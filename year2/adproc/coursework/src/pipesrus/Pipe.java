@@ -1,5 +1,7 @@
 package pipesrus;
 
+import java.lang.Math;
+
 /**
  *
  * @author Zac Colley
@@ -21,11 +23,11 @@ public class Pipe {
     
     public Pipe(){}
     
-    public Pipe(int g, double l, double oD, double iD, boolean cR, boolean i, boolean r, int c){
+    public Pipe(int g, double l, double d, boolean cR, boolean i, boolean r, int c){
         grade = g;
         length = l;
-        outDia = oD;
-        inDia = iD;
+        outDia = d;
+        inDia = d * 0.9;
         chemRes = cR;
         insul = i;
         reinforce = r;
@@ -42,8 +44,28 @@ public class Pipe {
         return length;
     }
     
+    public double getDia(){
+        return outDia;
+    }
+    
     public double getOutDia(){
         return outDia;
+    }
+    
+    public double getXAreaIn(){
+        double outXArea = getOutDia() * Math.PI;
+        double inXArea = getInDia() * Math.PI;
+        return outXArea - inXArea;
+    }
+    
+    public double getXAreaM(){
+        return m2in(getXAreaIn());
+    }
+    
+    public double m2in(double m){
+        // 1m == 39.37”
+        double in = m * 39.37;
+        return in;
     }
     
     public double getInDia(){
@@ -104,6 +126,11 @@ public class Pipe {
     
     public void setLength(double l){
         length = l;
+    }
+    
+    public void setDia(double d){
+        setOutDia(d);
+        setInDia(d * 0.9);
     }
     
     public void setOutDia(double oD){
