@@ -351,6 +351,14 @@ public class Gui extends javax.swing.JFrame {
         orderList.setBackground(new java.awt.Color(-723724,true));
         orderList.setFont(new java.awt.Font("SansSerif", 0, 12));
         orderList.setOpaque(false);
+        orderList.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                orderListFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                orderListFocusLost(evt);
+            }
+        });
         orderScrollPane.setViewportView(orderList);
 
         addOrderButton.setText("Add");
@@ -361,8 +369,20 @@ public class Gui extends javax.swing.JFrame {
         });
 
         editOrderButton.setText("Edit");
+        editOrderButton.setEnabled(false);
+        editOrderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editOrderButtonActionPerformed(evt);
+            }
+        });
 
         deleteOrderButton.setText("Delete");
+        deleteOrderButton.setEnabled(false);
+        deleteOrderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteOrderButtonActionPerformed(evt);
+            }
+        });
 
         totalCostLabel.setText("Total Cost: £100.50");
 
@@ -486,7 +506,7 @@ public void resetAddOrder(){
     private void pipeQuantitySpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_pipeQuantitySpinnerStateChanged
         order.setQuantity((Integer) pipeQuantitySpinner.getValue());
     }//GEN-LAST:event_pipeQuantitySpinnerStateChanged
-
+   
     private void submitOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitOrderButtonActionPerformed
         order.setPipe(pipe);
 
@@ -510,12 +530,38 @@ public void resetAddOrder(){
     }//GEN-LAST:event_submitOrderButtonActionPerformed
     
     private void discardOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardOrderButtonActionPerformed
-        System.out.println(order);
+        //
     }//GEN-LAST:event_discardOrderButtonActionPerformed
 
     private void pipeInsulCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeInsulCheckBoxActionPerformed
         pipe.setInsul(pipeInsulCheckBox.isSelected());
     }//GEN-LAST:event_pipeInsulCheckBoxActionPerformed
+
+
+    
+    private void deleteOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteOrderButtonActionPerformed
+        int i = orderList.getSelectedIndex();
+        orderListItems.removeElementAt(i);
+        orders.remove(i);
+        updateItemList();        
+        System.out.println("Remove the thing at: "+i);
+    }//GEN-LAST:event_deleteOrderButtonActionPerformed
+    
+    private void orderListFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_orderListFocusGained
+        deleteOrderButton.setEnabled(true);
+        editOrderButton.setEnabled(true);
+    }//GEN-LAST:event_orderListFocusGained
+
+    private void orderListFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_orderListFocusLost
+        deleteOrderButton.setEnabled(false);
+        editOrderButton.setEnabled(false);
+    }//GEN-LAST:event_orderListFocusLost
+
+// for the list shit http://docs.oracle.com/javase/tutorial/uiswing/events/listselectionlistener.html    
+    
+    private void editOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editOrderButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editOrderButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Colours;
