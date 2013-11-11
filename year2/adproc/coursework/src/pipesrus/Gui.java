@@ -1,5 +1,7 @@
 package pipesrus;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.*;
 import javax.swing.*;
 
@@ -26,7 +28,14 @@ public class Gui extends javax.swing.JFrame {
         resetTempVars();
         
         initComponents();
-        addOrder.setBounds(0, 0, 373, 270);
+       
+        //http://stackoverflow.com/questions/2442599/how-to-set-jframe-to-appear-centered-regardless-of-the-monitor-resolution
+        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2-200, dim.height/2-this.getSize().height/2);
+        
+        addOrder.setBounds(0, 0, 373, 243);
+        addOrder.setLocation(dim.width/2-this.getSize().width/2+450, dim.height/2-this.getSize().height/2);
         
         orders = o;
         
@@ -111,7 +120,6 @@ public class Gui extends javax.swing.JFrame {
         submitOrderButton = new javax.swing.JButton();
         discardOrderButton = new javax.swing.JButton();
         pipeSizeLabel = new javax.swing.JLabel();
-        titleLabel1 = new javax.swing.JLabel();
         pipeInsulCheckBox = new javax.swing.JCheckBox();
         jSeparator1 = new javax.swing.JSeparator();
         Colours = new javax.swing.JDialog();
@@ -219,10 +227,6 @@ public class Gui extends javax.swing.JFrame {
 
         pipeSizeLabel.setText("Size:");
 
-        titleLabel1.setFont(new java.awt.Font("Serif", 2, 14));
-        titleLabel1.setText("Pipes 'R' Us");
-        titleLabel1.setToolTipText("For all your pipe needs!");
-
         pipeInsulCheckBox.setText("Insulation");
         pipeInsulCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,7 +243,6 @@ public class Gui extends javax.swing.JFrame {
             .addGroup(addOrderLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titleLabel1)
                     .addGroup(addOrderLayout.createSequentialGroup()
                         .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(pipeSizeDiaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -277,8 +280,6 @@ public class Gui extends javax.swing.JFrame {
             addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addOrderLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(titleLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pipeSizeLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -340,6 +341,7 @@ public class Gui extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Pipes R Us");
         setBackground(new java.awt.Color(-723724,true));
         setResizable(false);
 
@@ -348,6 +350,11 @@ public class Gui extends javax.swing.JFrame {
         titleLabel.setToolTipText("For all your pipe needs!");
 
         submitOrdersButton.setText("Submit");
+        submitOrdersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitOrdersButtonActionPerformed(evt);
+            }
+        });
 
         resetOrdersButton.setText("Reset");
         resetOrdersButton.addActionListener(new java.awt.event.ActionListener() {
@@ -451,6 +458,7 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
     colorChooser.setPreviewPanel(new JPanel());
 
     addOrder.setVisible(true);
+    this.setEnabled(false);
 }//GEN-LAST:event_addOrderButtonActionPerformed
 
 public void resetAddOrder(){
@@ -485,7 +493,15 @@ public void resetTempVars(){
 }
 
     private void resetOrdersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetOrdersButtonActionPerformed
-       updateItemList();
+        int option = JOptionPane.showConfirmDialog(null,
+                "Are you sure you want to reset orders?",
+                "Woah, woah now!",
+                JOptionPane.YES_NO_OPTION);
+        if(option == 0){
+            orders = new ArrayList();
+            updateItemList();
+            orderListItems.addElement("No orders");
+        }       
     }//GEN-LAST:event_resetOrdersButtonActionPerformed
     
     private void deleteOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteOrderButtonActionPerformed
@@ -517,11 +533,21 @@ public void resetTempVars(){
     }//GEN-LAST:event_pipeInsulCheckBoxActionPerformed
 
     private void discardOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardOrderButtonActionPerformed
-        //
+        
     }//GEN-LAST:event_discardOrderButtonActionPerformed
 
     private void submitOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitOrderButtonActionPerformed
         Order order = new Order();
+        
+        
+        
+//        try{
+//            
+//        }
+//        catch(Exception dead){
+//            System.out.println(dead);
+//        }
+        
         Pipe pipe = new Pipe();
         
         pipe.setLength(tempLength);
@@ -551,6 +577,7 @@ public void resetTempVars(){
 
         // reset
         
+        this.setEnabled(true);
         addOrder.setVisible(false);
         resetAddOrder();
     }//GEN-LAST:event_submitOrderButtonActionPerformed
@@ -591,6 +618,18 @@ public void resetTempVars(){
         tempLength = Double.parseDouble(pipeSizeLengthTextField.getText());
     }//GEN-LAST:event_pipeSizeLengthTextFieldActionPerformed
 
+    private void submitOrdersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitOrdersButtonActionPerformed
+        int option = JOptionPane.showConfirmDialog(null,
+                "Are you sure you want to submit these orders?",
+                "Right, ok...",
+                JOptionPane.YES_NO_OPTION);
+        if(option == 0){
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Your order will now be processed!");
+            
+        }       
+    }//GEN-LAST:event_submitOrdersButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Colours;
     private javax.swing.JDialog addOrder;
@@ -621,7 +660,6 @@ public void resetTempVars(){
     private javax.swing.JButton submitOrderButton;
     private javax.swing.JButton submitOrdersButton;
     private javax.swing.JLabel titleLabel;
-    private javax.swing.JLabel titleLabel1;
     private javax.swing.JLabel totalCostLabel;
     // End of variables declaration//GEN-END:variables
 }
