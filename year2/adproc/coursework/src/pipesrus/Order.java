@@ -62,7 +62,8 @@ public class Order{
 
     
     public void calcCost(){
-        double volume = pipe.getLength() * pipe.getXAreaM();
+        double volume = pipe.getLengthIn() * pipe.getXAreaIn();
+        System.out.println(volume);
         double calcCost = volume * gradeCost(pipe.getGrade());
         calcCost = extraCost(pipe, calcCost);
         

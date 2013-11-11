@@ -57,6 +57,14 @@ public class Pipe {
         return length;
     }
     
+    public double getLengthM(){
+        return getLength();
+    }
+    
+    public double getLengthIn(){
+        return m2in(getLength());
+    }
+    
     public double getDia(){
         return outDia;
     }
@@ -66,13 +74,23 @@ public class Pipe {
     }
     
     public double getXAreaIn(){
-        double outXArea = (getOutDia() / 2) * Math.PI;
-        double inXArea = (getInDia() / 2) * Math.PI;
+        double outRadius = getOutDia() / 2;
+        double inRadius = getInDia() / 2;
+        
+        double outXArea = outRadius * outRadius * Math.PI;
+        double inXArea = inRadius * inRadius * Math.PI;
+        
         return outXArea - inXArea;
     }
     
     public double getXAreaM(){
-        return m2in(getXAreaIn());
+        return in2m(getXAreaIn());
+    }
+    
+    public double in2m(double in){
+        // 1" == 0.0254m
+        double m = in * 0.0254;
+        return m;
     }
     
     public double m2in(double m){
