@@ -66,8 +66,8 @@ public class Pipe {
     }
     
     public double getXAreaIn(){
-        double outXArea = getOutDia() * Math.PI;
-        double inXArea = getInDia() * Math.PI;
+        double outXArea = (getOutDia() / 2) * Math.PI;
+        double inXArea = (getInDia() / 2) * Math.PI;
         return outXArea - inXArea;
     }
     
