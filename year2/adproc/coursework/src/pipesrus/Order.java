@@ -1,15 +1,12 @@
 package pipesrus;
 
-import java.util.*;
-import java.text.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-/**
- *
- * @author Zac Colley
- */
 public class Order{
     
-    private Pipe pipe = new Pipe();
+    private Pipe pipe;
     
     private int quantity = 0;
     private double cost = 0.0;
@@ -25,7 +22,7 @@ public class Order{
         
         if(1 >= 1){            
             this.quantity = quantity; 
-        }else{ System.out.println("Need more than 0 pipes"); }
+        }else{ System.out.println("[Pipe] Need more positive pipes"); }
         
         calcCost();
        
@@ -49,21 +46,21 @@ public class Order{
     public double extraCost(Pipe pipe, double cost){
         double percent = 1.0;
         
-//        if(pipe.getColours() > 0){            
-//            if(pipe.getColours() == 1){ percent += 0.13; }
-//            if(pipe.getColours() == 2){ percent += 0.16; }        
-//        }        
-//        if(pipe.getChemRes()){ percent += 0.10; }
-//        if(pipe.getInsul()){ percent += 0.12; }
-//        if(pipe.getReinforce()){ percent += 0.13; } 
-//        
+        if(pipe.getChemRes()){ percent += 0.10; }
+        if(pipe.getColours() > 0){            
+            if(pipe.getColours() == 1){ percent += 0.13; }
+            if(pipe.getColours() == 2){ percent += 0.16; }        
+        }        
+        if(pipe.getInsul()){ percent += 0.12; }
+        if(pipe.getReinforce()){ percent += 0.13; }
+        
         return cost * percent;
     }
 
     
     public void calcCost(){
         double volume = pipe.getLengthIn() * pipe.getXAreaIn();
-        System.out.println(volume);
+        System.out.println("[Order] Volume: " + volume);
         double calcCost = volume * gradeCost(pipe.getGrade());
         calcCost = extraCost(pipe, calcCost);
         

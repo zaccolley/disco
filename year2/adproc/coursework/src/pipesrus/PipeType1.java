@@ -21,7 +21,7 @@ public class PipeType1 extends Pipe{
     // pretty getters
     
     public String getPrettyChemRes(){
-        return (getChemRes() ? "CR":"");
+        return (getChemRes() ? "CR":"No-CR");
     }  
     
     // setters
@@ -37,5 +37,16 @@ public class PipeType1 extends Pipe{
         return getPrettyLength() + " by " + getPrettyDia()
                + " | " + getPrettyGrade() + " (" + getPrettyChemRes() + ")";
     }
+    
+    // abstract overides
+
+    @Override
+    public int getColours(){ return 0; }
+
+    @Override
+    public boolean getInsul(){ return false; }
+
+    @Override
+    public boolean getReinforce(){ return false; }
     
 }

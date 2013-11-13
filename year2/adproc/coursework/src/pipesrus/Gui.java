@@ -2,8 +2,11 @@ package pipesrus;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.util.*;
-import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class Gui extends javax.swing.JFrame {
 
@@ -21,10 +24,9 @@ public class Gui extends javax.swing.JFrame {
     
     boolean tempInsul = false;
     boolean tempChemRes = false;
-    boolean tempReinforce = false;
-    
+    boolean tempReinforce = false;    
 
-    public Gui(ArrayList<Order> o) {
+    public Gui(ArrayList<Order> orders) {
         resetTempVars();
         
         initComponents();
@@ -37,12 +39,10 @@ public class Gui extends javax.swing.JFrame {
         addOrder.setBounds(0, 0, 373, 243);
         addOrder.setLocation(dim.width/2-this.getSize().width/2+450, dim.height/2-this.getSize().height/2);
         
-        orders = o;
+        this.orders = orders;
         
         updateItemList();
         this.orderList.setModel(orderListItems);
-        
-        orderListItems.addElement("No orders");
     }
     
     public ArrayList<Order> getOrders(){
@@ -58,16 +58,21 @@ public class Gui extends javax.swing.JFrame {
         
         int pipeAmount = 0;
         
-        for(Order o: orders){
-            orderListItems.addElement(style("b", "£" + o.getCost() * o.getQuantity()) + " " + o);
-            pipeAmount += o.getQuantity();
+        if(orders.size() > 0){
+            for(Order o: orders){
+                orderListItems.addElement(style("b", "£" + o.getCost() * o.getQuantity()) + " " + o);
+                pipeAmount += o.getQuantity();
+            }
+        }else{
+            orderListItems.addElement("No orders");
         }
         
         itemAmountLabel.setText("Order amount: " + orders.size() + " ("+ pipeAmount +" pipes)");
         
         totalCost(orders);
     }
-     public void totalCost(ArrayList<Order> orders){
+    
+    public void totalCost(ArrayList<Order> orders){
         double totalCost = 0.0;
         
         for(Order o: orders){
@@ -499,7 +504,6 @@ public void resetTempVars(){
         if(option == 0){
             orders = new ArrayList();
             updateItemList();
-            orderListItems.addElement("No orders");
         }       
     }//GEN-LAST:event_resetOrdersButtonActionPerformed
     
@@ -508,7 +512,8 @@ public void resetTempVars(){
         orderListItems.removeElementAt(i);
         orders.remove(i);
         updateItemList();        
-        System.out.println("Remove the thing at: "+i);
+
+        System.out.println("[Gui] Remove the thing at: "+i);
     }//GEN-LAST:event_deleteOrderButtonActionPerformed
     
     private void orderListFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_orderListFocusGained
@@ -521,7 +526,7 @@ public void resetTempVars(){
 //        editOrderButton.setEnabled(false);
     }//GEN-LAST:event_orderListFocusLost
 
-// for the list shit http://docs.oracle.com/javase/tutorial/uiswing/events/listselectionlistener.html    
+    // for the list shit http://docs.oracle.com/javase/tutorial/uiswing/events/listselectionlistener.html    
     
     private void editOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editOrderButtonActionPerformed
         // TODO add your handling code here:
@@ -532,54 +537,96 @@ public void resetTempVars(){
     }//GEN-LAST:event_pipeInsulCheckBoxActionPerformed
 
     private void discardOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardOrderButtonActionPerformed
-        
+        // nothing
     }//GEN-LAST:event_discardOrderButtonActionPerformed
 
     private void submitOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitOrderButtonActionPerformed
-        Order order = new Order();
         
+        if(validateForm()){        
         
+            if(tempGrade >= 3 && tempGrade <= 5 && tempColours == 2 && tempInsul && tempReinforce){
+                PipeType5 pipe = new PipeType5(tempGrade, tempLength, tempDia, tempChemRes, tempInsul, tempReinforce, tempColours);
+                addOrder(pipe);
+            }
+            else if(tempGrade >= 2 && tempGrade <= 5 && tempColours == 2 && tempInsul && !tempReinforce){
+                PipeType4 pipe = new PipeType4(tempGrade, tempLength, tempDia, tempChemRes, tempInsul, tempColours);
+                addOrder(pipe);
+            }
+            else if(tempGrade >= 2 && tempGrade <= 5 && tempColours == 2 && !tempInsul && !tempReinforce){
+                PipeType23 pipe = new PipeType23(tempGrade, tempLength, tempDia, tempChemRes, tempColours);
+                addOrder(pipe);
+            }
+            else if(tempGrade >= 2 && tempGrade <= 4 && tempColours == 1 && !tempInsul && !tempReinforce){
+                PipeType23 pipe = new PipeType23(tempGrade, tempLength, tempDia, tempChemRes, tempColours);
+                addOrder(pipe);
+            }
+            else if(tempGrade >= 1 && tempGrade <= 3 && tempColours == 0 && !tempInsul && !tempReinforce){
+                PipeType1 pipe = new PipeType1(tempGrade, tempLength, tempDia, tempChemRes);
+                addOrder(pipe);
+            }else{
+                 displayError("Aww...", "We don't supply this pipe sorry!");
+            }
         
-//        try{
-//            
-//        }
-//        catch(Exception dead){
-//            System.out.println(dead);
-//        }
-        
-        Pipe pipe = new Pipe();
-        
-        pipe.setLength(tempLength);
-        pipe.setDia(tempDia);
-        
-        pipe.setGrade(tempGrade);
-        pipe.setColours(tempColours);
-        
-        pipe.setChemRes(tempChemRes);
-        pipe.setInsul(tempInsul);
-        pipe.setReinforce(tempReinforce);
-        
-        order.setPipe(pipe);
-
-        Date dateTime = new Date();
-        order.setDateTime(dateTime);
-
-        order.calcCost();
-        
-        order.setQuantity(tempQuantity);
-
-        orders.add(order);
-        
-        // update list
-
-        updateItemList();
-
-        // reset
-        
-        addOrder.setVisible(false);
-        resetAddOrder();
+        }
+       
     }//GEN-LAST:event_submitOrderButtonActionPerformed
 
+        public void displayError(String title, String body){
+            JOptionPane.showMessageDialog(null, body, title, JOptionPane.ERROR_MESSAGE);
+        }
+    
+        public boolean validateForm(){
+            
+            if(tempGrade < 1  || tempGrade > 5){            
+                displayError("Wrong grade!", "Oops... " + tempGrade + " isn't right!"
+                                           + "\nMake sure the grade is 1 to 5!");
+                return false;
+            }
+        
+            if(tempLength <= 0.0 || tempLength > 6.0){
+                displayError("Wrong length!", "Oops... " + tempLength + " isn't right!"
+                                           + "\nMake sure the length is 0.0 to 6.0!");
+                return false;
+            }
+        
+            if(tempDia <= 0.0){
+                displayError("Wrong diameter!", "Oops... " + tempDia + " isn't right!"
+                                              + "\nMake sure the diameter is more than 0.0!");
+                return false;
+            }
+            
+            if(tempColours < 0 || tempColours > 2){
+                displayError("Wrong colours!", "Oops... " + tempColours + " isn't right!"
+                                             + "\nMake sure the colours is 0 to 2!");
+                return false;
+            }
+            
+            if(tempQuantity <= 0){
+                displayError("Wrong quantity!", "Oops... " + tempQuantity + " isn't right!"
+                                             + "\nMake sure you have a positive quantity!");
+                return false;
+            }
+            
+            return true;
+        }
+    
+        public void addOrder(Pipe pipe){
+
+            Date dateTime = new Date();
+            Order order = new Order(pipe, tempQuantity, dateTime.toString());
+
+            orders.add(order);
+
+            // update list
+
+            updateItemList();
+
+            // reset
+
+            addOrder.setVisible(false);
+            resetAddOrder();
+        }
+    
     private void pipeQuantitySpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_pipeQuantitySpinnerStateChanged
         tempQuantity = (Integer) pipeQuantitySpinner.getValue();
     }//GEN-LAST:event_pipeQuantitySpinnerStateChanged
@@ -624,7 +671,6 @@ public void resetTempVars(){
         if(option == 0){
             this.setVisible(false);
             JOptionPane.showMessageDialog(null, "Your order will now be processed!");
-            
         }       
     }//GEN-LAST:event_submitOrdersButtonActionPerformed
 

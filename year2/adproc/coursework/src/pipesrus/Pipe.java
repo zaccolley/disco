@@ -1,12 +1,6 @@
 package pipesrus;
 
-import java.lang.Math;
-
-/**
- *
- * @author Zac Colley
- */
-public class Pipe {
+public abstract class Pipe {
     
     private int grade = 1;
     
@@ -21,16 +15,16 @@ public class Pipe {
         
         if(grade >= 1 && grade <= 5){            
             this.grade = grade;
-        }else{ System.out.println("Grade broken. Pick a grade from 1-5"); }
+        }else{ System.out.println("[Pipe] Grade broken. Pick a grade from 1-5"); }
         
         if(length >= 0.0 && length <= 6.0){
             this.length = length;
-        }else{ System.out.println("Length broken"); }
+        }else{ System.out.println("[Pipe] Length broken"); }
         
         if(dia >= 0.0){
             outDia = dia;
             inDia = dia * 0.9;
-        }else{ System.out.println("Diameter broken"); }
+        }else{ System.out.println("[Pipe] Diameter broken"); }
         
     }
     
@@ -89,6 +83,14 @@ public class Pipe {
     public double getInDia(){
         return inDia;
     }
+    
+    public abstract boolean getChemRes();
+    
+    public abstract int getColours();
+    
+    public abstract boolean getInsul();
+    
+    public abstract boolean getReinforce();
     
     // pretty getters
     
