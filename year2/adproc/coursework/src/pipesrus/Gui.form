@@ -15,26 +15,26 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="266" max="-2" attributes="0"/>
-                          <Component id="pipeQuantitySpinner" min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="quantitySpinner" min="-2" pref="45" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="pipeSizeDiaLabel" max="32767" attributes="0"/>
-                                      <Component id="pipeSizeLengthLabel" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="pipeGradeLabel" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="pipeColoursLabel" max="32767" attributes="0"/>
+                                      <Component id="diaLabel" max="32767" attributes="0"/>
+                                      <Component id="lengthLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="gradeLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="coloursLabel" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="pipeSizeLengthTextField" min="-2" pref="36" max="-2" attributes="0"/>
-                                      <Component id="pipeSizeDiaTextField" min="-2" pref="36" max="-2" attributes="0"/>
-                                      <Component id="pipeColoursComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="pipeGradeComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lengthTextField" min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Component id="diaTextField" min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Component id="coloursComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="gradeComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="pipeSizeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="sizeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="seperator" min="-2" pref="15" max="-2" attributes="0"/>
@@ -42,10 +42,10 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="pipeQuantityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="pipeReinforceCheckBox" min="-2" max="-2" attributes="0"/>
-                                      <Component id="pipeChemResCheckBox" min="-2" max="-2" attributes="0"/>
-                                      <Component id="pipeInsulCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="quantityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="reinforceCheckBox" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chemResCheckBox" min="-2" max="-2" attributes="0"/>
+                                      <Component id="insulCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -65,49 +65,49 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  <Component id="pipeSizeLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="sizeLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="pipeSizeLengthTextField" min="-2" pref="27" max="-2" attributes="0"/>
-                                      <Component id="pipeSizeLengthLabel" min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="lengthTextField" min="-2" pref="27" max="-2" attributes="0"/>
+                                      <Component id="lengthLabel" min="-2" pref="23" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="pipeSizeDiaTextField" pref="25" max="32767" attributes="0"/>
-                                      <Component id="pipeSizeDiaLabel" max="32767" attributes="0"/>
+                                      <Component id="diaTextField" pref="25" max="32767" attributes="0"/>
+                                      <Component id="diaLabel" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="pipeInsulCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <Component id="insulCheckBox" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="pipeReinforceCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <Component id="reinforceCheckBox" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="pipeChemResCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chemResCheckBox" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="pipeGradeLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                      <Component id="pipeGradeComboBox" alignment="3" max="32767" attributes="0"/>
+                                      <Component id="gradeLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="gradeComboBox" alignment="3" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="pipeColoursLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                      <Component id="pipeColoursComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="coloursLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="coloursComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="pipeQuantityLabel" alignment="3" max="32767" attributes="0"/>
-                                      <Component id="pipeQuantitySpinner" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="quantityLabel" alignment="3" max="32767" attributes="0"/>
+                                      <Component id="quantitySpinner" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -125,17 +125,28 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="pipeSizeLengthTextField">
+        <Component class="javax.swing.JLabel" name="sizeLabel">
           <Properties>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="0.0"/>
+            <Property name="text" type="java.lang.String" value="Size:"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pipeSizeLengthTextFieldActionPerformed"/>
-            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="pipeSizeLengthTextFieldPropertyChange"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="pipeGradeLabel">
+        <Component class="javax.swing.JLabel" name="lengthLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="com.sun.beans.editors.FontEditor">
+              <SerializedValue value="-84,-19,0,5,115,114,0,13,106,97,118,97,46,97,119,116,46,70,111,110,116,-59,-95,53,-26,-52,-34,86,115,3,0,6,73,0,25,102,111,110,116,83,101,114,105,97,108,105,122,101,100,68,97,116,97,86,101,114,115,105,111,110,70,0,9,112,111,105,110,116,83,105,122,101,73,0,4,115,105,122,101,73,0,5,115,116,121,108,101,76,0,20,102,82,101,113,117,101,115,116,101,100,65,116,116,114,105,98,117,116,101,115,116,0,21,76,106,97,118,97,47,117,116,105,108,47,72,97,115,104,116,97,98,108,101,59,76,0,4,110,97,109,101,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,0,0,0,1,65,64,0,0,0,0,0,12,0,0,0,0,112,116,0,6,68,105,97,108,111,103,120"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Length:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="diaLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="com.sun.beans.editors.FontEditor">
+              <SerializedValue value="-84,-19,0,5,115,114,0,13,106,97,118,97,46,97,119,116,46,70,111,110,116,-59,-95,53,-26,-52,-34,86,115,3,0,6,73,0,25,102,111,110,116,83,101,114,105,97,108,105,122,101,100,68,97,116,97,86,101,114,115,105,111,110,70,0,9,112,111,105,110,116,83,105,122,101,73,0,4,115,105,122,101,73,0,5,115,116,121,108,101,76,0,20,102,82,101,113,117,101,115,116,101,100,65,116,116,114,105,98,117,116,101,115,116,0,21,76,106,97,118,97,47,117,116,105,108,47,72,97,115,104,116,97,98,108,101,59,76,0,4,110,97,109,101,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,0,0,0,1,65,64,0,0,0,0,0,12,0,0,0,0,112,116,0,6,68,105,97,108,111,103,120"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Diameter:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="gradeLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="com.sun.beans.editors.FontEditor">
               <SerializedValue value="-84,-19,0,5,115,114,0,13,106,97,118,97,46,97,119,116,46,70,111,110,116,-59,-95,53,-26,-52,-34,86,115,3,0,6,73,0,25,102,111,110,116,83,101,114,105,97,108,105,122,101,100,68,97,116,97,86,101,114,115,105,111,110,70,0,9,112,111,105,110,116,83,105,122,101,73,0,4,115,105,122,101,73,0,5,115,116,121,108,101,76,0,20,102,82,101,113,117,101,115,116,101,100,65,116,116,114,105,98,117,116,101,115,116,0,21,76,106,97,118,97,47,117,116,105,108,47,72,97,115,104,116,97,98,108,101,59,76,0,4,110,97,109,101,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,0,0,0,1,65,64,0,0,0,0,0,12,0,0,0,0,112,116,0,6,68,105,97,108,111,103,120"/>
@@ -143,7 +154,40 @@
             <Property name="text" type="java.lang.String" value="Grade:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="pipeGradeComboBox">
+        <Component class="javax.swing.JLabel" name="coloursLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="com.sun.beans.editors.FontEditor">
+              <SerializedValue value="-84,-19,0,5,115,114,0,13,106,97,118,97,46,97,119,116,46,70,111,110,116,-59,-95,53,-26,-52,-34,86,115,3,0,6,73,0,25,102,111,110,116,83,101,114,105,97,108,105,122,101,100,68,97,116,97,86,101,114,115,105,111,110,70,0,9,112,111,105,110,116,83,105,122,101,73,0,4,115,105,122,101,73,0,5,115,116,121,108,101,76,0,20,102,82,101,113,117,101,115,116,101,100,65,116,116,114,105,98,117,116,101,115,116,0,21,76,106,97,118,97,47,117,116,105,108,47,72,97,115,104,116,97,98,108,101,59,76,0,4,110,97,109,101,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,0,0,0,1,65,64,0,0,0,0,0,12,0,0,0,0,112,116,0,6,68,105,97,108,111,103,120"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Colours:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="quantityLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Quantity:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="lengthTextField">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="0.0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lengthTextFieldActionPerformed"/>
+            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="lengthTextFieldPropertyChange"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="diaTextField">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="0.0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="diaTextFieldActionPerformed"/>
+            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="diaTextFieldPropertyChange"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="gradeComboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="5">
@@ -156,10 +200,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pipeGradeComboBoxActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gradeComboBoxActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="pipeColoursComboBox">
+        <Component class="javax.swing.JComboBox" name="coloursComboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
@@ -170,67 +214,41 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pipeColoursComboBoxActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="coloursComboBoxActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="pipeSizeDiaLabel">
+        <Component class="javax.swing.JSeparator" name="seperator">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="com.sun.beans.editors.FontEditor">
-              <SerializedValue value="-84,-19,0,5,115,114,0,13,106,97,118,97,46,97,119,116,46,70,111,110,116,-59,-95,53,-26,-52,-34,86,115,3,0,6,73,0,25,102,111,110,116,83,101,114,105,97,108,105,122,101,100,68,97,116,97,86,101,114,115,105,111,110,70,0,9,112,111,105,110,116,83,105,122,101,73,0,4,115,105,122,101,73,0,5,115,116,121,108,101,76,0,20,102,82,101,113,117,101,115,116,101,100,65,116,116,114,105,98,117,116,101,115,116,0,21,76,106,97,118,97,47,117,116,105,108,47,72,97,115,104,116,97,98,108,101,59,76,0,4,110,97,109,101,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,0,0,0,1,65,64,0,0,0,0,0,12,0,0,0,0,112,116,0,6,68,105,97,108,111,103,120"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Diameter:"/>
+            <Property name="orientation" type="int" value="1"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="pipeSizeLengthLabel">
+        <Component class="javax.swing.JCheckBox" name="insulCheckBox">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="com.sun.beans.editors.FontEditor">
-              <SerializedValue value="-84,-19,0,5,115,114,0,13,106,97,118,97,46,97,119,116,46,70,111,110,116,-59,-95,53,-26,-52,-34,86,115,3,0,6,73,0,25,102,111,110,116,83,101,114,105,97,108,105,122,101,100,68,97,116,97,86,101,114,115,105,111,110,70,0,9,112,111,105,110,116,83,105,122,101,73,0,4,115,105,122,101,73,0,5,115,116,121,108,101,76,0,20,102,82,101,113,117,101,115,116,101,100,65,116,116,114,105,98,117,116,101,115,116,0,21,76,106,97,118,97,47,117,116,105,108,47,72,97,115,104,116,97,98,108,101,59,76,0,4,110,97,109,101,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,0,0,0,1,65,64,0,0,0,0,0,12,0,0,0,0,112,116,0,6,68,105,97,108,111,103,120"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Length:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="pipeColoursLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="com.sun.beans.editors.FontEditor">
-              <SerializedValue value="-84,-19,0,5,115,114,0,13,106,97,118,97,46,97,119,116,46,70,111,110,116,-59,-95,53,-26,-52,-34,86,115,3,0,6,73,0,25,102,111,110,116,83,101,114,105,97,108,105,122,101,100,68,97,116,97,86,101,114,115,105,111,110,70,0,9,112,111,105,110,116,83,105,122,101,73,0,4,115,105,122,101,73,0,5,115,116,121,108,101,76,0,20,102,82,101,113,117,101,115,116,101,100,65,116,116,114,105,98,117,116,101,115,116,0,21,76,106,97,118,97,47,117,116,105,108,47,72,97,115,104,116,97,98,108,101,59,76,0,4,110,97,109,101,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,0,0,0,1,65,64,0,0,0,0,0,12,0,0,0,0,112,116,0,6,68,105,97,108,111,103,120"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Colours:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="pipeSizeDiaTextField">
-          <Properties>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="0.0"/>
+            <Property name="text" type="java.lang.String" value="Insulation"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pipeSizeDiaTextFieldActionPerformed"/>
-            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="pipeSizeDiaTextFieldPropertyChange"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insulCheckBoxActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="pipeChemResCheckBox">
+        <Component class="javax.swing.JCheckBox" name="chemResCheckBox">
           <Properties>
             <Property name="text" type="java.lang.String" value="Chemical Resistance"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pipeChemResCheckBoxActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chemResCheckBoxActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="pipeQuantityLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Quantity:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="pipeReinforceCheckBox">
+        <Component class="javax.swing.JCheckBox" name="reinforceCheckBox">
           <Properties>
             <Property name="text" type="java.lang.String" value="Reinforcement"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pipeReinforceCheckBoxActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reinforceCheckBoxActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JSpinner" name="pipeQuantitySpinner">
+        <Component class="javax.swing.JSpinner" name="quantitySpinner">
           <Events>
-            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="pipeQuantitySpinnerStateChanged"/>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="quantitySpinnerStateChanged"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="submitOrderButton">
@@ -248,24 +266,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="discardOrderButtonActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="pipeSizeLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Size:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="pipeInsulCheckBox">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Insulation"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pipeInsulCheckBoxActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JSeparator" name="seperator">
-          <Properties>
-            <Property name="orientation" type="int" value="1"/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
@@ -312,9 +312,9 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="totalCostLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
                       <Component id="itemAmountLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="107" max="32767" attributes="0"/>
+                      <EmptySpace pref="18" max="32767" attributes="0"/>
                       <Component id="submitOrdersButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="resetOrdersButton" min="-2" max="-2" attributes="0"/>
@@ -358,20 +358,40 @@
         <Property name="toolTipText" type="java.lang.String" value="For all your pipe needs!"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="submitOrdersButton">
+    <Component class="javax.swing.JLabel" name="totalCostLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Submit"/>
+        <Property name="text" type="java.lang.String" value="Total Cost: &#xa3;##.##"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="itemAmountLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Amount of items: #"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="addOrderButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submitOrdersButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addOrderButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="resetOrdersButton">
+    <Component class="javax.swing.JButton" name="editOrderButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Reset"/>
+        <Property name="text" type="java.lang.String" value="Edit"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resetOrdersButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editOrderButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="deleteOrderButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Delete"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteOrderButtonActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="orderScrollPane">
@@ -401,41 +421,21 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="addOrderButton">
+    <Component class="javax.swing.JButton" name="submitOrdersButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add"/>
+        <Property name="text" type="java.lang.String" value="Submit"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addOrderButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submitOrdersButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="editOrderButton">
+    <Component class="javax.swing.JButton" name="resetOrdersButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Edit"/>
-        <Property name="enabled" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="Reset"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editOrderButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resetOrdersButtonActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="deleteOrderButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Delete"/>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteOrderButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="totalCostLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Total Cost: &#xa3;##.##"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="itemAmountLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Amount of items: #"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

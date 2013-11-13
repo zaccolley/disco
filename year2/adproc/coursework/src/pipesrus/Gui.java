@@ -93,107 +93,118 @@ public class Gui extends javax.swing.JFrame {
     private void initComponents() {
 
         addOrder = new javax.swing.JDialog();
-        pipeSizeLengthTextField = new javax.swing.JTextField();
-        pipeGradeLabel = new javax.swing.JLabel();
-        pipeGradeComboBox = new javax.swing.JComboBox();
-        pipeColoursComboBox = new javax.swing.JComboBox();
-        pipeSizeDiaLabel = new javax.swing.JLabel();
-        pipeSizeLengthLabel = new javax.swing.JLabel();
-        pipeColoursLabel = new javax.swing.JLabel();
-        pipeSizeDiaTextField = new javax.swing.JTextField();
-        pipeChemResCheckBox = new javax.swing.JCheckBox();
-        pipeQuantityLabel = new javax.swing.JLabel();
-        pipeReinforceCheckBox = new javax.swing.JCheckBox();
-        pipeQuantitySpinner = new javax.swing.JSpinner();
+        sizeLabel = new javax.swing.JLabel();
+        lengthLabel = new javax.swing.JLabel();
+        diaLabel = new javax.swing.JLabel();
+        gradeLabel = new javax.swing.JLabel();
+        coloursLabel = new javax.swing.JLabel();
+        quantityLabel = new javax.swing.JLabel();
+        lengthTextField = new javax.swing.JTextField();
+        diaTextField = new javax.swing.JTextField();
+        gradeComboBox = new javax.swing.JComboBox();
+        coloursComboBox = new javax.swing.JComboBox();
+        seperator = new javax.swing.JSeparator();
+        insulCheckBox = new javax.swing.JCheckBox();
+        chemResCheckBox = new javax.swing.JCheckBox();
+        reinforceCheckBox = new javax.swing.JCheckBox();
+        quantitySpinner = new javax.swing.JSpinner();
         submitOrderButton = new javax.swing.JButton();
         discardOrderButton = new javax.swing.JButton();
-        pipeSizeLabel = new javax.swing.JLabel();
-        pipeInsulCheckBox = new javax.swing.JCheckBox();
-        seperator = new javax.swing.JSeparator();
         titleLabel = new javax.swing.JLabel();
-        submitOrdersButton = new javax.swing.JButton();
-        resetOrdersButton = new javax.swing.JButton();
-        orderScrollPane = new javax.swing.JScrollPane();
-        orderList = new javax.swing.JList();
+        totalCostLabel = new javax.swing.JLabel();
+        itemAmountLabel = new javax.swing.JLabel();
         addOrderButton = new javax.swing.JButton();
         editOrderButton = new javax.swing.JButton();
         deleteOrderButton = new javax.swing.JButton();
-        totalCostLabel = new javax.swing.JLabel();
-        itemAmountLabel = new javax.swing.JLabel();
+        orderScrollPane = new javax.swing.JScrollPane();
+        orderList = new javax.swing.JList();
+        submitOrdersButton = new javax.swing.JButton();
+        resetOrdersButton = new javax.swing.JButton();
 
         addOrder.setResizable(false);
 
-        pipeSizeLengthTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pipeSizeLengthTextField.setText("0.0");
-        pipeSizeLengthTextField.addActionListener(new java.awt.event.ActionListener() {
+        sizeLabel.setText("Size:");
+
+        lengthLabel.setFont(new java.awt.Font("Dialog", 0, 12));
+        lengthLabel.setText("Length:");
+
+        diaLabel.setFont(new java.awt.Font("Dialog", 0, 12));
+        diaLabel.setText("Diameter:");
+
+        gradeLabel.setFont(new java.awt.Font("Dialog", 0, 12));
+        gradeLabel.setText("Grade:");
+
+        coloursLabel.setFont(new java.awt.Font("Dialog", 0, 12));
+        coloursLabel.setText("Colours:");
+
+        quantityLabel.setText("Quantity:");
+
+        lengthTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        lengthTextField.setText("0.0");
+        lengthTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pipeSizeLengthTextFieldActionPerformed(evt);
+                lengthTextFieldActionPerformed(evt);
             }
         });
-        pipeSizeLengthTextField.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        lengthTextField.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                pipeSizeLengthTextFieldPropertyChange(evt);
+                lengthTextFieldPropertyChange(evt);
             }
         });
 
-        pipeGradeLabel.setFont(new java.awt.Font("Dialog", 0, 12));
-        pipeGradeLabel.setText("Grade:");
-
-        pipeGradeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
-        pipeGradeComboBox.addActionListener(new java.awt.event.ActionListener() {
+        diaTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        diaTextField.setText("0.0");
+        diaTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pipeGradeComboBoxActionPerformed(evt);
+                diaTextFieldActionPerformed(evt);
             }
         });
-
-        pipeColoursComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2" }));
-        pipeColoursComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pipeColoursComboBoxActionPerformed(evt);
-            }
-        });
-
-        pipeSizeDiaLabel.setFont(new java.awt.Font("Dialog", 0, 12));
-        pipeSizeDiaLabel.setText("Diameter:");
-
-        pipeSizeLengthLabel.setFont(new java.awt.Font("Dialog", 0, 12));
-        pipeSizeLengthLabel.setText("Length:");
-
-        pipeColoursLabel.setFont(new java.awt.Font("Dialog", 0, 12));
-        pipeColoursLabel.setText("Colours:");
-
-        pipeSizeDiaTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pipeSizeDiaTextField.setText("0.0");
-        pipeSizeDiaTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pipeSizeDiaTextFieldActionPerformed(evt);
-            }
-        });
-        pipeSizeDiaTextField.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        diaTextField.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                pipeSizeDiaTextFieldPropertyChange(evt);
+                diaTextFieldPropertyChange(evt);
             }
         });
 
-        pipeChemResCheckBox.setText("Chemical Resistance");
-        pipeChemResCheckBox.addActionListener(new java.awt.event.ActionListener() {
+        gradeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+        gradeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pipeChemResCheckBoxActionPerformed(evt);
+                gradeComboBoxActionPerformed(evt);
             }
         });
 
-        pipeQuantityLabel.setText("Quantity:");
-
-        pipeReinforceCheckBox.setText("Reinforcement");
-        pipeReinforceCheckBox.addActionListener(new java.awt.event.ActionListener() {
+        coloursComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2" }));
+        coloursComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pipeReinforceCheckBoxActionPerformed(evt);
+                coloursComboBoxActionPerformed(evt);
             }
         });
 
-        pipeQuantitySpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+        seperator.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        insulCheckBox.setText("Insulation");
+        insulCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insulCheckBoxActionPerformed(evt);
+            }
+        });
+
+        chemResCheckBox.setText("Chemical Resistance");
+        chemResCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chemResCheckBoxActionPerformed(evt);
+            }
+        });
+
+        reinforceCheckBox.setText("Reinforcement");
+        reinforceCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reinforceCheckBoxActionPerformed(evt);
+            }
+        });
+
+        quantitySpinner.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                pipeQuantitySpinnerStateChanged(evt);
+                quantitySpinnerStateChanged(evt);
             }
         });
 
@@ -211,17 +222,6 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
-        pipeSizeLabel.setText("Size:");
-
-        pipeInsulCheckBox.setText("Insulation");
-        pipeInsulCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pipeInsulCheckBoxActionPerformed(evt);
-            }
-        });
-
-        seperator.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
         javax.swing.GroupLayout addOrderLayout = new javax.swing.GroupLayout(addOrder.getContentPane());
         addOrder.getContentPane().setLayout(addOrderLayout);
         addOrderLayout.setHorizontalGroup(
@@ -231,32 +231,32 @@ public class Gui extends javax.swing.JFrame {
                 .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addOrderLayout.createSequentialGroup()
                         .addGap(266, 266, 266)
-                        .addComponent(pipeQuantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(quantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(addOrderLayout.createSequentialGroup()
                         .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(addOrderLayout.createSequentialGroup()
                                 .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(pipeSizeDiaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(pipeSizeLengthLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(pipeGradeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(pipeColoursLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(diaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lengthLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(gradeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(coloursLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(36, 36, 36)
                                 .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pipeSizeLengthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pipeSizeDiaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pipeColoursComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pipeGradeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(pipeSizeLabel))
+                                    .addComponent(lengthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(diaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(coloursComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(gradeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(sizeLabel))
                         .addGap(18, 18, 18)
                         .addComponent(seperator, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(addOrderLayout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pipeQuantityLabel)
-                                    .addComponent(pipeReinforceCheckBox)
-                                    .addComponent(pipeChemResCheckBox)
-                                    .addComponent(pipeInsulCheckBox)))
+                                    .addComponent(quantityLabel)
+                                    .addComponent(reinforceCheckBox)
+                                    .addComponent(chemResCheckBox)
+                                    .addComponent(insulCheckBox)))
                             .addGroup(addOrderLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(submitOrderButton)
@@ -268,41 +268,41 @@ public class Gui extends javax.swing.JFrame {
             addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addOrderLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(pipeSizeLabel)
+                .addComponent(sizeLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(addOrderLayout.createSequentialGroup()
                         .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(addOrderLayout.createSequentialGroup()
                                 .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pipeSizeLengthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pipeSizeLengthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lengthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lengthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(pipeSizeDiaTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                                    .addComponent(pipeSizeDiaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(diaTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                                    .addComponent(diaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(addOrderLayout.createSequentialGroup()
-                                .addComponent(pipeInsulCheckBox)
+                                .addComponent(insulCheckBox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pipeReinforceCheckBox)
+                                .addComponent(reinforceCheckBox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pipeChemResCheckBox)))
+                                .addComponent(chemResCheckBox)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(addOrderLayout.createSequentialGroup()
                                 .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(pipeGradeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pipeGradeComboBox))
+                                    .addComponent(gradeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(gradeComboBox))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(pipeColoursLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pipeColoursComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(coloursLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(coloursComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(6, 6, 6))
                             .addGroup(addOrderLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(pipeQuantityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(pipeQuantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(quantityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(quantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(submitOrderButton)
@@ -320,32 +320,9 @@ public class Gui extends javax.swing.JFrame {
         titleLabel.setText("Pipes 'R' Us");
         titleLabel.setToolTipText("For all your pipe needs!");
 
-        submitOrdersButton.setText("Submit");
-        submitOrdersButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitOrdersButtonActionPerformed(evt);
-            }
-        });
+        totalCostLabel.setText("Total Cost: £##.##");
 
-        resetOrdersButton.setText("Reset");
-        resetOrdersButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetOrdersButtonActionPerformed(evt);
-            }
-        });
-
-        orderList.setBackground(new java.awt.Color(-723724,true));
-        orderList.setFont(new java.awt.Font("SansSerif", 0, 12));
-        orderList.setOpaque(false);
-        orderList.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                orderListFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                orderListFocusLost(evt);
-            }
-        });
-        orderScrollPane.setViewportView(orderList);
+        itemAmountLabel.setText("Amount of items: #");
 
         addOrderButton.setText("Add");
         addOrderButton.addActionListener(new java.awt.event.ActionListener() {
@@ -370,9 +347,32 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
-        totalCostLabel.setText("Total Cost: £##.##");
+        orderList.setBackground(new java.awt.Color(-723724,true));
+        orderList.setFont(new java.awt.Font("SansSerif", 0, 12));
+        orderList.setOpaque(false);
+        orderList.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                orderListFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                orderListFocusLost(evt);
+            }
+        });
+        orderScrollPane.setViewportView(orderList);
 
-        itemAmountLabel.setText("Amount of items: #");
+        submitOrdersButton.setText("Submit");
+        submitOrdersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitOrdersButtonActionPerformed(evt);
+            }
+        });
+
+        resetOrdersButton.setText("Reset");
+        resetOrdersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetOrdersButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -392,9 +392,9 @@ public class Gui extends javax.swing.JFrame {
                         .addComponent(deleteOrderButton))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(totalCostLabel)
-                        .addGap(70, 70, 70)
+                        .addGap(159, 159, 159)
                         .addComponent(itemAmountLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(submitOrdersButton)
                         .addGap(18, 18, 18)
                         .addComponent(resetOrdersButton)))
@@ -428,17 +428,17 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
 }//GEN-LAST:event_addOrderButtonActionPerformed
 
 public void resetAddOrder(){
-    pipeSizeLengthTextField.setText("0.0");
-    pipeSizeDiaTextField.setText("0.0");
+    lengthTextField.setText("0.0");
+    diaTextField.setText("0.0");
     
-    pipeChemResCheckBox.setSelected(false);
-    pipeInsulCheckBox.setSelected(false);
-    pipeReinforceCheckBox.setSelected(false);
+    chemResCheckBox.setSelected(false);
+    insulCheckBox.setSelected(false);
+    reinforceCheckBox.setSelected(false);
     
-    pipeQuantitySpinner.setValue(0);
+    quantitySpinner.setValue(0);
     
-    pipeGradeComboBox.setSelectedIndex(0);
-    pipeColoursComboBox.setSelectedIndex(0);
+    gradeComboBox.setSelectedIndex(0);
+    coloursComboBox.setSelectedIndex(0);
     
     resetTempVars();       
 }
@@ -494,9 +494,9 @@ public void resetTempVars(){
         // TODO add your handling code here:
     }//GEN-LAST:event_editOrderButtonActionPerformed
 
-    private void pipeInsulCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeInsulCheckBoxActionPerformed
-        tempInsul = pipeInsulCheckBox.isSelected();
-    }//GEN-LAST:event_pipeInsulCheckBoxActionPerformed
+    private void insulCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insulCheckBoxActionPerformed
+        tempInsul = insulCheckBox.isSelected();
+    }//GEN-LAST:event_insulCheckBoxActionPerformed
 
     private void discardOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardOrderButtonActionPerformed
         // nothing
@@ -589,41 +589,41 @@ public void resetTempVars(){
             resetAddOrder();
         }
     
-    private void pipeQuantitySpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_pipeQuantitySpinnerStateChanged
-        tempQuantity = (Integer) pipeQuantitySpinner.getValue();
-    }//GEN-LAST:event_pipeQuantitySpinnerStateChanged
+    private void quantitySpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quantitySpinnerStateChanged
+        tempQuantity = (Integer) quantitySpinner.getValue();
+    }//GEN-LAST:event_quantitySpinnerStateChanged
 
-    private void pipeReinforceCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeReinforceCheckBoxActionPerformed
-        tempReinforce = pipeReinforceCheckBox.isSelected();
-    }//GEN-LAST:event_pipeReinforceCheckBoxActionPerformed
+    private void reinforceCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reinforceCheckBoxActionPerformed
+        tempReinforce = reinforceCheckBox.isSelected();
+    }//GEN-LAST:event_reinforceCheckBoxActionPerformed
 
-    private void pipeChemResCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeChemResCheckBoxActionPerformed
-        tempChemRes = pipeChemResCheckBox.isSelected();
-    }//GEN-LAST:event_pipeChemResCheckBoxActionPerformed
+    private void chemResCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chemResCheckBoxActionPerformed
+        tempChemRes = chemResCheckBox.isSelected();
+    }//GEN-LAST:event_chemResCheckBoxActionPerformed
 
-    private void pipeSizeDiaTextFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_pipeSizeDiaTextFieldPropertyChange
-        tempDia = Double.parseDouble((String) pipeSizeDiaTextField.getText());
-    }//GEN-LAST:event_pipeSizeDiaTextFieldPropertyChange
+    private void diaTextFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_diaTextFieldPropertyChange
+        tempDia = Double.parseDouble((String) diaTextField.getText());
+    }//GEN-LAST:event_diaTextFieldPropertyChange
     
-    private void pipeSizeDiaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeSizeDiaTextFieldActionPerformed
-        tempDia = Double.parseDouble((String) pipeSizeDiaTextField.getText());
-    }//GEN-LAST:event_pipeSizeDiaTextFieldActionPerformed
+    private void diaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diaTextFieldActionPerformed
+        tempDia = Double.parseDouble((String) diaTextField.getText());
+    }//GEN-LAST:event_diaTextFieldActionPerformed
 
-    private void pipeColoursComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeColoursComboBoxActionPerformed
-        tempColours = Integer.parseInt((String) pipeColoursComboBox.getSelectedItem());
-    }//GEN-LAST:event_pipeColoursComboBoxActionPerformed
+    private void coloursComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coloursComboBoxActionPerformed
+        tempColours = Integer.parseInt((String) coloursComboBox.getSelectedItem());
+    }//GEN-LAST:event_coloursComboBoxActionPerformed
     
-    private void pipeGradeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeGradeComboBoxActionPerformed
-        tempGrade = Integer.parseInt((String) pipeGradeComboBox.getSelectedItem());
-    }//GEN-LAST:event_pipeGradeComboBoxActionPerformed
+    private void gradeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradeComboBoxActionPerformed
+        tempGrade = Integer.parseInt((String) gradeComboBox.getSelectedItem());
+    }//GEN-LAST:event_gradeComboBoxActionPerformed
 
-    private void pipeSizeLengthTextFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_pipeSizeLengthTextFieldPropertyChange
-        tempLength = Double.parseDouble(pipeSizeLengthTextField.getText());
-    }//GEN-LAST:event_pipeSizeLengthTextFieldPropertyChange
+    private void lengthTextFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lengthTextFieldPropertyChange
+        tempLength = Double.parseDouble(lengthTextField.getText());
+    }//GEN-LAST:event_lengthTextFieldPropertyChange
 
-    private void pipeSizeLengthTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeSizeLengthTextFieldActionPerformed
-        tempLength = Double.parseDouble(pipeSizeLengthTextField.getText());
-    }//GEN-LAST:event_pipeSizeLengthTextFieldActionPerformed
+    private void lengthTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lengthTextFieldActionPerformed
+        tempLength = Double.parseDouble(lengthTextField.getText());
+    }//GEN-LAST:event_lengthTextFieldActionPerformed
 
     private void submitOrdersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitOrdersButtonActionPerformed
         int option = JOptionPane.showConfirmDialog(null,
@@ -639,28 +639,28 @@ public void resetTempVars(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog addOrder;
     private javax.swing.JButton addOrderButton;
+    private javax.swing.JCheckBox chemResCheckBox;
+    private javax.swing.JComboBox coloursComboBox;
+    private javax.swing.JLabel coloursLabel;
     private javax.swing.JButton deleteOrderButton;
+    private javax.swing.JLabel diaLabel;
+    private javax.swing.JTextField diaTextField;
     private javax.swing.JButton discardOrderButton;
     private javax.swing.JButton editOrderButton;
+    private javax.swing.JComboBox gradeComboBox;
+    private javax.swing.JLabel gradeLabel;
+    private javax.swing.JCheckBox insulCheckBox;
     private javax.swing.JLabel itemAmountLabel;
+    private javax.swing.JLabel lengthLabel;
+    private javax.swing.JTextField lengthTextField;
     private javax.swing.JList orderList;
     private javax.swing.JScrollPane orderScrollPane;
-    private javax.swing.JCheckBox pipeChemResCheckBox;
-    private javax.swing.JComboBox pipeColoursComboBox;
-    private javax.swing.JLabel pipeColoursLabel;
-    private javax.swing.JComboBox pipeGradeComboBox;
-    private javax.swing.JLabel pipeGradeLabel;
-    private javax.swing.JCheckBox pipeInsulCheckBox;
-    private javax.swing.JLabel pipeQuantityLabel;
-    private javax.swing.JSpinner pipeQuantitySpinner;
-    private javax.swing.JCheckBox pipeReinforceCheckBox;
-    private javax.swing.JLabel pipeSizeDiaLabel;
-    private javax.swing.JTextField pipeSizeDiaTextField;
-    private javax.swing.JLabel pipeSizeLabel;
-    private javax.swing.JLabel pipeSizeLengthLabel;
-    private javax.swing.JTextField pipeSizeLengthTextField;
+    private javax.swing.JLabel quantityLabel;
+    private javax.swing.JSpinner quantitySpinner;
+    private javax.swing.JCheckBox reinforceCheckBox;
     private javax.swing.JButton resetOrdersButton;
     private javax.swing.JSeparator seperator;
+    private javax.swing.JLabel sizeLabel;
     private javax.swing.JButton submitOrderButton;
     private javax.swing.JButton submitOrdersButton;
     private javax.swing.JLabel titleLabel;
