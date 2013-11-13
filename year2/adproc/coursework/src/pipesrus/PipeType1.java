@@ -21,7 +21,8 @@ public class PipeType1 extends Pipe{
     // pretty getters
     
     public String getPrettyChemRes(){
-        return (getChemRes() ? "CR":"No-CR");
+        String output = (getChemRes() ? "CR":"No-CR");
+        return  "<font color='#FF0000'>" + output + "</font>";
     }  
     
     // setters
@@ -34,11 +35,11 @@ public class PipeType1 extends Pipe{
     
     @Override
     public String toString(){        
-        return getPrettyLength() + " by " + getPrettyDia()
+        return getPrettyLength() + " <i>by</i> " + getPrettyDia()
                + " | " + getPrettyGrade() + " (" + getPrettyChemRes() + ")";
     }
     
-    // abstract overides
+    // abstract overrides
 
     @Override
     public int getColours(){ return 0; }

@@ -60,11 +60,12 @@ public class Gui extends javax.swing.JFrame {
         
         if(orders.size() > 0){
             for(Order o: orders){
-                orderListItems.addElement(style("b", "£" + o.getCost() * o.getQuantity()) + " " + o);
+                double orderItemCost = Math.floor((o.getCost() * o.getQuantity()) * 100) / 100;
+                orderListItems.addElement("<html><b>£" + orderItemCost + "</b> " + o);
                 pipeAmount += o.getQuantity();
             }
         }else{
-            orderListItems.addElement("No orders");
+            orderListItems.addElement("<html><i>No orders</i>");
         }
         
         itemAmountLabel.setText("Order amount: " + orders.size() + " ("+ pipeAmount +" pipes)");
@@ -80,24 +81,6 @@ public class Gui extends javax.swing.JFrame {
         }
         
         totalCostLabel.setText("Total: £" + (double) Math.floor(totalCost * 100) / 100  + "\n");
-    }
-    
-    
-    public String style(String type, String input){
-        String output = "<html>";
-        if("colour".equals(type)){            
-            output += "<html><font color='red'>" + input + "</font>";
-        }
-        else if("b".equals(type)){            
-            output += "<b>" + input + "</b>";
-        }
-        else if("i".equals(type)){            
-            output += "<i>" + input + "</i>";
-        }
-        else if("u".equals(type)){            
-            output += "<u>" + input + "</u>";
-        }
-        return output;
     }
     
     /** This method is called from within the constructor to
@@ -126,9 +109,7 @@ public class Gui extends javax.swing.JFrame {
         discardOrderButton = new javax.swing.JButton();
         pipeSizeLabel = new javax.swing.JLabel();
         pipeInsulCheckBox = new javax.swing.JCheckBox();
-        jSeparator1 = new javax.swing.JSeparator();
-        Colours = new javax.swing.JDialog();
-        colorChooser = new javax.swing.JColorChooser();
+        seperator = new javax.swing.JSeparator();
         titleLabel = new javax.swing.JLabel();
         submitOrdersButton = new javax.swing.JButton();
         resetOrdersButton = new javax.swing.JButton();
@@ -239,7 +220,7 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        seperator.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         javax.swing.GroupLayout addOrderLayout = new javax.swing.GroupLayout(addOrder.getContentPane());
         addOrder.getContentPane().setLayout(addOrderLayout);
@@ -249,19 +230,25 @@ public class Gui extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addOrderLayout.createSequentialGroup()
-                        .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pipeSizeDiaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pipeSizeLengthLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pipeGradeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pipeColoursLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(36, 36, 36)
+                        .addGap(266, 266, 266)
+                        .addComponent(pipeQuantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addOrderLayout.createSequentialGroup()
                         .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pipeSizeLengthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pipeSizeDiaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pipeColoursComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pipeGradeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(addOrderLayout.createSequentialGroup()
+                                .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(pipeSizeDiaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(pipeSizeLengthLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(pipeGradeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(pipeColoursLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(36, 36, 36)
+                                .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pipeSizeLengthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pipeSizeDiaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pipeColoursComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pipeGradeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(pipeSizeLabel))
                         .addGap(18, 18, 18)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(seperator, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(addOrderLayout.createSequentialGroup()
                                 .addGap(5, 5, 5)
@@ -274,11 +261,7 @@ public class Gui extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(submitOrderButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                                .addComponent(discardOrderButton))))
-                    .addComponent(pipeSizeLabel)
-                    .addGroup(addOrderLayout.createSequentialGroup()
-                        .addGap(266, 266, 266)
-                        .addComponent(pipeQuantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(discardOrderButton)))))
                 .addContainerGap())
         );
         addOrderLayout.setVerticalGroup(
@@ -324,24 +307,7 @@ public class Gui extends javax.swing.JFrame {
                                 .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(submitOrderButton)
                                     .addComponent(discardOrderButton)))))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout ColoursLayout = new javax.swing.GroupLayout(Colours.getContentPane());
-        Colours.getContentPane().setLayout(ColoursLayout);
-        ColoursLayout.setHorizontalGroup(
-            ColoursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ColoursLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(colorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        ColoursLayout.setVerticalGroup(
-            ColoursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ColoursLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(colorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(seperator, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -404,9 +370,9 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
-        totalCostLabel.setText("Total Cost: £100.50");
+        totalCostLabel.setText("Total Cost: £##.##");
 
-        itemAmountLabel.setText("Amount of items: 30");
+        itemAmountLabel.setText("Amount of items: #");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -428,7 +394,7 @@ public class Gui extends javax.swing.JFrame {
                         .addComponent(totalCostLabel)
                         .addGap(70, 70, 70)
                         .addComponent(itemAmountLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                         .addComponent(submitOrdersButton)
                         .addGap(18, 18, 18)
                         .addComponent(resetOrdersButton)))
@@ -458,10 +424,6 @@ public class Gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addOrderButtonActionPerformed
-//    Colours.setVisible(true);
-    Colours.setBounds(0,0,800,400);
-    colorChooser.setPreviewPanel(new JPanel());
-
     addOrder.setVisible(true);
 }//GEN-LAST:event_addOrderButtonActionPerformed
 
@@ -642,7 +604,7 @@ public void resetTempVars(){
     private void pipeSizeDiaTextFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_pipeSizeDiaTextFieldPropertyChange
         tempDia = Double.parseDouble((String) pipeSizeDiaTextField.getText());
     }//GEN-LAST:event_pipeSizeDiaTextFieldPropertyChange
-
+    
     private void pipeSizeDiaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeSizeDiaTextFieldActionPerformed
         tempDia = Double.parseDouble((String) pipeSizeDiaTextField.getText());
     }//GEN-LAST:event_pipeSizeDiaTextFieldActionPerformed
@@ -650,7 +612,7 @@ public void resetTempVars(){
     private void pipeColoursComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeColoursComboBoxActionPerformed
         tempColours = Integer.parseInt((String) pipeColoursComboBox.getSelectedItem());
     }//GEN-LAST:event_pipeColoursComboBoxActionPerformed
-
+    
     private void pipeGradeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeGradeComboBoxActionPerformed
         tempGrade = Integer.parseInt((String) pipeGradeComboBox.getSelectedItem());
     }//GEN-LAST:event_pipeGradeComboBoxActionPerformed
@@ -675,15 +637,12 @@ public void resetTempVars(){
     }//GEN-LAST:event_submitOrdersButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDialog Colours;
     private javax.swing.JDialog addOrder;
     private javax.swing.JButton addOrderButton;
-    private javax.swing.JColorChooser colorChooser;
     private javax.swing.JButton deleteOrderButton;
     private javax.swing.JButton discardOrderButton;
     private javax.swing.JButton editOrderButton;
     private javax.swing.JLabel itemAmountLabel;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JList orderList;
     private javax.swing.JScrollPane orderScrollPane;
     private javax.swing.JCheckBox pipeChemResCheckBox;
@@ -701,6 +660,7 @@ public void resetTempVars(){
     private javax.swing.JLabel pipeSizeLengthLabel;
     private javax.swing.JTextField pipeSizeLengthTextField;
     private javax.swing.JButton resetOrdersButton;
+    private javax.swing.JSeparator seperator;
     private javax.swing.JButton submitOrderButton;
     private javax.swing.JButton submitOrdersButton;
     private javax.swing.JLabel titleLabel;

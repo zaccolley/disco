@@ -23,7 +23,7 @@ public class PipeType23 extends PipeType1{
     // pretty getters
     
     public String getPrettyColours(){
-        return getColours() + " colours";
+        return "<i>" + getColours() + "</i> colours";
     }
     
     // setters
@@ -35,10 +35,10 @@ public class PipeType23 extends PipeType1{
     // others
     
     @Override
-    public String toString(){        
-        return getPrettyLength() + " by " + getPrettyDia()
-               + " | " + getPrettyGrade() + " (" + getPrettyChemRes() + ")"
-               + " | " + getPrettyColours();
+    public String toString(){ 
+        return getPrettyLength() + " <i>by</i> " + getPrettyDia()
+               + " | " + getPrettyGrade() + " | " + getPrettyColours()
+               + " (" + getPrettyChemRes() + ")";
     }
     
     

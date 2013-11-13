@@ -88,11 +88,11 @@ public class Order{
     // pretty getters
     
     public String getPrettyCost(){
-        return "£" + getCost();
+        return "<i><font color='#333333'>(£" + getCost() + " each)</font></i>";
     }
     
     public String getPrettyQuantity(){
-        return getQuantity() + "x";
+        return "<u>" + getQuantity() + "x</u> ";
     }
     
     public String getPrettyDateTime(){    
@@ -122,7 +122,8 @@ public class Order{
     
     @Override
     public String toString(){
-        return "(" + getPrettyCost() + " each) | " + getPrettyQuantity() + " " + pipe;
+        return getPrettyCost() + " | " + getPrettyQuantity() + pipe;
     }
+    
     
 }

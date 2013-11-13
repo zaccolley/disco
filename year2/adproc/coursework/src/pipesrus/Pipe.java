@@ -95,15 +95,15 @@ public abstract class Pipe {
     // pretty getters
     
     public String getPrettyGrade(){
-        return "Grade: " + getGrade();
+        return "Grade: <b>" + getGrade() + "</b>";
     }
     
     public String getPrettyLength(){
-        return getLength() + "m";
+        return "<b>" + getLength() + "</b>m";
     }
     
     public String getPrettyDia(){
-        return getOutDia() + "\"";
+        return "<b>" + getOutDia() + "\"</b>";
     }
     
     // setters
@@ -133,7 +133,7 @@ public abstract class Pipe {
     
     @Override
     public String toString(){        
-        return getPrettyLength() + " by " + getPrettyDia()
+        return getPrettyLength() + " <i>by</i> " + getPrettyDia()
                + " | " + getPrettyGrade();
     }
     

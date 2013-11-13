@@ -21,7 +21,8 @@ public class PipeType5 extends PipeType4{
     // pretty getters 
     
     public String getPrettyReinforce(){
-        return (getReinforce() ? "R":"");
+        String output = (getReinforce() ? "R":"");
+        return "<font color='#0000FF'>" + output +"</font>";
     }
     
     // setters
@@ -33,11 +34,11 @@ public class PipeType5 extends PipeType4{
     // others
     
     @Override
-    public String toString(){        
-        return getPrettyLength() + " by " + getPrettyDia()
-               + " | " + getPrettyGrade() + " (" + getPrettyChemRes() + ", "
-               + getPrettyInsul() + ", " + getPrettyReinforce() + ")"
-               + " | " + getPrettyColours();
+    public String toString(){
+        return getPrettyLength() + " <i>by</i> " + getPrettyDia()
+               + " | " + getPrettyGrade()  + " | " + getPrettyColours()
+               + " (" + getPrettyChemRes() + ", "
+               + getPrettyInsul() + ", " + getPrettyReinforce() + ")";
     }
     
     
