@@ -1,6 +1,7 @@
 package pipesrus;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -12,21 +13,20 @@ public class Order{
     private double cost = 0.0;
     
     private Date dateTime = new Date();
-    private String time = getPrettyDateTime();
     
     public Order(){
     }
     
-    public Order(Pipe pipe, int quantity, String time){
+    public Order(Pipe pipe, int quantity, Date dateTime){
         this.pipe = pipe;        
         
-        if(1 >= 1){            
+        if(quantity > 0 && quantity <= 200){            
             this.quantity = quantity; 
-        }else{ System.out.println("[Pipe] Need more positive pipes"); }
+        }else{ System.out.println("[Pipe] Quanitity should 0-200: "+ quantity); }
         
         calcCost();
        
-        this.time = time;
+        this.dateTime = dateTime;
     }
     
     public double gradeCost(int grade){
@@ -88,18 +88,18 @@ public class Order{
     // pretty getters
     
     public String getPrettyCost(){
-        return "<i><font color='#333333'>(£" + getCost() + " each)</font></i>";
+        DecimalFormat formatter = new DecimalFormat("0.00");
+        return "<i><font color='#333333'>(£" + formatter.format(getCost()) + " each)</font></i>";
     }
     
     public String getPrettyQuantity(){
         return "<u>" + getQuantity() + "x</u> ";
     }
     
-    public String getPrettyDateTime(){    
-        // http://stackoverflow.com/questions/6516320/datetime-datatype-in-java
-        DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+    public String getPrettyDateTime(){
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         Date dateTime = new Date();
-        return dateFormat.format(dateTime);
+        return "[" + dateFormat.format(dateTime) + "]";
     }
     
     // setters
@@ -122,7 +122,7 @@ public class Order{
     
     @Override
     public String toString(){
-        return getPrettyCost() + " | " + getPrettyQuantity() + pipe;
+        return  getPrettyCost() + getPrettyDateTime() + " | " + getPrettyQuantity() + pipe;
     }
     
     

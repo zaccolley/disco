@@ -22,7 +22,7 @@ public class PipeType4 extends PipeType23{
     
     public String getPrettyInsul(){
         String output = (getInsul() ? "I":"");
-        return "<font color='#00FF00'>" + output + "</font>";
+        return "<font color='#00FF00'><b>" + output + "</b></font>";
     }
     
     // setters

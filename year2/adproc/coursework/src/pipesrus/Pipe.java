@@ -15,17 +15,16 @@ public abstract class Pipe {
         
         if(grade >= 1 && grade <= 5){            
             this.grade = grade;
-        }else{ System.out.println("[Pipe] Grade broken. Pick a grade from 1-5"); }
+        }else{ System.out.println("[Pipe] Grade wasn't 1 -5: "+ grade); }
         
-        if(length >= 0.0 && length <= 6.0){
+        if(length >= 0.0254 && length <= 6.0){
             this.length = length;
-        }else{ System.out.println("[Pipe] Length broken"); }
+        }else{ System.out.println("[Pipe] Length wasn't 0.0254 - 6.0: "+ length); }
         
-        if(dia >= 0.0){
+        if(dia >= 2.0 && dia <= 40.0){
             outDia = dia;
             inDia = dia * 0.9;
-        }else{ System.out.println("[Pipe] Diameter broken"); }
-        
+        }else{ System.out.println("[Pipe] Diameter wasn't 2.0 - 40.0"+ dia); }
     }
     
     // getters

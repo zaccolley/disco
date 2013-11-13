@@ -8,7 +8,6 @@ public class PipeType1 extends Pipe{
     
     public PipeType1(int grade, double length, double dia, boolean chemRes){
         super(grade, length, dia);
-        
         this.chemRes = chemRes;
     }
     
@@ -22,7 +21,7 @@ public class PipeType1 extends Pipe{
     
     public String getPrettyChemRes(){
         String output = (getChemRes() ? "CR":"No-CR");
-        return  "<font color='#FF0000'>" + output + "</font>";
+        return  "<font color='#FF0000'><b>" + output + "</b></font>";
     }  
     
     // setters

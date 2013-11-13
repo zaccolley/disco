@@ -22,7 +22,7 @@ public class PipeType5 extends PipeType4{
     
     public String getPrettyReinforce(){
         String output = (getReinforce() ? "R":"");
-        return "<font color='#0000FF'>" + output +"</font>";
+        return "<font color='#0000FF'><b>" + output +"</b></font>";
     }
     
     // setters
