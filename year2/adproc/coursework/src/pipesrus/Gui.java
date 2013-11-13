@@ -458,7 +458,6 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
     colorChooser.setPreviewPanel(new JPanel());
 
     addOrder.setVisible(true);
-    this.setEnabled(false);
 }//GEN-LAST:event_addOrderButtonActionPerformed
 
 public void resetAddOrder(){
@@ -518,8 +517,8 @@ public void resetTempVars(){
     }//GEN-LAST:event_orderListFocusGained
 
     private void orderListFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_orderListFocusLost
-        deleteOrderButton.setEnabled(false);
-        editOrderButton.setEnabled(false);
+//        deleteOrderButton.setEnabled(false);
+//        editOrderButton.setEnabled(false);
     }//GEN-LAST:event_orderListFocusLost
 
 // for the list shit http://docs.oracle.com/javase/tutorial/uiswing/events/listselectionlistener.html    
@@ -577,7 +576,6 @@ public void resetTempVars(){
 
         // reset
         
-        this.setEnabled(true);
         addOrder.setVisible(false);
         resetAddOrder();
     }//GEN-LAST:event_submitOrderButtonActionPerformed

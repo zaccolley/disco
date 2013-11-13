@@ -20,16 +20,16 @@ public class Order{
     public Order(){
     }
     
-    public Order(Pipe p, int q, String t){
-        pipe = p;        
+    public Order(Pipe pipe, int quantity, String time){
+        this.pipe = pipe;        
         
         if(1 >= 1){            
-            quantity = q; 
+            this.quantity = quantity; 
         }else{ System.out.println("Need more than 0 pipes"); }
         
         calcCost();
        
-        time = t;
+        this.time = time;
     }
     
     public double gradeCost(int grade){
@@ -49,14 +49,14 @@ public class Order{
     public double extraCost(Pipe pipe, double cost){
         double percent = 1.0;
         
-        if(pipe.getColours() > 0){            
-            if(pipe.getColours() == 1){ percent += 0.13; }
-            if(pipe.getColours() == 2){ percent += 0.16; }        
-        }        
-        if(pipe.getChemRes()){ percent += 0.10; }
-        if(pipe.getInsul()){ percent += 0.12; }
-        if(pipe.getReinforce()){ percent += 0.13; } 
-        
+//        if(pipe.getColours() > 0){            
+//            if(pipe.getColours() == 1){ percent += 0.13; }
+//            if(pipe.getColours() == 2){ percent += 0.16; }        
+//        }        
+//        if(pipe.getChemRes()){ percent += 0.10; }
+//        if(pipe.getInsul()){ percent += 0.12; }
+//        if(pipe.getReinforce()){ percent += 0.13; } 
+//        
         return cost * percent;
     }
 
@@ -107,35 +107,25 @@ public class Order{
     
     // setters
     
-    public void setPipe(Pipe p){
-        pipe = p;
+    public void setPipe(Pipe pipe){
+        this.pipe = pipe;
     }
     
-    public void setCost(Double c){
-        cost = c;
+    public void setCost(Double cost){
+        this.cost = cost;
     }
     
-    public void setQuantity(int q){
-        quantity = q;
+    public void setQuantity(int quantity){
+        this.quantity = quantity;
     }
     
-    public void setDateTime(Date dT){
-        dateTime = dT;
+    public void setDateTime(Date dateTime){
+        this.dateTime = dateTime;
     }
     
     @Override
     public String toString(){
-        
-        String open = "";
-        String close = "";
-        
-        if(pipe.getChemRes() || pipe.getInsul() || pipe.getReinforce()){
-            open = " ( - ";
-            close = ") ";
-        }
-        
-        String output = "(" + getPrettyCost() + " each) | " + getPrettyQuantity() + " " + pipe;
-        return output;
+        return "(" + getPrettyCost() + " each) | " + getPrettyQuantity() + " " + pipe;
     }
     
 }
