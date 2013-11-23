@@ -426,10 +426,40 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
 
     private void submitOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitOrderButtonActionPerformed
         
-        int tempQuantity = (Integer) quantitySpinner.getValue();
+        boolean exception = false; // whether or not there has been an exception
+        
+        int tempQuantity = 0;
+        
+        try{
+            tempQuantity = (Integer) quantitySpinner.getValue();
+        }catch(NumberFormatException e){
+            displayModal("Numbers only!", "Oops... \"" + quantitySpinner.getValue() + "\" isn't right!"
+                                        + e
+                                        + "\nMake sure you're only inputting numbers!", "error");
+            exception = true;
+        }
     
-        double tempLength = Double.parseDouble(lengthTextField.getText());
-        double tempDia = Double.parseDouble((String) diaTextField.getText());
+        double tempLength = 0.0;
+        
+        try{
+            tempLength = Double.parseDouble(lengthTextField.getText());
+        }catch(NumberFormatException e){
+            displayModal("Numbers only!", "Oops... \"" + lengthTextField.getText() + "\" isn't right!"
+                                        + e
+                                        + "\nMake sure you're only inputting numbers!", "error");
+            exception = true;
+        }
+        
+        double tempDia = 0.0;
+        
+        try{
+            tempDia = Double.parseDouble((String) diaTextField.getText());
+        }catch(NumberFormatException e){
+            displayModal("Numbers only!", "Oops... \"" + diaTextField.getText() + "\" isn't right!"
+                                        + e
+                                        + "\nMake sure you're only inputting numbers!", "error");
+            exception = true;
+        }
 
         int tempGrade = Integer.parseInt((String) gradeComboBox.getSelectedItem());
         int tempColours = Integer.parseInt((String) coloursComboBox.getSelectedItem());
@@ -438,7 +468,7 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
         boolean tempChemRes = chemResCheckBox.isSelected();
         boolean tempReinforce = reinforceCheckBox.isSelected();
         
-        if(validateForm(tempQuantity, tempLength, tempDia, tempGrade, tempColours)){        
+        if(!exception && validateForm(tempQuantity, tempLength, tempDia, tempGrade, tempColours)){        
         
             if(tempGrade >= 3 && tempGrade <= 5 && tempColours == 2 && tempInsul && tempReinforce){
                 PipeType5 pipe = new PipeType5(tempGrade, tempLength, tempDia, tempChemRes, tempInsul, tempReinforce, tempColours);
@@ -482,33 +512,33 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
 
         // the grade must be between 1 and 5
         if(grade < 1  || grade > 5){            
-            displayModal("Wrong grade!", "Oops... " + grade + " isn't right!"
+            displayModal("Wrong grade!", "Oops... \"" + grade + "\" isn't right!"
                                        + "\nMake sure the grade is 1 to 5!", "error");
             return false;
         }
 
         // the length must be between 0.0254 and 6.0
         if(length <= 0.0254 || length > 6.0){
-            displayModal("Wrong length!", "Oops... " + length + " isn't right!"
+            displayModal("Wrong length!", "Oops... \"" + length + "\" isn't right!"
                                        + "\nMake sure the length is 0.0254 to 6.0!", "warn");
             return false;
         }
 
         // the diameter must be between 2.0 and 40.0
         if(dia < 2.0 || dia > 40.0){
-            displayModal("Wrong diameter!", "Oops... " + dia + " isn't right!"
+            displayModal("Wrong diameter!", "Oops... \"" + dia + "\" isn't right!"
                                           + "\nMake sure the diameter is 2.0 to 40.0!", "warn");
             return false;
         }
 
         if(colours < 0 || colours > 2){
-            displayModal("Wrong colours!", "Oops... " + colours + " isn't right!"
+            displayModal("Wrong colours!", "Oops... \"" + colours + "\" isn't right!"
                                          + "\nMake sure the colours is 0 to 2!", "error");
             return false;
         }
 
         if(quantity <= 0 || quantity > 200){
-            displayModal("Wrong quantity!", "Oops... " + quantity + " isn't right!"
+            displayModal("Wrong quantity!", "Oops... \"" + quantity + "\" isn't right!"
                                          + "\nMake sure quantity is 0 to 200!", "error");
             return false;
         }
