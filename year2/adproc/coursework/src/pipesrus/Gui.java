@@ -66,6 +66,7 @@ public final class Gui extends javax.swing.JFrame {
             
             // loop through the orders
             for(Order o: orders){
+                
                 double orderItemCost = Math.floor((o.getCost() * o.getQuantity()) * 100) / 100;
                 
                 // add to the list the total cost and print out of the order
@@ -74,8 +75,8 @@ public final class Gui extends javax.swing.JFrame {
                 pipeAmount += o.getQuantity();
             }
             
-        }else{ // otherwise display 'No orders'
-            orderListItems.addElement("<html><i>No orders</i>");
+        }else{ // otherwise display a no order message
+            orderListItems.addElement("<html><i>No orders yet, 'Add' one!</i>");
         }
         
         // update the label for the pipe amount
@@ -132,15 +133,16 @@ public final class Gui extends javax.swing.JFrame {
         resetOrdersButton = new javax.swing.JButton();
 
         addOrder.setMinimumSize(new java.awt.Dimension(373, 243));
+        addOrder.setPreferredSize(new java.awt.Dimension(373, 243));
         addOrder.setResizable(false);
 
         sizeLabel.setText("Size:");
 
         lengthLabel.setFont(new java.awt.Font("Dialog", 0, 12));
-        lengthLabel.setText("Length:");
+        lengthLabel.setText("Length: (m)");
 
         diaLabel.setFont(new java.awt.Font("Dialog", 0, 12));
-        diaLabel.setText("Diameter:");
+        diaLabel.setText("Diameter: (in)");
 
         gradeLabel.setFont(new java.awt.Font("Dialog", 0, 12));
         gradeLabel.setText("Grade:");
@@ -168,7 +170,7 @@ public final class Gui extends javax.swing.JFrame {
 
         reinforceCheckBox.setText("Reinforcement");
 
-        submitOrderButton.setText("Submit");
+        submitOrderButton.setText("Add");
         submitOrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitOrderButtonActionPerformed(evt);
@@ -200,7 +202,7 @@ public final class Gui extends javax.swing.JFrame {
                                     .addComponent(lengthLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(gradeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(coloursLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(36, 36, 36)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(addOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lengthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(diaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -220,7 +222,7 @@ public final class Gui extends javax.swing.JFrame {
                             .addGroup(addOrderLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(submitOrderButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(discardOrderButton)))))
                 .addContainerGap())
         );
@@ -285,6 +287,7 @@ public final class Gui extends javax.swing.JFrame {
         itemAmountLabel.setText("Amount of items: #");
 
         addOrderButton.setText("Add");
+        addOrderButton.setToolTipText("Add a pipe order");
         addOrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addOrderButtonActionPerformed(evt);
@@ -292,6 +295,7 @@ public final class Gui extends javax.swing.JFrame {
         });
 
         editOrderButton.setText("Edit");
+        editOrderButton.setToolTipText("Edit a pipe order");
         editOrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editOrderButtonActionPerformed(evt);
@@ -299,6 +303,7 @@ public final class Gui extends javax.swing.JFrame {
         });
 
         deleteOrderButton.setText("Delete");
+        deleteOrderButton.setToolTipText("Delete a pipe order");
         deleteOrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteOrderButtonActionPerformed(evt);
@@ -307,6 +312,7 @@ public final class Gui extends javax.swing.JFrame {
 
         orderList.setBackground(new java.awt.Color(-723724,true));
         orderList.setFont(new java.awt.Font("SansSerif", 0, 12));
+        orderList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         orderList.setOpaque(false);
         orderScrollPane.setViewportView(orderList);
 
@@ -374,9 +380,14 @@ public final class Gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addOrderButtonActionPerformed
-    // when pressing add, show the order window
+    // when pressing add, reset form, show the order window
     tempOrderPosition = orders.size();
+    resetAddOrder();
     addOrder.setVisible(true);
+    
+    // show discard button and change the submit button to 'Add'
+    discardOrderButton.setVisible(true);
+    submitOrderButton.setText("Add");
 }//GEN-LAST:event_addOrderButtonActionPerformed
 
     public void resetAddOrder(){
@@ -408,7 +419,7 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
         reinforceCheckBox.setSelected(pipe.getReinforce());
 
         quantitySpinner.setValue(order.getQuantity());
-
+        
         gradeComboBox.setSelectedIndex(pipe.getGrade() - 1);
         coloursComboBox.setSelectedIndex(pipe.getColours());
     }
@@ -427,17 +438,22 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
     private void deleteOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteOrderButtonActionPerformed
         // if there are any orders
         if(orders.size() > 0){            
-        
-            int i = orderList.getSelectedIndex();
+            
+            try{
+            
+                int i = orderList.getSelectedIndex();
 
-            int option = JOptionPane.showConfirmDialog(null,
-                    "Are you sure you want to order:\n"
-                    + "\"" + orders.get(i) + "\"",
-                    "Woah, woah now!",
-                    JOptionPane.YES_NO_OPTION);
-            if(option == 0){ // if picked yes reset orders and update
-                orders.remove(i);
-                updateItemList();
+                int option = JOptionPane.showConfirmDialog(null,
+                        "Are you sure you want to delete this order?",
+                        "Woah, woah now!",
+                        JOptionPane.YES_NO_OPTION);
+                if(option == 0){ // if picked yes reset orders and update
+                    orders.remove(i);
+                    updateItemList();
+                }
+                
+            }catch(ArrayIndexOutOfBoundsException e){
+                displayModal("No item selected!", e + "\n\nOops... you didn't select an item!", "error");
             }
             
         }else{ // display a warning
@@ -462,8 +478,9 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
         int tempQuantity = 0;
         
         try{
+            // set the temp value to that of the quality spinner
             tempQuantity = (Integer) quantitySpinner.getValue();
-        }catch(NumberFormatException e){
+        }catch(NumberFormatException e){ // for all non numeric chars
             displayModal("Numbers only!", e + "\n\nOops... \"" + quantitySpinner.getValue() + "\" isn't right!"
                                         + "\nMake sure you're only inputting numbers!", "error");
             exception = true;
@@ -472,8 +489,9 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
         double tempLength = 0.0;
         
         try{
+            // set the temp value to that of the length text field
             tempLength = Double.parseDouble(lengthTextField.getText());
-        }catch(NumberFormatException e){
+        }catch(NumberFormatException e){ // for all non numeric chars
             displayModal("Numbers only!", e + "\n\nOops... \"" + lengthTextField.getText() + "\" isn't right!"
                                           + "\nMake sure you're only inputting numbers!", "error");
             exception = true;
@@ -482,13 +500,15 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
         double tempDia = 0.0;
         
         try{
+            // set the temp value to that of the diameter field
             tempDia = Double.parseDouble((String) diaTextField.getText());
-        }catch(NumberFormatException e){
+        }catch(NumberFormatException e){ // for all non numeric chars
             displayModal("Numbers only!", e + "\n\nOops... \"" + diaTextField.getText() + "\" isn't right!"
                                         + "\nMake sure you're only inputting numbers!", "error");
             exception = true;
         }
 
+        // set the rest of the temp values to their respective form values
         int tempGrade = Integer.parseInt((String) gradeComboBox.getSelectedItem());
         int tempColours = Integer.parseInt((String) coloursComboBox.getSelectedItem());
 
@@ -496,29 +516,36 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
         boolean tempChemRes = chemResCheckBox.isSelected();
         boolean tempReinforce = reinforceCheckBox.isSelected();
         
+        // if there hasn't been an exception and all values validate correctly
         if(!exception && validateForm(tempQuantity, tempLength, tempDia, tempGrade, tempColours)){        
         
+            // type 5
             if(tempGrade >= 3 && tempGrade <= 5 && tempColours == 2 && tempInsul && tempReinforce){
                 PipeType5 pipe = new PipeType5(tempGrade, tempLength, tempDia, tempChemRes, tempInsul, tempReinforce, tempColours);
                 addOrder(pipe, tempQuantity);
             }
+            // type 4
             else if(tempGrade >= 2 && tempGrade <= 5 && tempColours == 2 && tempInsul && !tempReinforce){
                 PipeType4 pipe = new PipeType4(tempGrade, tempLength, tempDia, tempChemRes, tempInsul, tempColours);
                 addOrder(pipe, tempQuantity);
             }
+            // type 3
             else if(tempGrade >= 2 && tempGrade <= 5 && tempColours == 2 && !tempInsul && !tempReinforce){
                 PipeType23 pipe = new PipeType23(tempGrade, tempLength, tempDia, tempChemRes, tempColours);
                 addOrder(pipe, tempQuantity);
             }
+            // type 2
             else if(tempGrade >= 2 && tempGrade <= 4 && tempColours == 1 && !tempInsul && !tempReinforce){
                 PipeType23 pipe = new PipeType23(tempGrade, tempLength, tempDia, tempChemRes, tempColours);
                 addOrder(pipe, tempQuantity);
             }
+            // type 1
             else if(tempGrade >= 1 && tempGrade <= 3 && tempColours == 0 && !tempInsul && !tempReinforce){
                 PipeType1 pipe = new PipeType1(tempGrade, tempLength, tempDia, tempChemRes);
                 addOrder(pipe, tempQuantity);
             }else{
-                 displayModal("Aww...", "We don't supply this pipe sorry!", "error");
+                // the pipe couldn't be made
+                displayModal("Aww...", "We don't supply this pipe sorry!", "error");
             }
         
         }
@@ -576,16 +603,17 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
 
     public void addOrder(Pipe pipe, int quantity){
 
+        // create a new order and date for this change
         Date dateTime = new Date();
         Order order = new Order(pipe, quantity, dateTime);
 
+        // if the order is being edited then we need to remove it first
         if(tempOrderPosition != orders.size()){
             orders.remove(tempOrderPosition);
         }
         orders.add(tempOrderPosition, order);
 
         // update list
-
         updateItemList();
 
         // reset
@@ -605,16 +633,26 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
             JOptionPane.showMessageDialog(null, "Your order will now be processed!");
         }       
     }//GEN-LAST:event_submitOrdersButtonActionPerformed
-
+    
     private void editOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editOrderButtonActionPerformed
         // if there are any orders
         if(orders.size() > 0){
             
             try{
+                
                 tempOrderPosition = orderList.getSelectedIndex();
+                // get the order that has been selected and update the form
                 setAddOrder(orders.get(tempOrderPosition));
-                addOrder.setVisible(true);
+                
+                // show discard button and change the submit button to 'Add'
+                submitOrderButton.setText("Edit");
+                discardOrderButton.setVisible(false);
+                
+                // set the order window the visible
+                addOrder.setVisible(true);                
+                
             }catch(ArrayIndexOutOfBoundsException e){
+                // this catch is for if nothing is selected, results in -1
                 displayModal("No item selected!", e + "\n\nOops... you didn't select an item!", "error");
             }
             
