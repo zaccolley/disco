@@ -433,8 +433,7 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
         try{
             tempQuantity = (Integer) quantitySpinner.getValue();
         }catch(NumberFormatException e){
-            displayModal("Numbers only!", "Oops... \"" + quantitySpinner.getValue() + "\" isn't right!"
-                                        + e
+            displayModal("Numbers only!", e + "\n\nOops... \"" + quantitySpinner.getValue() + "\" isn't right!"
                                         + "\nMake sure you're only inputting numbers!", "error");
             exception = true;
         }
@@ -444,9 +443,8 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
         try{
             tempLength = Double.parseDouble(lengthTextField.getText());
         }catch(NumberFormatException e){
-            displayModal("Numbers only!", "Oops... \"" + lengthTextField.getText() + "\" isn't right!"
-                                        + e
-                                        + "\nMake sure you're only inputting numbers!", "error");
+            displayModal("Numbers only!", e + "\n\nOops... \"" + lengthTextField.getText() + "\" isn't right!"
+                                          + "\nMake sure you're only inputting numbers!", "error");
             exception = true;
         }
         
@@ -455,8 +453,7 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
         try{
             tempDia = Double.parseDouble((String) diaTextField.getText());
         }catch(NumberFormatException e){
-            displayModal("Numbers only!", "Oops... \"" + diaTextField.getText() + "\" isn't right!"
-                                        + e
+            displayModal("Numbers only!", e + "\n\nOops... \"" + diaTextField.getText() + "\" isn't right!"
                                         + "\nMake sure you're only inputting numbers!", "error");
             exception = true;
         }
