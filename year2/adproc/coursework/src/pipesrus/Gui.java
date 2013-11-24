@@ -11,7 +11,9 @@ import javax.swing.JOptionPane;
 public final class Gui extends javax.swing.JFrame {
 
     private ArrayList<Order> orders = new ArrayList();
-    private final DefaultListModel orderListItems = new DefaultListModel();   
+    private final DefaultListModel orderListItems = new DefaultListModel();
+    
+    private int tempOrderPosition = -1;
 
     public Gui(ArrayList<Order> orders) {
         this.orders = orders;
@@ -122,6 +124,7 @@ public final class Gui extends javax.swing.JFrame {
         totalCostLabel = new javax.swing.JLabel();
         itemAmountLabel = new javax.swing.JLabel();
         addOrderButton = new javax.swing.JButton();
+        editOrderButton = new javax.swing.JButton();
         deleteOrderButton = new javax.swing.JButton();
         orderScrollPane = new javax.swing.JScrollPane();
         orderList = new javax.swing.JList();
@@ -129,7 +132,6 @@ public final class Gui extends javax.swing.JFrame {
         resetOrdersButton = new javax.swing.JButton();
 
         addOrder.setMinimumSize(new java.awt.Dimension(373, 243));
-        addOrder.setPreferredSize(new java.awt.Dimension(373, 243));
         addOrder.setResizable(false);
 
         sizeLabel.setText("Size:");
@@ -289,6 +291,13 @@ public final class Gui extends javax.swing.JFrame {
             }
         });
 
+        editOrderButton.setText("Edit");
+        editOrderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editOrderButtonActionPerformed(evt);
+            }
+        });
+
         deleteOrderButton.setText("Delete");
         deleteOrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -328,6 +337,8 @@ public final class Gui extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(addOrderButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(editOrderButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deleteOrderButton))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(totalCostLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -346,7 +357,8 @@ public final class Gui extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addOrderButton)
                     .addComponent(deleteOrderButton)
-                    .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(editOrderButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(orderScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
@@ -363,6 +375,7 @@ public final class Gui extends javax.swing.JFrame {
 
 private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addOrderButtonActionPerformed
     // when pressing add, show the order window
+    tempOrderPosition = orders.size();
     addOrder.setVisible(true);
 }//GEN-LAST:event_addOrderButtonActionPerformed
 
@@ -380,6 +393,24 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
 
         gradeComboBox.setSelectedIndex(0);
         coloursComboBox.setSelectedIndex(0);      
+    }
+    
+    public void setAddOrder(Order order){
+        // for resetting the order form
+        
+        Pipe pipe = order.getPipe();
+        
+        lengthTextField.setText(String.valueOf(pipe.getLength()));
+        diaTextField.setText(String.valueOf(pipe.getDia()));
+
+        chemResCheckBox.setSelected(pipe.getChemRes());
+        insulCheckBox.setSelected(pipe.getInsul());
+        reinforceCheckBox.setSelected(pipe.getReinforce());
+
+        quantitySpinner.setValue(order.getQuantity());
+
+        gradeComboBox.setSelectedIndex(pipe.getGrade() - 1);
+        coloursComboBox.setSelectedIndex(pipe.getColours());
     }
 
     private void resetOrdersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetOrdersButtonActionPerformed
@@ -548,7 +579,10 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
         Date dateTime = new Date();
         Order order = new Order(pipe, quantity, dateTime);
 
-        orders.add(order);
+        if(tempOrderPosition != orders.size()){
+            orders.remove(tempOrderPosition);
+        }
+        orders.add(tempOrderPosition, order);
 
         // update list
 
@@ -572,6 +606,23 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
         }       
     }//GEN-LAST:event_submitOrdersButtonActionPerformed
 
+    private void editOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editOrderButtonActionPerformed
+        // if there are any orders
+        if(orders.size() > 0){
+            
+            try{
+                tempOrderPosition = orderList.getSelectedIndex();
+                setAddOrder(orders.get(tempOrderPosition));
+                addOrder.setVisible(true);
+            }catch(ArrayIndexOutOfBoundsException e){
+                displayModal("No item selected!", e + "\n\nOops... you didn't select an item!", "error");
+            }
+            
+        }else{ // display a warning
+            displayModal("Erm..", "There's nothing to edit?", "warn");
+        }
+    }//GEN-LAST:event_editOrderButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog addOrder;
     private javax.swing.JButton addOrderButton;
@@ -582,6 +633,7 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
     private javax.swing.JLabel diaLabel;
     private javax.swing.JTextField diaTextField;
     private javax.swing.JButton discardOrderButton;
+    private javax.swing.JButton editOrderButton;
     private javax.swing.JComboBox gradeComboBox;
     private javax.swing.JLabel gradeLabel;
     private javax.swing.JCheckBox insulCheckBox;
