@@ -41,20 +41,6 @@ public final class Gui extends javax.swing.JFrame {
         addOrder.setLocation(s.width / 2 - o.width / 2 + m.width / 2, s.height / 2 - o.height / 2);
     }
     
-    // getters
-    
-    public ArrayList<Order> getOrders(){
-        return orders;
-    }
-    
-    public DefaultListModel getOrderListItems(){
-        return orderListItems;
-    }
-    
-    public void addOrder(Order o){
-        orders.add(o);
-    }
-    
     public void updateItemList(){
         // reset the order
         orderListItems.removeAllElements();        
