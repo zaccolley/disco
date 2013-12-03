@@ -55,8 +55,10 @@ public final class Gui extends javax.swing.JFrame {
                 
                 double orderItemCost = Math.floor((o.getCost() * o.getQuantity()) * 100) / 100;
                 
+                DecimalFormat formatter = new DecimalFormat("0.00");
+                
                 // add to the list the total cost and print out of the order
-                orderListItems.addElement("<html><b>£" + orderItemCost + "</b> " + o);
+                orderListItems.addElement("<html><b>£" + formatter.format(orderItemCost) + "</b> " + o);
                 
                 pipeAmount += o.getQuantity();
             }
