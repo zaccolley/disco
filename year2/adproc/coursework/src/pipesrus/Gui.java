@@ -63,7 +63,7 @@ public final class Gui extends javax.swing.JFrame {
                 pipeAmount += o.getQuantity();
             }
             
-        }else{ // otherwise display a no order message
+        }else{ // otherwise dispexlay a no order message
             orderListItems.addElement("<html><i>No orders yet, 'Add' one!</i>");
         }
         
@@ -469,7 +469,7 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
             // set the temp value to that of the quality spinner
             tempQuantity = (Integer) quantitySpinner.getValue();
         }catch(NumberFormatException e){ // for all non numeric chars
-            displayModal("Numbers only!", e + "\n\nOops... \"" + quantitySpinner.getValue() + "\" isn't right!"
+            displayModal("Numbers only!", "\nOops... \"" + quantitySpinner.getValue() + "\" isn't right!"
                                         + "\nMake sure you're only inputting numbers!", "error");
             exception = true;
         }
@@ -480,8 +480,8 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
             // set the temp value to that of the length text field
             tempLength = Double.parseDouble(lengthTextField.getText());
         }catch(NumberFormatException e){ // for all non numeric chars
-            displayModal("Numbers only!", e + "\n\nOops... \"" + lengthTextField.getText() + "\" isn't right!"
-                                          + "\nMake sure you're only inputting numbers!", "error");
+            displayModal("Numbers only!", "\nOops... \"" + lengthTextField.getText() + "\" isn't right!"
+                                        + "\nMake sure you're only inputting numbers!", "error");
             exception = true;
         }
         
@@ -491,7 +491,7 @@ private void addOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
             // set the temp value to that of the diameter field
             tempDia = Double.parseDouble((String) diaTextField.getText());
         }catch(NumberFormatException e){ // for all non numeric chars
-            displayModal("Numbers only!", e + "\n\nOops... \"" + diaTextField.getText() + "\" isn't right!"
+            displayModal("Numbers only!", "\nOops... \"" + diaTextField.getText() + "\" isn't right!"
                                         + "\nMake sure you're only inputting numbers!", "error");
             exception = true;
         }
