@@ -52,6 +52,34 @@ INSERT INTO Ward VALUES (8,  10,  9, "Ward #9");
 INSERT INTO Ward VALUES (9,  10,  9, "Ward #10");
 INSERT INTO Ward VALUES (10, 10, 10, "Ward #11");
 
+-- Equipment
+
+INSERT INTO Equipment VALUES (0,  "Equipment #1",  1);
+INSERT INTO Equipment VALUES (1,  "Equipment #2",  0);
+INSERT INTO Equipment VALUES (2,  "Equipment #3",  3);
+INSERT INTO Equipment VALUES (3,  "Equipment #4",  7);
+INSERT INTO Equipment VALUES (4,  "Equipment #5",  5);
+INSERT INTO Equipment VALUES (5,  "Equipment #6",  6);
+INSERT INTO Equipment VALUES (6,  "Equipment #7",  6);
+INSERT INTO Equipment VALUES (7,  "Equipment #8",  2);
+INSERT INTO Equipment VALUES (8,  "Equipment #9",  9);
+INSERT INTO Equipment VALUES (9,  "Equipment #10", 9);
+INSERT INTO Equipment VALUES (10, "Equipment #11", 10);
+
+-- Bed
+
+INSERT INTO Bed VALUES (0,  1);
+INSERT INTO Bed VALUES (1,  0);
+INSERT INTO Bed VALUES (2,  3);
+INSERT INTO Bed VALUES (3,  7);
+INSERT INTO Bed VALUES (4,  5);
+INSERT INTO Bed VALUES (5,  6);
+INSERT INTO Bed VALUES (6,  6);
+INSERT INTO Bed VALUES (7,  2);
+INSERT INTO Bed VALUES (8,  9);
+INSERT INTO Bed VALUES (9,  9);
+INSERT INTO Bed VALUES (10, 10);
+
 -- Person
 
 INSERT INTO Person VALUES (0,"Mrs","Sara","Christensen","F","2014-06-24 06:30:16","P.O. Box 890","8048 Praesent Ave","Alness","RO","0804 239 1728","eros.turpis.non@sit.edu");
@@ -155,57 +183,69 @@ INSERT INTO Person VALUES (97,"Mr","Ali","Britt","M","2014-09-01 16:21:41","410-
 INSERT INTO Person VALUES (98,"Mrs","Dana","Turner","F","2014-08-05 07:55:46","P.O. Box 561","7331 Malesuada Ave","Pembroke","Pembrokeshire","(016977) 1682","felis.adipiscing.fringilla@egestas.org");
 INSERT INTO Person VALUES (99,"Mr","Quon","Aguilar","M","2013-10-16 23:09:08","P.O. Box 848","1403 Penatibus Avenue","Bournemouth","HA","0500 121109","Proin.dolor.Nulla@nec.net");
 
+-- Team
 
+INSERT INTO Team VALUES ( 0, "Team #1");
+INSERT INTO Team VALUES ( 1, "Team #2");
+INSERT INTO Team VALUES ( 2, "Team #3");
+INSERT INTO Team VALUES ( 3, "Team #4");
+INSERT INTO Team VALUES ( 4, "Team #5");
+INSERT INTO Team VALUES ( 5, "Team #6");
+INSERT INTO Team VALUES ( 6, "Team #7");
+INSERT INTO Team VALUES ( 7, "Team #8");
+INSERT INTO Team VALUES ( 8, "Team #9");
+INSERT INTO Team VALUES ( 9, "Team #10");
+INSERT INTO Team VALUES (10, "Team #11");
 
 -- Staff
 
--- INSERT INTO Staff VALUES ( 0,  0, 0);
--- INSERT INTO Staff VALUES ( 1,  1, 0);
--- INSERT INTO Staff VALUES ( 2,  2, 0);
--- INSERT INTO Staff VALUES ( 3,  3, 0);
--- INSERT INTO Staff VALUES ( 4,  4, 0);
--- INSERT INTO Staff VALUES ( 5,  5, 0);
--- INSERT INTO Staff VALUES ( 6,  6, 0);
--- INSERT INTO Staff VALUES ( 7,  7, 0);
--- INSERT INTO Staff VALUES ( 8,  8, 0);
--- INSERT INTO Staff VALUES ( 9,  9, 0);
--- INSERT INTO Staff VALUES (10, 10, 1);
--- INSERT INTO Staff VALUES (11, 11, 1);
--- INSERT INTO Staff VALUES (12, 12, 1);
--- INSERT INTO Staff VALUES (13, 13, 1);
--- INSERT INTO Staff VALUES (14, 14, 1);
--- INSERT INTO Staff VALUES (15, 15, 1);
--- INSERT INTO Staff VALUES (16, 16, 1);
--- INSERT INTO Staff VALUES (17, 17, 1);
--- INSERT INTO Staff VALUES (18, 18, 1);
--- INSERT INTO Staff VALUES (19, 19, 1);
--- INSERT INTO Staff VALUES (20, 20, 2);
--- INSERT INTO Staff VALUES (21, 21, 2);
--- INSERT INTO Staff VALUES (22, 22, 2);
--- INSERT INTO Staff VALUES (23, 23, 2);
--- INSERT INTO Staff VALUES (24, 24, 2);
--- INSERT INTO Staff VALUES (25, 25, 2);
--- INSERT INTO Staff VALUES (26, 26, 2);
--- INSERT INTO Staff VALUES (27, 27, 2);
--- INSERT INTO Staff VALUES (28, 28, 2);
--- INSERT INTO Staff VALUES (29, 29, 2);
--- INSERT INTO Staff VALUES (30, 30, 3);
--- INSERT INTO Staff VALUES (31, 31, 3);
--- INSERT INTO Staff VALUES (32, 32, 3);
--- INSERT INTO Staff VALUES (33, 33, 3);
--- INSERT INTO Staff VALUES (34, 34, 3);
--- INSERT INTO Staff VALUES (35, 35, 3);
--- INSERT INTO Staff VALUES (36, 36, 3);
--- INSERT INTO Staff VALUES (37, 37, 3);
--- INSERT INTO Staff VALUES (38, 38, 3);
--- INSERT INTO Staff VALUES (39, 39, 3);
--- INSERT INTO Staff VALUES (40, 40, 4);
--- INSERT INTO Staff VALUES (41, 41, 4);
--- INSERT INTO Staff VALUES (42, 42, 4);
--- INSERT INTO Staff VALUES (43, 43, 4);
--- INSERT INTO Staff VALUES (44, 44, 4);
--- INSERT INTO Staff VALUES (45, 45, 4);
--- INSERT INTO Staff VALUES (46, 46, 4);
--- INSERT INTO Staff VALUES (47, 47, 4);
--- INSERT INTO Staff VALUES (48, 48, 4);
--- INSERT INTO Staff VALUES (49, 49, 4);
+INSERT INTO Staff VALUES ( 0,  0, 0);
+INSERT INTO Staff VALUES ( 1,  1, 0);
+INSERT INTO Staff VALUES ( 2,  2, 0);
+INSERT INTO Staff VALUES ( 3,  3, 0);
+INSERT INTO Staff VALUES ( 4,  4, 0);
+INSERT INTO Staff VALUES ( 5,  5, 0);
+INSERT INTO Staff VALUES ( 6,  6, 0);
+INSERT INTO Staff VALUES ( 7,  7, 0);
+INSERT INTO Staff VALUES ( 8,  8, 0);
+INSERT INTO Staff VALUES ( 9,  9, 0);
+INSERT INTO Staff VALUES (10, 10, 1);
+INSERT INTO Staff VALUES (11, 11, 1);
+INSERT INTO Staff VALUES (12, 12, 1);
+INSERT INTO Staff VALUES (13, 13, 1);
+INSERT INTO Staff VALUES (14, 14, 1);
+INSERT INTO Staff VALUES (15, 15, 1);
+INSERT INTO Staff VALUES (16, 16, 1);
+INSERT INTO Staff VALUES (17, 17, 1);
+INSERT INTO Staff VALUES (18, 18, 1);
+INSERT INTO Staff VALUES (19, 19, 1);
+INSERT INTO Staff VALUES (20, 20, 2);
+INSERT INTO Staff VALUES (21, 21, 2);
+INSERT INTO Staff VALUES (22, 22, 2);
+INSERT INTO Staff VALUES (23, 23, 2);
+INSERT INTO Staff VALUES (24, 24, 2);
+INSERT INTO Staff VALUES (25, 25, 2);
+INSERT INTO Staff VALUES (26, 26, 2);
+INSERT INTO Staff VALUES (27, 27, 2);
+INSERT INTO Staff VALUES (28, 28, 2);
+INSERT INTO Staff VALUES (29, 29, 2);
+INSERT INTO Staff VALUES (30, 30, 3);
+INSERT INTO Staff VALUES (31, 31, 3);
+INSERT INTO Staff VALUES (32, 32, 3);
+INSERT INTO Staff VALUES (33, 33, 3);
+INSERT INTO Staff VALUES (34, 34, 3);
+INSERT INTO Staff VALUES (35, 35, 3);
+INSERT INTO Staff VALUES (36, 36, 3);
+INSERT INTO Staff VALUES (37, 37, 3);
+INSERT INTO Staff VALUES (38, 38, 3);
+INSERT INTO Staff VALUES (39, 39, 3);
+INSERT INTO Staff VALUES (40, 40, 4);
+INSERT INTO Staff VALUES (41, 41, 4);
+INSERT INTO Staff VALUES (42, 42, 4);
+INSERT INTO Staff VALUES (43, 43, 4);
+INSERT INTO Staff VALUES (44, 44, 4);
+INSERT INTO Staff VALUES (45, 45, 4);
+INSERT INTO Staff VALUES (46, 46, 4);
+INSERT INTO Staff VALUES (47, 47, 4);
+INSERT INTO Staff VALUES (48, 48, 4);
+INSERT INTO Staff VALUES (49, 49, 4);
