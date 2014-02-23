@@ -249,3 +249,32 @@ INSERT INTO Staff VALUES (46, 46, 4);
 INSERT INTO Staff VALUES (47, 47, 4);
 INSERT INTO Staff VALUES (48, 48, 4);
 INSERT INTO Staff VALUES (49, 49, 4);
+
+-- Nurse
+
+INSERT INTO Nurse VALUES ( 0, 2);
+INSERT INTO Nurse VALUES ( 1, 6);
+INSERT INTO Nurse VALUES ( 2, 6);
+INSERT INTO Nurse VALUES ( 3, 3);
+INSERT INTO Nurse VALUES ( 4, 2);
+INSERT INTO Nurse VALUES ( 5, 10);
+INSERT INTO Nurse VALUES ( 6, 4);
+INSERT INTO Nurse VALUES ( 7, 4);
+INSERT INTO Nurse VALUES ( 8, 8);
+INSERT INTO Nurse VALUES ( 9, 5);
+INSERT INTO Nurse VALUES (10, 8);
+
+-- Specialism
+
+INSERT INTO Specialism VALUES ( 0, "Specialism #1");
+INSERT INTO Specialism VALUES ( 1, "Specialism #2");
+INSERT INTO Specialism VALUES ( 2, "Specialism #3");
+INSERT INTO Specialism VALUES ( 3, "Specialism #4");
+INSERT INTO Specialism VALUES ( 4, "Specialism #5");
+INSERT INTO Specialism VALUES ( 5, "Specialism #6");
+INSERT INTO Specialism VALUES ( 6, "Specialism #7");
+INSERT INTO Specialism VALUES ( 7, "Specialism #8");
+INSERT INTO Specialism VALUES ( 8, "Specialism #9");
+INSERT INTO Specialism VALUES ( 9, "Specialism #10");
+INSERT INTO Specialism VALUES (10, "Specialism #11");
+
