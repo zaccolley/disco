@@ -24,6 +24,34 @@ INSERT INTO Hospital VALUES (18,"St Mary's Hospital","St Mary's Street","Portsmo
 INSERT INTO Hospital VALUES (19,"Wexham Park Hospital","Wexham Street","Slough","Berkshire");
 INSERT INTO Hospital VALUES (20,"Wycombe General Hospital","Wycombe Street","High Wycombe","Buckinghamshire");
 
+-- Department
+
+INSERT INTO Department VALUES (0,  "Department #1");
+INSERT INTO Department VALUES (1,  "Department #2");
+INSERT INTO Department VALUES (2,  "Department #3");
+INSERT INTO Department VALUES (3,  "Department #4");
+INSERT INTO Department VALUES (4,  "Department #5");
+INSERT INTO Department VALUES (5,  "Department #6");
+INSERT INTO Department VALUES (6,  "Department #7");
+INSERT INTO Department VALUES (7,  "Department #8");
+INSERT INTO Department VALUES (8,  "Department #9");
+INSERT INTO Department VALUES (9,  "Department #10");
+INSERT INTO Department VALUES (10, "Department #11");
+
+-- Ward
+
+INSERT INTO Ward VALUES (0,  10,  1, "Ward #1");
+INSERT INTO Ward VALUES (1,  10,  0, "Ward #2");
+INSERT INTO Ward VALUES (2,  10,  3, "Ward #3");
+INSERT INTO Ward VALUES (3,  10,  7, "Ward #4");
+INSERT INTO Ward VALUES (4,  10,  5, "Ward #5");
+INSERT INTO Ward VALUES (5,  10,  6, "Ward #6");
+INSERT INTO Ward VALUES (6,  10,  6, "Ward #7");
+INSERT INTO Ward VALUES (7,  10,  2, "Ward #8");
+INSERT INTO Ward VALUES (8,  10,  9, "Ward #9");
+INSERT INTO Ward VALUES (9,  10,  9, "Ward #10");
+INSERT INTO Ward VALUES (10, 10, 10, "Ward #11");
+
 -- Person
 
 INSERT INTO Person VALUES (0,"Mrs","Sara","Christensen","F","2014-06-24 06:30:16","P.O. Box 890","8048 Praesent Ave","Alness","RO","0804 239 1728","eros.turpis.non@sit.edu");
@@ -126,3 +154,58 @@ INSERT INTO Person VALUES (96,"Mr","Julian","Washington","M","2014-07-27 09:06:4
 INSERT INTO Person VALUES (97,"Mr","Ali","Britt","M","2014-09-01 16:21:41","410-4769","Netus Ave","Builth Wells","Brecknockshire","0800 527478","enim.Mauris@liberomauris.co.uk");
 INSERT INTO Person VALUES (98,"Mrs","Dana","Turner","F","2014-08-05 07:55:46","P.O. Box 561","7331 Malesuada Ave","Pembroke","Pembrokeshire","(016977) 1682","felis.adipiscing.fringilla@egestas.org");
 INSERT INTO Person VALUES (99,"Mr","Quon","Aguilar","M","2013-10-16 23:09:08","P.O. Box 848","1403 Penatibus Avenue","Bournemouth","HA","0500 121109","Proin.dolor.Nulla@nec.net");
+
+
+
+-- Staff
+
+-- INSERT INTO Staff VALUES ( 0,  0, 0);
+-- INSERT INTO Staff VALUES ( 1,  1, 0);
+-- INSERT INTO Staff VALUES ( 2,  2, 0);
+-- INSERT INTO Staff VALUES ( 3,  3, 0);
+-- INSERT INTO Staff VALUES ( 4,  4, 0);
+-- INSERT INTO Staff VALUES ( 5,  5, 0);
+-- INSERT INTO Staff VALUES ( 6,  6, 0);
+-- INSERT INTO Staff VALUES ( 7,  7, 0);
+-- INSERT INTO Staff VALUES ( 8,  8, 0);
+-- INSERT INTO Staff VALUES ( 9,  9, 0);
+-- INSERT INTO Staff VALUES (10, 10, 1);
+-- INSERT INTO Staff VALUES (11, 11, 1);
+-- INSERT INTO Staff VALUES (12, 12, 1);
+-- INSERT INTO Staff VALUES (13, 13, 1);
+-- INSERT INTO Staff VALUES (14, 14, 1);
+-- INSERT INTO Staff VALUES (15, 15, 1);
+-- INSERT INTO Staff VALUES (16, 16, 1);
+-- INSERT INTO Staff VALUES (17, 17, 1);
+-- INSERT INTO Staff VALUES (18, 18, 1);
+-- INSERT INTO Staff VALUES (19, 19, 1);
+-- INSERT INTO Staff VALUES (20, 20, 2);
+-- INSERT INTO Staff VALUES (21, 21, 2);
+-- INSERT INTO Staff VALUES (22, 22, 2);
+-- INSERT INTO Staff VALUES (23, 23, 2);
+-- INSERT INTO Staff VALUES (24, 24, 2);
+-- INSERT INTO Staff VALUES (25, 25, 2);
+-- INSERT INTO Staff VALUES (26, 26, 2);
+-- INSERT INTO Staff VALUES (27, 27, 2);
+-- INSERT INTO Staff VALUES (28, 28, 2);
+-- INSERT INTO Staff VALUES (29, 29, 2);
+-- INSERT INTO Staff VALUES (30, 30, 3);
+-- INSERT INTO Staff VALUES (31, 31, 3);
+-- INSERT INTO Staff VALUES (32, 32, 3);
+-- INSERT INTO Staff VALUES (33, 33, 3);
+-- INSERT INTO Staff VALUES (34, 34, 3);
+-- INSERT INTO Staff VALUES (35, 35, 3);
+-- INSERT INTO Staff VALUES (36, 36, 3);
+-- INSERT INTO Staff VALUES (37, 37, 3);
+-- INSERT INTO Staff VALUES (38, 38, 3);
+-- INSERT INTO Staff VALUES (39, 39, 3);
+-- INSERT INTO Staff VALUES (40, 40, 4);
+-- INSERT INTO Staff VALUES (41, 41, 4);
+-- INSERT INTO Staff VALUES (42, 42, 4);
+-- INSERT INTO Staff VALUES (43, 43, 4);
+-- INSERT INTO Staff VALUES (44, 44, 4);
+-- INSERT INTO Staff VALUES (45, 45, 4);
+-- INSERT INTO Staff VALUES (46, 46, 4);
+-- INSERT INTO Staff VALUES (47, 47, 4);
+-- INSERT INTO Staff VALUES (48, 48, 4);
+-- INSERT INTO Staff VALUES (49, 49, 4);
