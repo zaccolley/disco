@@ -278,3 +278,68 @@ INSERT INTO Specialism VALUES ( 8, "Specialism #9");
 INSERT INTO Specialism VALUES ( 9, "Specialism #10");
 INSERT INTO Specialism VALUES (10, "Specialism #11");
 
+
+-- Consultant
+
+-- JuniorDoctor
+
+-- Patient
+
+INSERT INTO Patient VALUES ( 0, 50, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES ( 1, 51, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES ( 2, 52, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES ( 3, 53, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES ( 4, 54, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES ( 5, 55, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES ( 6, 56, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES ( 7, 57, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES ( 8, 58, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES ( 9, 59, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (10, 60, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (11, 61, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (12, 62, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (13, 63, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (14, 64, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (15, 65, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (16, 66, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (17, 67, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (18, 68, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (19, 69, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (20, 70, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (21, 71, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (22, 72, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (23, 73, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (24, 74, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (25, 75, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (26, 76, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (27, 77, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (28, 78, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (29, 79, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (30, 80, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (31, 81, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (32, 82, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (33, 83, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (34, 84, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (35, 85, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (36, 86, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (37, 87, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (38, 88, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (39, 89, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (40, 90, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (41, 91, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (42, 92, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (43, 93, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (44, 94, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (45, 95, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (46, 96, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (47, 97, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (48, 98, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (49, 99, 4, 0, 0, "Peanuts");
+
+CREATE TABLE Patient (
+	PATIENT_ID INT NOT NULL,
+	PERSON_ID INT NOT NULL,
+	WARD_ID INT NOT NULL,
+	BED_ID INT,
+	TEAM_ID INT,
+	PATIENT_ALLERGY VARCHAR(40),
