@@ -24,33 +24,19 @@ INSERT INTO Hospital VALUES (18,"St Mary's Hospital","St Mary's Street","Portsmo
 INSERT INTO Hospital VALUES (19,"Wexham Park Hospital","Wexham Street","Slough","Berkshire");
 INSERT INTO Hospital VALUES (20,"Wycombe General Hospital","Wycombe Street","High Wycombe","Buckinghamshire");
 
--- Department
-
-INSERT INTO Department VALUES (0,  "Department #1");
-INSERT INTO Department VALUES (1,  "Department #2");
-INSERT INTO Department VALUES (2,  "Department #3");
-INSERT INTO Department VALUES (3,  "Department #4");
-INSERT INTO Department VALUES (4,  "Department #5");
-INSERT INTO Department VALUES (5,  "Department #6");
-INSERT INTO Department VALUES (6,  "Department #7");
-INSERT INTO Department VALUES (7,  "Department #8");
-INSERT INTO Department VALUES (8,  "Department #9");
-INSERT INTO Department VALUES (9,  "Department #10");
-INSERT INTO Department VALUES (10, "Department #11");
-
 -- Ward
 
-INSERT INTO Ward VALUES (0,  10,  1, "Ward #1");
-INSERT INTO Ward VALUES (1,  10,  0, "Ward #2");
-INSERT INTO Ward VALUES (2,  10,  3, "Ward #3");
-INSERT INTO Ward VALUES (3,  10,  7, "Ward #4");
-INSERT INTO Ward VALUES (4,  10,  5, "Ward #5");
-INSERT INTO Ward VALUES (5,  10,  6, "Ward #6");
-INSERT INTO Ward VALUES (6,  10,  6, "Ward #7");
-INSERT INTO Ward VALUES (7,  10,  2, "Ward #8");
-INSERT INTO Ward VALUES (8,  10,  9, "Ward #9");
-INSERT INTO Ward VALUES (9,  10,  9, "Ward #10");
-INSERT INTO Ward VALUES (10, 10, 10, "Ward #11");
+INSERT INTO Ward VALUES (0,  10, "Ward #1", "Department #1");
+INSERT INTO Ward VALUES (1,  10, "Ward #2", "Department #2");
+INSERT INTO Ward VALUES (2,  10, "Ward #3", "Department #3");
+INSERT INTO Ward VALUES (3,  10, "Ward #4", "Department #4");
+INSERT INTO Ward VALUES (4,  10, "Ward #5", "Department #5");
+INSERT INTO Ward VALUES (5,  10, "Ward #6", "Department #6");
+INSERT INTO Ward VALUES (6,  10, "Ward #7", "Department #7");
+INSERT INTO Ward VALUES (7,  10, "Ward #8", "Department #8");
+INSERT INTO Ward VALUES (8,  10, "Ward #9", "Department #9");
+INSERT INTO Ward VALUES (9,  10, "Ward #10", "Department #10");
+INSERT INTO Ward VALUES (10, 10, "Ward #11", "Department #11");
 
 -- Equipment
 
@@ -199,56 +185,56 @@ INSERT INTO Team VALUES (10, "Team #11");
 
 -- Staff
 
-INSERT INTO Staff VALUES ( 0,  0, 0);
-INSERT INTO Staff VALUES ( 1,  1, 0);
-INSERT INTO Staff VALUES ( 2,  2, 0);
-INSERT INTO Staff VALUES ( 3,  3, 0);
-INSERT INTO Staff VALUES ( 4,  4, 0);
-INSERT INTO Staff VALUES ( 5,  5, 0);
-INSERT INTO Staff VALUES ( 6,  6, 0);
-INSERT INTO Staff VALUES ( 7,  7, 0);
-INSERT INTO Staff VALUES ( 8,  8, 0);
-INSERT INTO Staff VALUES ( 9,  9, 0);
-INSERT INTO Staff VALUES (10, 10, 1);
-INSERT INTO Staff VALUES (11, 11, 1);
-INSERT INTO Staff VALUES (12, 12, 1);
-INSERT INTO Staff VALUES (13, 13, 1);
-INSERT INTO Staff VALUES (14, 14, 1);
-INSERT INTO Staff VALUES (15, 15, 1);
-INSERT INTO Staff VALUES (16, 16, 1);
-INSERT INTO Staff VALUES (17, 17, 1);
-INSERT INTO Staff VALUES (18, 18, 1);
-INSERT INTO Staff VALUES (19, 19, 1);
-INSERT INTO Staff VALUES (20, 20, 2);
-INSERT INTO Staff VALUES (21, 21, 2);
-INSERT INTO Staff VALUES (22, 22, 2);
-INSERT INTO Staff VALUES (23, 23, 2);
-INSERT INTO Staff VALUES (24, 24, 2);
-INSERT INTO Staff VALUES (25, 25, 2);
-INSERT INTO Staff VALUES (26, 26, 2);
-INSERT INTO Staff VALUES (27, 27, 2);
-INSERT INTO Staff VALUES (28, 28, 2);
-INSERT INTO Staff VALUES (29, 29, 2);
-INSERT INTO Staff VALUES (30, 30, 3);
-INSERT INTO Staff VALUES (31, 31, 3);
-INSERT INTO Staff VALUES (32, 32, 3);
-INSERT INTO Staff VALUES (33, 33, 3);
-INSERT INTO Staff VALUES (34, 34, 3);
-INSERT INTO Staff VALUES (35, 35, 3);
-INSERT INTO Staff VALUES (36, 36, 3);
-INSERT INTO Staff VALUES (37, 37, 3);
-INSERT INTO Staff VALUES (38, 38, 3);
-INSERT INTO Staff VALUES (39, 39, 3);
-INSERT INTO Staff VALUES (40, 40, 4);
-INSERT INTO Staff VALUES (41, 41, 4);
-INSERT INTO Staff VALUES (42, 42, 4);
-INSERT INTO Staff VALUES (43, 43, 4);
-INSERT INTO Staff VALUES (44, 44, 4);
-INSERT INTO Staff VALUES (45, 45, 4);
-INSERT INTO Staff VALUES (46, 46, 4);
-INSERT INTO Staff VALUES (47, 47, 4);
-INSERT INTO Staff VALUES (48, 48, 4);
-INSERT INTO Staff VALUES (49, 49, 4);
+INSERT INTO Staff VALUES (0, 0);
+INSERT INTO Staff VALUES (1, 0);
+INSERT INTO Staff VALUES (2, 0);
+INSERT INTO Staff VALUES (3, 0);
+INSERT INTO Staff VALUES (4, 0);
+INSERT INTO Staff VALUES (5, 0);
+INSERT INTO Staff VALUES (6, 0);
+INSERT INTO Staff VALUES (7, 0);
+INSERT INTO Staff VALUES (8, 0);
+INSERT INTO Staff VALUES (9, 0);
+INSERT INTO Staff VALUES (10, 1);
+INSERT INTO Staff VALUES (11, 1);
+INSERT INTO Staff VALUES (12, 1);
+INSERT INTO Staff VALUES (13, 1);
+INSERT INTO Staff VALUES (14, 1);
+INSERT INTO Staff VALUES (15, 1);
+INSERT INTO Staff VALUES (16, 1);
+INSERT INTO Staff VALUES (17, 1);
+INSERT INTO Staff VALUES (18, 1);
+INSERT INTO Staff VALUES (19, 1);
+INSERT INTO Staff VALUES (20, 2);
+INSERT INTO Staff VALUES (21, 2);
+INSERT INTO Staff VALUES (22, 2);
+INSERT INTO Staff VALUES (23, 2);
+INSERT INTO Staff VALUES (24, 2);
+INSERT INTO Staff VALUES (25, 2);
+INSERT INTO Staff VALUES (26, 2);
+INSERT INTO Staff VALUES (27, 2);
+INSERT INTO Staff VALUES (28, 2);
+INSERT INTO Staff VALUES (29, 2);
+INSERT INTO Staff VALUES (30, 3);
+INSERT INTO Staff VALUES (31, 3);
+INSERT INTO Staff VALUES (32, 3);
+INSERT INTO Staff VALUES (33, 3);
+INSERT INTO Staff VALUES (34, 3);
+INSERT INTO Staff VALUES (35, 3);
+INSERT INTO Staff VALUES (36, 3);
+INSERT INTO Staff VALUES (37, 3);
+INSERT INTO Staff VALUES (38, 3);
+INSERT INTO Staff VALUES (39, 3);
+INSERT INTO Staff VALUES (40, 4);
+INSERT INTO Staff VALUES (41, 4);
+INSERT INTO Staff VALUES (42, 4);
+INSERT INTO Staff VALUES (43, 4);
+INSERT INTO Staff VALUES (44, 4);
+INSERT INTO Staff VALUES (45, 4);
+INSERT INTO Staff VALUES (46, 4);
+INSERT INTO Staff VALUES (47, 4);
+INSERT INTO Staff VALUES (48, 4);
+INSERT INTO Staff VALUES (49, 4);
 
 -- Nurse
 
@@ -264,82 +250,59 @@ INSERT INTO Nurse VALUES ( 8, 8);
 INSERT INTO Nurse VALUES ( 9, 5);
 INSERT INTO Nurse VALUES (10, 8);
 
--- Specialism
-
-INSERT INTO Specialism VALUES ( 0, "Specialism #1");
-INSERT INTO Specialism VALUES ( 1, "Specialism #2");
-INSERT INTO Specialism VALUES ( 2, "Specialism #3");
-INSERT INTO Specialism VALUES ( 3, "Specialism #4");
-INSERT INTO Specialism VALUES ( 4, "Specialism #5");
-INSERT INTO Specialism VALUES ( 5, "Specialism #6");
-INSERT INTO Specialism VALUES ( 6, "Specialism #7");
-INSERT INTO Specialism VALUES ( 7, "Specialism #8");
-INSERT INTO Specialism VALUES ( 8, "Specialism #9");
-INSERT INTO Specialism VALUES ( 9, "Specialism #10");
-INSERT INTO Specialism VALUES (10, "Specialism #11");
-
-
 -- Consultant
 
 -- JuniorDoctor
 
 -- Patient
 
-INSERT INTO Patient VALUES ( 0, 50, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES ( 1, 51, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES ( 2, 52, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES ( 3, 53, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES ( 4, 54, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES ( 5, 55, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES ( 6, 56, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES ( 7, 57, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES ( 8, 58, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES ( 9, 59, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (10, 60, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (11, 61, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (12, 62, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (13, 63, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (14, 64, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (15, 65, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (16, 66, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (17, 67, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (18, 68, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (19, 69, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (20, 70, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (21, 71, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (22, 72, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (23, 73, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (24, 74, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (25, 75, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (26, 76, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (27, 77, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (28, 78, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (29, 79, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (30, 80, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (31, 81, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (32, 82, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (33, 83, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (34, 84, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (35, 85, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (36, 86, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (37, 87, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (38, 88, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (39, 89, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (40, 90, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (41, 91, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (42, 92, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (43, 93, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (44, 94, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (45, 95, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (46, 96, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (47, 97, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (48, 98, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (49, 99, 4, 0, 0, "Peanuts");
-
-CREATE TABLE Patient (
-	PATIENT_ID INT NOT NULL,
-	PERSON_ID INT NOT NULL,
-	WARD_ID INT NOT NULL,
-	BED_ID INT,
-	TEAM_ID INT,
-	PATIENT_ALLERGY VARCHAR(40),
+INSERT INTO Patient VALUES (50, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (51, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (52, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (53, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (54, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (55, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (56, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (57, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (58, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (59, 0, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (60, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (61, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (62, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (63, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (64, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (65, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (66, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (67, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (68, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (69, 1, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (70, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (71, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (72, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (73, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (74, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (75, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (76, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (77, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (78, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (79, 2, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (80, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (81, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (82, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (83, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (84, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (85, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (86, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (87, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (88, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (89, 3, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (90, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (91, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (92, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (93, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (94, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (95, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (96, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (97, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (98, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (99, 4, 0, 0, "Peanuts");
