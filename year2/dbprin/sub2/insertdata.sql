@@ -256,56 +256,56 @@ INSERT INTO Nurse VALUES (10, 8);
 
 -- Patient
 
-INSERT INTO Patient VALUES (50, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (51, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (52, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (53, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (54, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (55, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (56, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (57, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (58, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (59, 0, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (60, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (61, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (62, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (63, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (64, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (65, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (66, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (67, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (68, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (69, 1, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (70, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (71, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (72, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (73, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (74, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (75, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (76, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (77, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (78, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (79, 2, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (80, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (81, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (82, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (83, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (84, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (85, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (86, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (87, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (88, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (89, 3, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (90, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (91, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (92, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (93, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (94, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (95, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (96, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (97, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (98, 4, 0, 0, "Peanuts");
-INSERT INTO Patient VALUES (99, 4, 0, 0, "Peanuts");
+INSERT INTO Patient VALUES (50, 0, 0, 0, NULL);
+INSERT INTO Patient VALUES (51, 0, 0, 0, "Tetracycline");
+INSERT INTO Patient VALUES (52, 0, 0, 0, "Penicillin");
+INSERT INTO Patient VALUES (53, 0, 0, 0, NULL);
+INSERT INTO Patient VALUES (54, 0, 0, 0, NULL);
+INSERT INTO Patient VALUES (55, 0, 0, 0, "Tetracycline");
+INSERT INTO Patient VALUES (56, 0, 0, 0, NULL);
+INSERT INTO Patient VALUES (57, 0, 0, 0, "Penicillin");
+INSERT INTO Patient VALUES (58, 0, 0, 0, NULL);
+INSERT INTO Patient VALUES (59, 0, 0, 0, NULL);
+INSERT INTO Patient VALUES (60, 1, 0, 0, "NSAIDs");
+INSERT INTO Patient VALUES (61, 1, 0, 0, NULL);
+INSERT INTO Patient VALUES (62, 1, 0, 0, "Carbamazepine");
+INSERT INTO Patient VALUES (63, 1, 0, 0, NULL);
+INSERT INTO Patient VALUES (64, 1, 0, 0, NULL);
+INSERT INTO Patient VALUES (65, 1, 0, 0, "Tetracycline");
+INSERT INTO Patient VALUES (66, 1, 0, 0, "Tetracycline");
+INSERT INTO Patient VALUES (67, 1, 0, 0, NULL);
+INSERT INTO Patient VALUES (68, 1, 0, 0, NULL);
+INSERT INTO Patient VALUES (69, 1, 0, 0, NULL);
+INSERT INTO Patient VALUES (70, 2, 0, 0, "Phenytoin");
+INSERT INTO Patient VALUES (71, 2, 0, 0, "Phenytoin");
+INSERT INTO Patient VALUES (72, 2, 0, 0, NULL);
+INSERT INTO Patient VALUES (73, 2, 0, 0, NULL);
+INSERT INTO Patient VALUES (74, 2, 0, 0, NULL);
+INSERT INTO Patient VALUES (75, 2, 0, 0, "Penicillin");
+INSERT INTO Patient VALUES (76, 2, 0, 0, NULL);
+INSERT INTO Patient VALUES (77, 2, 0, 0, NULL);
+INSERT INTO Patient VALUES (78, 2, 0, 0, NULL);
+INSERT INTO Patient VALUES (79, 2, 0, 0, NULL);
+INSERT INTO Patient VALUES (80, 3, 0, 0, "Tetracycline");
+INSERT INTO Patient VALUES (81, 3, 0, 0, NULL);
+INSERT INTO Patient VALUES (82, 3, 0, 0, "Carbamazepine");
+INSERT INTO Patient VALUES (83, 3, 0, 0, NULL);
+INSERT INTO Patient VALUES (84, 3, 0, 0, "Carbamazepine");
+INSERT INTO Patient VALUES (85, 3, 0, 0, NULL);
+INSERT INTO Patient VALUES (86, 3, 0, 0, NULL);
+INSERT INTO Patient VALUES (87, 3, 0, 0, "Tetracycline");
+INSERT INTO Patient VALUES (88, 3, 0, 0, NULL);
+INSERT INTO Patient VALUES (89, 3, 0, 0, NULL);
+INSERT INTO Patient VALUES (90, 4, 0, 0, NULL);
+INSERT INTO Patient VALUES (91, 4, 0, 0, "NSAIDs");
+INSERT INTO Patient VALUES (92, 4, 0, 0, NULL);
+INSERT INTO Patient VALUES (93, 4, 0, 0, "Penicillin");
+INSERT INTO Patient VALUES (94, 4, 0, 0, "Codeine");
+INSERT INTO Patient VALUES (95, 4, 0, 0, "Phenytoin");
+INSERT INTO Patient VALUES (96, 4, 0, 0, "Sulfa drugs");
+INSERT INTO Patient VALUES (97, 4, 0, 0, "Sulfa drugs");
+INSERT INTO Patient VALUES (98, 4, 0, 0, NULL);
+INSERT INTO Patient VALUES (99, 4, 0, 0, "Penicillin");
 
 -- Treatment
 
@@ -322,6 +322,18 @@ INSERT INTO Treatment VALUES ( 9, "Nerve Surgery");
 INSERT INTO Treatment VALUES (10, "Obstetric Scanning");
 
 -- Prescription
+
+INSERT INTO Prescription VALUES ( 0, 1,  2);
+INSERT INTO Prescription VALUES ( 1, 2,  3);
+INSERT INTO Prescription VALUES ( 2, 2,  0);
+INSERT INTO Prescription VALUES ( 3, 3,  1);
+INSERT INTO Prescription VALUES ( 4, 5,  0);
+INSERT INTO Prescription VALUES ( 5, 8,  2);
+INSERT INTO Prescription VALUES ( 6, 9,  2);
+INSERT INTO Prescription VALUES ( 7, 10, 4);
+INSERT INTO Prescription VALUES ( 8, 10, 4);
+INSERT INTO Prescription VALUES ( 9, 10, 4);
+INSERT INTO Prescription VALUES (10, 0,  3);
 
 -- TreatmentHistory
 
