@@ -26,17 +26,17 @@ INSERT INTO Hospital VALUES (20,"Wycombe General Hospital","Wycombe Street","Hig
 
 -- Ward
 
-INSERT INTO Ward VALUES (0,  10, "Ward #1", "Department #1");
-INSERT INTO Ward VALUES (1,  10, "Ward #2", "Department #2");
-INSERT INTO Ward VALUES (2,  10, "Ward #3", "Department #3");
-INSERT INTO Ward VALUES (3,  10, "Ward #4", "Department #4");
-INSERT INTO Ward VALUES (4,  10, "Ward #5", "Department #5");
-INSERT INTO Ward VALUES (5,  10, "Ward #6", "Department #6");
-INSERT INTO Ward VALUES (6,  10, "Ward #7", "Department #7");
-INSERT INTO Ward VALUES (7,  10, "Ward #8", "Department #8");
-INSERT INTO Ward VALUES (8,  10, "Ward #9", "Department #9");
-INSERT INTO Ward VALUES (9,  10, "Ward #10", "Department #10");
-INSERT INTO Ward VALUES (10, 10, "Ward #11", "Department #11");
+INSERT INTO Ward VALUES (0,  10, "BE1", "Breast and Endocrine Surgery");
+INSERT INTO Ward VALUES (1,  10, "CA1", "Cardiology");
+INSERT INTO Ward VALUES (2,  10, "DE1", "Diabetes & Endocrinology");
+INSERT INTO Ward VALUES (3,  10, "G1",  "Gynaecology");
+INSERT INTO Ward VALUES (4,  10, "LD1", "Learning and Development");
+INSERT INTO Ward VALUES (5,  10, "MU1", "Maxillofacial Unit");
+INSERT INTO Ward VALUES (6,  10, "N1",  "Neurophysiology");
+INSERT INTO Ward VALUES (7,  10, "O1",  "Ophthalmology");
+INSERT INTO Ward VALUES (8,  10, "P1",  "Physiotherapy");
+INSERT INTO Ward VALUES (9,  10, "R1"  ,"Rheumatology");
+INSERT INTO Ward VALUES (10, 10, "U1",  "Urology");
 
 -- Equipment
 
