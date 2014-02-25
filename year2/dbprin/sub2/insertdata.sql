@@ -40,17 +40,17 @@ INSERT INTO Ward VALUES (10, 10, "U1",  "Urology");
 
 -- Equipment
 
-INSERT INTO Equipment VALUES (0,  "Equipment #1",  1);
-INSERT INTO Equipment VALUES (1,  "Equipment #2",  0);
-INSERT INTO Equipment VALUES (2,  "Equipment #3",  3);
-INSERT INTO Equipment VALUES (3,  "Equipment #4",  7);
-INSERT INTO Equipment VALUES (4,  "Equipment #5",  5);
-INSERT INTO Equipment VALUES (5,  "Equipment #6",  6);
-INSERT INTO Equipment VALUES (6,  "Equipment #7",  6);
-INSERT INTO Equipment VALUES (7,  "Equipment #8",  2);
-INSERT INTO Equipment VALUES (8,  "Equipment #9",  9);
-INSERT INTO Equipment VALUES (9,  "Equipment #10", 9);
-INSERT INTO Equipment VALUES (10, "Equipment #11", 10);
+INSERT INTO Equipment VALUES (0,  "Air purifier",  1);
+INSERT INTO Equipment VALUES (1,  "Bedpan",  0);
+INSERT INTO Equipment VALUES (2,  "Feeding tube",  3);
+INSERT INTO Equipment VALUES (3,  "Low dead space syringe",  7);
+INSERT INTO Equipment VALUES (4,  "Fotofinder",  5);
+INSERT INTO Equipment VALUES (5,  "Mediastinoscope",  6);
+INSERT INTO Equipment VALUES (6,  "Defibrillator",  6);
+INSERT INTO Equipment VALUES (7,  "Crash cart",  2);
+INSERT INTO Equipment VALUES (8,  "Hot air oven",  9);
+INSERT INTO Equipment VALUES (9,  "Bubble oxygenator", 9);
+INSERT INTO Equipment VALUES (10, "Electromagnetic diaphragm", 10);
 
 -- Bed
 
