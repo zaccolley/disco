@@ -252,7 +252,31 @@ INSERT INTO Nurse VALUES (10, 8);
 
 -- Consultant
 
+INSERT INTO Consultant VALUES ( 0, 2, "Diabetes & Endocrinology");
+INSERT INTO Consultant VALUES ( 1, 6, "Neurophysiology");
+INSERT INTO Consultant VALUES ( 2, 6, "Neurophysiology");
+INSERT INTO Consultant VALUES ( 3, 3, "Gynaecology");
+INSERT INTO Consultant VALUES ( 4, 2, "Diabetes & Endocrinology");
+INSERT INTO Consultant VALUES ( 5, 10, "Rheumatology");
+INSERT INTO Consultant VALUES ( 6, 4, "Learning and Development");
+INSERT INTO Consultant VALUES ( 7, 4, "Learning and Development");
+INSERT INTO Consultant VALUES ( 8, 8, "Physiotherapy");
+INSERT INTO Consultant VALUES ( 9, 5, "Maxillofacial Unit");
+INSERT INTO Consultant VALUES (10, 8, "Physiotherapy");
+
 -- JuniorDoctor
+
+INSERT INTO JuniorDoctor VALUES ( 0, "Neurophysiology");
+INSERT INTO JuniorDoctor VALUES ( 1, "Rheumatology");
+INSERT INTO JuniorDoctor VALUES ( 2, "Learning and Development");
+INSERT INTO JuniorDoctor VALUES ( 3, "Gynaecology");
+INSERT INTO JuniorDoctor VALUES ( 4, "Maxillofacial Unit");
+INSERT INTO JuniorDoctor VALUES ( 5, "Diabetes & Endocrinology");
+INSERT INTO JuniorDoctor VALUES ( 6, "Neurophysiology");
+INSERT INTO JuniorDoctor VALUES ( 7, "Diabetes & Endocrinology");
+INSERT INTO JuniorDoctor VALUES ( 8, "Learning and Development");
+INSERT INTO JuniorDoctor VALUES ( 9, "Physiotherapy");
+INSERT INTO JuniorDoctor VALUES (10, "Physiotherapy");
 
 -- Patient
 
@@ -337,6 +361,10 @@ INSERT INTO Prescription VALUES (10, 0,  3);
 
 -- TreatmentHistory
 
+	-- TREATMENT_ID INT NOT NULL,
+	-- PERSON_ID INT NOT NULL,
+	-- TREATMENTHISTORY_DATE DATETIME NOT NULL,
+
 -- Drug
 
 INSERT INTO Drug VALUES ( 0, "Alendronic Acid", 10);
@@ -353,3 +381,8 @@ INSERT INTO Drug VALUES (10, "Sildenafil", 10);
 INSERT INTO Drug VALUES (11, "Valsartan", 50);
 
 -- PrescriptionHistory
+
+	-- PRESCRIPTION_ID INT NOT NULL,
+	-- DRUG_ID INT NOT NULL,
+	-- PRESCRIPTIONHISTORY_DATE DATETIME NOT NULL,
+	-- PRESCRIPTION_DOSAGE VARCHAR(50),
