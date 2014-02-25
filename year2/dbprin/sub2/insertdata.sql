@@ -309,6 +309,18 @@ INSERT INTO Patient VALUES (99, 4, 0, 0, "Peanuts");
 
 -- Treatment
 
+INSERT INTO Treatment VALUES ( 0, "Abdominal Problems");
+INSERT INTO Treatment VALUES ( 1, "Balloon Sinuplasty");
+INSERT INTO Treatment VALUES ( 2, "Cardiac Pacing");
+INSERT INTO Treatment VALUES ( 3, "Dental Implants");
+INSERT INTO Treatment VALUES ( 4, "Rhytidectomy");
+INSERT INTO Treatment VALUES ( 5, "Gastric Bypass");
+INSERT INTO Treatment VALUES ( 6, "Haemorrhoidectomy");
+INSERT INTO Treatment VALUES ( 7, "Joint Resurfacing");
+INSERT INTO Treatment VALUES ( 8, "Knee Replacement");
+INSERT INTO Treatment VALUES ( 9, "Nerve Surgery");
+INSERT INTO Treatment VALUES (10, "Obstetric Scanning");
+
 -- Prescription
 
 -- TreatmentHistory
