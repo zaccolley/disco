@@ -306,3 +306,26 @@ INSERT INTO Patient VALUES (96, 4, 0, 0, "Peanuts");
 INSERT INTO Patient VALUES (97, 4, 0, 0, "Peanuts");
 INSERT INTO Patient VALUES (98, 4, 0, 0, "Peanuts");
 INSERT INTO Patient VALUES (99, 4, 0, 0, "Peanuts");
+
+-- Treatment
+
+-- Prescription
+
+-- TreatmentHistory
+
+-- Drug
+
+INSERT INTO Drug VALUES ( 0, "Alendronic Acid", 10);
+INSERT INTO Drug VALUES ( 1, "Enalapril", 20);
+INSERT INTO Drug VALUES ( 2, "Finasteride", 30);
+INSERT INTO Drug VALUES ( 3, "Hydrocortisone", 20);
+INSERT INTO Drug VALUES ( 4, "Irbesartan", 5);
+INSERT INTO Drug VALUES ( 5, "Lorazepam", 15);
+INSERT INTO Drug VALUES ( 6, "Mirtazapine", 60);
+INSERT INTO Drug VALUES ( 7, "Phenoxymethylpenicillin", 70);
+INSERT INTO Drug VALUES ( 8, "Prochlorperazine Maleate", 50);
+INSERT INTO Drug VALUES ( 9, "Rosuvastatin", 80);
+INSERT INTO Drug VALUES (10, "Sildenafil", 10);
+INSERT INTO Drug VALUES (11, "Valsartan", 50);
+
+-- PrescriptionHistory
