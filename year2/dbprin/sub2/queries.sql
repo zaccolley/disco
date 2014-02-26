@@ -1,3 +1,4 @@
+
 /*
 
 Queries for Q8
@@ -6,31 +7,33 @@ Queries for Q8
 Query 1
 --------
 
-+ List all nurses on wards that are in a specific department with some of their details
-
-- Set initial as forename
-- Order by surname
-- Nice titled columns
++ Get list patients current drugs and list any allergies
 
 */
 
-CREATE VIEW Nurses AS
-
 SELECT
-   CONCAT_WS('. ',PERSON_TITLE,SUBSTR(PERSON_FNAME, 1, 1),PERSON_SNAME) AS 'Name',
-   PERSON_TELEPHONE AS 'Telephone No.',
-   CONCAT(WARD_NAME,' (',DEPARTMENT_NAME,')') AS 'Ward (Department)'
+   CONCAT(PERSON_SNAME,', ',PERSON_FNAME) AS 'Name',
+   GROUP_CONCAT(CONCAT(DRUG_NAME,' (',PRESCRIPTION_DOSAGE,')') SEPARATOR ', ') AS 'Drugs (Dosage)',
+   PATIENT_ALLERGY AS 'Allergy'
+   -- issue warning
 
 FROM
-   Nurse, Person, Staff, Ward
+   Person As Pe, Patient AS Pa, TreatmentHistory AS TH,
+   Treatment AS T, Prescription AS Pr,
+   PrescriptionHistory AS PH, Drug AS D 
 
 WHERE
-   Nurse.PERSON_ID = Person.PERSON_ID AND
-   Nurse.WARD_ID = Ward.WARD_ID AND
-   Ward.WARD_ID = 6
+   Pe.PERSON_ID = Pa.PERSON_ID AND
+   Pa.PERSON_ID = TH.PERSON_ID AND
+   TH.TREATMENT_ID = T.TREATMENT_ID AND
+   T.TREATMENT_ID = Pr.TREATMENT_ID AND
+   Pr.PRESCRIPTION_ID = PH.PRESCRIPTION_ID AND
+   PH.DRUG_ID = D.DRUG_ID
 
-GROUP BY PERSON_SNAME
-ORDER BY PERSON_SNAME DESC;
+GROUP BY PERSON_FNAME
+
+ORDER BY PATIENT_ALLERGY ASC;
+
 
 /*
 
@@ -51,33 +54,52 @@ SELECT
    UPPER(PERSON_EMAIL) AS 'Email Address',
    HOSPITAL_NAME AS 'Hospital Name'
 FROM
-   Person, Patient, Ward, Hospital
+   Person AS Pe, Patient AS Pa, Ward AS W, Hospital AS H
 
 WHERE
-   Patient.PERSON_ID = Person.PERSON_ID AND
-   Patient.WARD_ID = Ward.WARD_ID AND
-   Ward.HOSPITAL_ID = Hospital.HOSPITAL_ID AND 
-   Hospital.HOSPITAL_ID = 10 AND
+   Pa.PERSON_ID = Pe.PERSON_ID AND
+   Pa.WARD_ID = W.WARD_ID AND
+   W.HOSPITAL_ID = H.HOSPITAL_ID AND 
+   H.HOSPITAL_ID = 10 AND
    PERSON_EMAIL NOT LIKE '%@%.%'
 
 ORDER BY PERSON_EMAIL ASC;
 
--- Then a count
-
-SELECT COUNT(P.PERSON_EMAIL) AS 'Amount of Invalid Emails' FROM
-(
-   SELECT PERSON_EMAIL FROM Person, Patient, Ward, Hospital
-   WHERE
-      Patient.PERSON_ID = Person.PERSON_ID AND
-      Patient.WARD_ID = Ward.WARD_ID AND
-      Ward.HOSPITAL_ID = Hospital.HOSPITAL_ID AND 
-      Hospital.HOSPITAL_ID = 10 AND
-      PERSON_EMAIL NOT LIKE '%@%.%'
-) P;
-
 /*
 
 Query 3
+--------
+
++ List all nurses on wards that are in a specific department with some of their details
+
+- Set initial as forename
+- Order by surname
+- Nice titled columns
+
+*/
+
+CREATE VIEW Nurses AS
+
+SELECT
+   CONCAT_WS('. ',PERSON_TITLE,SUBSTR(PERSON_FNAME, 1, 1),PERSON_SNAME) AS 'Name',
+   PERSON_TELEPHONE AS 'Telephone No.',
+   CONCAT(WARD_NAME,' (',DEPARTMENT_NAME,')') AS 'Ward (Department)'
+
+FROM
+   Nurse AS N, Person AS P, Staff AS S, Ward AS W
+
+WHERE
+   N.PERSON_ID = P.PERSON_ID AND
+   N.WARD_ID = W.WARD_ID AND
+   W.WARD_ID = 6
+
+GROUP BY PERSON_SNAME
+ORDER BY PERSON_SNAME DESC;
+
+
+/*
+
+Query 4
 --------
 
 + Find a list of all patients and their data
@@ -90,18 +112,25 @@ Query 3
 
 SELECT
    CONCAT_WS('. ',SUBSTR(PERSON_FNAME, 1, 1),PERSON_SNAME) AS 'Name',
-   PERSON_GENDER AS 'Gender',
+   
+   CASE PERSON_GENDER
+      WHEN 'M' THEN 'Male'
+      WHEN 'F' THEN 'Female'
+      WHEN 'O' THEN 'Other'
+      ELSE 'Unknown'
+   END AS 'Gender',
+   
    CONCAT_WS(', ',PERSON_HOUSENONAME, PERSON_STREET, PERSON_TOWNCITY, PERSON_COUNTY) AS Address,
    DATE_FORMAT(PERSON_DOB, '%D %M %Y (%d/%c/%Y)') AS 'Date of Birth',
    PERSON_TELEPHONE AS 'Telephone Number',
    UPPER(PERSON_EMAIL) AS 'Email Address',
    HOSPITAL_NAME AS 'Hospital Name'
 FROM
-   Person, Patient, Ward, Hospital
+   Person AS Pe, Patient AS Pa, Ward AS W, Hospital AS H
 
 WHERE
-   Patient.PERSON_ID = Person.PERSON_ID AND
-   Patient.WARD_ID = Ward.WARD_ID AND
-   Ward.HOSPITAL_ID = Hospital.HOSPITAL_ID 
+   Pa.PERSON_ID = Pe.PERSON_ID AND
+   Pa.WARD_ID = W.WARD_ID AND
+   W.HOSPITAL_ID = H.HOSPITAL_ID 
 
 ORDER BY PERSON_FNAME ASC;

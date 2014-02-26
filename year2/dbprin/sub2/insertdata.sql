@@ -46,9 +46,9 @@ INSERT INTO Equipment VALUES (2,  "Feeding tube",  3);
 INSERT INTO Equipment VALUES (3,  "Low dead space syringe",  7);
 INSERT INTO Equipment VALUES (4,  "Fotofinder",  5);
 INSERT INTO Equipment VALUES (5,  "Mediastinoscope",  6);
-INSERT INTO Equipment VALUES (6,  "Defibrillator",  6);
+INSERT INTO Equipment VALUES (6,  "Defibrillator",  NULL);
 INSERT INTO Equipment VALUES (7,  "Crash cart",  2);
-INSERT INTO Equipment VALUES (8,  "Hot air oven",  9);
+INSERT INTO Equipment VALUES (8,  "Hot air oven",  NULL);
 INSERT INTO Equipment VALUES (9,  "Bubble oxygenator", 9);
 INSERT INTO Equipment VALUES (10, "Electromagnetic diaphragm", 10);
 
@@ -387,10 +387,16 @@ INSERT INTO Drug VALUES ( 8, "Prochlorperazine Maleate", 50);
 INSERT INTO Drug VALUES ( 9, "Rosuvastatin", 80);
 INSERT INTO Drug VALUES (10, "Sildenafil", 10);
 INSERT INTO Drug VALUES (11, "Valsartan", 50);
+INSERT INTO Drug VALUES (12, "Tetracycline", 10);
+INSERT INTO Drug VALUES (13, "Penicillin", 15);
+INSERT INTO Drug VALUES (14, "Carbamazepine", 20);
+INSERT INTO Drug VALUES (15, "Tetracycline", 50);
+INSERT INTO Drug VALUES (16, "Codeine", 50);
 
 -- PrescriptionHistory
 
-INSERT INTO PrescriptionHistory VALUES ( 0,  0, '2013-10-10 00:00:00', 0);
+INSERT INTO PrescriptionHistory VALUES ( 0,  0, '2013-10-10 00:00:00', 5);
+INSERT INTO PrescriptionHistory VALUES ( 0,  15, '2013-10-10 00:00:00', 5);
 INSERT INTO PrescriptionHistory VALUES ( 1,  1, '2013-11-01 00:00:00', 1.25);
 INSERT INTO PrescriptionHistory VALUES ( 2,  2, '2013-12-02 00:00:00', 2.5);
 INSERT INTO PrescriptionHistory VALUES ( 3,  3, '2013-01-04 00:00:00', 3.75);
@@ -400,4 +406,4 @@ INSERT INTO PrescriptionHistory VALUES ( 6,  6, '2013-04-15 00:00:00', 7.5);
 INSERT INTO PrescriptionHistory VALUES ( 7,  7, '2013-03-18 00:00:00', 8.75);
 INSERT INTO PrescriptionHistory VALUES ( 8,  8, '2013-03-20 00:00:00', 10);
 INSERT INTO PrescriptionHistory VALUES ( 9,  9, '2013-02-21 00:00:00', 11.25);
-INSERT INTO PrescriptionHistory VALUES (10, 10, '2014-01-25 00:00:00', 12.5);
+INSERT INTO PrescriptionHistory VALUES (10, 16, '2014-01-25 00:00:00', 12.5);
