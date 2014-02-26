@@ -361,17 +361,17 @@ INSERT INTO Prescription VALUES (10, 0,  3);
 
 -- TreatmentHistory
 
-INSERT INTO TreatmentHistory VALUES ( 0,  0, 2013-10-10 00:00:00);
-INSERT INTO TreatmentHistory VALUES ( 1,  1, 2013-11-01 00:00:00);
-INSERT INTO TreatmentHistory VALUES ( 2,  2, 2013-12-02 00:00:00);
-INSERT INTO TreatmentHistory VALUES ( 3,  3, 2013-01-04 00:00:00);
-INSERT INTO TreatmentHistory VALUES ( 4,  4, 2013-02-06 00:00:00);
-INSERT INTO TreatmentHistory VALUES ( 5,  5, 2013-05-14 00:00:00);
-INSERT INTO TreatmentHistory VALUES ( 6,  6, 2013-04-15 00:00:00);
-INSERT INTO TreatmentHistory VALUES ( 7,  7, 2013-03-18 00:00:00);
-INSERT INTO TreatmentHistory VALUES ( 8,  8, 2013-03-20 00:00:00);
-INSERT INTO TreatmentHistory VALUES ( 9,  9, 2013-02-21 00:00:00);
-INSERT INTO TreatmentHistory VALUES (10, 10, 2014-01-25 00:00:00);
+INSERT INTO TreatmentHistory VALUES ( 0, 50, '2013-10-10 00:00:00');
+INSERT INTO TreatmentHistory VALUES ( 1, 51, '2013-11-01 00:00:00');
+INSERT INTO TreatmentHistory VALUES ( 2, 52, '2013-12-02 00:00:00');
+INSERT INTO TreatmentHistory VALUES ( 3, 52, '2013-01-04 00:00:00');
+INSERT INTO TreatmentHistory VALUES ( 4, 54, '2013-02-06 00:00:00');
+INSERT INTO TreatmentHistory VALUES ( 5, 55, '2013-05-14 00:00:00');
+INSERT INTO TreatmentHistory VALUES ( 6, 56, '2013-04-15 00:00:00');
+INSERT INTO TreatmentHistory VALUES ( 7, 55, '2013-03-18 00:00:00');
+INSERT INTO TreatmentHistory VALUES ( 8, 58, '2013-03-20 00:00:00');
+INSERT INTO TreatmentHistory VALUES ( 9, 58, '2013-02-21 00:00:00');
+INSERT INTO TreatmentHistory VALUES (10, 60, '2014-01-25 00:00:00');
 
 -- Drug
 
@@ -390,7 +390,14 @@ INSERT INTO Drug VALUES (11, "Valsartan", 50);
 
 -- PrescriptionHistory
 
-	-- PRESCRIPTION_ID INT NOT NULL,
-	-- DRUG_ID INT NOT NULL,
-	-- PRESCRIPTIONHISTORY_DATE DATETIME NOT NULL,
-	-- PRESCRIPTION_DOSAGE VARCHAR(50),
+INSERT INTO PrescriptionHistory VALUES ( 0,  0, '2013-10-10 00:00:00', 0);
+INSERT INTO PrescriptionHistory VALUES ( 1,  1, '2013-11-01 00:00:00', 1.25);
+INSERT INTO PrescriptionHistory VALUES ( 2,  2, '2013-12-02 00:00:00', 2.5);
+INSERT INTO PrescriptionHistory VALUES ( 3,  3, '2013-01-04 00:00:00', 3.75);
+INSERT INTO PrescriptionHistory VALUES ( 4,  4, '2013-02-06 00:00:00', 5);
+INSERT INTO PrescriptionHistory VALUES ( 5,  5, '2013-05-14 00:00:00', 6.25);
+INSERT INTO PrescriptionHistory VALUES ( 6,  6, '2013-04-15 00:00:00', 7.5);
+INSERT INTO PrescriptionHistory VALUES ( 7,  7, '2013-03-18 00:00:00', 8.75);
+INSERT INTO PrescriptionHistory VALUES ( 8,  8, '2013-03-20 00:00:00', 10);
+INSERT INTO PrescriptionHistory VALUES ( 9,  9, '2013-02-21 00:00:00', 11.25);
+INSERT INTO PrescriptionHistory VALUES (10, 10, '2014-01-25 00:00:00', 12.5);
