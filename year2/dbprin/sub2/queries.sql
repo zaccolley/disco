@@ -18,17 +18,13 @@ SELECT
    -- issue warning
 
 FROM
-   Person As Pe, Patient AS Pa, TreatmentHistory AS TH,
-   Treatment AS T, Prescription AS Pr,
-   PrescriptionHistory AS PH, Drug AS D 
-
-WHERE
-   Pe.PERSON_ID = Pa.PERSON_ID AND
-   Pa.PERSON_ID = TH.PERSON_ID AND
-   TH.TREATMENT_ID = T.TREATMENT_ID AND
-   T.TREATMENT_ID = Pr.TREATMENT_ID AND
-   Pr.PRESCRIPTION_ID = PH.PRESCRIPTION_ID AND
-   PH.DRUG_ID = D.DRUG_ID
+   Person Pe
+   JOIN Patient Pa ON Pe.PERSON_ID = Pa.PERSON_ID
+   JOIN TreatmentHistory TH ON Pa.PERSON_ID = TH.PERSON_ID
+   JOIN Treatment T ON TH.TREATMENT_ID = T.TREATMENT_ID 
+   JOIN Prescription Pr ON T.TREATMENT_ID = Pr.TREATMENT_ID
+   JOIN PrescriptionHistory PH ON Pr.PRESCRIPTION_ID = PH.PRESCRIPTION_ID
+   JOIN Drug D ON PH.DRUG_ID = D.DRUG_ID
 
 GROUP BY PERSON_FNAME
 
@@ -54,12 +50,12 @@ SELECT
    UPPER(PERSON_EMAIL) AS 'Email Address',
    HOSPITAL_NAME AS 'Hospital Name'
 FROM
-   Person AS Pe, Patient AS Pa, Ward AS W, Hospital AS H
+   Person Pe
+   JOIN Patient Pa ON Pa.PERSON_ID = Pe.PERSON_ID
+   JOIN Ward W ON Pa.WARD_ID = W.WARD_ID
+   JOIN Hospital H ON  W.HOSPITAL_ID = H.HOSPITAL_ID
 
-WHERE
-   Pa.PERSON_ID = Pe.PERSON_ID AND
-   Pa.WARD_ID = W.WARD_ID AND
-   W.HOSPITAL_ID = H.HOSPITAL_ID AND 
+WHERE 
    H.HOSPITAL_ID = 10 AND
    PERSON_EMAIL NOT LIKE '%@%.%'
 
@@ -86,11 +82,11 @@ SELECT
    CONCAT(WARD_NAME,' (',DEPARTMENT_NAME,')') AS 'Ward (Department)'
 
 FROM
-   Nurse AS N, Person AS P, Staff AS S, Ward AS W
+   Nurse N
+   JOIN Person P ON N.PERSON_ID = P.PERSON_ID
+   JOIN Ward W ON  N.WARD_ID = W.WARD_ID
 
 WHERE
-   N.PERSON_ID = P.PERSON_ID AND
-   N.WARD_ID = W.WARD_ID AND
    W.WARD_ID = 6
 
 GROUP BY PERSON_SNAME
@@ -126,11 +122,9 @@ SELECT
    UPPER(PERSON_EMAIL) AS 'Email Address',
    HOSPITAL_NAME AS 'Hospital Name'
 FROM
-   Person AS Pe, Patient AS Pa, Ward AS W, Hospital AS H
-
-WHERE
-   Pa.PERSON_ID = Pe.PERSON_ID AND
-   Pa.WARD_ID = W.WARD_ID AND
-   W.HOSPITAL_ID = H.HOSPITAL_ID 
+   Person Pe
+   JOIN Patient Pa ON Pa.PERSON_ID = Pe.PERSON_ID
+   JOIN Ward W ON  Pa.WARD_ID = W.WARD_ID
+   JOIN Hospital H ON W.HOSPITAL_ID = H.HOSPITAL_ID 
 
 ORDER BY PERSON_FNAME ASC;
