@@ -7,28 +7,31 @@ Queries for Q8
 Query 1
 --------
 
-+ Get list patients current drugs and list any allergies
++ List all nurses on wards that are in a specific department with some of their details
+
+- Set initial as forename
+- Order by surname
+- Nice titled columns
 
 */
 
+CREATE VIEW Nurses AS
+
 SELECT
-   CONCAT(PERSON_SNAME,', ',PERSON_FNAME) AS 'Name',
-   GROUP_CONCAT(CONCAT(DRUG_NAME,' (',PRESCRIPTION_DOSAGE,')') SEPARATOR ', ') AS 'Drugs (Dosage)',
-   PATIENT_ALLERGY AS 'Allergy'
-   -- issue warning
+   CONCAT_WS('. ',PERSON_TITLE,SUBSTR(PERSON_FNAME, 1, 1),PERSON_SNAME) AS 'Name',
+   PERSON_TELEPHONE AS 'Telephone No.',
+   CONCAT(WARD_NAME,' (',DEPARTMENT_NAME,')') AS 'Ward (Department)'
 
 FROM
-   Person Pe
-   JOIN Patient Pa ON Pe.PERSON_ID = Pa.PERSON_ID
-   JOIN TreatmentHistory TH ON Pa.PERSON_ID = TH.PERSON_ID
-   JOIN Treatment T ON TH.TREATMENT_ID = T.TREATMENT_ID 
-   JOIN Prescription Pr ON T.TREATMENT_ID = Pr.TREATMENT_ID
-   JOIN PrescriptionHistory PH ON Pr.PRESCRIPTION_ID = PH.PRESCRIPTION_ID
-   JOIN Drug D ON PH.DRUG_ID = D.DRUG_ID
+   Nurse N
+   JOIN Person P ON N.PERSON_ID = P.PERSON_ID
+   JOIN Ward W ON  N.WARD_ID = W.WARD_ID
 
-GROUP BY PERSON_FNAME
+WHERE
+   W.WARD_ID = 6
 
-ORDER BY PATIENT_ALLERGY ASC;
+GROUP BY PERSON_SNAME
+ORDER BY PERSON_SNAME DESC;
 
 
 /*
@@ -66,32 +69,41 @@ ORDER BY PERSON_EMAIL ASC;
 Query 3
 --------
 
-+ List all nurses on wards that are in a specific department with some of their details
++ Get list patients current drugs and list any allergies and display any warnings if they are assigned a drug they have an allergy for
 
-- Set initial as forename
-- Order by surname
-- Nice titled columns
+- Print out name pretty
+- Group all their drugs together
+- Display 'None' if they don't have an allergy
+- Display a personal message should they have a warning
 
 */
 
-CREATE VIEW Nurses AS
-
 SELECT
-   CONCAT_WS('. ',PERSON_TITLE,SUBSTR(PERSON_FNAME, 1, 1),PERSON_SNAME) AS 'Name',
-   PERSON_TELEPHONE AS 'Telephone No.',
-   CONCAT(WARD_NAME,' (',DEPARTMENT_NAME,')') AS 'Ward (Department)'
+   CONCAT(PERSON_SNAME,', ',PERSON_FNAME) AS 'Name',
+   GROUP_CONCAT(CONCAT(DRUG_NAME,' (',PRESCRIPTION_DOSAGE,')') SEPARATOR ', ') AS 'Drugs (Dosage)',
+   
+   CASE PATIENT_ALLERGY
+      WHEN PATIENT_ALLERGY IS NULL THEN PATIENT_ALLERGY
+      ELSE 'None'
+   END AS 'Drug Allergy',
+
+   CASE PATIENT_ALLERGY
+      WHEN DRUG_NAME THEN CONCAT('Take ', PERSON_SNAME, ' off ', DRUG_NAME, ' immediately.')
+      ELSE 'No warning'
+   END AS '(Warning)'
 
 FROM
-   Nurse N
-   JOIN Person P ON N.PERSON_ID = P.PERSON_ID
-   JOIN Ward W ON  N.WARD_ID = W.WARD_ID
+   Person Pe
+   JOIN Patient Pa ON Pe.PERSON_ID = Pa.PERSON_ID
+   JOIN TreatmentHistory TH ON Pa.PERSON_ID = TH.PERSON_ID
+   JOIN Treatment T ON TH.TREATMENT_ID = T.TREATMENT_ID 
+   JOIN Prescription Pr ON T.TREATMENT_ID = Pr.TREATMENT_ID
+   JOIN PrescriptionHistory PH ON Pr.PRESCRIPTION_ID = PH.PRESCRIPTION_ID
+   JOIN Drug D ON PH.DRUG_ID = D.DRUG_ID
 
-WHERE
-   W.WARD_ID = 6
+GROUP BY PERSON_FNAME
 
-GROUP BY PERSON_SNAME
-ORDER BY PERSON_SNAME DESC;
-
+ORDER BY PATIENT_ALLERGY ASC;
 
 /*
 
