@@ -1,4 +1,5 @@
 /* Database reset and creation */
+
 DROP DATABASE DBPRIN;
 CREATE DATABASE DBPRIN;
 USE DBPRIN;

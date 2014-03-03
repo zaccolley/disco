@@ -1,4 +1,4 @@
--- Insert data for the Happy Hospital system
+/* Insert data for the Happy Hospital system */
 
 -- Hospital
 

@@ -7,11 +7,13 @@ Queries for Q8
 Query 1
 --------
 
-+ List all nurses on wards that are in a specific department with some of their details
++ List all nurses on ward N1 (5) with some of their details. This could be used by head nurses for scheduling.
 
-- Set initial as forename
-- Order by surname
-- Nice titled columns
+   - Put it in a view
+   - Use initial of forename
+   - Order by surname in descending order
+   - Have department type in brackets next to the ward
+   - Nice titled columns
 
 */
 
@@ -39,19 +41,20 @@ ORDER BY PERSON_SNAME DESC;
 Query 2
 --------
 
-+ Find a list of people with invalid emails in the Queen Mary Hospital
++ Find a list of people with invalid emails in the Queen Alexandra Hospital, to be used by admins to know who won’t receive emails and send them an automatic SMS to ask them to provide a correct email
 
-- Set initial as forename
-- Set email to uppercase
-- Order by email
-- Nice titled columns
+   - Set initial as forename
+   - Set email to uppercase
+   - Use LIKE statement to match invalid emails
+   - Order by email
+   - Nice titled columns
 
 */
 
 SELECT
    CONCAT_WS('. ',SUBSTR(PERSON_FNAME, 1, 1),PERSON_SNAME) AS 'Name',
    UPPER(PERSON_EMAIL) AS 'Email Address',
-   HOSPITAL_NAME AS 'Hospital Name'
+   PERSON_TELEPHONE AS 'Telephone Number'
 FROM
    Person Pe
    JOIN Patient Pa ON Pa.PERSON_ID = Pe.PERSON_ID
@@ -69,12 +72,11 @@ ORDER BY PERSON_EMAIL ASC;
 Query 3
 --------
 
-+ Get list patients current drugs and list any allergies and display any warnings if they are assigned a drug they have an allergy for
++ Get list patients current drugs, their allergies and display any warnings if they are assigned a drug that they are allergic too. Could be used by nurses administering drugs.
 
-- Print out name pretty
-- Group all their drugs together
-- Display 'None' if they don't have an allergy
-- Display a personal message should they have a warning
+   - Group all their drugs together
+   - Display 'None' if they don't have an allergy
+   - Display a personal message should they have a warning
 
 */
 
@@ -85,7 +87,7 @@ SELECT
    IFNULL(PATIENT_ALLERGY, 'None') AS 'Drug Allergy',
 
    CASE PATIENT_ALLERGY
-      WHEN DRUG_NAME THEN CONCAT('Take ', PERSON_SNAME, ' off ', DRUG_NAME, ' immediately.')
+      WHEN DRUG_NAME THEN CONCAT('Take "', PERSON_SNAME, '"" off "', DRUG_NAME, '"" immediately.')
       ELSE 'No warning'
    END AS '(Warning)'
 
@@ -107,11 +109,13 @@ ORDER BY PATIENT_ALLERGY ASC;
 Query 4
 --------
 
-+ Find a list of all patients and their data
-
-- Set initial as forename
-- Set email to uppercase
-- Nice titled columns
++ Find a list of all patients and their personal data
+   
+   - Set initial as forename
+   - Set email to uppercase
+   - Convert M, F, O char to the equivalent gender title
+   - Format date of birth nicely
+   - Nice titled columns
 
 */
 
