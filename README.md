@@ -2,7 +2,7 @@
 
 A repo for my work done on my University course. - *it's latin yo*
 
-### year1
+### first (year)
 
 #### webf1 - Web Foundations
 *[Website](http://www.zaccolley.com/uni/webf1) and worklog*
@@ -13,7 +13,7 @@ A repo for my work done on my University course. - *it's latin yo*
 #### intprog - Introduction to Programming
 *Practical work and assessments*
 
-### year2
+### second (year)
 
 #### dbprin - Database Principles
 
