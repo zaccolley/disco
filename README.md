@@ -5,7 +5,7 @@ A repo for my work done on my University course. - *it's latin yo*
 ### first (year)
 
   + **webf1:** _Web Foundations 1_
-    + Website and worklog
+    + Website and worklog, can be [found on live over on my website](http://zaccolley.com/uni/webf1)
 
   + **indadd:** _Introduction to Database Design and Development_
     + Generating database shit
