@@ -3,19 +3,43 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
+        connect: {
+            server: {
+                options: {
+                    port: 9001,
+                }
+            }
+        },
+
+        jade: {
+            compile: {
+                options: {
+                    client: false,
+                    pretty: true
+                },
+                files: [ {
+                  cwd: "templates",
+                  src: "*.jade",
+                  dest: "build/",
+                  expand: true,
+                  ext: ".html"
+                } ]
+            }
+        },
+
         concat: {
             dist: {
                 src: ['js/*.js'],
-                dest: 'js/build/script.js'
+                dest: 'build/js/script.js'
             }
         },
 
         uglify: {
             build: {
-                src:  'js/build/script.js',
-                dest: 'js/build/script.min.js',
+                src:  'build/js/script.js',
+                dest: 'build/js/script.min.js',
                 options: {
-                    sourceMap: 'js/build/script.map.js',
+                    sourceMap: 'build/js/script.map.js',
                     sourceMapPrefix: 2,
                     sourceMappingURL: 'script.map.js',
                     banner: '/*! <%= pkg.name %> ~ <%= grunt.template.today("yyyy-mm-dd") %> */'
@@ -33,7 +57,7 @@ module.exports = function(grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    'css/build/style.css': 'css/all.scss'
+                    'build/css/style.css': 'css/all.scss'
                 }
             } 
         },
@@ -41,7 +65,7 @@ module.exports = function(grunt) {
         autoprefixer: {
             dist: {
                 files: {
-                    'css/build/style.css': 'css/build/style.css'
+                    'build/css/style.css': 'css/build/style.css'
                 }
             }
         },
@@ -49,7 +73,7 @@ module.exports = function(grunt) {
         csso: {
             dist: {
                 files: {
-                    'css/build/style.min.css': 'css/build/style.css'
+                    'build/css/style.min.css': 'build/css/style.css'
                 }
             }
         },
@@ -91,8 +115,9 @@ module.exports = function(grunt) {
                 }
             },
 
-            html: {
-                files: ['*.html'],
+            jade: {
+                files: ['templates/**/*.jade', 'templates/**/*.html'],
+                tasks: ['jade'],
                 options: {
                     spawn: false
                 }
@@ -128,10 +153,14 @@ module.exports = function(grunt) {
     // watch for changes in files
     grunt.loadNpmTasks('grunt-contrib-watch');
 
+    // server that shit
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-jade');
+
     // command line usage
     grunt.registerTask('default', ['concat', 'uglify', 'sass', 'autoprefixer', 'csso', 'imagemin']); // 'grunt'
     grunt.registerTask('image-compress', ['imagemin']); // 'grunt image-compress'
     grunt.registerTask('lint', ['jshint', 'htmllint']); // 'grunt lint'
-    grunt.registerTask('dev', ['watch']); // 'grunt dev'
+    grunt.registerTask('dev', ['connect', 'watch']); // 'grunt dev'
 
 };

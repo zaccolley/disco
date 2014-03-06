@@ -1,0 +1,17 @@
+@import "ratchet";
+
+.slider{
+	background: white;
+}
+
+.slide{
+	background: white;
+}
+
+// slidey side scroll
+.slide:first-child{ box-shadow: -5px 0 25px rgba(0,0,0,.15); }
+.slide:last-child{  box-shadow:  5px 0 25px rgba(0,0,0,.15); }
+
+.slide img{
+	width: 100%;
+}

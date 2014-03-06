@@ -1,0 +1,58 @@
+include includes/head
+body
+  header.bar.bar-nav
+    a.icon.icon-home.icon-left-nav.pull-left(href="settings.html" data-transition="slide-out")
+    a.icon.icon-home.pull-right(href="index.html" data-transition="slide-out")
+    h1.title Settings - Your Details  
+  block content
+    .content
+      .slider#mySlider
+    
+        .slide-group
+    
+          .slide
+            form.input-group
+      
+              .input-row
+                label Full name
+                input(type="text" placeholder="James Bond")
+      
+              .input-row
+                label ID
+                input(type="text" placeholder="007")
+      
+              .input-row
+                label Assignment ID
+                input(type="email" placeholder="DB5")
+      
+              .input-row
+                label Time Frame
+                input(type="text" placeholder="1700-1900")
+      
+              .input-row
+                label Date
+                input(type="text" placeholder="6th October 2013")
+      
+              .input-row
+                label Shop
+                input(type="text" placeholder="700 Commercial Road, Portsmouth, PO1 3HE, UK")
+      
+              .input-row
+                label Open
+                input(type="text" placeholder="1700-1900")
+      
+              .input-row
+                label Location
+                input(type="text" placeholder="Known locally as 'central'")
+      
+              .input-row
+                label Assignment Value
+                input(type="text" placeholder="£5 + £5 reimbursement + £2 Premium")
+          
+          .slide
+            h1 Notes
+            h2 Notes
+            h3 Notes
+            h4 Notes
+
+  include includes/scripts
