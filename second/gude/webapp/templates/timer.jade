@@ -11,11 +11,15 @@ body
         .slide-group
     
           .slide
+            
             .timer
-              button.btn.btn-positive.btn-block.timer-button Start timer
+              p Start timer when you enter the premises
+              
+              button.btn.btn-positive.btn-block.startstop-timer(data-state="stopped") Start timer
 
-              h1 00.00
+              h1.timer-display 0
 
+              button.btn.btn-negative.btn-block.clear-timer Clear timer
           .slide
             h1 Notes
             h2 Notes

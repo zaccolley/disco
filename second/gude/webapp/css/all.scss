@@ -1,3 +1,8 @@
+*{
+	margin: 0; padding: 0;
+	box-sizing: bored-box;
+}
+
 @import "ratchet";
 
 .slider{
@@ -23,4 +28,15 @@
 .timer h1{
 	text-align: center;
 	font-weight: 500;
+}
+
+.timer-display{
+	padding: .5em 0;
+
+	font-size: 10em;
+	color: white;
+
+	background: #aaa;
+	
+	border-radius: 5px;
 }
