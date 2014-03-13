@@ -1,0 +1,45 @@
+include includes/head
+body
+  header.bar.bar-nav
+    a.icon.icon-gear.pull-right(href="settings.html" data-transition="slide-in")
+    h1.title Home  
+  block content
+    .content
+      .slider#mySlider
+    
+        .slide-group
+    
+          .slide
+            ul.table-view
+    
+              li.table-view-cell.media
+                a.navigate-right(href="tasks.html" data-transition="slide-in")
+                  span.media-object.pull-left.icon.icon-list
+                  media-body Tasks
+    
+              li.table-view-cell.media
+                a.navigate-right(href="timer.html" data-transition="slide-in")
+                  span.media-object.pull-left.icon.icon-play
+                  .media-body Timer
+    
+              li.table-view-cell.media
+                a.navigate-right(href="notes.html" data-transition="slide-in")
+                  span.media-object.pull-left.icon.icon-compose
+                  .media-body Notes
+    
+              li.table-view-cell.media
+                a.navigate-right(href="settings.html" data-transition="slide-in")
+                  span.media-object.pull-left.icon.icon-gear
+                  .media-body Settings
+
+              li.table-view-cell.media
+                a(href="index.html")
+                  span.media-object.pull-left.icon.icon-close
+                  .media-body Log out
+    
+          .slide
+            include includes/notes
+          .slide
+            include includes/timer
+
+  include includes/scripts

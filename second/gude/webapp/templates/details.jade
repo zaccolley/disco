@@ -2,7 +2,7 @@ include includes/head
 body
   header.bar.bar-nav
     a.icon.icon-home.icon-left-nav.pull-left(href="settings.html" data-transition="slide-out")
-    a.icon.icon-home.pull-right(href="index.html" data-transition="slide-out")
+    a.icon.icon-home.pull-right(href="home.html" data-transition="slide-out")
     h1.title Settings - Your Details  
   block content
     .content
@@ -51,5 +51,7 @@ body
           
           .slide
             include includes/notes
+          .slide
+            include includes/timer
 
   include includes/scripts

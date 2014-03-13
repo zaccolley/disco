@@ -1,8 +1,8 @@
 include includes/head
 body
   header.bar.bar-nav
-    a.icon.icon-home.icon-left-nav.pull-left(href="index.html" data-transition="slide-out")
-    a.icon.icon-home.pull-right(href="index.html" data-transition="slide-out")
+    a.icon.icon-home.icon-left-nav.pull-left(href="home.html" data-transition="slide-out")
+    a.icon.icon-home.pull-right(href="home.html" data-transition="slide-out")
     h1.title Timer
   block content
     .content
@@ -11,13 +11,8 @@ body
         .slide-group
     
           .slide
-            
-            .timer
-              
-              h1.timer-display 0
-              button.btn.btn-positive.btn-block.startstop-timer(data-state="stopped") Start timer
-              button.btn.btn-negative.btn-block.clear-timer Clear timer
-              p Start timer when you enter the premises
+            include includes/timer
+            p Start timer when you enter the premises
 
           .slide
             include includes/notes

@@ -1,38 +1,22 @@
 include includes/head
 body
   header.bar.bar-nav
-    a.icon.icon-gear.pull-right(href="settings.html" data-transition="slide-in")
-    h1.title Home  
+    h1.title Hello!
   block content
-    .content
-      .slider#mySlider
-    
-        .slide-group
-    
-          .slide
-            ul.table-view
-    
-              li.table-view-cell.media
-                a.navigate-right(href="tasks.html" data-transition="slide-in")
-                  span.media-object.pull-left.icon.icon-list
-                  media-body Tasks
-    
-              li.table-view-cell.media
-                a.navigate-right(href="timer.html" data-transition="slide-in")
-                  span.media-object.pull-left.icon.icon-play
-                  .media-body Timer
-    
-              li.table-view-cell.media
-                a.navigate-right(href="notes.html" data-transition="slide-in")
-                  span.media-object.pull-left.icon.icon-compose
-                  .media-body Notes
-    
-              li.table-view-cell.media
-                a.navigate-right(href="settings.html" data-transition="slide-in")
-                  span.media-object.pull-left.icon.icon-gear
-                  .media-body Settings
-    
-          .slide
-            include includes/notes
+    .content.sign-in
+      h1 Hello, Mystery Shopper
+      p Sign in with the details supplied to you
+      form
+        .ids
+          h2 IDs
+          section
+            label Shopper
+            input(type="number" placeholder="007")
+
+          section
+            label Assignment
+            input(type="text" placeholder="DB5")
+
+        a.btn.btn-positive.btn-block(href="home.html" data-transition="slide-in") Let's shop!
 
   include includes/scripts

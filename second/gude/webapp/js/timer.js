@@ -2,7 +2,7 @@ function timerInit(){
 
 	console.log("Timer initialised");
 
-	$('.startstop-timer').on('touchstart', function(){
+	$('.startstop-timer').on('touchend', function(){
 		console.log('Clicked timer', $(this).attr('data-state'));
 
 		if($(this).attr('data-state') == "stopped"){
@@ -13,7 +13,7 @@ function timerInit(){
 
 	});
 
-	$('.clear-timer').on('touchstart', timerClear);
+	$('.clear-timer').on('touchend', timerClear);
 }
 
 function timerStop(){

@@ -1,0 +1,43 @@
+/* _signin.scss */
+
+.sign-in{
+	padding: .5em;
+	padding-top: 3em;
+}
+
+.sign-in h1{
+	padding: .5em 1em;
+	
+	text-align: center;
+	color: #444E44;
+}
+
+.sign-in h2{
+	font-size: 1.25em;
+
+	color: #111;
+}
+
+.sign-in form{
+	width: 90%;
+	margin: 0 auto;
+}
+
+.sign-in p{
+	margin-bottom: 3em;
+
+	text-align: center;
+}
+
+.sign-in .ids{
+	overflow: hidden;
+}
+
+.sign-in .ids section{
+	float: left;
+	width: 47.5%;
+}
+
+.sign-in .ids section:last-child{
+	padding-left: 5%;
+}
