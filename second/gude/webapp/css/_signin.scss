@@ -6,7 +6,7 @@
 }
 
 .sign-in h1{
-	padding: .5em 1em;
+	padding: .25em 1em;
 	
 	text-align: center;
 	color: #444E44;
@@ -24,20 +24,45 @@
 }
 
 .sign-in p{
-	margin-bottom: 3em;
+	margin-bottom: 1em;
 
 	text-align: center;
 }
 
-.sign-in .ids{
+.sign-in label{
+	opacity: .8;
+}
+
+.sign-in .block{
 	overflow: hidden;
 }
 
-.sign-in .ids section{
+.sign-in .block section{
 	float: left;
 	width: 47.5%;
 }
 
-.sign-in .ids section:last-child{
+.sign-in .block section:last-child{
 	padding-left: 5%;
+}
+
+.sign-in .map{
+	display: block;
+	margin: .5em auto;
+}
+
+.sign-in .location-input{
+	width: 80%;
+	float: left;
+	padding: 1.5em 1em;
+	height: 50px;
+}
+
+.sign-in .location-button{
+	padding: 5px;
+	width: 50px;
+	float: right;
+	
+	border: 1px solid #ccc;
+	border-radius: 5px;
 }

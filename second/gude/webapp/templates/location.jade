@@ -1,0 +1,17 @@
+include includes/head
+body
+  header.bar.bar-nav
+    h1.title Location, location, location
+  block content
+    .content.sign-in
+      h1 Where are you?
+      p Give us your location and we'll start the timer when you arrive
+
+      input.location-input(type="text" placeholder="Portsmouth, UK")
+      img.location-button(src="../img/location.png")
+
+      img.map(src="../img/map.jpg")
+
+      a.btn.btn-positive.btn-block(href="home.html" data-transition="slide-in") Go
+
+  include includes/scripts

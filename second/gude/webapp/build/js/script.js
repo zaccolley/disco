@@ -10,8 +10,6 @@ $('document').ready(function(){
 
 	fixSlideHeight();
 
-	$('.slide-group').css('-webkit-transform', 'translate3d(-320px, 0px, 0px)')
-
 });
 
 function fixSlideHeight(){
