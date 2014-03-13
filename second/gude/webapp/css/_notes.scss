@@ -1,0 +1,122 @@
+/* _notes.scss */
+
+$noteColour1: #90B9EE;
+$noteColour2: #9BEE90;
+
+.notes{
+	overflow: hidden;
+	padding: .5em;
+	padding-bottom: 60px;
+}
+
+.note{
+	list-style: none;
+	width: 80%;
+	position: relative;
+	padding: .5em;
+	margin-bottom: 20px;
+
+	color: #111;
+	font-size: .8em;
+
+	border-radius: 5px;
+}
+
+.note::before{
+	position: absolute;
+	width: 20%;
+	content: attr(data-time);
+	
+	font-size: .75em;
+
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.note:nth-child(odd)::before{
+	right: -20%;
+}
+
+.note:nth-child(even)::before{
+	left: -20%;
+}
+
+.note::after{
+	position: absolute;
+	bottom: 0px;
+	content: '';
+
+	width: 0; height: 0;
+
+	border: 7px solid transparent;
+}
+
+.note:nth-child(odd){
+	margin-left: 15px;
+	float: left;
+	background: $noteColour1;
+	border-bottom-left-radius: 0;
+}
+
+.note:nth-child(odd)::after{
+	left: -14px;
+
+	border-right-color: $noteColour1;
+	border-bottom-color: $noteColour1;
+}
+
+.note:nth-child(even){
+	margin-right: 15px;
+	float: right;
+	background: $noteColour2;
+
+	border-bottom-right-radius: 0;
+}
+
+.note:nth-child(even)::after{
+	right: -14px;
+
+	border-left-color: $noteColour2;
+	border-bottom-color: $noteColour2;
+}
+
+.note-compose{
+	position: fixed;
+	bottom: 0;
+	padding: .5em;
+	height: 60px;
+	width: 100%;
+	
+	background: white;
+	border-top: 1px solid #bbb;
+}
+
+.note-compose textarea,
+.note-compose button{
+	float: left;
+	height: 40px;
+}
+
+.note-compose textarea{
+	width: 75%;
+	border: none;
+	background: #bbb;
+	padding: .5em;
+	resize: none;
+
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.note-compose textarea:active,
+.note-compose textarea:focus{
+	background: #ccc;
+}
+
+.note-compose button{
+	float: left;
+	width: 25%;
+
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}

@@ -13,17 +13,13 @@ body
           .slide
             
             .timer
-              p Start timer when you enter the premises
               
-              button.btn.btn-positive.btn-block.startstop-timer(data-state="stopped") Start timer
-
               h1.timer-display 0
-
+              button.btn.btn-positive.btn-block.startstop-timer(data-state="stopped") Start timer
               button.btn.btn-negative.btn-block.clear-timer Clear timer
+              p Start timer when you enter the premises
+
           .slide
-            h1 Notes
-            h2 Notes
-            h3 Notes
-            h4 Notes
+            include includes/notes
 
   include includes/scripts

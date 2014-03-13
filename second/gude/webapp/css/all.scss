@@ -3,40 +3,29 @@
 	box-sizing: bored-box;
 }
 
-@import "ratchet";
+button{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	outline: none;
+}
+
+@import 'ratchet';
 
 .slider{
 	background: white;
 }
 
 .slide{
+	position: relative;
 	background: white;
 }
 
 // slidey side scroll
-.slide:first-child{ box-shadow: -5px 0 25px rgba(0,0,0,.15); }
-.slide:last-child{  box-shadow:  5px 0 25px rgba(0,0,0,.15); }
+.slide:first-child{ box-shadow: -5px -15px 25px rgba(0,0,0,.15); }
+.slide:last-child{  box-shadow:  5px -15px 25px rgba(0,0,0,.15); }
 
 .slide img{
 	width: 100%;
 }
 
-.timer{
-	padding: .5em;
-}
-
-.timer h1{
-	text-align: center;
-	font-weight: 500;
-}
-
-.timer-display{
-	padding: .5em 0;
-
-	font-size: 10em;
-	color: white;
-
-	background: #aaa;
-	
-	border-radius: 5px;
-}
+@import 'timer';
+@import 'notes';

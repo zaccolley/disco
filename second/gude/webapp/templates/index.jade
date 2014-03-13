@@ -1,7 +1,7 @@
 include includes/head
 body
   header.bar.bar-nav
-    a.icon.icon-home.pull-right(href="index.html" data-transition="slide-out")
+    a.icon.icon-gear.pull-right(href="settings.html" data-transition="slide-in")
     h1.title Home  
   block content
     .content
@@ -33,9 +33,6 @@ body
                   .media-body Settings
     
           .slide
-            h1 Notes
-            h2 Notes
-            h3 Notes
-            h4 Notes
+            include includes/notes
 
   include includes/scripts

@@ -6,9 +6,7 @@ body
     h1.title Notes
   block content
     .content
-      h1 Notes
-      h2 Notes
-      h3 Notes
-      h4 Notes
+      include includes/notes
 
   include includes/scripts
+  script $(document).ready(function(){ $('.content').scrollTop($(document).height()); });
