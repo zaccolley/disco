@@ -1,0 +1,19 @@
+include includes/head
+body
+  header.bar.bar-nav
+    a.icon.icon-home.icon-left-nav.pull-left(href="home.html" data-transition="slide-out")
+    a.icon.icon-home.pull-right(href="home.html" data-transition="slide-out")
+    h1.title Scan receipt
+  block content
+    .content
+      .slider#mySlider
+    
+        .slide-group
+    
+          .slide
+            include includes/timer
+
+          .slide
+            include includes/notes
+
+  include includes/scripts
