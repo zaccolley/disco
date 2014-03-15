@@ -1,4 +1,18 @@
 .timer
-  h1.timer-display 0
-  button.btn.btn-positive.btn-block.startstop-timer(data-state="stopped") Start timer
-  button.btn.btn-negative.btn-block.clear-timer Clear timer
+  p.timer-instructions Start timer and then press when events occur.
+  button.btn.btn-positive.btn-block.startstop-timer(data-state="stopped") In the shop?
+  
+
+  div.timer-display
+    span#sw_h 00
+    span#sw_m 00
+    span#sw_s 00
+    span#sw_ms 00
+    span#sw_status Idle
+  button.btn.btn-negative.btn-block.clear-timer#sw_reset Clear timer
+  
+  p.timer-instructions Messed up? You can always clear the timer.
+
+  button#sw_start.btn.btn-positive Start
+  button#sw_pause.btn Pause
+  button#sw_stop.btn.btn-negative Stop

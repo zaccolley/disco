@@ -4,18 +4,56 @@
 	padding: .5em;
 }
 
+.timer .btn-block{
+	padding: 1em;
+
+	font-size: 2em;
+}
+
 .timer h1{
 	text-align: center;
 	font-weight: 500;
 }
 
 .timer-display{
-	padding: .5em 0;
+	margin-bottom: 10px;
+	padding: .25em 0;
 
-	font-size: 10em;
+	font-size: 5em;
 	color: white;
+	text-align: center;
 
 	background: #aaa;
 	
 	border-radius: 5px;
+}
+
+.timer-display span{
+	line-height: 1em;
+	display: inline-block;
+}
+
+#sw_start, #sw_pause, #sw_stop{ display: none; }
+
+#sw_m::before, 
+#sw_s::before,
+#sw_ms::before{
+	content: ':';
+}
+
+#sw_ms{ font-size: .5em; }
+
+#sw_status{
+	display: block;
+	width: 100%;
+	padding-top: .25em;
+	font-size: .35em;
+	color: #505050;
+}
+
+.timer-instructions{
+	padding: .5em;
+	white-space: normal;
+	
+	text-align: center;
 }
