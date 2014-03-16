@@ -1,6 +1,6 @@
 function addNote(){
 	
-	$('.note-compose button').on('touchstart', function(){
+	$('.note-compose button').on('touchend', function(){
 
 		var message = $('.note-compose textarea').val();
 

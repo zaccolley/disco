@@ -27,6 +27,20 @@ button{
 	width: 100%;
 }
 
+.current-task{
+	display:block;
+	padding: 1em;
+}
+
+.current-task p{ margin: 0; }
+
+.current-task .task{
+	color: #111;
+	font-weight: 900;
+	font-size: 1.15em;
+}
+
 @import 'signin';
 @import 'timer';
 @import 'notes';
+@import 'receipt';

@@ -9,7 +9,7 @@ function timerInit(){
 
 	console.log("Timer initialised");
 
-	$('.startstop-timer').on('click', function(){
+	$('.startstop-timer').on('touchend', function(){
 		
 		if($('.startstop-timer').hasClass('btn-positive')){
 			$('.timer').find('#sw_reset').trigger('click');

@@ -6,44 +6,81 @@ body
     h1.title Tasks
   block content
     .content
-      .slider#mySlider
-    
-        .slide-group
-    
-          .slide
-            ul.table-view
             
-              ul.table-view
-      
-                li.table-view-cell.table-view-divider Shop
-                li.table-view-cell
-                  a.navigate-right
-                    | Time in
-                    span.badge 00:00
-                li.table-view-cell
-                  a.navigate-right
-                    | Time out
-                    span.badge 00:00
-                li.table-view-cell
-                  a.navigate-right
-                    | Buildings to left
-                    span.badge.badge-positive ✓
-                li.table-view-cell
-                  a.navigate-right
-                    | Buildings to right
-                    span.badge.badge-positive ✓
-                li.table-view-cell
-                  a.navigate-right
-                    | Ever worked for Duck Burger?
-                    span.badge.badge-negative X
-                li.table-view-cell
-                  a.navigate-right
-                    | Know anyone who worked for Duck Burger?
-                    span.badge.badge-negative X
+      ul.table-view
 
-          .slide
-            include includes/notes
-          .slide
-            include includes/timer
+        li.table-view-cell.table-view-divider Building
+        li.table-view-cell
+          a.navigate-right
+            | Assess outside cleanliness and tidyness
+            span.badge.badge-positive ✓
+        li.table-view-cell
+          a.navigate-right
+            | Assess inside cleanliness and tidyness
+            span.badge.badge-positive ✓
+        li.table-view-cell
+          a.navigate-right
+            | Amount of buildings to left
+            span.badge 1
+        li.table-view-cell
+          a.navigate-right
+            | Amount of buildings to right
+            span.badge 3
+
+        li.table-view-cell.table-view-divider Queue
+
+        li.table-view-cell
+          a.navigate-right
+            | No of customers in front of you?
+            span.badge.badge-negative #
+        li.table-view-cell
+          a.navigate-right
+            | No of cash registers were open?
+            span.badge.badge-negative #
+        li.table-view-cell
+          a.navigate-right
+            | No of staff visible behind the counter?
+            span.badge.badge-negative #
+
+        li.table-view-cell.table-view-divider  Food
+
+        li.table-view-cell
+          a.navigate-right
+            | Order a super deal meal
+            span.badge.badge-negative X
+        
+        li.table-view-cell
+          a.navigate-right
+            | Happy with the experience?
+            span.badge.badge-negative X
+
+          
+        li.table-view-cell
+          a.navigate-right
+            | Which product did you order?
+            span.badge.badge-negative X
+          
+        li.table-view-cell
+          a.navigate-right
+            | Which extras did you order?
+            span.badge.badge-negative X
+          
+        li.table-view-cell
+          a.navigate-right
+            | Which drink did you order?
+            span.badge.badge-negative X
+
+        li.table-view-cell.table-view-divider  Other
+
+        li.table-view-cell
+          a.navigate-right
+            | Assess rest room
+            span.badge.badge-negative X
+
+        li.table-view-cell.media
+          a.navigate-right(href="receipt.html" data-transition="slide-in")
+            span.media-object.pull-left.icon.icon-search
+            span.badge.badge-negative X
+            .media-body Scan receipt
 
   include includes/scripts

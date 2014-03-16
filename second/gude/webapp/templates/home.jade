@@ -11,14 +11,16 @@ body
     
           .slide
 
-            p Your first task is:
+            a.current-task(href="tasks.html" data-transition="slide-in")
+              p Your current task is:
+              p.task Assess outside cleanliness and tidyness
 
             ul.table-view
     
               li.table-view-cell.media
                 a.navigate-right(href="tasks.html" data-transition="slide-in")
                   span.media-object.pull-left.icon.icon-list
-                  media-body Tasks
+                  media-body More tasks
     
               li.table-view-cell.media
                 a.navigate-right(href="timer.html" data-transition="slide-in")
@@ -29,11 +31,6 @@ body
                 a.navigate-right(href="notes.html" data-transition="slide-in")
                   span.media-object.pull-left.icon.icon-compose
                   .media-body Notes
-
-              li.table-view-cell.media
-                a.navigate-right(href="receipt.html" data-transition="slide-in")
-                  span.media-object.pull-left.icon.icon-bars
-                  .media-body Scan receipt
     
               li.table-view-cell.media
                 a.navigate-right(href="settings.html" data-transition="slide-in")
