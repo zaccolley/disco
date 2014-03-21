@@ -1,0 +1,23 @@
+﻿Public Class Timeline
+
+    Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
+        Me.Hide()
+        Home.Show()
+    End Sub
+
+    Private Sub taskClick(sender As Object, e As EventArgs) Handles btnTask1.Click
+        Me.Hide()
+        Task1.Show()
+    End Sub
+
+    Private Sub FileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileToolStripMenuItem.Click
+        Me.Hide()
+        Home.Show()
+    End Sub
+
+    Private Sub LogoutToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem1.Click
+        Me.Hide()
+        Welcome.Show()
+    End Sub
+
+End Class
