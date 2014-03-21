@@ -26,3 +26,6 @@ A repo for my work done on my University course. - *it's latin yo*
   
   + **inse:** _Introduction to Software Engineering_
     + main project can be [found on the inse repo](http://github.com/zaccolley/inse)
+  
+  + **gude:** _Getting Usability into Development Enviroments_
+    + web app and desktop app
