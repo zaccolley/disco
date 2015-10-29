@@ -1,0 +1,14 @@
+{
+  "name": "traffic-detection",
+  "version": "0.0.1",
+  "description": "for the applied computer graphics and vision unit",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zac Colley <hi@zaccolley.com> (http://zaccolley.com)",
+  "license": "ISC",
+  "dependencies": {
+    "opencv": "^3.2.0"
+  }
+}
