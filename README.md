@@ -32,7 +32,7 @@ A repo for some of the work I did on my University course
 
 ### 3rd (placement)
 
-_I [started a partnership](http://rosedigital.co.uk) doing web developement and design, then going on to doing work with schools._
++ _I [started a partnership](http://rosedigital.co.uk) doing web development and design, then going on to doing work with schools._
 
 ### 4th
 
