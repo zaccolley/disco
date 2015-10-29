@@ -5,7 +5,7 @@ A repo for some of the work I did on my University course
 ### 1st
 
   + **webf1:** _Web Foundations 1_
-    + Website and worklog, can be [found on live over on my website](http://zaccolley.com/uni/webf1)
+    + Website and worklog for the unit
 
   + **indadd:** _Introduction to Database Design and Development_
     + Generating database shit
