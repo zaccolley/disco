@@ -1,8 +1,8 @@
 # disco
 
-A repo for my work done on my University course. - *it's latin yo*
+A repo for some of the work I did on my University course
 
-### first (year)
+### 1st
 
   + **webf1:** _Web Foundations 1_
     + Website and worklog, can be [found on live over on my website](http://zaccolley.com/uni/webf1)
@@ -13,7 +13,7 @@ A repo for my work done on my University course. - *it's latin yo*
   + **intprog:** _Introduction to Programming_
     + Practical work and assessments
 
-### second (year)
+### 2nd
 
   + **dbprin:** _Database Principles_
     + sql for creating the database and tables, inserting dummy data and queries
@@ -29,3 +29,11 @@ A repo for my work done on my University course. - *it's latin yo*
   
   + **gude:** _Getting Usability into Development Enviroments_
     + web app and desktop app
+
+### 3rd (placement)
+
+_I [started a partnership](http://rosedigital.co.uk) doing web developement and design, then going on to doing work with schools._
+
+### 4th
+
++ **agav:** _Applied Computer Graphics and Vision_
