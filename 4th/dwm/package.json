@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "dependencies": {
+    "faker": "^3.0.1",
+    "mysql": "^2.9.0"
+  }
+}
