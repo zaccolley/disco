@@ -1,8 +1,12 @@
-var faker = require('faker'),
+var fs = require('fs'),
+    faker = require('faker'),
+    loremIpsum = require('lorem-ipsum'),
+
     vehicles = require('./vehicles'),
     regions = require('./regions'),
     years = require('./years'),
-    fs = require('fs'),
+    words = require('./words'),
+
     mysql = require('mysql'),
     db = mysql.createConnection({
       host: 'localhost',
@@ -11,9 +15,9 @@ var faker = require('faker'),
       database: 'dwm1'
     });
 
-var amountToSeed = 50;
-
 db.connect();
+
+var amountToSeed = 5000;
 
 console.log('Seeding database...');
 
@@ -128,7 +132,11 @@ function seed(sql, count, amount, callback) {
     if (rows.length > 0) {
 
       var timeId = rows[0].timeId;
-      sql += `INSERT INTO Time (TimeID, TimeClockTime, TimeDayID) VALUES (${count}, "${clockTime}", ${timeId});\n`;
+      sql += `INSERT INTO Time (
+                TimeID, TimeClockTime, TimeDayID
+              ) VALUES (
+                ${count}, "${clockTime}", ${timeId}
+              );\n`;
 
       console.log('Time seeded!');
 
@@ -139,10 +147,68 @@ function seed(sql, count, amount, callback) {
       var name = `${faker.name.firstName()} ${faker.name.lastName()}`;
       var email = faker.internet.email();
       var phone = faker.phone.phoneNumber();
+      var address = faker.address.streetAddress();
+      var wasteCarrier = Math.round(Math.random());
 
-      sql += `INSERT INTO Owner (OwnerID, OwnerName, OwnerEmail, OwnerPhone) VALUES (${count}, "${name}", "${email}", "${phone}");\n`;
+      sql += `INSERT INTO Owner (
+                OwnerID, OwnerName, OwnerEmail, OwnerPhone, OwnerAddress, OwnerWasteCarrier
+              ) VALUES (
+                ${count}, "${name}", "${email}", "${phone}", "${address}", ${wasteCarrier}
+              );\n`;
 
       console.log('Owner seeded!');
+
+      // if odd or even change which fact we're seeding
+      if (count % 2 == 0) {
+
+        // -- Suspect
+
+        console.log('Seeding Suspect...');
+
+        var name = Math.round(Math.random()) ? `"${faker.name.firstName()} ${faker.name.lastName()}"` : 'NULL';
+        var description = loremIpsum({
+          count: 1,
+          units: 'paragraph',
+          words
+        });
+
+        sql += `INSERT INTO Suspect (
+                  SuspectID, SuspectName, SuspectDescription
+                ) VALUES (
+                  ${count}, ${name}, "${description}"
+                );\n`;
+
+        console.log('Suspect seeded!');
+
+      } else {
+
+        // -- Claim
+
+        console.log('Seeding Claim...');
+
+        var reason = loremIpsum({
+          count: 1,
+          units: 'paragraph',
+          words
+        });
+        var instruction = loremIpsum({
+          count: 5,
+          units: 'sentences',
+          words
+        });
+        var date = new Date(randomBetween(new Date('2014-07-07'), new Date('2016-07-07'))).toISOString();
+        var power = 'section 5 of the Control of Pollution (Amendment) Act 1989 or section 34B of the Environmental Protection Act 1990';
+        var concequence = Math.round(Math.random()) ? 'sold' : 'destroyed';
+
+        sql += `INSERT INTO Claim (
+                  ClaimID, ClaimReason, ClaimInstruction, ClaimDate, ClaimConcequence, ClaimPower
+                ) VALUES (
+                  ${count}, "${reason}", "${instruction}", "${date}", "${concequence}", "${power}"
+                );\n`;
+
+        console.log('Claim seeded!');
+
+      }
 
       // -- Location
 
@@ -150,7 +216,11 @@ function seed(sql, count, amount, callback) {
 
       var address = faker.address.streetAddress();
 
-      sql += `INSERT INTO Location (LocationID, LocationAddress, LocationCityID) VALUES (${count}, "${address}", ${cityIndex});\n`;
+      sql += `INSERT INTO Location (
+                LocationID, LocationAddress, LocationCityID
+              ) VALUES (
+                ${count}, "${address}", ${cityIndex}
+              );\n`;
 
       console.log('Location seeded!');
 
@@ -226,17 +296,48 @@ function seed(sql, count, amount, callback) {
         motExpires: motDate.toISOString()
       }
 
-      sql += `INSERT INTO Vehicle (VehicleID, VehicleMake, VehicleColour, VehicleEngineSize, VehicleFuelType, VehicleTypeApproval, VehicleYearOfManufacture, VehicleDateRegistered, VehicleTaxExpires, VehicleMoTExpires) VALUES ("${vehicle.numberPlate}", "${vehicle.make}", "${vehicle.colour}", "${vehicle.engineSize}", "${vehicle.fuelType}", "${vehicle.typeApproval}", "${vehicle.yearOfManufacture}", "${vehicle.dateRegistered}", "${vehicle.taxExpires}", "${vehicle.motExpires}");\n`;
+      sql += `INSERT INTO Vehicle (
+                VehicleID, VehicleMake, VehicleColour, VehicleEngineSize,
+                VehicleFuelType, VehicleTypeApproval, VehicleYearOfManufacture,
+                VehicleDateRegistered, VehicleTaxExpires, VehicleMoTExpires
+              ) VALUES (
+                "${vehicle.numberPlate}", "${vehicle.make}", "${vehicle.colour}",
+                "${vehicle.engineSize}", "${vehicle.fuelType}", "${vehicle.typeApproval}", "${vehicle.yearOfManufacture}",
+                "${vehicle.dateRegistered}", "${vehicle.taxExpires}", "${vehicle.motExpires}"
+              );\n`;
 
       console.log('Vehicles added!');
 
-      // -- SeizureNotice
+      // if odd or even change which fact we're seeding
+      if (count % 2 == 0) {
 
-      console.log('Seeding SeizureNotice...');
+          // -- VehicleTheft
 
-      sql += `INSERT INTO SeizureNotice (SeizureNoticeID, TimeID, LocalAuthorityID, StationID, LocationID, VehicleID, OwnerID) VALUES (${count}, ${count}, ${cityIndex}, ${cityIndex}, ${count}, "${vehicle.numberPlate}", ${count});\n`;
+          console.log('Seeding VehicleTheft...');
 
-      console.log('SeizureNotice seeded!');
+          sql += `INSERT INTO VehicleTheft (
+                    VehicleTheftID, TimeID, LocalAuthorityID, StationID, LocationID, VehicleID, OwnerID, SuspectID
+                  ) VALUES (
+                    ${count}, ${count}, ${cityIndex}, ${cityIndex}, ${count}, "${vehicle.numberPlate}", ${count}, ${count}
+                  );\n`;
+
+          console.log('VehicleTheft seeded!');
+
+      } else {
+
+        // -- SeizureNotice
+
+        console.log('Seeding SeizureNotice...');
+
+        sql += `INSERT INTO SeizureNotice (
+                  SeizureNoticeID, TimeID, LocalAuthorityID, StationID, LocationID, VehicleID, OwnerID, ClaimID
+                ) VALUES (
+                  ${count}, ${count}, ${cityIndex}, ${cityIndex}, ${count}, "${vehicle.numberPlate}", ${count}, ${count}
+                );\n`;
+
+        console.log('SeizureNotice seeded!');
+
+      }
 
       count++;
       if (count === amount) {
