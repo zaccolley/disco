@@ -1,0 +1,105 @@
+[
+  {
+    "name": "South East",
+    "cities": [
+      {
+        "name": "Brighton and Hove",
+        "council": {
+          "address": "Grand Avenue, HOVE, East Sussex, BN3 2LS, England",
+          "phone": "01273-290000",
+          "fax": "01273-291048",
+          "email": "info@brighton-hove.gov.uk",
+          "website": "http://www.brighton-hove.gov.uk",
+          "chiefExecutive": "Penny Thompson",
+          "CouncilLeaderMayor": "Jason Kitcat",
+          "typeOfAuthority": "English Unitary",
+          "politicalControl": "NOC"
+        }
+      },
+      {
+        "name": "Chichester",
+        "council": {
+          "address": "East Pallant, CHICHESTER, West Sussex, PO19 1TY, England",
+          "phone": "01243-785166",
+          "fax": "01243-776766",
+          "email": "helpline@chichester.gov.uk",
+          "website": "http://www.chichester.gov.uk",
+          "chiefExecutive": "Diane Shepherd",
+          "councilLeaderMayor": "Heather Caird",
+          "typeOfAuthority": "Shire District",
+          "politicalControl":	"Conservative"
+        }
+      },
+      {
+        "name": "City of Canterbury",
+        "council": {
+          "address": "Military Road, CANTERBURY, Kent, CT1 1YW, England",
+          "phone": "01227-862000",
+          "fax": "01227-862020",
+          "email": "customer.services@canterbury.gov.uk",
+          "website": "http://www.canterbury.gov.uk",
+          "chiefExecutive":	"Colin Carmichael",
+          "councilLeaderMayor": "John Gilbey",
+          "typeOfAuthority": "Shire District",
+          "politicalControl": "Conservative"
+        }
+      },
+      {
+        "name": "Oxford",
+        "council": {
+          "address": "OXFORD, Oxfordshire, OX1 1EN, England",
+          "phone": "01865-249811",
+          "fax": "01865-252256",
+          "email": "customerservices@oxford.gov.uk",
+          "website": "http://www.oxford.gov.uk",
+          "chiefExecutive": "Peter Sloman",
+          "councilLeaderMayor": "Bob Price",
+          "typeOfAuthority": "Shire District",
+          "politicalControl":	"Labour"
+        }
+      },
+      {
+        "name": "Portsmouth",
+        "council": {
+          "address": "Guildhall Square, PORTSMOUTH, Hampshire, PO1 2AL, England",
+          "phone": "023-9282 2251",
+          "fax": "023-9283 4092",
+          "email": "cityhelpdesk@portsmouthcc.gov.uk",
+          "website": "http://www.portsmouth.gov.uk",
+          "chiefExecutive": "David Williams",
+          "councilLeaderMayor": "Donna Jones",
+          "typeOfAuthority": "English Unitary",
+          "politicalControl": "NOC"
+        }
+      },
+      {
+        "name": "Southampton",
+        "council": {
+          "address": "SOUTHAMPTON, Hampshire, SO14 7LY, England",
+          "phone": "023-8022 3855",
+          "fax": "023-8083 2424",
+          "email": "gateway@southampton.gov.uk",
+          "website": "http://www.southampton.gov.uk",
+          "chiefExecutive": "Dawn Baxendale",
+          "councilLeaderMayor": "Simon Letts",
+          "typeOfAuthority": "English Unitary",
+          "politicalControl": "Labour"
+        }
+      },
+      {
+        "name": "Winchester",
+        "council": {
+          "address": "Colebrook Street, WINCHESTER, Hampshire, SO23 9LJ, England",
+          "phone": "01962-840222",
+          "fax": "01962-841365",
+          "email": "info@winchester.gov.uk",
+          "website": "http://www.winchester.gov.uk",
+          "chiefExecutive": "Simon Eden",
+          "councilLeaderMayor": "Robert Humby",
+          "typeOfAuthority": "Shire District",
+          "politicalControl": "NOC"
+        }
+      }
+    ]
+  }
+]
