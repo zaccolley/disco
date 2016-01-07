@@ -6,7 +6,7 @@ image = imread(filename);
 [imageHeight, imageWidth, imageDim] = size(image);
 
 % crop to the middle
-cropAmount = 140;
+cropAmount = 135;
 image = imcrop(image, [cropAmount 0 (imageWidth - (cropAmount * 2)) imageHeight]);
 
 originalImage = image;
@@ -85,4 +85,9 @@ plot(right(:,1), right(:,2), 'LineWidth', 1, 'Color', 'blue');
 
 carHeight = bottom(1,2) - top(1,2);
 carWidth = abs(right(1,1) - left(1,1));
+
+fileID = fopen('results.txt', 'at');
+fprintf(fileID, '%s: %3.0f width, %3.0f height, bottom %3.3f \n', filename, carWidth, carHeight, bottom(1:1));
+fclose(fileID);
+
 end

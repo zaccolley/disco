@@ -1,0 +1,14 @@
+resources/001.jpg: 148 width, 197 height, bottom 71.000 
+resources/002.jpg: 141 width, 188 height, bottom 94.000
+resources/003.jpg: 116 width, 153 height, bottom 122.000
+resources/004.jpg:  22 width, 141 height, bottom 53.000
+resources/005.jpg: 104 width, 137 height, bottom 59.000
+resources/006.jpg:  98 width, 125 height, bottom 75.000
+resources/007.jpg:  90 width, 122 height, bottom 110.000
+resources/008.jpg:  88 width,  47 height, bottom 74.000
+resources/009.jpg:  87 width,  91 height, bottom 93.000
+resources/010.jpg:  83 width,  88 height, bottom 92.000
+resources/011.jpg:  79 width,  91 height, bottom 83.000
+resources/fire01.jpg: 132 width, 231 height, bottom 32.000
+resources/fire02.jpg:  71 width, 149 height, bottom 59.000
+resources/oversize.jpg: 197 width, 162 height, bottom 14.000
