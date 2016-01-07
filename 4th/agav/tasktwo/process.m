@@ -1,16 +1,6 @@
 
-% resets
-clc; % clear commands
-close all; % close figures
-clear; % reset variables
-
-% some variables to use througout
-
-inPath = 'resources/';
-
-% read in image
-file = strcat(inPath, '003.jpg');
-image = imread(file);
+function process(filename)
+image = imread(filename);
 
 % get the height and width for later on
 [imageHeight, imageWidth, imageDim] = size(image);
@@ -26,35 +16,40 @@ image = rgb2hsv(image);
 
 saturationChannel = image(:, :, 2); % saturation lets us find shadows
 
-image = bwareaopen(saturationChannel, 200);  % remove too small pixels
+image = bwareaopen(saturationChannel, 100); % remove smaller pixels
 image = image .* saturationChannel;
 
 % make guassian (blur) filter 
-guassianSigma = 3;
-guassianHsize = [8 8];
+guassianSigma = 4;
+guassianHsize = [6 6];
 blurFilter = fspecial('gaussian', guassianHsize, guassianSigma);
 image = imfilter(image, blurFilter, 'same'); % apply filter
 
 % remove noise
-image = wiener2(image, [8 8]);
+image = wiener2(image, [4 4]);
 
+% find edges
 image = edge(image, 'canny', graythresh(image));
+
+% grow edges
+structuringElement = strel('square', 3);
+image = imdilate(image, structuringElement);
+image = imerode(image, structuringElement);
 
 % find the lines
 
 [houghTransformMatrix, theta, rho] = hough(image);
 
-houghPeaks = houghpeaks(houghTransformMatrix, 20, 'threshold', ceil(0.2 * max(houghTransformMatrix(:))) );
+houghPeaks = houghpeaks(houghTransformMatrix, 20, 'threshold', ceil(0.3 * max(houghTransformMatrix(:))) );
 
-lines = houghlines(image, theta, rho, houghPeaks, 'FillGap', 20, 'MinLength', 80);
+lines = houghlines(image, theta, rho, houghPeaks, 'FillGap', 20, 'MinLength', 20);
 
-figure, imwrite(originalImage, 'temp.png'), hold on
 figure, imshow(originalImage), hold on
 
 top = [[0, imageHeight], [0, 0]];
 bottom = [[0, 0], [0, 0]];
-left = [[0, 0], [0, 0]];
-right = [[imageWidth, 0], [0, 0]];
+right = [[0, 0], [0, 0]];
+left = [[imageWidth, 0], [0, 0]];
 
 for k = 1:length(lines)
    xy = [lines(k).point1; lines(k).point2];
@@ -72,11 +67,11 @@ for k = 1:length(lines)
           bottom = xy;
        end
    elseif angle > 180 - angleThreshold && angle < 180 + angleThreshold % vertical       
-       if xy(1,1) > left(1,1) % if point if higher on x axis
+       if xy(1,1) < left(1,1) % if point if lower on x axis
           left = xy;
        end
        
-       if xy(1,1) < right(1,1) % if point if lower on x axis[
+       if xy(1,1) > right(1,1) % if point if higher on x axis
           right = xy;
        end
    end
@@ -89,6 +84,5 @@ plot(left(:,1), left(:,2), 'LineWidth', 1, 'Color', 'yellow');
 plot(right(:,1), right(:,2), 'LineWidth', 1, 'Color', 'blue');
 
 carHeight = bottom(1,2) - top(1,2);
-carHeight
 carWidth = abs(right(1,1) - left(1,1));
-carWidth
+end
