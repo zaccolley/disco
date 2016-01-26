@@ -1,5 +1,5 @@
 
-function process(filename)
+function [width, height, distance] = process(filename)
 image = imread(filename);
 
 % get the height and width for later on
@@ -44,7 +44,7 @@ houghPeaks = houghpeaks(houghTransformMatrix, 20, 'threshold', ceil(0.3 * max(ho
 
 lines = houghlines(image, theta, rho, houghPeaks, 'FillGap', 20, 'MinLength', 20);
 
-figure, imshow(originalImage), hold on
+%figure, imshow(originalImage), hold on
 
 top = [[0, imageHeight], [0, 0]];
 bottom = [[0, 0], [0, 0]];
@@ -78,16 +78,16 @@ for k = 1:length(lines)
    
 end
 
+%{
 plot(top(:,1), top(:,2), 'LineWidth', 1, 'Color', 'red');
 plot(bottom(:,1), bottom(:,2), 'LineWidth', 1, 'Color', 'green');
 plot(left(:,1), left(:,2), 'LineWidth', 1, 'Color', 'yellow');
 plot(right(:,1), right(:,2), 'LineWidth', 1, 'Color', 'blue');
+%}
 
-carHeight = bottom(1,2) - top(1,2);
-carWidth = abs(right(1,1) - left(1,1));
+height = bottom(1,2) - top(1,2);
+width = abs(right(1,1) - left(1,1));
 
-fileID = fopen('results.txt', 'at');
-fprintf(fileID, '%s: %3.0f width, %3.0f height, bottom %3.3f \n', filename, carWidth, carHeight, bottom(1:1));
-fclose(fileID);
+distance = imageHeight - (top(1,2) + (height / 2));
 
 end
