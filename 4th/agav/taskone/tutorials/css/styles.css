@@ -1,0 +1,22 @@
+/* reset */
+*::before,
+*,
+*::after{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.canvas{
+  display: block;
+  margin: 0 auto;
+}
+
+.alert{
+  display: none;
+  color: red;
+}
+
+.alert--shown{
+  display: block;
+}
