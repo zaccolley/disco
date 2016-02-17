@@ -1,0 +1,15 @@
+{
+  "name": "data-mining",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zac Colley <hi@zaccolley.com> (http://zaccolley.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "node-arff": "^1.0.0",
+    "node-weka": "github:zaccolley/node-weka"
+  }
+}
