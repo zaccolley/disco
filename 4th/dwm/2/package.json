@@ -9,7 +9,6 @@
   "author": "Zac Colley <hi@zaccolley.com> (http://zaccolley.com/)",
   "license": "ISC",
   "dependencies": {
-    "node-arff": "^1.0.0",
-    "node-weka": "github:zaccolley/node-weka"
+    "weka": "github:zaccolley/node-weka"
   }
 }

@@ -1,5 +1,4 @@
 var weka = require('weka');
-var arff = require('node-arff');
 var data = __dirname + '/training.arff';
 
 var options = {
@@ -9,7 +8,7 @@ var options = {
 
 var testData = {
   outlook: 'overcast',
-  temperatur: 30,
+  temperature: 30,
   humidity: 2,
   windy: 'TRUE',
   play: 'no'
