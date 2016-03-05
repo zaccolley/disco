@@ -1,3 +1,3 @@
 function colour = findColour()
-    colour = 'blue';
+    colour = 'Blue'; % TODO
 end

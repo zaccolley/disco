@@ -1,9 +1,9 @@
 function [distance, speed] = calcSpeed(carPixelsFromBottomOfImageFirst, carPixelsFromBottomOfImageLast)
     imageHeight = 640; % pixels
     
-    pixelViewAngle = 0.042; % degrees
-    cameraHeight = 7; % meters
-    shutterSpeed = 0.1; % seconds
+    pixelViewAngle = 0.042;     % degrees
+    cameraHeight = 7;           % meters
+    shutterSpeed = 0.1;         % seconds
     angleToCenterOfCamera = 30; % degrees
 
     viewAngle = imageHeight * pixelViewAngle;
