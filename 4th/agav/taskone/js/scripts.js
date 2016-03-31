@@ -3,6 +3,10 @@ var canvas;
 var shaderProgram;
 var vertexBuffer;
 
+var hexagonVertexBuffer;
+var stripVertexBuffer;
+var stripElementBuffer;
+
 var shaderVertex = `
   attribute vec3 aVertexPosition;
   attribute vec4 aVertexColor;
@@ -125,9 +129,9 @@ function setupBuffers() {
   // the vertex coordinates and colours are interleaved
   var vertices = [
   //  x     y     z   |   r     g    b    a
-     0.0,  0.5,  0.0,    255,   0,   0,  255, // V0
-     0.5, -0.5,  0.0,     0,   250,  6,  255, // V1
-    -0.5, -0.5,  0.0,     0,    0,  255, 255  // V2
+     0.3,  0.4,  0.0,    255,   0,   0,  255, // V0
+     0.7,  0.4,  0.0,     0,   250,  6,  255, // V1
+     0.5,  0.8,  0.0,     0,    0,  255, 255  // V2
    ];
 
   var verticesAmount = 3; // total number of vertices
@@ -170,6 +174,53 @@ function setupBuffers() {
   vertexBuffer.positionSize = 3;
   vertexBuffer.colorSize = 4;
   vertexBuffer.numberOfItems = 3;
+
+  // hexagon vertices
+  hexagonVertexBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, hexagonVertexBuffer);
+  var hexagonVertices = [
+    -0.3,  0.6,  0.0, // V0
+    -0.4,  0.8,  0.0, // V1
+    -0.6,  0.8,  0.0, // V2
+    -0.7,  0.6,  0.0, // V3
+    -0.6,  0.4,  0.0, // V4
+    -0.4,  0.4,  0.0, // V5
+    -0.3,  0.6,  0.0, // V6
+  ];
+
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(hexagonVertices), gl.STATIC_DRAW);
+  hexagonVertexBuffer.itemSize = 3;
+  hexagonVertexBuffer.numberOfItems = 7;
+
+  // triangle strip vertices.
+  stripVertexBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, stripVertexBuffer);
+  var stripVertices = [
+    -0.5,  0.2,  0.0, //  V0
+    -0.4,  0.0,  0.0, //  V1
+    -0.3,  0.2,  0.0, //  V2
+    -0.2,  0.0,  0.0, //  V3
+    -0.1,  0.2,  0.0, //  V4
+     0.0,  0.0,  0.0, //  V5
+     0.1,  0.2,  0.0, //  V6
+     0.2,  0.0,  0.0, //  V7
+     0.3,  0.2,  0.0, //  V8
+     0.4,  0.0,  0.0, //  V9
+     0.5,  0.2,  0.0, // V10
+
+     // second strip
+    -0.5, -0.3,  0.0, // V11
+    -0.4, -0.5,  0.0, // V12
+    -0.3, -0.3,  0.0, // V13
+    -0.2, -0.5,  0.0, // V14
+    -0.1, -0.3,  0.0, // V15
+     0.0, -0.5,  0.0, // V16
+     0.1, -0.3,  0.0, // V17
+     0.2, -0.5,  0.0, // V18
+     0.3, -0.3,  0.0, // V19
+     0.4, -0.5,  0.0, // V20
+     0.5, -0.3,  0.0  // V21
+  ];
 }
 
 function draw() {
@@ -187,4 +238,20 @@ function draw() {
 
   // draw the triangle
   gl.drawArrays(gl.TRIANGLES, 0, vertexBuffer.numberOfItems);
+
+  // Draw the newly added items
+
+  // draw the hexagon
+  // Constant colour is used for all vertices of the hexagon. In such case, we must disable the vertex attribute array, aVertexColor
+  gl.disableVertexAttribArray(shaderProgram.vertexColorAttribute);
+
+  // A constant colour must be specified when aVertexColor is disabled
+  gl.vertexAttrib4f(shaderProgram.vertexColorAttribute, 1.0, 0.0, 0.0, 1.0);
+
+  // Make vertex buffer "hexagonVertexBuffer" the current buffer
+  gl.bindBuffer(gl.ARRAY_BUFFER, hexagonVertexBuffer);
+  // Link the current buffer to the attribute "aVertexPosition" in the vertex shader
+  gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, hexagonVertexBuffer.itemSize, gl.FLOAT, false, 0, 0);
+  // draw line strip
+  gl.drawArrays(gl.LINE_STRIP, 0, hexagonVertexBuffer.numberOfItems);
 }
