@@ -7,16 +7,24 @@
   padding: 0;
 }
 
+body{
+  font-family: sans-serif;
+  background: black;
+}
+
 .canvas{
   display: block;
-  margin: 0 auto;
+  width: 100vh;
+  height: 100vh;
 }
 
-.alert{
-  display: none;
-  color: red;
-}
+.fps-counter {
+  position: absolute;
+  top: 0; left: 0;
+  padding: .5em;
 
-.alert--shown{
-  display: block;
+  color: white;
+  text-transform: uppercase;
+
+  background: black;
 }

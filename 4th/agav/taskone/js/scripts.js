@@ -1,12 +1,14 @@
 var gl;
-var pwgl = {}; //Many variables are added to this as properties
+var pwgl = {}; // many variables are added to this as properties
 pwgl.ongoingImageLoads = [];
 var canvas;
 
-// Varibales for interactive control
-var transY = 0, transZ=0;
-var xRot =yRot =zRot =xOffs = yOffs = drag = 0;
-pwgl.listOfPressedKeys = []; // Keep track of pressed down keys in a list
+// variables for interactive control
+var transY = 0, transZ = 0;
+var xRot = 0, yRot = 0, zRot = 0;
+var xOffs = 0, yOffs = 0;
+var drag = 0;
+pwgl.listOfPressedKeys = []; // keep track of pressed down keys in a list
 
 var shaderVertex = `
   attribute vec3 aVertexPosition;
@@ -167,65 +169,10 @@ function pushModelViewMatrix() {
 }
 
 function popModelViewMatrix() {
-  if (pwgl.modelViewMatrixStack.length == 0) {
+  if (pwgl.modelViewMatrixStack.length === 0) {
     throw 'Error popModelViewMatrix() - Stack was empty ';
   }
   pwgl.modelViewMatrix = pwgl.modelViewMatrixStack.pop();
-}
-
-function setupFloorBuffers() {
-  pwgl.floorVertexPositionBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.floorVertexPositionBuffer);
-
-  // plane in y=0
-  var floorVertexPosition = [
-     5.0,   0.0,  5.0,  // V0
-     5.0,   0.0, -5.0,  // V1
-    -5.0,   0.0, -5.0,  // V2
-    -5.0,   0.0,  5.0   // V3
-  ];
-
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(floorVertexPosition), gl.STATIC_DRAW);
-  pwgl.FLOOR_VERTEX_POS_BUF_ITEM_SIZE = 3;
-  pwgl.FLOOR_VERTEX_POS_BUF_NUM_ITEMS = 4;
-
-  // specify normals to be able to do lighting calculations
-  pwgl.floorVertexNormalBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.floorVertexNormalBuffer);
-
-  var floorVertexNormals = [
-    0.0, 1.0, 0.0, // V0
-    0.0, 1.0, 0.0, // V1
-    0.0, 1.0, 0.0, // V2
-    0.0, 1.0, 0.0  // V3
-  ];
-
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(floorVertexNormals), gl.STATIC_DRAW);
-  pwgl.FLOOR_VERTEX_NORMAL_BUF_ITEM_SIZE = 3;
-  pwgl.FLOOR_VERTEX_NORMAL_BUF_NUM_ITEMS = 4;
-
-  // setup texture coordinates buffer
-  pwgl.floorVertexTextureCoordinateBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.floorVertexTextureCoordinateBuffer);
-  var floorVertexTextureCoordinates = [
-    2.0, 0.0,
-    2.0, 2.0,
-    0.0, 2.0,
-    0.0, 0.0
-  ];
-
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(floorVertexTextureCoordinates), gl.STATIC_DRAW);
-  pwgl.FLOOR_VERTEX_TEX_COORD_BUF_ITEM_SIZE = 2;
-  pwgl.FLOOR_VERTEX_TEX_COORD_BUF_NUM_ITEMS = 4;
-
-  // setup index buffer
-  pwgl.floorVertexIndexBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, pwgl.floorVertexIndexBuffer);
-  var floorVertexIndices = [0, 1, 2, 3];
-
-  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(floorVertexIndices), gl.STATIC_DRAW);
-  pwgl.FLOOR_VERTEX_INDEX_BUF_ITEM_SIZE = 1;
-  pwgl.FLOOR_VERTEX_INDEX_BUF_NUM_ITEMS = 4;
 }
 
 function setupCubeBuffers() {
@@ -234,7 +181,7 @@ function setupCubeBuffers() {
 
   var cubeVertexPosition = [
     // front face
-     1.0,  1.0,  1.0, //  V0
+    -1.0,  1.0,  1.0, //  V0
     -1.0,  1.0,  1.0, //  V1
     -1.0, -1.0,  1.0, //  V2
      1.0, -1.0,  1.0, //  V3
@@ -248,7 +195,7 @@ function setupCubeBuffers() {
      // left face
     -1.0,  1.0,  1.0, //  V8
     -1.0,  1.0, -1.0, //  V9
-    -1.0, -1.0, -1.0, //  V10
+    -1.0, -1.0, -1.0, // xV10
     -1.0, -1.0,  1.0, // V11
 
      // right face
@@ -332,7 +279,7 @@ function setupCubeBuffers() {
     0.0, 0.0, // V2
   ];
 
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(textureCoordinates),gl.STATIC_DRAW);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(textureCoordinates), gl.STATIC_DRAW);
   pwgl.CUBE_VERTEX_TEX_COORD_BUF_ITEM_SIZE = 2;
   pwgl.CUBE_VERTEX_TEX_COORD_BUF_NUM_ITEMS = 24;
 
@@ -382,18 +329,110 @@ function setupCubeBuffers() {
   pwgl.CUBE_VERTEX_NORMAL_BUF_NUM_ITEMS = 24;
 }
 
+function setupSphereBuffers() {
+  var m = 50; // horizontal (latitudinal) strips
+  var n = 50; // vertical (longitudinal) strips
+  var radius = 5;
+  var π = Math.PI;
+
+  var textureCoordinates = [];
+  var sphereVertexPosition = [];
+  var sphereVertexNormals = [];
+  for (var i = 0; i <= m; i++) {
+    var θ = i * π / m;
+
+    for (var j = 0; j <= n; j++) {
+      var φ = 2 * j * π / n;
+      /*
+        x = r sinθ cosφ= r sin(iπ/m) cos(2jπ/n)
+        y = r cosθ = r cos(iπ/m)
+        z = r sinθ sinφ = r sin(iπ/m) sin(2jπ/n)
+      */
+
+      var x = Math.sin(θ) * Math.cos(φ);
+      var y = Math.cos(θ);
+      var z = Math.sin(θ) * Math.sin(φ);
+
+      var u = 1 - (j / n);
+      var v = 1 - (i / m);
+
+      textureCoordinates.push(u);
+      textureCoordinates.push(v);
+
+      sphereVertexNormals.push(x);
+      sphereVertexNormals.push(y);
+      sphereVertexNormals.push(z);
+
+      sphereVertexPosition.push(radius * x);
+      sphereVertexPosition.push(radius * y);
+      sphereVertexPosition.push(radius * z);
+    }
+  }
+
+  var sphereVertexIndices = [];
+  for (var k = 0; k < m; k++) {
+    for (var l = 0; l < n; l++) {
+      /*
+        index of vi,j = i*(n+1)+j
+        index of vi,j+1 = index of vi,j + 1
+        index of vi+1,j = index of vi,j + n + 1
+        index of vi+1,j+1 = index of vi+1,j +1
+      */
+
+      var v1 = (k * (n + 1)) + l; // index of vi, l
+      var v2 = v1 + n + 1;        // index of vi+1, l
+      var v3 = v1 + 1;            // index of vi, l+1
+      var v4 = v2 + 1;            // index of vi+1, l+1
+
+      // indices of first triangle
+      sphereVertexIndices.push(v1);
+      sphereVertexIndices.push(v2);
+      sphereVertexIndices.push(v3);
+
+      // indices of second triangle
+      sphereVertexIndices.push(v3);
+      sphereVertexIndices.push(v2);
+      sphereVertexIndices.push(v4);
+    }
+  }
+
+  // setup vertex positions for sphere
+  pwgl.sphereVertexPositionBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.sphereVertexPositionBuffer);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(sphereVertexPosition), gl.STATIC_DRAW);
+  pwgl.SPHERE_VERTEX_POS_BUF_ITEM_SIZE = 3;
+  pwgl.SPHERE_VERTEX_POS_BUF_NUM_ITEMS = sphereVertexPosition.length / pwgl.SPHERE_VERTEX_POS_BUF_ITEM_SIZE;
+
+  // setup buffer with texture coordinates
+  pwgl.sphereVertexTextureCoordinateBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.sphereVertexTextureCoordinateBuffer);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(textureCoordinates), gl.STATIC_DRAW);
+  pwgl.SPHERE_VERTEX_TEX_COORD_BUF_ITEM_SIZE = 2;
+  pwgl.SPHERE_VERTEX_TEX_COORD_BUF_NUM_ITEMS = textureCoordinates.length / pwgl.SPHERE_VERTEX_TEX_COORD_BUF_ITEM_SIZE;
+
+  // specify normals to be able to do lighting calculations
+  pwgl.sphereVertexNormalBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.sphereVertexNormalBuffer);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(sphereVertexNormals), gl.STATIC_DRAW);
+  pwgl.SPHERE_VERTEX_NORMAL_BUF_ITEM_SIZE = 3;
+  pwgl.SPHERE_VERTEX_NORMAL_BUF_NUM_ITEMS = sphereVertexNormals.length / pwgl.SPHERE_VERTEX_NORMAL_BUF_ITEM_SIZE;
+
+  // setup index buffer
+  pwgl.sphereVertexIndexBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, pwgl.sphereVertexIndexBuffer);
+  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(sphereVertexIndices), gl.STATIC_DRAW);
+  pwgl.SPHERE_VERTEX_INDEX_BUF_ITEM_SIZE = 1;
+  pwgl.SPHERE_VERTEX_INDEX_BUF_NUM_ITEMS = sphereVertexIndices.length;
+}
+
 function setupTextures() {
   // texture for the table
-  pwgl.woodTexture = gl.createTexture();
-  loadImageForTexture('images/wood_128x128.jpg', pwgl.woodTexture);
-
-  // texture for the floor
-  pwgl.groundTexture = gl.createTexture();
-  loadImageForTexture('images/metal_floor_256.jpg', pwgl.groundTexture);
+  pwgl.earthTexture = gl.createTexture();
+  loadImageForTexture('images/earth.jpg', pwgl.earthTexture);
 
   // texture for the box on the table
   pwgl.boxTexture = gl.createTexture();
-  loadImageForTexture('images/wicker_256.jpg', pwgl.boxTexture);
+  loadImageForTexture('images/metal.jpg', pwgl.boxTexture);
 }
 
 function loadImageForTexture(url, texture) {
@@ -402,7 +441,7 @@ function loadImageForTexture(url, texture) {
     pwgl.ongoingImageLoads.splice(pwgl.ongoingImageLoads.indexOf(image), 1);
 
     textureFinishedLoading(image, texture);
-  }
+  };
   pwgl.ongoingImageLoads.push(image);
   image.src = url;
 }
@@ -424,8 +463,8 @@ function textureFinishedLoading(image, texture) {
 }
 
 function setupBuffers() {
-  setupFloorBuffers();
   setupCubeBuffers();
+  setupSphereBuffers();
 }
 
 function setupLights() {
@@ -450,26 +489,6 @@ function uploadProjectionMatrixToShader() {
   gl.uniformMatrix4fv(pwgl.uniformProjMatrixLoc, false, pwgl.projectionMatrix);
 }
 
-function drawFloor() {
-  // bind position buffer
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.floorVertexPositionBuffer);
-  gl.vertexAttribPointer(pwgl.vertexPositionAttributeLoc,
-  pwgl.FLOOR_VERTEX_POS_BUF_ITEM_SIZE, gl.FLOAT,false, 0, 0);
-
-  // bind normal buffer
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.floorVertexNormalBuffer);
-  gl.vertexAttribPointer(pwgl.vertexNormalAttributeLoc, pwgl.FLOOR_VERTEX_NORMAL_BUF_ITEM_SIZE, gl.FLOAT, false, 0, 0);
-
-  // bind texture coordinate buffer
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.floorVertexTextureCoordinateBuffer);
-  gl.vertexAttribPointer(pwgl.vertexTextureAttributeLoc, pwgl.FLOOR_VERTEX_TEX_COORD_BUF_ITEM_SIZE, gl.FLOAT, false, 0, 0);
-  gl.activeTexture(gl.TEXTURE0);
-  gl.bindTexture(gl.TEXTURE_2D, pwgl.groundTexture);
-
-  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, pwgl.floorVertexIndexBuffer);
-  gl.drawElements(gl.TRIANGLE_FAN, pwgl.FLOOR_VERTEX_INDEX_BUF_NUM_ITEMS, gl.UNSIGNED_SHORT, 0);
-}
-
 function drawCube(texture) {
   // Bind position buffer
   gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.cubeVertexPositionBuffer);
@@ -490,29 +509,24 @@ function drawCube(texture) {
   gl.drawElements(gl.TRIANGLES, pwgl.CUBE_VERTEX_INDEX_BUF_NUM_ITEMS, gl.UNSIGNED_SHORT, 0);
 }
 
-function drawTable(){
-  pushModelViewMatrix();
-  mat4.translate(pwgl.modelViewMatrix, [0.0, 1.0, 0.0], pwgl.modelViewMatrix);
-  mat4.scale(pwgl.modelViewMatrix, [2.0, 0.1, 2.0], pwgl.modelViewMatrix);
-  uploadModelViewMatrixToShader();
-  uploadNormalMatrixToShader();
-  drawCube(pwgl.woodTexture); // draw the tabletop with woodTexture
-  popModelViewMatrix();
+function drawSphere() {
+  // Bind position buffer
+  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.sphereVertexPositionBuffer);
+  gl.vertexAttribPointer(pwgl.vertexPositionAttributeLoc, pwgl.SPHERE_VERTEX_POS_BUF_ITEM_SIZE, gl.FLOAT, false, 0, 0);
 
-  // draw the table legs
-  for (var i=-1; i<=1; i+=2) {
-    for (var j= -1; j<=1; j+=2) {
-      pushModelViewMatrix();
-      mat4.translate(pwgl.modelViewMatrix, [i * 1.9, -0.1, j * 1.9],
-      pwgl.modelViewMatrix);
-      mat4.scale(pwgl.modelViewMatrix, [0.1, 1.0, 0.1],
-      pwgl.modelViewMatrix);
-      uploadModelViewMatrixToShader();
-      uploadNormalMatrixToShader();
-   		drawCube(pwgl.woodTexture); // draw the legs with woodTexture
-      popModelViewMatrix();
-    }
-  }
+  // bind normal buffer
+  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.sphereVertexNormalBuffer);
+  gl.vertexAttribPointer(pwgl.vertexNormalAttributeLoc, pwgl.SPHERE_VERTEX_NORMAL_BUF_ITEM_SIZE, gl.FLOAT, false, 0, 0);
+
+  // bind texture coordinate buffer
+  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.sphereVertexTextureCoordinateBuffer);
+  gl.vertexAttribPointer(pwgl.vertexTextureAttributeLoc, pwgl.CUBE_VERTEX_TEX_COORD_BUF_ITEM_SIZE, gl.FLOAT, false, 0, 0);
+  gl.activeTexture(gl.TEXTURE0);
+  gl.bindTexture(gl.TEXTURE_2D, pwgl.earthTexture);
+
+  // bind index buffer and draw sphere
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, pwgl.sphereVertexIndexBuffer);
+  gl.drawElements(gl.TRIANGLES, pwgl.SPHERE_VERTEX_INDEX_BUF_NUM_ITEMS, gl.UNSIGNED_SHORT, 0);
 }
 
 function draw() {
@@ -529,7 +543,6 @@ function draw() {
     pwgl.previousFrameTimeStamp = currentTime;
   }
 
-  // console.log('1   xRot= ' + xRot + '    yRot=' + yRot + '  t= ' + transl);
   mat4.translate(pwgl.modelViewMatrix, [0.0, transY, transZ], pwgl.modelViewMatrix);
   mat4.rotateX(pwgl.modelViewMatrix, xRot / 50, pwgl.modelViewMatrix);
   mat4.rotateY(pwgl.modelViewMatrix, yRot / 50, pwgl.modelViewMatrix);
@@ -544,16 +557,6 @@ function draw() {
   gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-  drawFloor();
-
-  // draw table
-  pushModelViewMatrix();
-  mat4.translate(pwgl.modelViewMatrix, [0.0, 1.1, 0.0], pwgl.modelViewMatrix);
-  uploadModelViewMatrixToShader();
-  uploadNormalMatrixToShader();
-  drawTable();
-  popModelViewMatrix();
-
   // calculate the position for the box that is initially on top of the table but will then be moved during animation
   pushModelViewMatrix();
   if (currentTime === undefined) {
@@ -565,20 +568,27 @@ function draw() {
   }
 
   // Update the position of the box
-  if (pwgl.y < 5) {
-    pwgl.y = 2.7 + (currentTime - pwgl.animationStartTime) / 3000 * (5.0 - 2.7);
-  } else {
-    pwgl.angle = (currentTime - pwgl.animationStartTime) / 2000 * 2 * Math.PI % (2 * Math.PI);
-    pwgl.x = Math.cos(pwgl.angle) * pwgl.circleRadius;
-    pwgl.z = Math.sin(pwgl.angle) * pwgl.circleRadius;
-  }
+  var animationSpeed = 10000;
+  pwgl.angleSat = -(currentTime - pwgl.animationStartTime) / (animationSpeed * pwgl.speedSat) * 2 * Math.PI % (2 * Math.PI);
+  pwgl.angleEarth = -(currentTime - pwgl.animationStartTime) / animationSpeed * 2 * Math.PI % (2 * Math.PI);
+  pwgl.x = Math.cos(-pwgl.angleSat) * pwgl.circleRadius;
+  pwgl.z = Math.sin(-pwgl.angleSat) * pwgl.circleRadius;
 
-  mat4.translate(pwgl.modelViewMatrix, [pwgl.x, pwgl.y, pwgl.z],
-  pwgl.modelViewMatrix);
+  mat4.translate(pwgl.modelViewMatrix, [pwgl.x, pwgl.y, pwgl.z], pwgl.modelViewMatrix);
   mat4.scale(pwgl.modelViewMatrix, [0.5, 0.5, 0.5], pwgl.modelViewMatrix);
+  mat4.rotateY(pwgl.modelViewMatrix, pwgl.angleSat, pwgl.modelViewMatrix);
   uploadModelViewMatrixToShader();
   uploadNormalMatrixToShader();
   drawCube(pwgl.boxTexture);
+  popModelViewMatrix();
+
+  // draw sphere
+  pushModelViewMatrix();
+  mat4.translate(pwgl.modelViewMatrix, [0.0, 0.0, 0.0], pwgl.modelViewMatrix);
+  mat4.rotateY(pwgl.modelViewMatrix, pwgl.angleEarth, pwgl.modelViewMatrix);
+  uploadModelViewMatrixToShader();
+  uploadNormalMatrixToShader();
+  drawSphere();
   popModelViewMatrix();
 
   // update number of drawn frames to be able to count fps
@@ -604,12 +614,15 @@ function init() {
   gl.clearColor(0.0, 0.0, 0.0, 1.0);
   gl.enable(gl.DEPTH_TEST);
 
-  // initialize some varibles for the moving box
+  // initialize some variables for the moving box
   pwgl.x = 0.0;
-  pwgl.y = 2.7;
+  pwgl.y = 0.0;
   pwgl.z = 0.0;
-  pwgl.circleRadius = 4.0;
-  pwgl.angle = 0;
+  pwgl.circleRadius = 7.0;
+  pwgl.angleSat = 0;
+  pwgl.speedSat = 1;
+
+  pwgl.angleEarth = 0;
 
   // initialize some variables related to the animation
   pwgl.animationStartTime = undefined;
@@ -618,12 +631,12 @@ function init() {
 
   mat4.perspective(60, gl.viewportWidth / gl.viewportHeight, 1, 100.0, pwgl.projectionMatrix);
   mat4.identity(pwgl.modelViewMatrix);
-  mat4.lookAt([8, 12, 8],[0, 0, 0], [0, 1,0], pwgl.modelViewMatrix);
+  mat4.lookAt([22, 0, 0], [0, 0, 0], [0, 1, 0], pwgl.modelViewMatrix);
 }
 
 function handleContextRestored(event) {
   init();
-  pwgl.requestId = requestAnimFrame(draw,canvas);
+  pwgl.requestId = requestAnimFrame(draw, canvas);
 }
 
 function handleKeyDown(event) {
@@ -635,21 +648,19 @@ function handleKeyUp(event) {
 }
 
 function handlePressedDownKeys() {
+  // arrow up, increase radius of circle
   if (pwgl.listOfPressedKeys[38]) {
-    // arrow up, increase radius of circle
     pwgl.circleRadius += 0.1;
   }
 
+  // arrow down, decrease radius of circle
   if (pwgl.listOfPressedKeys[40]) {
-    // arrow down, decrease radius of circle
     pwgl.circleRadius -= 0.1;
     if (pwgl.circleRadius < 0) {
       pwgl.circleRadius = 0;
     }
   }
 }
-
-
 
 function startup() {
   canvas = document.querySelector('.canvas');
@@ -685,7 +696,7 @@ function mymouseup(event) {
 }
 
 function mymousemove(event) {
-  if (drag == 0) {
+  if (drag === 0) {
     return false;
   }
 
@@ -701,9 +712,6 @@ function mymousemove(event) {
 
   xOffs = event.clientX;
   yOffs = event.clientY;
-
-  // console.log('xRot= '+xRot+'    yRot='+yRot+'   trans=  '+transl);
-  // console.log('xOff= '+xOffs+'    yOff='+yOffs);
 }
 
 function wheelHandler(event) {
@@ -712,8 +720,8 @@ function wheelHandler(event) {
   } else {
     transZ = event.detail / 10;
   }
-  // console.log('delta ='+ ev.detail);
-  ev.preventDefault();
+
+  event.preventDefault();
 }
 
 document.addEventListener('DOMContentLoaded', startup);
