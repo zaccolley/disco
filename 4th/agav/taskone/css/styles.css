@@ -1,30 +1,72 @@
 /* reset */
 *::before,
 *,
-*::after{
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body{
-  font-family: sans-serif;
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: monospace;
   background: black;
 }
 
-.canvas{
+main {
+  position: relative;
   display: block;
-  width: 100vh;
-  height: 100vh;
+  margin: 0 auto;
+
+  animation: fadeIn 2s ease-in forwards;
 }
 
-.fps-counter {
+@keyframes fadeIn {
+  from { opacity: 0; }
+}
+
+.canvas {
+  display: block;
+}
+
+.info {
   position: absolute;
   top: 0; left: 0;
-  padding: .5em;
+  margin: .5em;
 
-  color: white;
+  color: #F5D939;
+  font-size: 1.15em;
   text-transform: uppercase;
 
   background: black;
+  border: 1px solid #F5D939;
+  border-radius: 5px;
+}
+
+.info__heading {
+  padding: .2em .5em;
+
+  color: black;
+
+  background: #F5D939;
+}
+
+.info__row {
+  padding: .5em;
+}
+
+.info__key {
+  display: inline-block;
+  margin-top: -.2em;
+  padding: 0 .25em .1em;
+  text-align: center;
+  line-height: 1.25em;
+
+  border: 1px solid;
+  border-radius: 2px;
+  box-shadow: inset 0 -.15em 0;
 }

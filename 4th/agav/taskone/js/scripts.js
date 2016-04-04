@@ -1,14 +1,23 @@
 var gl;
-var pwgl = {}; // many variables are added to this as properties
-pwgl.ongoingImageLoads = [];
 var canvas;
-
-// variables for interactive control
-var transY = 0, transZ = 0;
-var xRot = 0, yRot = 0, zRot = 0;
-var xOffs = 0, yOffs = 0;
-var drag = 0;
-pwgl.listOfPressedKeys = []; // keep track of pressed down keys in a list
+var state = {
+  keysPressed: [], // keep track of pressed down keys in a list
+  imagesLoading: [],
+  rotation: {
+    x: 0,
+    y: 0,
+    z: 0
+  },
+  translation: {
+    y: 0,
+    z: 0
+  },
+  offset: {
+    y: 0,
+    z: 0
+  },
+  dragging: false
+};
 
 var shaderVertex = `
   attribute vec3 aVertexPosition;
@@ -74,6 +83,14 @@ var shaderFragment = `
   }
 `;
 
+function degreesToRadians(degrees) {
+  return degrees * Math.PI / 180;
+};
+
+function radiansToDegrees(radians) {
+  return radians * 180 / Math.PI;
+};
+
 function createGLContext(canvas) {
   var names = ['webgl', 'experimental-webgl'];
   var context = null;
@@ -92,7 +109,7 @@ function createGLContext(canvas) {
     context.viewportWidth = canvas.width;
     context.viewportHeight = canvas.height;
   } else {
-    return console.log('Failed to create WebGL context!');
+    return console.error('Failed to create WebGL context!');
   }
   return context;
 }
@@ -101,7 +118,7 @@ function loadShader(shaderSource, shaderType) {
   var shader;
 
   if (!shaderSource) {
-    return console.log('Couldn\'t find shader');
+    return console.error('Couldn\'t find shader');
   }
 
   switch (shaderType) {
@@ -112,14 +129,14 @@ function loadShader(shaderSource, shaderType) {
       shader = gl.createShader(gl.VERTEX_SHADER);
       break;
     default:
-      return console.log('Not a valid shader script type');
+      return console.error('Not a valid shader script type :', shaderType);
   }
 
   gl.shaderSource(shader, shaderSource);
   gl.compileShader(shader);
 
   if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS) && !gl.isContextLost()) {
-    return console.log(gl.getShaderInfoLog(shader));
+    return console.error(gl.getShaderInfoLog(shader));
   }
 
   return shader;
@@ -136,203 +153,202 @@ function setupShaders() {
   gl.linkProgram(shaderProgram);
 
   if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS) && !gl.isContextLost()) {
-    console.log('Failed to link shaders: ' + gl.getProgramInfoLog(shaderProgram));
+    console.error('Failed to link shaders: ' + gl.getProgramInfoLog(shaderProgram));
   }
 
   gl.useProgram(shaderProgram);
 
-  pwgl.vertexPositionAttributeLoc = gl.getAttribLocation(shaderProgram, 'aVertexPosition');
-  pwgl.vertexTextureAttributeLoc = gl.getAttribLocation(shaderProgram, 'aTextureCoordinates');
-  pwgl.uniformMVMatrixLoc = gl.getUniformLocation(shaderProgram, 'uMVMatrix');
-  pwgl.uniformProjMatrixLoc = gl.getUniformLocation(shaderProgram, 'uPMatrix');
-  pwgl.uniformSamplerLoc = gl.getUniformLocation(shaderProgram, 'uSampler');
+  state.vertexPositionAttributeLoc = gl.getAttribLocation(shaderProgram, 'aVertexPosition');
+  state.vertexTextureAttributeLoc = gl.getAttribLocation(shaderProgram, 'aTextureCoordinates');
+  state.uniformMVMatrixLoc = gl.getUniformLocation(shaderProgram, 'uMVMatrix');
+  state.uniformProjMatrixLoc = gl.getUniformLocation(shaderProgram, 'uPMatrix');
+  state.uniformSamplerLoc = gl.getUniformLocation(shaderProgram, 'uSampler');
 
-  pwgl.uniformNormalMatrixLoc = gl.getUniformLocation(shaderProgram, 'uNMatrix');
-  pwgl.vertexNormalAttributeLoc = gl.getAttribLocation(shaderProgram, 'aVertexNormal');
-  pwgl.uniformLightPositionLoc =gl.getUniformLocation(shaderProgram, 'uLightPosition');
-  pwgl.uniformAmbientLightColorLoc = gl.getUniformLocation(shaderProgram, 'uAmbientLightColor');
-  pwgl.uniformDiffuseLightColorLoc = gl.getUniformLocation(shaderProgram, 'uDiffuseLightColor');
-  pwgl.uniformSpecularLightColorLoc = gl.getUniformLocation(shaderProgram, 'uSpecularLightColor');
+  state.uniformNormalMatrixLoc = gl.getUniformLocation(shaderProgram, 'uNMatrix');
+  state.vertexNormalAttributeLoc = gl.getAttribLocation(shaderProgram, 'aVertexNormal');
+  state.uniformLightPositionLoc =gl.getUniformLocation(shaderProgram, 'uLightPosition');
+  state.uniformAmbientLightColorLoc = gl.getUniformLocation(shaderProgram, 'uAmbientLightColor');
+  state.uniformDiffuseLightColorLoc = gl.getUniformLocation(shaderProgram, 'uDiffuseLightColor');
+  state.uniformSpecularLightColorLoc = gl.getUniformLocation(shaderProgram, 'uSpecularLightColor');
 
-  gl.enableVertexAttribArray(pwgl.vertexNormalAttributeLoc);
-  gl.enableVertexAttribArray(pwgl.vertexPositionAttributeLoc);
-  gl.enableVertexAttribArray(pwgl.vertexTextureAttributeLoc);
+  gl.enableVertexAttribArray(state.vertexNormalAttributeLoc);
+  gl.enableVertexAttribArray(state.vertexPositionAttributeLoc);
+  gl.enableVertexAttribArray(state.vertexTextureAttributeLoc);
 
-  pwgl.modelViewMatrix = mat4.create();
-  pwgl.projectionMatrix = mat4.create();
-  pwgl.modelViewMatrixStack = [];
+  state.modelViewMatrix = mat4.create();
+  state.projectionMatrix = mat4.create();
+  state.modelViewMatrixStack = [];
 }
 
 function pushModelViewMatrix() {
-  var copyToPush = mat4.create(pwgl.modelViewMatrix);
-  pwgl.modelViewMatrixStack.push(copyToPush);
+  var copyToPush = mat4.create(state.modelViewMatrix);
+  state.modelViewMatrixStack.push(copyToPush);
 }
 
 function popModelViewMatrix() {
-  if (pwgl.modelViewMatrixStack.length === 0) {
-    throw 'Error popModelViewMatrix() - Stack was empty ';
+  if (state.modelViewMatrixStack.length === 0) {
+    return console.error('popModelViewMatrix() - Stack was empty ');
   }
-  pwgl.modelViewMatrix = pwgl.modelViewMatrixStack.pop();
+  state.modelViewMatrix = state.modelViewMatrixStack.pop();
 }
 
 function setupCubeBuffers() {
-  pwgl.cubeVertexPositionBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.cubeVertexPositionBuffer);
-
   var cubeVertexPosition = [
-    // front face
-    -1.0,  1.0,  1.0, //  V0
-    -1.0,  1.0,  1.0, //  V1
-    -1.0, -1.0,  1.0, //  V2
-     1.0, -1.0,  1.0, //  V3
+  // front face
+     1.0,  1.0,  1.0, //  v0
+    -1.0,  1.0,  1.0, //  v1
+    -1.0, -1.0,  1.0, //  v2
+     1.0, -1.0,  1.0, //  v3
 
-     // back face
-     1.0,  1.0, -1.0, //  V4
-    -1.0,  1.0, -1.0, //  V5
-    -1.0, -1.0, -1.0, //  V6
-     1.0, -1.0, -1.0, //  V7
+  // back face
+     1.0,  1.0, -1.0, //  v4
+    -1.0,  1.0, -1.0, //  v5
+    -1.0, -1.0, -1.0, //  v6
+     1.0, -1.0, -1.0, //  v7
 
-     // left face
-    -1.0,  1.0,  1.0, //  V8
-    -1.0,  1.0, -1.0, //  V9
-    -1.0, -1.0, -1.0, // xV10
-    -1.0, -1.0,  1.0, // V11
+  // left face
+    -1.0,  1.0,  1.0, //  v8
+    -1.0,  1.0, -1.0, //  v9
+    -1.0, -1.0, -1.0, // v10
+    -1.0, -1.0,  1.0, // v11
 
-     // right face
-     1.0,  1.0,  1.0, // V12
-     1.0, -1.0,  1.0, // V13
-     1.0, -1.0, -1.0, // V14
-     1.0,  1.0, -1.0, // V15
+  // right face
+    1.0,  1.0,  1.0, // v12
+    1.0, -1.0,  1.0, // v13
+    1.0, -1.0, -1.0, // v14
+    1.0,  1.0, -1.0, // v15
 
-    // top face
-     1.0,  1.0,  1.0, // V16
-     1.0,  1.0, -1.0, // V17
-    -1.0,  1.0, -1.0, // V18
-    -1.0,  1.0,  1.0, // V19
+  // top face
+     1.0,  1.0,  1.0, // v16
+     1.0,  1.0, -1.0, // v17
+    -1.0,  1.0, -1.0, // v18
+    -1.0,  1.0,  1.0, // v19
 
-    // bottom face
-     1.0, -1.0,  1.0, // V20
-     1.0, -1.0, -1.0, // V21
-    -1.0, -1.0, -1.0, // V22
-    -1.0, -1.0,  1.0, // V23
+  // bottom face
+     1.0, -1.0,  1.0, // v20
+     1.0, -1.0, -1.0, // v21
+    -1.0, -1.0, -1.0, // v22
+    -1.0, -1.0,  1.0, // v23
   ];
 
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(cubeVertexPosition), gl.STATIC_DRAW);
-  pwgl.CUBE_VERTEX_POS_BUF_ITEM_SIZE = 3;
-  pwgl.CUBE_VERTEX_POS_BUF_NUM_ITEMS = 24;
-
-  // setup buffer with index
-  pwgl.cubeVertexIndexBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, pwgl.cubeVertexIndexBuffer);
-
   var cubeVertexIndices = [
-    0, 1, 2,      0, 2, 3,    // front face
-    4, 6, 5,      4, 7, 6,    // back face
-    8, 9, 10,     8, 10, 11,  // left face
+     0,  1,  2,    0,  2,  3, // front face
+     4,  6,  5,    4,  7,  6, // back face
+     8,  9, 10,    8, 10, 11, // left face
     12, 13, 14,   12, 14, 15, // right face
     16, 17, 18,   16, 18, 19, // top face
     20, 22, 21,   20, 23, 22  // bottom face
   ];
 
-  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(cubeVertexIndices), gl.STATIC_DRAW);
-  pwgl.CUBE_VERTEX_INDEX_BUF_ITEM_SIZE = 1;
-  pwgl.CUBE_VERTEX_INDEX_BUF_NUM_ITEMS = 36;
-
-  // Setup buffer with texture coordinates
-  pwgl.cubeVertexTextureCoordinateBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.cubeVertexTextureCoordinateBuffer);
   var textureCoordinates = [
-    // front face
-    0.0, 0.0, // V0
-    1.0, 0.0, // V1
-    1.0, 1.0, // V2
-    0.0, 1.0, // V3
+  // front face
+    0.0, 0.0, // v0
+    1.0, 0.0, // v1
+    1.0, 1.0, // v2
+    0.0, 1.0, // v3
 
-    // back face
-    0.0, 1.0, // V4
-    1.0, 1.0, // V5
-    1.0, 0.0, // V6
-    0.0, 0.0, // V7
+  // back face
+    0.0, 1.0, // v4
+    1.0, 1.0, // v5
+    1.0, 0.0, // v6
+    0.0, 0.0, // v7
 
-    // left face
-    0.0, 1.0, // V1
-    1.0, 1.0, // V5
-    1.0, 0.0, // V6
-    0.0, 0.0, // V2
+  // left face
+    0.0, 1.0, // v1
+    1.0, 1.0, // v5
+    1.0, 0.0, // v6
+    0.0, 0.0, // v2
 
-    // right face
-    0.0, 1.0, // V0
-    1.0, 1.0, // V3
-    1.0, 0.0, // V7
-    0.0, 0.0, // V4
+  // right face
+    0.0, 1.0, // v0
+    1.0, 1.0, // v3
+    1.0, 0.0, // v7
+    0.0, 0.0, // v4
 
-    // top face
-    0.0, 1.0, // V0
-    1.0, 1.0, // V4
-    1.0, 0.0, // V5
-    0.0, 0.0, // V1
+  // top face
+    0.0, 1.0, // v0
+    1.0, 1.0, // v4
+    1.0, 0.0, // v5
+    0.0, 0.0, // v1
 
-    // bottom face
-    0.0, 1.0, // V3
-    1.0, 1.0, // V7
-    1.0, 0.0, // V6
-    0.0, 0.0, // V2
+  // bottom face
+    0.0, 1.0, // v3
+    1.0, 1.0, // v7
+    1.0, 0.0, // v6
+    0.0, 0.0, // v2
   ];
 
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(textureCoordinates), gl.STATIC_DRAW);
-  pwgl.CUBE_VERTEX_TEX_COORD_BUF_ITEM_SIZE = 2;
-  pwgl.CUBE_VERTEX_TEX_COORD_BUF_NUM_ITEMS = 24;
+  var cubeVertexNormals = [
+   // front face
+     0.0,  0.0,  1.0, // v0
+     0.0,  0.0,  1.0, // v1
+     0.0,  0.0,  1.0, // v2
+     0.0,  0.0,  1.0, // v3
+
+   // back face
+     0.0,  0.0, -1.0, // v4
+     0.0,  0.0, -1.0, // v5
+     0.0,  0.0, -1.0, // v6
+     0.0,  0.0, -1.0, // v7
+
+  // left face
+    -1.0,  0.0,  0.0, // v1
+    -1.0,  0.0,  0.0, // v5
+    -1.0,  0.0,  0.0, // v6
+    -1.0,  0.0,  0.0, // v2
+
+  // right face
+     1.0,  0.0,  0.0, // v0
+     1.0,  0.0,  0.0, // v3
+     1.0,  0.0,  0.0, // v7
+     1.0,  0.0,  0.0, // v4
+
+  // top face
+     0.0,  1.0,  0.0, // v0
+     0.0,  1.0,  0.0, // v4
+     0.0,  1.0,  0.0, // v5
+     0.0,  1.0,  0.0, // v1
+
+  // bottom face
+     0.0, -1.0,  0.0, // v3
+     0.0, -1.0,  0.0, // v7
+     0.0, -1.0,  0.0, // v6
+     0.0, -1.0,  0.0, // v2
+  ];
+
+  // setup buffer with vetex positions
+  state.cubeVertexPositionBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, state.cubeVertexPositionBuffer);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(cubeVertexPosition), gl.STATIC_DRAW);
+  state.CUBE_VERTEX_POS_BUF_ITEM_SIZE = 3;
+  state.CUBE_VERTEX_POS_BUF_NUM_ITEMS = cubeVertexPosition.length / state.CUBE_VERTEX_POS_BUF_ITEM_SIZE;
+
+  // setup buffer with index
+  state.cubeVertexIndexBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, state.cubeVertexIndexBuffer);
+  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(cubeVertexIndices), gl.STATIC_DRAW);
+  state.CUBE_VERTEX_INDEX_BUF_ITEM_SIZE = 1;
+  state.CUBE_VERTEX_INDEX_BUF_NUM_ITEMS = cubeVertexIndices.length / state.CUBE_VERTEX_INDEX_BUF_ITEM_SIZE;
+
+  // setup buffer with texture coordinates
+  state.cubeVertexTextureCoordinateBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, state.cubeVertexTextureCoordinateBuffer);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(textureCoordinates),gl.STATIC_DRAW);
+  state.CUBE_VERTEX_TEX_COORD_BUF_ITEM_SIZE = 2;
+  state.CUBE_VERTEX_TEX_COORD_BUF_NUM_ITEMS = textureCoordinates.length / state.CUBE_VERTEX_TEX_COORD_BUF_ITEM_SIZE;
 
   // specify normals to be able to do lighting calculations
-  pwgl.cubeVertexNormalBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.cubeVertexNormalBuffer);
-  var cubeVertexNormals = [
-     // front face
-     0.0,  0.0,  1.0, // V0
-     0.0,  0.0,  1.0, // V1
-     0.0,  0.0,  1.0, // V2
-     0.0,  0.0,  1.0, // V3
-
-     // back face
-     0.0,  0.0, -1.0, // V4
-     0.0,  0.0, -1.0, // V5
-     0.0,  0.0, -1.0, // V6
-     0.0,  0.0, -1.0, // V7
-
-    // left face
-    -1.0,  0.0,  0.0, // V1
-    -1.0,  0.0,  0.0, // V5
-    -1.0,  0.0,  0.0, // V6
-    -1.0,  0.0,  0.0, // V2
-
-    // right face
-    1.0,  0.0,  0.0, // V0
-    1.0,  0.0,  0.0, // V3
-    1.0,  0.0,  0.0, // V7
-    1.0,  0.0,  0.0, // V4
-
-    // top face
-    0.0,  1.0,  0.0, // V0
-    0.0,  1.0,  0.0, // V4
-    0.0,  1.0,  0.0, // V5
-    0.0,  1.0,  0.0, // V1
-
-    // bottom face
-    0.0, -1.0,  0.0, // V3
-    0.0, -1.0,  0.0, // V7
-    0.0, -1.0,  0.0, // V6
-    0.0, -1.0,  0.0, // V2
-  ];
-
+  state.cubeVertexNormalBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, state.cubeVertexNormalBuffer);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(cubeVertexNormals), gl.STATIC_DRAW);
-  pwgl.CUBE_VERTEX_NORMAL_BUF_ITEM_SIZE = 3;
-  pwgl.CUBE_VERTEX_NORMAL_BUF_NUM_ITEMS = 24;
+  state.CUBE_VERTEX_NORMAL_BUF_ITEM_SIZE = 3;
+  state.CUBE_VERTEX_NORMAL_BUF_NUM_ITEMS = cubeVertexNormals.length / state.CUBE_VERTEX_NORMAL_BUF_ITEM_SIZE;
 }
 
 function setupSphereBuffers() {
-  var m = 50; // horizontal (latitudinal) strips
-  var n = 50; // vertical (longitudinal) strips
-  var radius = 5;
+  var m = 30; // horizontal (latitudinal) strips
+  var n = 30; // vertical (longitudinal) strips
+  state.earth.radius = 5;
   var π = Math.PI;
 
   var textureCoordinates = [];
@@ -363,9 +379,9 @@ function setupSphereBuffers() {
       sphereVertexNormals.push(y);
       sphereVertexNormals.push(z);
 
-      sphereVertexPosition.push(radius * x);
-      sphereVertexPosition.push(radius * y);
-      sphereVertexPosition.push(radius * z);
+      sphereVertexPosition.push(state.earth.radius * x);
+      sphereVertexPosition.push(state.earth.radius * y);
+      sphereVertexPosition.push(state.earth.radius * z);
     }
   }
 
@@ -397,52 +413,56 @@ function setupSphereBuffers() {
   }
 
   // setup vertex positions for sphere
-  pwgl.sphereVertexPositionBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.sphereVertexPositionBuffer);
+  state.sphereVertexPositionBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, state.sphereVertexPositionBuffer);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(sphereVertexPosition), gl.STATIC_DRAW);
-  pwgl.SPHERE_VERTEX_POS_BUF_ITEM_SIZE = 3;
-  pwgl.SPHERE_VERTEX_POS_BUF_NUM_ITEMS = sphereVertexPosition.length / pwgl.SPHERE_VERTEX_POS_BUF_ITEM_SIZE;
+  state.SPHERE_VERTEX_POS_BUF_ITEM_SIZE = 3;
+  state.SPHERE_VERTEX_POS_BUF_NUM_ITEMS = sphereVertexPosition.length / state.SPHERE_VERTEX_POS_BUF_ITEM_SIZE;
 
   // setup buffer with texture coordinates
-  pwgl.sphereVertexTextureCoordinateBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.sphereVertexTextureCoordinateBuffer);
+  state.sphereVertexTextureCoordinateBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, state.sphereVertexTextureCoordinateBuffer);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(textureCoordinates), gl.STATIC_DRAW);
-  pwgl.SPHERE_VERTEX_TEX_COORD_BUF_ITEM_SIZE = 2;
-  pwgl.SPHERE_VERTEX_TEX_COORD_BUF_NUM_ITEMS = textureCoordinates.length / pwgl.SPHERE_VERTEX_TEX_COORD_BUF_ITEM_SIZE;
+  state.SPHERE_VERTEX_TEX_COORD_BUF_ITEM_SIZE = 2;
+  state.SPHERE_VERTEX_TEX_COORD_BUF_NUM_ITEMS = textureCoordinates.length / state.SPHERE_VERTEX_TEX_COORD_BUF_ITEM_SIZE;
 
   // specify normals to be able to do lighting calculations
-  pwgl.sphereVertexNormalBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.sphereVertexNormalBuffer);
+  state.sphereVertexNormalBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, state.sphereVertexNormalBuffer);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(sphereVertexNormals), gl.STATIC_DRAW);
-  pwgl.SPHERE_VERTEX_NORMAL_BUF_ITEM_SIZE = 3;
-  pwgl.SPHERE_VERTEX_NORMAL_BUF_NUM_ITEMS = sphereVertexNormals.length / pwgl.SPHERE_VERTEX_NORMAL_BUF_ITEM_SIZE;
+  state.SPHERE_VERTEX_NORMAL_BUF_ITEM_SIZE = 3;
+  state.SPHERE_VERTEX_NORMAL_BUF_NUM_ITEMS = sphereVertexNormals.length / state.SPHERE_VERTEX_NORMAL_BUF_ITEM_SIZE;
 
   // setup index buffer
-  pwgl.sphereVertexIndexBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, pwgl.sphereVertexIndexBuffer);
+  state.sphereVertexIndexBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, state.sphereVertexIndexBuffer);
   gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(sphereVertexIndices), gl.STATIC_DRAW);
-  pwgl.SPHERE_VERTEX_INDEX_BUF_ITEM_SIZE = 1;
-  pwgl.SPHERE_VERTEX_INDEX_BUF_NUM_ITEMS = sphereVertexIndices.length;
+  state.SPHERE_VERTEX_INDEX_BUF_ITEM_SIZE = 1;
+  state.SPHERE_VERTEX_INDEX_BUF_NUM_ITEMS = sphereVertexIndices.length;
 }
 
 function setupTextures() {
   // texture for the table
-  pwgl.earthTexture = gl.createTexture();
-  loadImageForTexture('images/earth.jpg', pwgl.earthTexture);
+  state.earthTexture = gl.createTexture();
+  loadImageForTexture('images/earth.jpg', state.earthTexture);
 
-  // texture for the box on the table
-  pwgl.boxTexture = gl.createTexture();
-  loadImageForTexture('images/metal.jpg', pwgl.boxTexture);
+  // texture for the satellite side toward the earth
+  state.satTowardsEarthTexture = gl.createTexture();
+  loadImageForTexture('images/satellite--grey.png', state.satTowardsEarthTexture);
+
+  // texture for the rest of the satellite sides
+  state.satTexture = gl.createTexture();
+  loadImageForTexture('images/satellite--gold.png', state.satTexture);
 }
 
 function loadImageForTexture(url, texture) {
   var image = new Image();
   image.onload = function() {
-    pwgl.ongoingImageLoads.splice(pwgl.ongoingImageLoads.indexOf(image), 1);
+    state.imagesLoading.splice(state.imagesLoading.indexOf(image), 1);
 
     textureFinishedLoading(image, texture);
   };
-  pwgl.ongoingImageLoads.push(image);
+  state.imagesLoading.push(image);
   image.src = url;
 }
 
@@ -468,91 +488,97 @@ function setupBuffers() {
 }
 
 function setupLights() {
-  gl.uniform3fv(pwgl.uniformLightPositionLoc, [0.0, 20.0, 5.0]);
-  gl.uniform3fv(pwgl.uniformAmbientLightColorLoc, [0.2, 0.2, 0.2]);
-  gl.uniform3fv(pwgl.uniformDiffuseLightColorLoc, [0.7, 0.7, 0.7]);
-  gl.uniform3fv(pwgl.uniformSpecularLightColorLoc, [0.8, 0.8, 0.8]);
+  gl.uniform3fv(state.uniformLightPositionLoc, [0.0, 20.0, 5.0]);
+  gl.uniform3fv(state.uniformAmbientLightColorLoc, [0.2, 0.2, 0.2]);
+  gl.uniform3fv(state.uniformDiffuseLightColorLoc, [0.7, 0.7, 0.7]);
+  gl.uniform3fv(state.uniformSpecularLightColorLoc, [0.8, 0.8, 0.8]);
 }
 
 function uploadNormalMatrixToShader() {
   var normalMatrix = mat3.create();
-  mat4.toInverseMat3(pwgl.modelViewMatrix, normalMatrix);
+  mat4.toInverseMat3(state.modelViewMatrix, normalMatrix);
   mat3.transpose(normalMatrix);
-  gl.uniformMatrix3fv(pwgl.uniformNormalMatrixLoc, false, normalMatrix);
+  gl.uniformMatrix3fv(state.uniformNormalMatrixLoc, false, normalMatrix);
 }
 
 function uploadModelViewMatrixToShader() {
-  gl.uniformMatrix4fv(pwgl.uniformMVMatrixLoc, false, pwgl.modelViewMatrix);
+  gl.uniformMatrix4fv(state.uniformMVMatrixLoc, false, state.modelViewMatrix);
 }
 
 function uploadProjectionMatrixToShader() {
-  gl.uniformMatrix4fv(pwgl.uniformProjMatrixLoc, false, pwgl.projectionMatrix);
+  gl.uniformMatrix4fv(state.uniformProjMatrixLoc, false, state.projectionMatrix);
 }
 
-function drawCube(texture) {
-  // Bind position buffer
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.cubeVertexPositionBuffer);
-  gl.vertexAttribPointer(pwgl.vertexPositionAttributeLoc, pwgl.CUBE_VERTEX_POS_BUF_ITEM_SIZE, gl.FLOAT, false, 0, 0);
+function drawCube() {
+  // bind position buffer
+  gl.bindBuffer(gl.ARRAY_BUFFER, state.cubeVertexPositionBuffer);
+  gl.vertexAttribPointer(state.vertexPositionAttributeLoc, state.CUBE_VERTEX_POS_BUF_ITEM_SIZE, gl.FLOAT, false, 0, 0);
 
   // bind normal buffer
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.cubeVertexNormalBuffer);
-  gl.vertexAttribPointer(pwgl.vertexNormalAttributeLoc, pwgl.CUBE_VERTEX_NORMAL_BUF_ITEM_SIZE, gl.FLOAT, false, 0, 0);
+  gl.bindBuffer(gl.ARRAY_BUFFER, state.cubeVertexNormalBuffer);
+  gl.vertexAttribPointer(state.vertexNormalAttributeLoc, state.CUBE_VERTEX_NORMAL_BUF_ITEM_SIZE, gl.FLOAT, false, 0, 0);
 
   // bind texture coordinate buffer
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.cubeVertexTextureCoordinateBuffer);
-  gl.vertexAttribPointer(pwgl.vertexTextureAttributeLoc, pwgl.CUBE_VERTEX_TEX_COORD_BUF_ITEM_SIZE, gl.FLOAT, false, 0, 0);
+  gl.bindBuffer(gl.ARRAY_BUFFER, state.cubeVertexTextureCoordinateBuffer);
+  gl.vertexAttribPointer(state.vertexTextureAttributeLoc, state.CUBE_VERTEX_TEX_COORD_BUF_ITEM_SIZE, gl.FLOAT, false, 0, 0);
   gl.activeTexture(gl.TEXTURE0);
-  gl.bindTexture(gl.TEXTURE_2D, texture);
 
-  // bind index buffer and draw cube
-  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, pwgl.cubeVertexIndexBuffer);
-  gl.drawElements(gl.TRIANGLES, pwgl.CUBE_VERTEX_INDEX_BUF_NUM_ITEMS, gl.UNSIGNED_SHORT, 0);
+  gl.bindTexture(gl.TEXTURE_2D, state.satTowardsEarthTexture);
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, state.cubeVertexIndexBuffer);
+  gl.drawElements(gl.TRIANGLES, state.CUBE_VERTEX_INDEX_BUF_NUM_ITEMS / 6, gl.UNSIGNED_SHORT, 0);
+
+  gl.bindTexture(gl.TEXTURE_2D, state.satTexture);
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, state.cubeVertexIndexBuffer);
+  gl.drawElements(gl.TRIANGLES, state.CUBE_VERTEX_INDEX_BUF_NUM_ITEMS, gl.UNSIGNED_SHORT, 0);
 }
 
 function drawSphere() {
-  // Bind position buffer
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.sphereVertexPositionBuffer);
-  gl.vertexAttribPointer(pwgl.vertexPositionAttributeLoc, pwgl.SPHERE_VERTEX_POS_BUF_ITEM_SIZE, gl.FLOAT, false, 0, 0);
+  // bind position buffer
+  gl.bindBuffer(gl.ARRAY_BUFFER, state.sphereVertexPositionBuffer);
+  gl.vertexAttribPointer(state.vertexPositionAttributeLoc, state.SPHERE_VERTEX_POS_BUF_ITEM_SIZE, gl.FLOAT, false, 0, 0);
 
   // bind normal buffer
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.sphereVertexNormalBuffer);
-  gl.vertexAttribPointer(pwgl.vertexNormalAttributeLoc, pwgl.SPHERE_VERTEX_NORMAL_BUF_ITEM_SIZE, gl.FLOAT, false, 0, 0);
+  gl.bindBuffer(gl.ARRAY_BUFFER, state.sphereVertexNormalBuffer);
+  gl.vertexAttribPointer(state.vertexNormalAttributeLoc, state.SPHERE_VERTEX_NORMAL_BUF_ITEM_SIZE, gl.FLOAT, false, 0, 0);
 
   // bind texture coordinate buffer
-  gl.bindBuffer(gl.ARRAY_BUFFER, pwgl.sphereVertexTextureCoordinateBuffer);
-  gl.vertexAttribPointer(pwgl.vertexTextureAttributeLoc, pwgl.CUBE_VERTEX_TEX_COORD_BUF_ITEM_SIZE, gl.FLOAT, false, 0, 0);
+  gl.bindBuffer(gl.ARRAY_BUFFER, state.sphereVertexTextureCoordinateBuffer);
+  gl.vertexAttribPointer(state.vertexTextureAttributeLoc, state.CUBE_VERTEX_TEX_COORD_BUF_ITEM_SIZE, gl.FLOAT, false, 0, 0);
   gl.activeTexture(gl.TEXTURE0);
-  gl.bindTexture(gl.TEXTURE_2D, pwgl.earthTexture);
+  gl.bindTexture(gl.TEXTURE_2D, state.earthTexture);
 
   // bind index buffer and draw sphere
-  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, pwgl.sphereVertexIndexBuffer);
-  gl.drawElements(gl.TRIANGLES, pwgl.SPHERE_VERTEX_INDEX_BUF_NUM_ITEMS, gl.UNSIGNED_SHORT, 0);
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, state.sphereVertexIndexBuffer);
+  gl.drawElements(gl.TRIANGLES, state.SPHERE_VERTEX_INDEX_BUF_NUM_ITEMS, gl.UNSIGNED_SHORT, 0);
 }
 
 function draw() {
-  pwgl.requestId = requestAnimFrame(draw);
+  state.requestId = requestAnimFrame(draw);
 
   var currentTime = Date.now();
 
   handlePressedDownKeys();
 
   // update FPS if a second or more has passed since last FPS update
-  if (currentTime - pwgl.previousFrameTimeStamp >= 1000) {
-    pwgl.fpsCounter.innerHTML = pwgl.nbrOfFramesForFPS;
-    pwgl.nbrOfFramesForFPS = 0;
-    pwgl.previousFrameTimeStamp = currentTime;
+  if (currentTime - state.animation.previous >= 1000) {
+    state.fpsCounter.innerHTML = state.animation.fps;
+    state.animation.fps = 0;
+    state.animation.previous = currentTime;
   }
 
-  mat4.translate(pwgl.modelViewMatrix, [0.0, transY, transZ], pwgl.modelViewMatrix);
-  mat4.rotateX(pwgl.modelViewMatrix, xRot / 50, pwgl.modelViewMatrix);
-  mat4.rotateY(pwgl.modelViewMatrix, yRot / 50, pwgl.modelViewMatrix);
+  document.querySelector('.speed').innerHTML = Math.round(state.satellite.speed * 100) / 100;
+  document.querySelector('.orbit').innerHTML = Math.round(state.satellite.radius * 100) / 100;
 
-  yRot = xRot = zRot = transY = transZ = 0;
+  mat4.translate(state.modelViewMatrix, [0.0, state.translation.y, state.translation.z], state.modelViewMatrix);
+  mat4.rotateX(state.modelViewMatrix, state.rotation.x / 50, state.modelViewMatrix);
+  mat4.rotateY(state.modelViewMatrix, state.rotation.y / 50, state.modelViewMatrix);
+
+  state.rotation.y = state.rotation.x = state.rotation.z = state.translation.y = state.translation.z = 0;
 
   uploadModelViewMatrixToShader();
   uploadProjectionMatrixToShader();
   uploadNormalMatrixToShader();
-  gl.uniform1i(pwgl.uniformSamplerLoc, 0);
+  gl.uniform1i(state.uniformSamplerLoc, 0);
 
   gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -563,110 +589,174 @@ function draw() {
     currentTime = Date.now();
   }
 
-  if (pwgl.animationStartTime === undefined) {
-    pwgl.animationStartTime = currentTime;
+  if (state.animation.start === undefined) {
+    state.animation.start = currentTime;
   }
 
-  // Update the position of the box
-  var animationSpeed = 10000;
-  pwgl.angleSat = -(currentTime - pwgl.animationStartTime) / (animationSpeed * pwgl.speedSat) * 2 * Math.PI % (2 * Math.PI);
-  pwgl.angleEarth = -(currentTime - pwgl.animationStartTime) / animationSpeed * 2 * Math.PI % (2 * Math.PI);
-  pwgl.x = Math.cos(-pwgl.angleSat) * pwgl.circleRadius;
-  pwgl.z = Math.sin(-pwgl.angleSat) * pwgl.circleRadius;
+  // update the position of the box
+  state.satellite.angle = -(currentTime - state.animation.start) / (state.animation.speed / state.satellite.speed) * 2 * Math.PI % (2 * Math.PI);
+  state.earth.angle = -(currentTime - state.animation.start) / state.animation.speed * 2 * Math.PI % (2 * Math.PI);
+  state.satellite.x = Math.cos(-state.satellite.angle) * state.satellite.radius;
+  state.satellite.z = Math.sin(-state.satellite.angle) * state.satellite.radius;
 
-  mat4.translate(pwgl.modelViewMatrix, [pwgl.x, pwgl.y, pwgl.z], pwgl.modelViewMatrix);
-  mat4.scale(pwgl.modelViewMatrix, [0.5, 0.5, 0.5], pwgl.modelViewMatrix);
-  mat4.rotateY(pwgl.modelViewMatrix, pwgl.angleSat, pwgl.modelViewMatrix);
+  mat4.translate(state.modelViewMatrix, [state.satellite.x, state.satellite.y, state.satellite.z], state.modelViewMatrix);
+  mat4.scale(state.modelViewMatrix, [0.5, 0.5, 0.5], state.modelViewMatrix);
+  mat4.rotateY(state.modelViewMatrix, degreesToRadians(-90), state.modelViewMatrix);
+  mat4.rotateY(state.modelViewMatrix, state.satellite.angle, state.modelViewMatrix);
   uploadModelViewMatrixToShader();
   uploadNormalMatrixToShader();
-  drawCube(pwgl.boxTexture);
+  drawCube();
   popModelViewMatrix();
 
   // draw sphere
   pushModelViewMatrix();
-  mat4.translate(pwgl.modelViewMatrix, [0.0, 0.0, 0.0], pwgl.modelViewMatrix);
-  mat4.rotateY(pwgl.modelViewMatrix, pwgl.angleEarth, pwgl.modelViewMatrix);
+  mat4.translate(state.modelViewMatrix, [0.0, 0.0, 0.0], state.modelViewMatrix);
+  mat4.rotateY(state.modelViewMatrix, state.earth.angle, state.modelViewMatrix);
   uploadModelViewMatrixToShader();
   uploadNormalMatrixToShader();
   drawSphere();
   popModelViewMatrix();
 
   // update number of drawn frames to be able to count fps
-  pwgl.nbrOfFramesForFPS++;
+  state.animation.fps++;
 }
 
 function handleContextLost(event) {
-  event.preventDefault();
-  cancelRequestAnimFrame(pwgl.requestId);
+  cancelRequestAnimFrame(state.requestId);
+
   // ignore all ongoing image loads by removing their onload handler
-  for (var i = 0; i < pwgl.ongoingImageLoads.length; i++) {
-    pwgl.ongoingImageLoads[i].onload = undefined;
+  for (var i = 0; i < state.imagesLoading.length; i++) {
+    state.imagesLoading[i].onload = undefined;
   }
-  pwgl.ongoingImageLoads = [];
+  state.imagesLoading = [];
+
+  event.preventDefault();
 }
 
 function init() {
-  // initialization that is performed during first startup and when the event webglcontextrestored is received is included in this function.
+  state.satellite = {
+    x: 0.0,
+    y: 0.0,
+    z: 0.0,
+    radius: 7.0,
+    angle: 0,
+    speed: 1
+  };
+
+  state.earth = {
+    angle: 0,
+    radius: 5.0
+  };
+
+  state.animation = {
+    speed: 10000,
+    fps: 0,
+    previous: Date.now()
+  }
+
   setupShaders();
   setupBuffers();
   setupLights();
   setupTextures();
-  gl.clearColor(0.0, 0.0, 0.0, 1.0);
+  gl.clearColor(0.0, 0.0, 0.0, 1.0); // black background
   gl.enable(gl.DEPTH_TEST);
 
-  // initialize some variables for the moving box
-  pwgl.x = 0.0;
-  pwgl.y = 0.0;
-  pwgl.z = 0.0;
-  pwgl.circleRadius = 7.0;
-  pwgl.angleSat = 0;
-  pwgl.speedSat = 1;
-
-  pwgl.angleEarth = 0;
-
-  // initialize some variables related to the animation
-  pwgl.animationStartTime = undefined;
-  pwgl.nbrOfFramesForFPS = 0;
-  pwgl.previousFrameTimeStamp = Date.now();
-
-  mat4.perspective(60, gl.viewportWidth / gl.viewportHeight, 1, 100.0, pwgl.projectionMatrix);
-  mat4.identity(pwgl.modelViewMatrix);
-  mat4.lookAt([22, 0, 0], [0, 0, 0], [0, 1, 0], pwgl.modelViewMatrix);
+  mat4.perspective(60, gl.viewportWidth / gl.viewportHeight, 1, 100.0, state.projectionMatrix);
+  mat4.identity(state.modelViewMatrix);
+  mat4.lookAt([22, 0, 0], [0, 0, 0], [0, 1, 0], state.modelViewMatrix);
 }
 
 function handleContextRestored(event) {
   init();
-  pwgl.requestId = requestAnimFrame(draw, canvas);
+  state.requestId = requestAnimFrame(draw, canvas);
 }
 
 function handleKeyDown(event) {
-  pwgl.listOfPressedKeys[event.keyCode] = true;
+  state.keysPressed[event.keyCode] = true;
 }
 
 function handleKeyUp(event) {
-  pwgl.listOfPressedKeys[event.keyCode] = false;
+  state.keysPressed[event.keyCode] = false;
 }
 
 function handlePressedDownKeys() {
-  // arrow up, increase radius of circle
-  if (pwgl.listOfPressedKeys[38]) {
-    pwgl.circleRadius += 0.1;
+  // speed down ← (left key)
+  if (state.keysPressed[37]) {
+    if (state.satellite.speed > 0.3) {
+      state.satellite.speed -= 0.05;
+    }
   }
 
-  // arrow down, decrease radius of circle
-  if (pwgl.listOfPressedKeys[40]) {
-    pwgl.circleRadius -= 0.1;
-    if (pwgl.circleRadius < 0) {
-      pwgl.circleRadius = 0;
+  // speed up → (right key)
+  if (state.keysPressed[39]) {
+    if (state.satellite.speed < 5.0) {
+      state.satellite.speed += 0.05;
+    }
+  }
+
+  // orbit out ↑ (up key)
+  if (state.keysPressed[38]) {
+    if (state.satellite.radius < state.earth.radius + 10.0) {
+      state.satellite.radius += 0.1;
+    }
+  }
+
+  // orbit in ↓ (down key)
+  if (state.keysPressed[40]) {
+    if (state.satellite.radius > state.earth.radius + 1.0) {
+      state.satellite.radius -= 0.1;
     }
   }
 }
 
+function mymousedown(event) {
+  state.dragging = true;
+  state.offset.x = event.clientX;
+  state.offset.y = event.clientY;
+}
+
+function mymouseup(event) {
+  state.dragging = false;
+}
+
+function mymousemove(event) {
+  if (!state.dragging) {
+    return false;
+  }
+
+  if (event.shiftKey) {
+    state.translation.z = (event.clientY - state.offset.y) / 10;
+    state.rotation.z = (state.offset.x - event.clientX)  * .3;
+  } else if (event.altKey) {
+    state.translation.y = -(event.clientY - state.offset.y) / 10;
+  } else {
+    state.rotation.y = - state.offset.x + event.clientX;
+    state.rotation.x = - state.offset.y + event.clientY;
+  }
+
+  state.offset.x = event.clientX;
+  state.offset.y = event.clientY;
+}
+
+function wheelHandler(event) {
+  if (event.altKey) {
+    state.translation.y = -event.detail / 10;
+  } else {
+    state.translation.z = event.detail / 10;
+  }
+
+  event.preventDefault();
+}
+
 function startup() {
   canvas = document.querySelector('.canvas');
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
   canvas = WebGLDebugUtils.makeLostContextSimulatingCanvas(canvas);
+
   canvas.addEventListener('webglcontextlost', handleContextLost, false);
   canvas.addEventListener('webglcontextrestored', handleContextRestored, false);
+
   document.addEventListener('keydown', handleKeyDown, false);
   document.addEventListener('keyup', handleKeyUp, false);
   canvas.addEventListener('mousemove', mymousemove, false);
@@ -679,49 +769,10 @@ function startup() {
 
   init();
 
-  pwgl.fpsCounter = document.querySelector('.fps');
+  state.fpsCounter = document.querySelector('.fps');
 
   // draw the complete scene
   draw();
-}
-
-function mymousedown(event) {
-  drag  = 1;
-  xOffs = event.clientX;
-  yOffs = event.clientY;
-}
-
-function mymouseup(event) {
-  drag  = 0;
-}
-
-function mymousemove(event) {
-  if (drag === 0) {
-    return false;
-  }
-
-  if (event.shiftKey) {
-    transZ = (event.clientY - yOffs) / 10;
-    //zRot = (xOffs - event.clientX)  * .3;
-  } else if (event.altKey) {
-    transY = -(event.clientY - yOffs) / 10;
-  } else {
-    yRot = - xOffs + event.clientX;
-    xRot = - yOffs + event.clientY;
-  }
-
-  xOffs = event.clientX;
-  yOffs = event.clientY;
-}
-
-function wheelHandler(event) {
-  if (event.altKey) {
-    transY = -event.detail / 10;
-  } else {
-    transZ = event.detail / 10;
-  }
-
-  event.preventDefault();
 }
 
 document.addEventListener('DOMContentLoaded', startup);

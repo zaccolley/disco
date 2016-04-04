@@ -6,11 +6,24 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <div class="fps-counter">FPS: <span class="fps">--</span></div>
+  <main>
+    <div class="info">
+      <div class="info__row">FPS: <span class="fps">##</span></div>
+      
+      <div class="info__heading">Satellite controls</div>
+      <div class="info__row"><span class="info__key">←</span> Speed down</div>
+      <div class="info__row"><span class="info__key">→</span> Speed up</div>
+      <div class="info__row"><span class="info__key">↑</span> Orbit out</div>
+      <div class="info__row"><span class="info__key">↓</span> Orbit in</div>
 
-  <canvas class="canvas" width="500" height="500">
-    Oops, your browser doesn't support canvas. Sorry! :¬(
+      <div class="info__heading">Speed: <span class="speed">##</span></div>
+      <div class="info__heading">Orbit: <span class="orbit">##</span></div>
+    </div>
+
+    <canvas class="canvas">
+      Oops, your browser doesn't support canvas. Sorry! :¬(
   </canvas>
+  </main>
 
   <script src="js/webgl-debug.js" type="text/javascript"></script>
   <script src="js/webgl-utils.js" type="text/javascript"></script>
