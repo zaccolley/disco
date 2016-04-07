@@ -26,11 +26,17 @@ function [boundingBox, distance] = process(filename)
 
     % convert to bw
     image = im2bw(image, 0.3);
-
-    % get rid of small dots
-    structuralElement = strel('square', 10);    % construct a structural element
-    image = imerode(image, structuralElement);  % erode
-    image = imdilate(image, structuralElement); % dilate
+    
+    regionsInfo = bwconncomp(image, 4); % 4 connected components
+    regionsAmount = regionsInfo.NumObjects;
+    
+    % if there is only one region we dont need to remove smaller regions
+    
+    if (regionsAmount > 1)
+        % get rid of small regions
+        image = imerode(image, strel('square', 10));  % erode
+        image = imdilate(image, strel('square', 50)); % dilate
+    end
 
     [L, ~] = bwlabel(image, 4); % detect circles
 
