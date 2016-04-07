@@ -1,9 +1,23 @@
-function width = calcWidth(carDistance, carWidth)
+function width = calcWidth(carDistance, boundingBox)
+    imageWidth = 480; % pixels
+    centerOfImage = (imageWidth / 2);
+    
     pixelViewAngle = 0.042; % degrees
     cameraHeight = 7;       % meters
-
-    carWidthAngle = (carWidth / 2) * pixelViewAngle;
    
     distanceFromCamera = sqrt(carDistance.^2 + cameraHeight.^2);
-    width = 2 * (distanceFromCamera * abs(tand(carWidthAngle))); 
+    
+    carX = boundingBox(1);    
+    width = boundingBox(3);
+    
+    leftOfCarWidth = abs(centerOfImage - carX);
+    rightOfCarWidth = abs(centerOfImage - (carX + width));
+    
+    leftOfCarWidthAngle = leftOfCarWidth * pixelViewAngle;
+    rightOfCarWidthAngle = rightOfCarWidth * pixelViewAngle;
+    
+    leftCarWidth = distanceFromCamera * abs(tand(leftOfCarWidthAngle));
+    rightCarWidth = distanceFromCamera * abs(tand(rightOfCarWidthAngle));
+    
+    width = leftCarWidth + rightCarWidth;
 end

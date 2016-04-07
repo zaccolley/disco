@@ -1,5 +1,5 @@
 
-function [width, height, distance] = process(filename)
+function [boundingBox, distance] = process(filename)
     image = imread(filename);
 
     % get the height and width for later on

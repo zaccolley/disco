@@ -1,9 +1,9 @@
 function [colour, speedResult, speed, width, size] = calc(firstImage, secondImage)
-    [widthFirst, heightFirst, distanceFirst] = process(firstImage);    
-    [widthLast, heightLast, distanceLast] = process(secondImage);
+    [boundingBoxFirst, distanceFirst] = process(firstImage);    
+    [boundingBoxLast, distanceLast] = process(secondImage);
 
     [carDistance, speed] = calcSpeed(distanceFirst, distanceLast);
-    width = calcWidth(carDistance, widthFirst);
+    width = calcWidth(carDistance, boundingBoxFirst);
     
     colour = findColour();
     
