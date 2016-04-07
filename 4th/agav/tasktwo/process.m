@@ -7,13 +7,6 @@ function [boundingBox, distance] = process(filename)
 
     originalImage = image;
 
-    grayImage = rgb2gray(image);
-
-    [count levels] = imhist(grayImage);     % get amount of colour and count of each
-    [~, biggestAmount] = max(count);        % get the biggest amount
-    mostGreyPixels = levels(biggestAmount); % the most amount
-    binaryThreshold = mostGreyPixels / 256; % create a treshold from this
-
     % convert to hsv
     image = rgb2hsv(image);
     image = image(:, :, 1); % hue lets us find the cars
