@@ -6,7 +6,7 @@ function [boundingBox, distance, red] = process(filename)
     [imageHeight, imageWidth, imageDim] = size(image);
 
     originalImage = image;
-
+    
     % convert to hsv
     image = rgb2hsv(image);
     image = image(:, :, 1); % hue lets us find the cars
@@ -31,7 +31,7 @@ function [boundingBox, distance, red] = process(filename)
         image = imdilate(image, strel('square', 50)); % dilate
     end
 
-    [L, ~] = bwlabel(image, 4); % detect circles
+    [L, ~] = bwlabel(image, 4); % detect shapes
 
     % calculate parameters from L
     stats = regionprops(L, 'ConvexArea', 'BoundingBox', 'Centroid');
@@ -39,7 +39,7 @@ function [boundingBox, distance, red] = process(filename)
     centroid = stats.Centroid;
 
 %{
-    % display the areas
+    % optionally display the areas
 
     [L, num] = bwlabel(image, 4); % detect circles
     rgb = label2rgb(L);           % convert the label matrix L to RGB image 
@@ -56,6 +56,8 @@ function [boundingBox, distance, red] = process(filename)
     
     carMiddleX = centroid(:, 1);
     carMiddleY = centroid(:, 2);
+
+    distance = imageHeight - carMiddleY;
     
     red = 'No';
     carColourPixelRed = originalImage(round(carMiddleY), round(carMiddleX), 1);
@@ -63,6 +65,4 @@ function [boundingBox, distance, red] = process(filename)
     if (carColourPixelRed >= 200)
         red = 'Yes';
     end
-
-    distance = imageHeight - carMiddleY;
 end
