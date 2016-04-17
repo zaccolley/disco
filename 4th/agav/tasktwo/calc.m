@@ -1,11 +1,9 @@
-function [colour, speedResult, speed, width, size] = calc(firstImage, secondImage)
-    [boundingBoxFirst, distanceFirst] = process(firstImage);    
+function [red, speedResult, speed, width, size] = calc(firstImage, secondImage)
+    [boundingBoxFirst, distanceFirst, red] = process(firstImage);    
     [boundingBoxLast, distanceLast] = process(secondImage);
 
     [carDistance, speed] = calcSpeed(distanceFirst, distanceLast);
     width = calcWidth(carDistance, boundingBoxFirst);
-    
-    colour = findColour();
     
     if speed > 30
         speedResult = 'Above speed limit';

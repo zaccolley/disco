@@ -1,5 +1,5 @@
 
-function [boundingBox, distance] = process(filename)
+function [boundingBox, distance, red] = process(filename)
     image = imread(filename);
 
     % get the height and width for later on
@@ -56,6 +56,13 @@ function [boundingBox, distance] = process(filename)
     
     carMiddleX = centroid(:, 1);
     carMiddleY = centroid(:, 2);
+    
+    red = 'No';
+    carColourPixelRed = originalImage(round(carMiddleY), round(carMiddleX), 1);
+    % if more than 200 we can say there is enough red in the pixel for it to be red
+    if (carColourPixelRed >= 200)
+        red = 'Yes';
+    end
 
     distance = imageHeight - carMiddleY;
 end
