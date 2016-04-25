@@ -6,6 +6,29 @@ var recognition;
 
 var right, wrong;
 
+var text = '';
+var changeText;
+var generateTextGeometry;
+
+var pictureMesh;
+
+var vocab = [
+  { spanish: "ano", english: "year" },
+  { spanish: "casa", english: "house" },
+  { spanish: "dia", english: "day" },
+  { spanish: "hombre", english: "man" },
+  { spanish: "mano", english: "hand" },
+  // { spanish: "mujer", english: "woman" },
+  { spanish: "tiempo", english: "time" },
+  // { spanish: "vida", english: "life" },
+];
+
+var vocabPosition = 0;
+
+var readySound = function() {
+  new Audio('sounds/ready.wav').play();
+}
+
 var clock = new THREE.Clock();
 
 document.addEventListener('DOMContentLoaded', function(event) {
@@ -14,12 +37,53 @@ document.addEventListener('DOMContentLoaded', function(event) {
   animate();
 });
 
+function nextVocab() {
+  vocabPosition++;
+  if (vocabPosition > vocab.length - 1) {
+    vocabPosition = 0;
+  }
+  updateImage();
+}
+
+// http://dense13.com/blog/2009/05/03/converting-string-to-slug-javascript/
+function convertToASCII(str) {
+  str = str.replace(/^\s+|\s+$/g, ''); // trim
+  str = str.toLowerCase();
+
+  // remove accents, swap ñ for n, etc
+  var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+  var to   = "aaaaeeeeiiiioooouuuunc------";
+  for (var i=0, l=from.length ; i<l ; i++) {
+    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+  }
+
+  str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+    .replace(/\s+/g, '-') // collapse whitespace and replace by -
+    .replace(/-+/g, '-'); // collapse dashes
+
+  return str;
+}
+
+changeText = function (newText) {
+  text = newText;
+  console.log('text', text);
+  console.log('vocab[vocabPosition]', vocab[vocabPosition].spanish);
+  if (text.toLowerCase().indexOf(vocab[vocabPosition].spanish) !== -1) {
+    right();
+    nextVocab();
+  } else {
+    wrong();
+  }
+  generateTextGeometry();
+}
+
 function recog() {
   var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
   var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
   var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
-  var words = ['perro', 'chorizo', 'hola'];
+  var words = vocab.map(function(word){ return word.spanish });
+  console.log(words);
 
   var grammar = '#JSGF V1.0; grammar words; public <word> = ' + words.join(' | ') + ';';
   recognition = new SpeechRecognition();
@@ -33,6 +97,7 @@ function recog() {
   // recognition.maxAlternatives = 1;
 
   document.body.onclick = function() {
+    readySound();
     recognition.start();
     console.log('listening');
   }
@@ -49,6 +114,8 @@ function recog() {
     // We then Rreturn the transcript property of the SpeechRecognitionAlternative object
     var result = event.results[0][0].transcript;
     console.log('Result received: ' + result + '. Confidence: ' + event.results[0][0].confidence);
+
+    changeText(convertToASCII(result));
   };
 
   recognition.onspeechend = function() {
@@ -63,6 +130,16 @@ function recog() {
   recognition.onerror = function(event) {
     console.log('Error occurred in recognition: ' + event.error);
   };
+}
+
+function updateGroupGeometry(mesh, geometry) {
+	mesh.children[0].geometry.dispose();
+	mesh.children[1].geometry.dispose();
+
+	mesh.children[0].geometry = new THREE.WireframeGeometry(geometry);
+	mesh.children[1].geometry = geometry;
+
+	// these do not update nicely together if shared
 }
 
 function init() {
@@ -134,29 +211,79 @@ function init() {
 
   // image
 
-  var texture = new THREE.TextureLoader().load('images/elhombre.png');
+  var texture = new THREE.TextureLoader().load('images/' + vocab[vocabPosition].spanish + '.png');
 
   var geometry = new THREE.PlaneGeometry(2, 2);
   var material = new THREE.MeshBasicMaterial({ map: texture, transparent: true, side: THREE.FrontSide});
-  var mesh = new THREE.Mesh(geometry, material);
-  mesh.applyMatrix( new THREE.Matrix4().makeTranslation(3, 12, 0) );
-  mesh.rotation.x = 0;
-  mesh.rotation.y = 4.5;
-  mesh.rotation.z = 0;
+  pictureMesh = new THREE.Mesh(geometry, material);
+  pictureMesh.applyMatrix( new THREE.Matrix4().makeTranslation(3, 12, 0) );
+  pictureMesh.rotation.x = 0;
+  pictureMesh.rotation.y = 4.5;
+  pictureMesh.rotation.z = 0;
+
+  updateImage = function() {
+    pictureMesh.material.map = new THREE.TextureLoader().load('images/' + vocab[vocabPosition].spanish + '.png');
+    pictureMesh.material.needsUpdate = true;
+  }
 
   right = function() {
     new Audio('sounds/right_answer.mp3').play();
-
-    mesh.material.map = new THREE.TextureLoader().load('images/elhombre--good.png');
-    mesh.material.needsUpdate = true;
   }
 
   wrong = function() {
     new Audio('sounds/wrong_answer.mp3').play();
-
-    mesh.material.map = new THREE.TextureLoader().load('images/elhombre--bad.png');
-    mesh.material.needsUpdate = true;
   }
+
+  scene.add(pictureMesh);
+
+  var mesh = new THREE.Object3D();
+
+  mesh.add(new THREE.LineSegments(
+
+    new THREE.Geometry(),
+
+    new THREE.LineBasicMaterial({
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0
+    })
+
+  ));
+
+  mesh.add(new THREE.Mesh(
+
+    new THREE.Geometry(),
+
+    new THREE.MeshPhongMaterial({
+      color: 0xffffff,
+      emissive: 0x072534,
+      side: THREE.DoubleSide,
+      shading: THREE.FlatShading
+    })
+
+  ));
+
+  mesh.applyMatrix( new THREE.Matrix4().makeTranslation(3, 10, 0) );
+  mesh.rotation.x = 0;
+  mesh.rotation.y = 4.5;
+  mesh.rotation.z = 0;
+
+  generateTextGeometry = function() {
+    var loader = new THREE.FontLoader();
+    loader.load('fonts/helvetiker_regular.typeface.js', function(font) {
+      var geometry = new THREE.TextGeometry(text, {
+        font: font,
+        size: 1,
+        height: 0.1,
+        curveSegments: 12,
+      });
+      geometry.center();
+
+      updateGroupGeometry( mesh, geometry );
+    });
+  }
+
+  generateTextGeometry();
 
   scene.add(mesh);
 
