@@ -6,7 +6,7 @@ var recognition;
 
 var right, wrong;
 
-var text = '';
+var text = '...';
 var changeText;
 var generateTextGeometry;
 
@@ -15,7 +15,7 @@ var pictureMesh;
 var vocab = [
   { spanish: "ano", english: "year" },
   { spanish: "casa", english: "house" },
-  { spanish: "dia", english: "day" },
+  // { spanish: "dia", english: "day" },
   { spanish: "hombre", english: "man" },
   { spanish: "mano", english: "hand" },
   // { spanish: "mujer", english: "woman" },
@@ -89,29 +89,26 @@ function recog() {
   recognition = new SpeechRecognition();
   var speechRecognitionList = new SpeechGrammarList();
   speechRecognitionList.addFromString(grammar, 1);
-  recognition.grammars = speechRecognitionList;
-  // recognition.continuous = false;
-  // recognition.lang = 'en-US';
+  recognition = new SpeechRecognition();
   recognition.lang = 'es-ES';
-  // recognition.interimResults = false;
-  // recognition.maxAlternatives = 1;
+  recognition.continuous = false;
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
 
-  document.body.onclick = function() {
-    readySound();
-    recognition.start();
-    console.log('listening');
+  recognition.start();
+
+  function resetRecog() {
+    console.log('resetting');
+    recognition.stop();
+    // dirty timeout cause no listener for when recog stops
+    setTimeout(function() { recognition.start(); }, 500);
   }
 
+  recognition.onstart = function() {
+    console.log('starting');
+  };
+
   recognition.onresult = function(event) {
-    console.log(event);
-    // The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
-    // The SpeechRecognitionResultList object contains SpeechRecognitionResult objects.
-    // It has a getter so it can be accessed like an array
-    // The first [0] returns the SpeechRecognitionResult at position 0.
-    // Each SpeechRecognitionResult object contains SpeechRecognitionAlternative objects that contain individual results.
-    // These also have getters so they can be accessed like arrays.
-    // The second [0] returns the SpeechRecognitionAlternative at position 0.
-    // We then Rreturn the transcript property of the SpeechRecognitionAlternative object
     var result = event.results[0][0].transcript;
     console.log('Result received: ' + result + '. Confidence: ' + event.results[0][0].confidence);
 
@@ -119,12 +116,13 @@ function recog() {
   };
 
   recognition.onspeechend = function() {
-    recognition.stop();
     console.log('speechend');
+    resetRecog();
   };
 
   recognition.onnomatch = function(event) {
     console.log('I didnt recognise that word.');
+    resetRecog();
   };
 
   recognition.onerror = function(event) {
