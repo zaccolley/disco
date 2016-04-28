@@ -1,6 +1,13 @@
+*, *:after, *:before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 body {
   margin: 0px;
   overflow: hidden;
+  font-family: sans-serif;
 }
 
 .menu,
@@ -19,7 +26,32 @@ body {
   justify-content: space-around;
 }
 
+.menu section {
+  float: left;
+  width: 50%;
+  padding: 1em 2em;
+}
+
+.menu section h1,
+.menu section p {
+  margin-bottom: 1em;
+}
+
+.menu img {
+  display: block;
+  max-width: 50%;
+  margin: 1em auto;
+}
+
 .start-button {
-  padding: .5em;
-  font-size: 15vw;
+  display: block;
+  margin: 0 auto;
+  padding: .5em 1em;
+
+  font-size: 3.5em;
+  color: white;
+
+  background: black;
+  border: 0;
+  border-radius: 5px;
 }
