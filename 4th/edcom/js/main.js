@@ -6,35 +6,38 @@ var recognition;
 
 var right, wrong;
 
-var text = '...';
-var changeText;
-var generateTextGeometry;
-
 var pictureMesh;
 
 var vocab = [
   { spanish: "ano", english: "year" },
   { spanish: "casa", english: "house" },
-  // { spanish: "dia", english: "day" },
   { spanish: "hombre", english: "man" },
   { spanish: "mano", english: "hand" },
-  // { spanish: "mujer", english: "woman" },
   { spanish: "tiempo", english: "time" },
-  // { spanish: "vida", english: "life" },
 ];
 
 var vocabPosition = 0;
 
-var readySound = function() {
-  new Audio('sounds/ready.wav').play();
-}
+var text = vocab[vocabPosition].english;
+var textColour = 0xffffff;
+var changeText;
+var generateTextGeometry;
 
 var clock = new THREE.Clock();
 
 document.addEventListener('DOMContentLoaded', function(event) {
-  recog();
-  init();
-  animate();
+  var menuEl = document.querySelector('.menu');
+  var startButtonEl = document.querySelector('.start-button');
+  container = document.getElementById('container');
+
+  startButtonEl.addEventListener('click', function(event) {
+    menuEl.style.display = 'none'; // hide the menu
+
+    fullscreen();
+    init();
+    recog();
+    animate();
+  });
 });
 
 function nextVocab() {
@@ -42,6 +45,12 @@ function nextVocab() {
   if (vocabPosition > vocab.length - 1) {
     vocabPosition = 0;
   }
+
+  textColour = 0xffffff;
+  updateTextColour();
+
+  text = vocab[vocabPosition].english;
+  generateTextGeometry();
   updateImage();
 }
 
@@ -70,8 +79,14 @@ changeText = function (newText) {
   console.log('vocab[vocabPosition]', vocab[vocabPosition].spanish);
   if (text.toLowerCase().indexOf(vocab[vocabPosition].spanish) !== -1) {
     right();
-    nextVocab();
+    textColour = 0x00ff00;
+    updateTextColour();
+    setTimeout(function() {
+      nextVocab();
+    }, 1500);
   } else {
+    textColour = 0xff0000;
+    updateTextColour();
     wrong();
   }
   generateTextGeometry();
@@ -95,13 +110,13 @@ function recog() {
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
 
-  recognition.start();
-
   function resetRecog() {
-    console.log('resetting');
+    console.log('stopping');
     recognition.stop();
-    // dirty timeout cause no listener for when recog stops
-    setTimeout(function() { recognition.start(); }, 500);
+    setTimeout(function() {
+      console.log('restarting');
+      recognition.start();
+    }, 1500);
   }
 
   recognition.onstart = function() {
@@ -113,21 +128,29 @@ function recog() {
     console.log('Result received: ' + result + '. Confidence: ' + event.results[0][0].confidence);
 
     changeText(convertToASCII(result));
-  };
 
-  recognition.onspeechend = function() {
-    console.log('speechend');
     resetRecog();
   };
 
   recognition.onnomatch = function(event) {
     console.log('I didnt recognise that word.');
+
+    changeText('Try again!');
+
     resetRecog();
+  };
+
+  recognition.onspeechend = function() {
+    console.log('speechend');
   };
 
   recognition.onerror = function(event) {
     console.log('Error occurred in recognition: ' + event.error);
   };
+
+  setTimeout(function() {
+    recognition.start();
+  }, 1000);
 }
 
 function updateGroupGeometry(mesh, geometry) {
@@ -144,7 +167,6 @@ function init() {
   renderer = new THREE.WebGLRenderer();
   renderer.setClearColor(0x000000);
   element = renderer.domElement;
-  container = document.getElementById('container');
   container.appendChild(element);
 
   effect = new THREE.StereoEffect(renderer);
@@ -174,8 +196,6 @@ function init() {
     controls = new THREE.DeviceOrientationControls(camera, true);
     controls.connect();
     controls.update();
-
-    document.querySelector('canvas').addEventListener('click', fullscreen);
 
     window.removeEventListener('deviceorientation', setOrientationControls, true);
   }
@@ -214,7 +234,7 @@ function init() {
   var geometry = new THREE.PlaneGeometry(2, 2);
   var material = new THREE.MeshBasicMaterial({ map: texture, transparent: true, side: THREE.FrontSide});
   pictureMesh = new THREE.Mesh(geometry, material);
-  pictureMesh.applyMatrix( new THREE.Matrix4().makeTranslation(3, 12, 0) );
+  pictureMesh.applyMatrix( new THREE.Matrix4().makeTranslation(5, 12, 0) );
   pictureMesh.rotation.x = 0;
   pictureMesh.rotation.y = 4.5;
   pictureMesh.rotation.z = 0;
@@ -234,6 +254,8 @@ function init() {
 
   scene.add(pictureMesh);
 
+  // text result
+
   var mesh = new THREE.Object3D();
 
   mesh.add(new THREE.LineSegments(
@@ -248,7 +270,7 @@ function init() {
 
   ));
 
-  mesh.add(new THREE.Mesh(
+  var textMesh = new THREE.Mesh(
 
     new THREE.Geometry(),
 
@@ -259,9 +281,15 @@ function init() {
       shading: THREE.FlatShading
     })
 
-  ));
+  );
 
-  mesh.applyMatrix( new THREE.Matrix4().makeTranslation(3, 10, 0) );
+  mesh.add(textMesh);
+
+  updateTextColour = function () {
+    textMesh.material.color.setHex(textColour);
+  };
+
+  mesh.applyMatrix( new THREE.Matrix4().makeTranslation(5, 10, 0) );
   mesh.rotation.x = 0;
   mesh.rotation.y = 4.5;
   mesh.rotation.z = 0;

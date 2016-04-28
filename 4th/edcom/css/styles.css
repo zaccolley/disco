@@ -3,6 +3,7 @@ body {
   overflow: hidden;
 }
 
+.menu,
 #container {
   position: absolute;
   top: 0;
@@ -10,4 +11,15 @@ body {
   right: 0;
   bottom: 0;
   background: white;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.start-button {
+  padding: .5em;
+  font-size: 15vw;
 }
